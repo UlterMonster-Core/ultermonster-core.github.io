@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+	<linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+	  <stop offset="0" stop-color="#071028"/>
+	  <stop offset="1" stop-color="#0b1220"/>
+	</linearGradient>
+	<filter id="f" x="-20%" y="-20%" width="140%" height="140%">
+	  <feDropShadow dx="0" dy="6" stdDeviation="14" flood-color="#000" flood-opacity="0.6"/>
+	</filter>
+  </defs>
+  <!-- background textured panel -->
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect x="40" y="40" width="1120" height="550" rx="20" fill="#f6ecd6" opacity="0.06"/>
+
+  <!-- left artwork panel -->
+  <g filter="url(#f)">
+	<rect x="60" y="90" width="480" height="450" rx="18" fill="#fff" />
+	<image href="assets/Website Icon.png" x="80" y="110" width="440" height="410" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+
+  <!-- title and subtitle -->
+  <text x="580" y="220" font-family="Georgia, serif" font-size="72" fill="#7ee3ff" stroke="#071028" stroke-width="3" font-weight="700">Victory Awaits</text>
+  <text x="580" y="280" font-family="Arial, sans-serif" font-size="36" fill="#dbeafe">UlterMonster Core — Adventure RPG Battles</text>
+
+  <!-- reward banner style area -->
+  <rect x="580" y="320" width="520" height="180" rx="12" fill="#fbf3d5" stroke="#8b6f3f"/>
+  <text x="840" y="370" font-family="Georgia, serif" font-size="28" fill="#2b2b2b" text-anchor="middle">Battle Rewards</text>
+  <text x="740" y="420" font-family="Arial, sans-serif" font-size="22" fill="#2b2b2b">+ 1025 GOLD</text>
+  <text x="820" y="420" font-family="Arial, sans-serif" font-size="22" fill="#2b2b2b">+ 250 XP</text>
+
+  <!-- footer domain -->
+  <text x="600" y="580" font-family="Arial, sans-serif" font-size="18" fill="#9ca3af">ultermonster-core.github.io</text>
+</svg>
