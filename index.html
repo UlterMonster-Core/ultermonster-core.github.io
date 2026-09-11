@@ -2,11 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+
+  <!-- Google Search Console Verification -->
   <meta name="google-site-verification" content="XD5w6uhj00YPFUNGUNfrMXXEt750P79tMxV92ROFyqg" />
+
   <title>UlterMonster Core</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- site icon / favicon -->
   <link rel="icon" href="assets/Website Icon.png" />
   <link rel="apple-touch-icon" href="assets/Website Icon.png" />
+  <!-- Open Graph / Twitter preview image -->
   <meta property="og:image" content="https://github.io" />
   <meta property="og:image:secure_url" content="https://github.io" />
   <meta property="og:image:type" content="image/jpeg" />
@@ -16,6 +21,7 @@
   <meta name="twitter:image" content="https://github.io" />
   <meta name="twitter:image:alt" content="UlterMonster Core - Adventure RPG Battles" />
   <link rel="image_src" href="https://github.io" />
+
   <style>
     :root{
       --bg-1: #0f1724;
@@ -76,17 +82,20 @@
       border:1px solid rgba(255,255,255,0.06);
     }
     #youtube-link:hover{transform:translateY(-3px)}
+    
     .layout-container {
       display: flex;
       flex: 1;
       width: 100%;
       box-sizing: border-box;
     }
+    
     main {
       flex: 1;
       padding: 32px 20px 96px;
       box-sizing: border-box;
     }
+    
     .video-sidebar {
       width: 380px;
       border-left: 1px solid rgba(255,255,255,0.05);
@@ -99,6 +108,7 @@
       position: sticky;
       top: 73px;
     }
+    
     .sidebar-section-title {
       font-size: 14px;
       text-transform: uppercase;
@@ -107,14 +117,17 @@
       padding-bottom: 8px;
       border-bottom: 2px solid rgba(255, 255, 255, 0.05);
     }
+    
     .early-access-title { border-color: var(--accent-1); color: #dbeafe; }
     .highlights-title { border-color: var(--accent-2); color: #e0f2fe; }
+
     .video-group {
       display: flex;
       flex-direction: column;
       gap: 20px;
       margin-bottom: 40px;
     }
+
     .video-card {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.04);
@@ -122,6 +135,7 @@
       padding: 12px;
       box-sizing: border-box;
     }
+    
     .video-card-title {
       margin: 10px 0 0 0;
       font-size: 14px;
@@ -129,6 +143,7 @@
       line-height: 1.4;
       color: #e2e8f0;
     }
+
     .hero {
       display:flex;
       gap:24px;
@@ -193,10 +208,12 @@
     .app-links{margin-top: auto;}
     .app-links a{font-size:13px;color:var(--accent-2);padding:6px 10px;border-radius:999px;border:1px solid rgba(6,182,212,0.12);text-decoration:none;display:inline-block;}
     footer{max-width:1100px;margin:0 auto;padding:28px 20px 56px;font-size:13px;color:rgba(255,255,255,0.6);border-top:1px solid rgba(255,255,255,0.02);width:100%;box-sizing:border-box;}
+
     #contact-btn{position:fixed;left:22px;bottom:22px;z-index:60;display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:white;text-decoration:none;box-shadow:0 10px 30px rgba(7,22,48,0.6);border:1px solid rgba(255,255,255,0.06);font-weight:700}
     #contact-btn:hover{transform:translateY(-4px)}
     @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
     #contact-btn{animation:floaty 4s ease-in-out infinite}
+
     @media (max-width: 900px) {
       .layout-container { flex-direction: column; }
       .video-sidebar { width: 100%; border-left: none; border-top: 1px solid rgba(255,255,255,0.05); height: auto; position: relative; top: 0; padding: 32px 20px; }
@@ -208,6 +225,7 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="logo">UlterMonster Core</div>
@@ -220,6 +238,7 @@
     </a>
     <a id="game-tab" href="#" style="margin-left:8px;display:none;" onclick="showGame();return false;" aria-label="Open game">🎮 Game</a>
   </header>
+
   <div class="layout-container">
     <main>
       <section class="hero">
@@ -231,60 +250,95 @@
           <p class="hero-subtitle">Adventure RPG Battles and game updates ecosystem.</p>
         </div>
       </section>
+
+      <!-- RESTORED APP CARDS SECTION -->
       <section class="apps-grid">
-      </section>
-    </main>
-    <aside class="video-sidebar">
-      <h2 class="sidebar-section-title early-access-title">Watch Early</h2>
-      <div class="video-group">
-        <div id="Early_1" class="video-card">Loading upcoming video...</div>
-        <div id="Early_2" class="video-card">Loading upcoming video...</div>
-        <div id="Early_3" class="video-card">Loading upcoming video...</div>
-      </div>
+        <div class="app-card">
+          <div class="app-head">
+            <img class="app-icon" src="assets/Website Icon.png" alt="Game Engine">
+            <div class="app-name">Adventure RPG</div>
+          </div>
+          <p class="app-tagline">Battle wild monsters, manage items, and explore quests directly from your hub.</p>
+          <div class="app-links">
+            <a href="#">Launch Module</a>
+          </div>
+        </div>
+
+Watch Early
+
+Loading upcoming video...
+Loading upcoming video...
+Loading upcoming video...
+
+
+---
+
+### 📡 Code Update: Part 2 of 2
+
+```html
       <h2 class="sidebar-section-title highlights-title">Channel Highlights</h2>
       <div class="video-group">
         <div id="Newest_Public" class="video-card">Loading latest release...</div>
-Loading featured video...
+        <div id="Most_Popular" class="video-card">Loading featured video...</div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 UlterMonster Core. All rights reserved.</p>
+  </footer>
+
+  <a id="contact-btn" href="mailto:contact@ultermonstercore.com">✉ Contact Us</a>
+
+  <script>
+    // Live verified spreadsheet data source link
+    const csvUrl = "https://google.com";
+
+    function getYouTubeId(url) {
+      if (!url) return null;
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      const match = url.trim().match(regExp);
+      return (match && match[2] && match[2].length === 11) ? match[2] : null;
+    }
+
+    function createVideoHTML(videoUrl, title) {
+      const videoId = getYouTubeId(videoUrl);
+      if (!videoId) {
+        return `<p style="margin:5px 0;"><a href="${videoUrl}" target="_blank" style="color:var(--accent-2);font-weight:700;text-decoration:none;font-size:13px;">👉 Watch: ${title || 'Click to Link'}</a></p>`;
+      }
+      return `
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 8px;">
+          <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" src="https://youtube.com{videoId}" allowfullscreen></iframe>
+        </div>
+        <h3 class="video-card-title">${title || 'YouTube Video'}</h3>
+      `;
+    }
+
+    fetch(csvUrl)
+      .then(response => response.text())
+      .then(csvText => {
+        const lines = csvText.replace(/\r/g, "").split("\n");
+        for (let i = 1; i < lines.length; i++) {
+          if (!lines[i]) continue;
+          
+          const columns = lines[i].split(",").map(col => col.replace(/^"|"$/g, "").trim());
+          if (columns.length >= 2) {
+            const slot = columns[0];
+            const link = columns[1];
+            const title = columns[2] || '';
+
+            const element = document.getElementById(slot);
+            if (element && link) {
+              element.innerHTML = createVideoHTML(link, title);
+            }
+          }
+        }
+      })
+      .catch(error => {
+        console.error("Error updating system video modules:", error);
+      });
+  </script>
+</body>
+</html>
 
 
-
-
-© 2026 UlterMonster Core. All rights reserved.
-
-✉ Contact Us
-
-const csvUrl = "google.com";
-function getYouTubeId(url) {
-if (!url) return null;
-const regExp = /^.(youtu.be/|v/|u/\w/|embed/|watch?v=|&v=)([^#&?]).*/;
-const match = url.trim().match(regExp);
-return (match && match && match.length === 11) ? match[2] : null;
-}
-function createVideoHTML(videoUrl, title) {
-const videoId = getYouTubeId(videoUrl);
-if (!videoId) {
-return <p style="margin:5px 0;"><a href="${videoUrl}" target="_blank" style="color:var(--accent-2);font-weight:700;text-decoration:none;font-size:13px;">👉 Watch: ${title || 'Click to Link'}</a></p>;
-}
-return <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 8px;"> <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" src="https://youtube.com{videoId}" allowfullscreen></iframe> </div> <h3 class="video-card-title">${title || 'YouTube Video'}</h3>;
-}
-fetch(csvUrl)
-.then(response => response.text())
-.then(csvText => {
-const lines = csvText.replace(/\r/g, "").split("\n");
-for (let i = 1; i < lines.length; i++) {
-if (!lines[i]) continue;
-const columns = lines[i].split(",").map(col => col.replace(/^"|"$/g, "").trim());
-if (columns.length >= 2) {
-const slot = columns[0];
-const link = columns[1];
-const title = columns[2] || '';
-const element = document.getElementById(slot);
-if (element && link) {
-element.innerHTML = createVideoHTML(link, title);
-}
-}
-}
-})
-.catch(error => {
-console.error("Error updating system video modules:", error);
-});
