@@ -12,15 +12,15 @@
   <link rel="icon" href="assets/Website Icon.png" />
   <link rel="apple-touch-icon" href="assets/Website Icon.png" />
   <!-- Open Graph / Twitter preview image -->
-  <meta property="og:image" content="https://ultermonster-core.github.io/assets/banner.jpg" />
-  <meta property="og:image:secure_url" content="https://ultermonster-core.github.io/assets/banner.jpg" />
+  <meta property="og:image" content="https://github.io" />
+  <meta property="og:image:secure_url" content="https://github.io" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://ultermonster-core.github.io/assets/banner.jpg" />
+  <meta name="twitter:image" content="https://github.io" />
   <meta name="twitter:image:alt" content="UlterMonster Core - Adventure RPG Battles" />
-  <link rel="image_src" href="https://ultermonster-core.github.io/assets/banner.jpg" />
+  <link rel="image_src" href="https://github.io" />
 
   <style>
     :root{
@@ -31,9 +31,8 @@
       --muted: #9ca3af;
       --card: rgba(255,255,255,0.03);
     }
-    html,body{height:100%;}
+    html,body{height:100%; margin: 0; padding: 0;}
     body {
-      margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
       background: radial-gradient(800px 400px at 10% 10%, rgba(124,58,237,0.08), transparent),
                   radial-gradient(600px 300px at 90% 90%, rgba(6,182,212,0.06), transparent),
@@ -43,6 +42,7 @@
       -moz-osx-font-smoothing:grayscale;
       display:flex;
       flex-direction:column;
+      min-height: 100vh;
     }
     header {
       padding: 18px 32px;
@@ -87,8 +87,6 @@
     .layout-container {
       display: flex;
       flex: 1;
-      max-width: 1440px;
-      margin: 0 auto;
       width: 100%;
       box-sizing: border-box;
     }
@@ -101,7 +99,7 @@
     
     /* Videos Sidebar container styling */
     .video-sidebar {
-      width: 360px;
+      width: 380px;
       border-left: 1px solid rgba(255,255,255,0.05);
       background: rgba(7, 16, 40, 0.4);
       backdrop-filter: blur(10px);
@@ -114,9 +112,9 @@
     }
     
     .sidebar-section-title {
-      font-size: 16px;
+      font-size: 14px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       margin: 0 0 16px 0;
       padding-bottom: 8px;
       border-bottom: 2px solid rgba(255, 255, 255, 0.05);
@@ -136,13 +134,13 @@
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: 12px;
-      padding: 10px;
+      padding: 12px;
       box-sizing: border-box;
     }
     
     .video-card-title {
-      margin: 8px 0 0 0;
-      font-size: 13px;
+      margin: 10px 0 0 0;
+      font-size: 14px;
       font-weight: 600;
       line-height: 1.4;
       color: #e2e8f0;
@@ -234,8 +232,8 @@
 <body>
   <header>
     <div class="logo">UlterMonster Core</div>
-    <a id="youtube-link" href="https://www.youtube.com/channel/UCaQTHsAhmvXSngD_FdL1qKQ" target="_blank" rel="noopener noreferrer" aria-label="UlterMonster Wrestling on YouTube">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <a id="youtube-link" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="UlterMonster Wrestling on YouTube">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org" aria-hidden="true" focusable="false">
         <path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C16.8 2 12 2 12 2s-4.8 0-8.6.9c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S.2 8.3.2 10.3v3.4c0 2 .3 4.1.3 4.1s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.8.3 7.9.8 8.8.8.9 0 7-.5 8.8-.8.5-.1 1.6-.1 2.4-1 .6-.7.8-2.3.8-2.3s.3-2.1.3-4.1V10.3c0-2-.3-4.1-.3-4.1z" fill="#FF0000"/>
         <path d="M9.5 15.2V8.8l6.2 3.2-6.2 3.2z" fill="#fff"/>
       </svg>
@@ -259,7 +257,7 @@
 
       <!-- Your existing apps and cards structure remains safely here inside main -->
       <section class="apps-grid">
-        <!-- Placeholder for existing cards/apps you may have had -->
+        <!-- Existing application blocks will load here -->
       </section>
     </main>
 
