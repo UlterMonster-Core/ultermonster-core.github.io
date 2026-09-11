@@ -1,1 +1,406 @@
-<!DOCTYPE html><html lang="en"><head> <meta charset="UTF-8" /> <!-- Google Search Console Verification --> <meta name="google-site-verification" content="XD5w6uhj00YPFUNGUNfrMXXEt750P79tMxV92ROFyqg" /> <title>UlterMonster Core</title> <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- site icon / favicon --> <link rel="icon" href="assets/Website Icon.png" /> <link rel="apple-touch-icon" href="assets/Website Icon.png" /> <!-- Open Graph / Twitter preview image (update siteRoot if different) --> <!-- Use the direct JPEG banner for social previews (SVG wrappers may be blocked or not fetch embedded images) --> <meta property="og:image" content="https://ultermonster-core.github.io/assets/banner.jpg" /> <meta property="og:image:secure_url" content="https://ultermonster-core.github.io/assets/banner.jpg" /> <meta property="og:image:type" content="image/jpeg" /> <meta property="og:image:width" content="1200" /> <meta property="og:image:height" content="630" /> <meta name="twitter:card" content="summary_large_image" /> <meta name="twitter:image" content="https://ultermonster-core.github.io/assets/banner.jpg" /> <meta name="twitter:image:alt" content="UlterMonster Core - Adventure RPG Battles" /> <link rel="image_src" href="https://ultermonster-core.github.io/assets/banner.jpg" /> <style> :root{ --bg-1: #0f1724; --bg-2: #071028; --accent-1: #7c3aed; --accent-2: #06b6d4; --muted: #9ca3af; --card: rgba(255,255,255,0.03); } html,body{height:100%;} body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: radial-gradient(800px 400px at 10% 10%, rgba(124,58,237,0.08), transparent), radial-gradient(600px 300px at 90% 90%, rgba(6,182,212,0.06), transparent), linear-gradient(180deg,var(--bg-1),var(--bg-2)); color: #eef2ff; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; display:flex; flex-direction:column; } header { padding: 18px 32px; display: flex; justify-content: flex-start; align-items: center; gap: 18px; background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(255,255,255,0.03); position: sticky; top: 0; z-index: 20; } .logo { font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; font-size: 16px; background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; } /* YouTube link button in header (aligns to right) */ #youtube-link{ margin-left: auto; padding:8px 12px; border-radius:8px; color: white; background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); text-decoration:none; font-weight:700; font-size:14px; display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,0.06); } #youtube-link:hover{transform:translateY(-3px)} main { max-width: 1100px; margin: 32px auto; padding: 32px 20px 96px; width:100%; box-sizing: border-box; } .hero { display:flex; gap:24px; align-items:center; margin-bottom:28px; } .hero-graphic{ width:140px;height:140px;border-radius:22px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2)); box-shadow: 0 8px 30px rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;font-size:48px;color:white;font-weight:800; flex-shrink: 0; /* keep icon non-interactive until reveal */ cursor: default; pointer-events: none; } .hero-title { font-size:40px; font-weight:800; margin:0 0 6px 0; line-height:1.02; background: linear-gradient(90deg,#fff, #dbeafe 60%); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing:-0.01em; } .hero-subtitle { font-size:16px; color:var(--muted); margin:0; max-width:780px; } .apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 20px; } .app-card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius: 14px; padding: 18px; border: 1px solid rgba(255,255,255,0.03); box-shadow: 0 6px 18px rgba(2,6,23,0.6); transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms; display: flex; flex-direction: column; justify-content: space-between; } .app-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.7)} .app-head{display:flex;align-items:center;gap:12px;margin-bottom:6px} /* App icon images (place PNGs in assets/ or assets/icons/) */ .app-icon{ width:64px; height:64px; border-radius:12px; flex-shrink:0; object-fit:cover; display:block; border:1px solid rgba(255,255,255,0.04); box-shadow: 0 6px 18px rgba(2,6,23,0.4); } .app-name{font-size:18px;font-weight:700} .app-tagline{font-size:13px;color:var(--muted);margin:6px 0 12px} .app-links{margin-top: auto;} .app-links a{font-size:13px;color:var(--accent-2);padding:6px 10px;border-radius:999px;border:1px solid rgba(6,182,212,0.12);text-decoration:none;display:inline-block;} footer{max-width:1100px;margin:0 auto;padding:28px 20px 56px;font-size:13px;color:rgba(255,255,255,0.6);border-top:1px solid rgba(255,255,255,0.02);} #contact-btn{position:fixed;right:22px;bottom:22px;z-index:60;display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:white;text-decoration:none;box-shadow:0 10px 30px rgba(7,22,48,0.6);border:1px solid rgba(255,255,255,0.06);font-weight:700} #contact-btn:hover{transform:translateY(-4px)} @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}} #contact-btn{animation:floaty 4s ease-in-out infinite} @media (max-width: 600px) { .hero-title{font-size:28px} .hero{flex-direction:column;align-items:flex-start} .hero-graphic{width:100px;height:100px;font-size:36px;} } </style></head><body> <header> <div class="logo">UlterMonster Core</div> <a id="youtube-link" href="https://www.youtube.com/channel/UCaQTHsAhmvXSngD_FdL1qKQ" target="_blank" rel="noopener noreferrer" aria-label="UlterMonster Wrestling on YouTube"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"> <path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C16.8 2 12 2 12 2s-4.8 0-8.6.9c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S.2 8.3.2 10.3v3.4c0 2 .3 4.1.3 4.1s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.8.3 7.9.8 8.8.8.9 0 7-.5 8.8-.8.5-.1 1.6-.1 2.4-1 .6-.7.8-2.3.8-2.3s.3-2.1.3-4.1V10.3c0-2-.3-4.1-.3-4.1z" fill="#FF0000"/> <path d="M9.5 15.2V8.8l6.2 3.2-6.2 3.2z" fill="#fff"/> </svg> <span style="margin-left:6px;">UlterMonster Wrestling</span> </a> <a id="game-tab" href="#" style="margin-left:8px;display:none;" onclick="showGame();return false;" aria-label="Open game">🎮 Game</a> </header> <main> <section class="hero"> <div class="hero-graphic" id="umc-icon" title="UlterMonster Core"> <img src="assets/Website Icon.png" alt="UlterMonster Core" style="width:100%;height:100%;object-fit:cover;border-radius:22px;" /> </div> <div
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="XD5w6uhj00YPFUNGUNfrMXXEt750P79tMxV92ROFyqg" />
+
+  <title>UlterMonster Core</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- site icon / favicon -->
+  <link rel="icon" href="assets/Website Icon.png" />
+  <link rel="apple-touch-icon" href="assets/Website Icon.png" />
+  <!-- Open Graph / Twitter preview image (update siteRoot if different) -->
+  <!-- Use the direct JPEG banner for social previews (SVG wrappers may be blocked or not fetch embedded images) -->
+  <meta property="og:image" content="https://ultermonster-core.github.io/assets/banner.jpg" />
+  <meta property="og:image:secure_url" content="https://ultermonster-core.github.io/assets/banner.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://ultermonster-core.github.io/assets/banner.jpg" />
+  <meta name="twitter:image:alt" content="UlterMonster Core - Adventure RPG Battles" />
+  <link rel="image_src" href="https://ultermonster-core.github.io/assets/banner.jpg" />
+
+  <style>
+    :root{
+      --bg-1: #0f1724;
+      --bg-2: #071028;
+      --accent-1: #7c3aed;
+      --accent-2: #06b6d4;
+      --muted: #9ca3af;
+      --card: rgba(255,255,255,0.03);
+    }
+    html,body{height:100%;}
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(800px 400px at 10% 10%, rgba(124,58,237,0.08), transparent),
+                  radial-gradient(600px 300px at 90% 90%, rgba(6,182,212,0.06), transparent),
+                  linear-gradient(180deg,var(--bg-1),var(--bg-2));
+      color: #eef2ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      flex-direction:column;
+    }
+    header {
+      padding: 18px 32px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 18px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 16px;
+      background: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    /* YouTube link button in header (aligns to right) */
+    #youtube-link{
+      margin-left: auto;
+      padding:8px 12px;
+      border-radius:8px;
+      color: white;
+      background: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+    #youtube-link:hover{transform:translateY(-3px)}
+    main {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: 32px 20px 96px;
+      width:100%;
+      box-sizing: border-box;
+    }
+    .hero {
+      display:flex;
+      gap:24px;
+      align-items:center;
+      margin-bottom:28px;
+    }
+    .hero-graphic{
+      width:140px;height:140px;border-radius:22px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;font-size:48px;color:white;font-weight:800;
+      flex-shrink: 0;
+      /* keep icon non-interactive until reveal */
+      cursor: default;
+      pointer-events: none;
+    }
+    .hero-title {
+      font-size:40px;
+      font-weight:800;
+      margin:0 0 6px 0;
+      line-height:1.02;
+      background: linear-gradient(90deg,#fff, #dbeafe 60%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing:-0.01em;
+    }
+    .hero-subtitle {
+      font-size:16px;
+      color:var(--muted);
+      margin:0;
+      max-width:780px;
+    }
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .app-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: 14px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+      transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .app-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.7)}
+    .app-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+    /* App icon images (place PNGs in assets/ or assets/icons/) */
+    .app-icon{
+      width:64px;
+      height:64px;
+      border-radius:12px;
+      flex-shrink:0;
+      object-fit:cover;
+      display:block;
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 6px 18px rgba(2,6,23,0.4);
+    }
+    .app-name{font-size:18px;font-weight:700}
+    .app-tagline{font-size:13px;color:var(--muted);margin:6px 0 12px}
+    .app-links{margin-top: auto;}
+    .app-links a{font-size:13px;color:var(--accent-2);padding:6px 10px;border-radius:999px;border:1px solid rgba(6,182,212,0.12);text-decoration:none;display:inline-block;}
+    footer{max-width:1100px;margin:0 auto;padding:28px 20px 56px;font-size:13px;color:rgba(255,255,255,0.6);border-top:1px solid rgba(255,255,255,0.02);}
+
+    #contact-btn{position:fixed;right:22px;bottom:22px;z-index:60;display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:white;text-decoration:none;box-shadow:0 10px 30px rgba(7,22,48,0.6);border:1px solid rgba(255,255,255,0.06);font-weight:700}
+    #contact-btn:hover{transform:translateY(-4px)}
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    #contact-btn{animation:floaty 4s ease-in-out infinite}
+
+    @media (max-width: 600px) {
+      .hero-title{font-size:28px}
+      .hero{flex-direction:column;align-items:flex-start}
+      .hero-graphic{width:100px;height:100px;font-size:36px;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">UlterMonster Core</div>
+    <a id="youtube-link" href="https://www.youtube.com/channel/UCaQTHsAhmvXSngD_FdL1qKQ" target="_blank" rel="noopener noreferrer" aria-label="UlterMonster Wrestling on YouTube">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C16.8 2 12 2 12 2s-4.8 0-8.6.9c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S.2 8.3.2 10.3v3.4c0 2 .3 4.1.3 4.1s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.8.3 7.9.8 8.8.8.9 0 7-.5 8.8-.8.5-.1 1.6-.1 2.4-1 .6-.7.8-2.3.8-2.3s.3-2.1.3-4.1V10.3c0-2-.3-4.1-.3-4.1z" fill="#FF0000"/>
+        <path d="M9.5 15.2V8.8l6.2 3.2-6.2 3.2z" fill="#fff"/>
+      </svg>
+      <span style="margin-left:6px;">UlterMonster Wrestling</span>
+    </a>
+    <a id="game-tab" href="#" style="margin-left:8px;display:none;" onclick="showGame();return false;" aria-label="Open game">🎮 Game</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-graphic" id="umc-icon" title="UlterMonster Core">
+        <img src="assets/Website Icon.png" alt="UlterMonster Core" style="width:100%;height:100%;object-fit:cover;border-radius:22px;" />
+      </div>
+      <div>
+        <h1 class="hero-title">Indie apps built fast, shipped clean.</h1>
+        <p class="hero-subtitle">A small collection of focused tools from UlterMonster Core — simple, reliable, and designed to just work. Built with care, shipped with pride.</p>
+      </div>
+    </section>
+
+    <!-- Embedded game section (hidden by default) -->
+    <section id="game-section" style="display:none; margin-top:28px;">
+      <h2>Game</h2>
+      <div id="game-container" style="width:100%;max-width:900px;height:min(60vh,480px);background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 18px rgba(2,6,23,0.6);padding:12px;box-sizing:border-box;overflow:hidden;">
+      <div id="game-ui" style="display:flex;height:100%;gap:12px;flex-wrap:wrap;align-items:flex-start;">
+          <div id="phaser-root" style="flex:1; background:transparent;">
+            <!-- Phaser canvas will be injected here -->
+          </div>
+          <div id="game-controls" style="width:260px;color:var(--muted);min-width:220px;overflow:auto;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <strong style="color:var(--accent-2);">UlterMonster Arena</strong>
+              <div style="display:flex;gap:8px;align-items:center">
+                <button id="save-game" title="Save" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:6px 8px;border-radius:8px;">Save</button>
+                <button id="load-game" title="Load" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:6px 8px;border-radius:8px;">Load</button>
+                <button id="restart-game" title="Restart" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:6px 8px;border-radius:8px;">Restart</button>
+                <button id="mute-game" title="Mute" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:6px 8px;border-radius:8px;">Mute</button>
+                <button id="fullscreen-game" title="Fullscreen" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:6px 8px;border-radius:8px;">⤢</button>
+                <button id="exit-game" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:6px 8px;border-radius:8px;" onclick="hideGame()">Exit</button>
+              </div>
+            </div>
+            <div id="player-stats" style="background:transparent;padding:6px;border-radius:6px;margin-bottom:8px;color:#dbeafe;font-size:13px;">Loading stats...</div>
+            <div id="game-log" style="background:rgba(255,255,255,0.02);padding:8px;border-radius:8px;height:260px;overflow:auto;color:#dbeafe;font-size:13px;">Welcome to the demo arena. Use Attack/Heal to fight an enemy.</div>
+            <div style="margin-top:8px;display:flex;gap:8px;">
+              <button id="attack-btn" style="flex:1;padding:10px;border-radius:10px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border:none;color:white;font-weight:700;">Attack</button>
+              <button id="heal-btn" style="flex:1;padding:10px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);color:var(--muted);">Heal</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apps">
+      <h2>Apps</h2>
+      <div class="apps-grid">
+        <!-- Card 1: Crown Quest -->
+        <article class="app-card">
+          <div>
+            <div class="app-head">
+              <img class="app-icon" src="assets/crown-quest.png" alt="Crown Quest icon" />
+              <div class="app-name">Crown Quest</div>
+            </div>
+            <p class="app-tagline">Embark on a medieval puzzle journey. Place your crowns and master the grid.</p>
+          </div>
+          <div class="app-links">
+            <a href="https://play.google.com/store/apps/details?id=com.mindgames_123" target="_blank" rel="noopener noreferrer">Google Play</a>
+          </div>
+        </article>
+
+        <!-- Card 2: Grocery Star -->
+        <article class="app-card">
+          <div>
+            <div class="app-head">
+              <img class="app-icon" src="assets/grocery-star.png" alt="Grocery Star icon" />
+              <div class="app-name">Grocery Star</div>
+            </div>
+            <p class="app-tagline">Share grocery lists with family members so everyone shops from the same list.</p>
+          </div>
+          <div class="app-links">
+            <a href="https://play.google.com/store/apps/details?id=com.monstertools.grocerybuddy" target="_blank" rel="noopener noreferrer">Google Play</a>
+          </div>
+        </article>
+
+        <!-- Card 3: MedRemindr -->
+        <article class="app-card">
+          <div>
+            <div class="app-head">
+              <img class="app-icon" src="assets/medremindr.png" alt="MedRemindr icon" />
+              <div class="app-name">MedRemindr</div>
+            </div>
+            <p class="app-tagline">Smart medication reminders with clean, safe data handling.</p>
+          </div>
+          <div class="app-links">
+            <a href="https://play.google.com/store/apps/details?id=com.Medremindr" target="_blank" rel="noopener noreferrer">Google Play</a>
+          </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> UlterMonster Core. All rights reserved.
+  </footer>
+
+  <a id="contact-btn" href="mailto:ultermonster@://gmail.com">📧 Contact Me</a>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Game show/hide and fragment cleanup
+    (function(){
+      try {
+        if (window.location.hash) {
+          history.replaceState(null, document.title, window.location.pathname + window.location.search);
+        }
+      } catch(e){}
+
+      var gameLoaded = false;
+      function loadGameScript(cb){
+        if (gameLoaded) return cb && cb(null);
+        // install global JS error handler to capture initialization errors
+        if(!window._gameErrorHandlerInstalled){
+          window._gameErrorHandlerInstalled = true;
+          window.onerror = function(msg, src, line, col, err){
+            try{ var log=document.getElementById('game-log'); if(log){ log.textContent = 'Error: '+(err && err.stack? err.stack : msg + ' at ' + src + ':' + line + ':' + col); } }catch(e){}
+            console.error('Global error', msg, src, line, col, err);
+          };
+          window.addEventListener('unhandledrejection', function(ev){ try{ var log=document.getElementById('game-log'); if(log) log.textContent = 'UnhandledRejection: '+ (ev.reason && ev.reason.stack ? ev.reason.stack : ev.reason); }catch(e){}; console.error('UnhandledRejection', ev); });
+        }
+        try{
+          function loadMain(){
+            // fetch file first and syntax-check before injecting to get clearer errors
+            fetch('assets/game/main.js').then(r=>r.text()).then(txt=>{
+              try{
+                // attempt to parse the script without executing
+                new Function(txt);
+              }catch(err){
+                console.error('Script parse error', err);
+                var log = document.getElementById('game-log'); if(log) log.textContent = 'Script parse error: '+(err && err.stack? err.stack : err.message || err);
+                cb && cb(err);
+                return;
+              }
+              // inject
+              var s = document.createElement('script');
+              s.text = txt;
+              document.body.appendChild(s);
+              gameLoaded = true; console.log('Game script loaded'); cb && cb(null);
+            }).catch(function(err){ console.error('Failed to fetch game script', err); var log=document.getElementById('game-log'); if(log) log.textContent = 'Failed to fetch game script: '+(err.message||err); cb && cb(err); });
+            // safety timeout if script doesn't initialize
+            setTimeout(function(){ if(!gameLoaded) { console.warn('Game script not initialized after timeout'); cb && cb(new Error('Game script init timeout')); } }, 7000);
+          }
+          // load Phaser first if missing, then main
+          if(typeof window.Phaser === 'undefined'){
+            var p = document.createElement('script');
+            p.src = 'https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js';
+            p.onload = function(){ console.log('Phaser loaded'); loadMain(); };
+            p.onerror = function(ev){ console.error('Failed to load Phaser', ev); cb && cb(new Error('Failed to load Phaser')); };
+            document.head.appendChild(p);
+            // extend timeout for phaser load
+            setTimeout(function(){ if(typeof window.Phaser === 'undefined'){ console.warn('Phaser not available after timeout'); cb && cb(new Error('Phaser load timeout')); } }, 7000);
+          } else {
+            loadMain();
+          }
+        }catch(e){ console.error(e); cb && cb(e); }
+      }
+
+      window.showGame = function(){
+        document.getElementById('game-section').style.display = 'block';
+        // load game script once
+        loadGameScript(function(err){
+          if(err){ var log=document.getElementById('game-log'); if(log) { log.textContent = 'Failed to load game. See console for details.'; } console.error(err); return; }
+          // enable controls
+          var atk = document.getElementById('attack-btn');
+          var heal = document.getElementById('heal-btn');
+          if(atk) atk.disabled = false;
+          if(heal) heal.disabled = false;
+          // wire save/load/restart/mute buttons
+          var saveBtn = document.getElementById('save-game');
+          var loadBtn = document.getElementById('load-game');
+          var restBtn = document.getElementById('restart-game');
+          var muteBtn = document.getElementById('mute-game');
+          if(saveBtn) saveBtn.onclick = function(){ if(window.gameControls) window.gameControls.save(); };
+          if(loadBtn) loadBtn.onclick = function(){ if(window.gameControls) { window.gameControls.load(); location.reload(); } };
+          if(restBtn) restBtn.onclick = function(){ if(window.gameControls) window.gameControls.restart(); };
+          if(muteBtn) muteBtn.onclick = function(){ if(window.gameControls){ var m = window.gameControls.toggleMute(); muteBtn.textContent = m? 'Muted':'Mute'; } };
+          // add focus to log
+          var log = document.getElementById('game-log'); if(log) log.scrollTop = 0;
+          // fullscreen toggle
+          var fsBtn = document.getElementById('fullscreen-game');
+          if(fsBtn){ fsBtn.onclick = function(){ var el = document.getElementById('phaser-root'); if(!document.fullscreenElement){ el.requestFullscreen && el.requestFullscreen(); } else { document.exitFullscreen && document.exitFullscreen(); } } }
+          // keyboard shortcuts
+          function keyHandler(e){ if(!document.getElementById('game-section') || document.getElementById('game-section').style.display==='none') return; var k = e.key.toLowerCase(); if(k==='a'){ var b=document.getElementById('attack-btn'); if(b) b.click(); } if(k==='h'){ var b=document.getElementById('heal-btn'); if(b) b.click(); } if(e.key==='Escape'){ hideGame(); } }
+          document.addEventListener('keydown', keyHandler);
+          // ensure phaser initialized
+          setTimeout(function(){ if(!window._phaserGame){ var log=document.getElementById('game-log'); if(log) log.textContent = 'Game failed to initialize. Check console.'; } }, 1500);
+        });
+        // scroll to game section
+        document.getElementById('game-section').scrollIntoView({behavior:'smooth'});
+      };
+
+      // reveal hidden game tab after tapping the UMC icon 10 times
+      (function(){
+        var count=0; var last=0; var icon = document.getElementById('umc-icon');
+        if(!icon) return;
+        // only enable pointer events after reveal so it's hidden/non-interactive before
+        icon.style.pointerEvents = 'auto';
+        icon.style.cursor = 'default';
+        var handler = function(){
+          var now = Date.now();
+          if(now - last > 3000) count = 0; // reset if slow
+          last = now; count++;
+          if(count>=10){ document.getElementById('game-tab').style.display='inline-block'; count=0; appendLog && appendLog('Secret: Game tab revealed');
+            // after reveal, disable further clicks
+            icon.removeEventListener('click', handler); icon.style.pointerEvents = 'none';
+          }
+        };
+        // keep it non-interactive visually but still listen for clicks via addEventListener
+        icon.addEventListener('click', handler);
+      })();
+
+      window.hideGame = function(){
+        // try to destroy phaser instance if present
+        try{ if(window._phaserGame){ window._phaserGame.destroy(true); delete window._phaserGame; } }catch(e){}
+        document.getElementById('game-section').style.display = 'none';
+      };
+    })();
+  </script>
+</body>
+</html>
