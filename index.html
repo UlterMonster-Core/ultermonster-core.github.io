@@ -22,6 +22,13 @@
     :root {
       color-scheme: light dark;
       --page: #fff8ec;
+      --page-gradient:
+        radial-gradient(ellipse 68% 18% at 7% 3%, rgba(255, 217, 61, .27) 0%, transparent 70%),
+        radial-gradient(ellipse 48% 17% at 96% 21%, rgba(120, 223, 242, .24) 0%, transparent 72%),
+        radial-gradient(ellipse 52% 18% at 3% 52%, rgba(255, 156, 202, .17) 0%, transparent 72%),
+        radial-gradient(ellipse 54% 19% at 98% 77%, rgba(79, 124, 255, .14) 0%, transparent 72%),
+        radial-gradient(ellipse 65% 13% at 18% 100%, rgba(255, 121, 107, .18) 0%, transparent 74%),
+        linear-gradient(160deg, #fff8ec 0%, #fffaf2 28%, #f7f6ff 58%, #eefbff 100%);
       --surface: #ffffff;
       --surface-2: #f7efdf;
       --ink: #17203b;
@@ -42,6 +49,13 @@
     @media (prefers-color-scheme: dark) {
       :root {
         --page: #12172a;
+        --page-gradient:
+          radial-gradient(ellipse 68% 18% at 7% 3%, rgba(255, 217, 79, .13) 0%, transparent 70%),
+          radial-gradient(ellipse 48% 17% at 96% 21%, rgba(117, 220, 237, .13) 0%, transparent 72%),
+          radial-gradient(ellipse 52% 18% at 3% 52%, rgba(246, 164, 201, .09) 0%, transparent 72%),
+          radial-gradient(ellipse 54% 19% at 98% 77%, rgba(114, 148, 255, .15) 0%, transparent 72%),
+          radial-gradient(ellipse 65% 13% at 18% 100%, rgba(255, 136, 125, .1) 0%, transparent 74%),
+          linear-gradient(160deg, #12172a 0%, #171b35 45%, #101b2e 100%);
         --surface: #1c233b;
         --surface-2: #252d48;
         --ink: #f8f6f0;
@@ -67,7 +81,10 @@
       min-width: 320px;
       overflow-x: hidden;
       color: var(--ink);
-      background: var(--page);
+      background-color: var(--page);
+      background-image: var(--page-gradient);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
       font-family: "Nunito Sans", sans-serif;
       text-rendering: optimizeLegibility;
     }
