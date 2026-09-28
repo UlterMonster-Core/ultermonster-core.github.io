@@ -685,114 +685,238 @@
       }
 
       function readPalette() {
-        var styles = getComputedStyle(document.documentElement);
-        palette = [
-          styles.getPropertyValue("--coral").trim(),
-          styles.getPropertyValue("--yellow").trim(),
-          styles.getPropertyValue("--pink").trim()
-        ];
+        palette = darkMode.matches
+          ? {
+              red: "rgba(185, 18, 5, 0.76)",
+              redSoft: "rgba(255, 40, 8, 0)",
+              orange: "rgba(255, 92, 6, 0.94)",
+              gold: "rgba(255, 194, 24, 0.98)",
+              yellow: "rgba(255, 237, 112, 1)",
+              white: "rgba(255, 255, 224, 1)"
+            }
+          : {
+              red: "rgba(184, 18, 3, 0.82)",
+              redSoft: "rgba(255, 38, 5, 0)",
+              orange: "rgba(255, 79, 0, 0.98)",
+              gold: "rgba(255, 170, 0, 1)",
+              yellow: "rgba(255, 225, 65, 1)",
+              white: "rgba(255, 255, 210, 1)"
+            };
       }
 
-      function makeParticle(side, spreadHeight) {
+      function makeTongue(side, index, count) {
+        var band = height / count;
         return {
           side: side,
-          offset: random(.12, .9),
-          y: random(-30, spreadHeight + 30),
-          size: random(10, 27),
-          speed: random(.025, .062),
-          sway: random(3, 11),
+          baseY: (index + random(.35, .95)) * band,
+          offset: random(.28, .76),
+          width: random(68, 112),
+          height: random(78, 176),
           phase: random(0, Math.PI * 2),
-          flicker: random(.7, 1.45),
-          alpha: random(.3, .7),
-          color: Math.floor(random(0, 2))
+          rate: random(.0015, .0034),
+          lean: random(-.3, .3),
+          pulse: random(.08, .22),
+          layer: Math.floor(random(0, 3)),
+          shoulder: random(-.24, .24),
+          coreOffset: random(-.18, .18),
+          secondaryHeight: random(.42, .64),
+          secondaryWidth: random(.28, .43)
+        };
+      }
+
+      function makeEmber(side) {
+        return {
+          side: side,
+          xOffset: random(.18, .9),
+          y: random(0, height),
+          size: random(.9, 2.4),
+          speed: random(.018, .048),
+          drift: random(4, 13),
+          phase: random(0, Math.PI * 2),
+          alpha: random(.38, .88),
+          life: random(.45, 1)
         };
       }
 
       function resetParticles() {
         particles = [];
-        var count = Math.min(32, Math.max(18, Math.round(height / 34)));
-        for (var i = 0; i < count; i += 1) {
-          particles.push(makeParticle(-1, height));
-          particles.push(makeParticle(1, height));
+        var tongueCount = Math.min(10, Math.max(7, Math.round(height / 104)));
+        var emberCount = Math.min(13, Math.max(8, Math.round(height / 88)));
+        for (var i = 0; i < tongueCount; i += 1) {
+          particles.push(makeTongue(-1, i, tongueCount));
+          particles.push(makeTongue(1, i, tongueCount));
+        }
+        for (var j = 0; j < emberCount; j += 1) {
+          particles.push(makeEmber(-1));
+          particles.push(makeEmber(1));
         }
       }
 
-      function flamePath(size) {
+      function railX(item) {
+        return item.side < 0
+          ? 7 + item.offset * railWidth
+          : width - 7 - item.offset * railWidth;
+      }
+
+      function flameShape(x, baseY, flameWidth, flameHeight, sway, pinch) {
+        var tipX = x + sway;
         context.beginPath();
-        context.moveTo(0, size * .68);
-        context.bezierCurveTo(-size * .72, size * .48, -size * .68, -size * .22, -size * .08, -size * 1.35);
-        context.bezierCurveTo(size * .12, -size * .8, size * .78, -size * .25, size * .64, size * .42);
-        context.bezierCurveTo(size * .48, size * .8, -size * .38, size * .86, 0, size * .68);
+        context.moveTo(x, baseY + 2);
+        context.bezierCurveTo(
+          x - flameWidth * .62, baseY - flameHeight * .08,
+          x - flameWidth * .48, baseY - flameHeight * .48,
+          tipX, baseY - flameHeight
+        );
+        context.bezierCurveTo(
+          x + flameWidth * (.08 + pinch), baseY - flameHeight * .62,
+          x + flameWidth * .62, baseY - flameHeight * .22,
+          x, baseY + 2
+        );
         context.closePath();
       }
 
-      function drawParticle(particle, time) {
-        var baseX = particle.side < 0
-          ? 8 + particle.offset * railWidth
-          : width - 8 - particle.offset * railWidth;
-        var x = baseX + Math.sin(particle.phase + time * .0014 * particle.flicker) * particle.sway;
-        var pulse = .9 + Math.sin(particle.phase * 1.7 + time * .004 * particle.flicker) * .1;
-        var size = particle.size * pulse;
+      function drawTongue(tongue, time) {
+        var wave = Math.sin(tongue.phase + time * tongue.rate);
+        var ripple = Math.sin(tongue.phase * 1.9 + time * tongue.rate * 2.35);
+        var flameHeight = tongue.height * (1 + wave * tongue.pulse + ripple * .06);
+        var flameWidth = tongue.width * (1 - wave * .09);
+        var x = railX(tongue) + ripple * 3.5;
+        var sway = (tongue.lean * flameHeight + wave * flameWidth * .28) * tongue.side;
+        var baseY = tongue.baseY + Math.sin(tongue.phase + time * .0011) * 4;
+
+        function clusterPath(cx, y, w, h, bend, variation) {
+          var leftTip = cx - w * (.28 + variation * .08) + bend * .13;
+          var mainTip = cx + bend;
+          var rightTip = cx + w * (.31 - variation * .07) + bend * .17;
+          context.beginPath();
+          context.moveTo(cx - w * .55, y);
+          context.bezierCurveTo(cx - w * .62, y - h * .17, cx - w * .42, y - h * .42, leftTip, y - h * (.59 + variation * .1));
+          context.bezierCurveTo(cx - w * .25, y - h * .43, cx - w * .17, y - h * .28, cx - w * .1, y - h * .22);
+          context.bezierCurveTo(cx - w * .03, y - h * .47, cx + bend * .68, y - h * .72, mainTip, y - h);
+          context.bezierCurveTo(cx + bend * .62, y - h * .58, cx + w * .08, y - h * .35, cx + w * .13, y - h * .24);
+          context.bezierCurveTo(cx + w * .19, y - h * .42, cx + w * .32, y - h * .55, rightTip, y - h * (.64 - variation * .08));
+          context.bezierCurveTo(cx + w * .43, y - h * .42, cx + w * .63, y - h * .19, cx + w * .55, y);
+          context.bezierCurveTo(cx + w * .28, y + h * .055, cx - w * .3, y + h * .055, cx - w * .55, y);
+          context.closePath();
+        }
 
         context.save();
-        context.translate(x, particle.y);
-        context.rotate(Math.sin(particle.phase + time * .002) * .12 * particle.side);
-        context.globalAlpha = particle.alpha;
-        context.fillStyle = palette[particle.color];
-        flamePath(size);
+        context.globalCompositeOperation = "lighter";
+        context.shadowColor = "rgba(255, 77, 0, .34)";
+        context.shadowBlur = 18;
+
+        var outer = context.createLinearGradient(x, baseY, x + sway, baseY - flameHeight);
+        outer.addColorStop(0, palette.gold);
+        outer.addColorStop(.16, palette.orange);
+        outer.addColorStop(.52, palette.red);
+        outer.addColorStop(.84, "rgba(190, 20, 2, .44)");
+        outer.addColorStop(1, palette.redSoft);
+        context.fillStyle = outer;
+        context.globalAlpha = .64 + tongue.layer * .08;
+        clusterPath(x, baseY, flameWidth, flameHeight, sway, tongue.shoulder);
         context.fill();
 
-        context.translate(0, size * .18);
-        context.scale(.48, .48);
-        context.globalAlpha = Math.min(.9, particle.alpha + .18);
-        context.fillStyle = palette[1];
-        flamePath(size);
+        context.shadowBlur = 10;
+        var innerX = x + tongue.coreOffset * flameWidth;
+        var innerHeight = flameHeight * (.56 + ripple * .04);
+        var innerWidth = flameWidth * .54;
+        var innerSway = sway * .38 - wave * 2.5;
+        var inner = context.createLinearGradient(innerX, baseY, innerX + innerSway, baseY - innerHeight);
+        inner.addColorStop(0, palette.white);
+        inner.addColorStop(.17, palette.yellow);
+        inner.addColorStop(.48, palette.gold);
+        inner.addColorStop(.78, "rgba(255, 82, 1, .72)");
+        inner.addColorStop(1, "rgba(210, 25, 2, 0)");
+        context.fillStyle = inner;
+        context.globalAlpha = .94;
+        clusterPath(innerX, baseY + 1, innerWidth, innerHeight, innerSway, -tongue.shoulder * .7);
+        context.fill();
+
+        var core = context.createRadialGradient(innerX, baseY - innerHeight * .1, 0, innerX, baseY - innerHeight * .12, innerWidth * .65);
+        core.addColorStop(0, palette.white);
+        core.addColorStop(.26, palette.yellow);
+        core.addColorStop(.7, "rgba(255, 173, 18, .64)");
+        core.addColorStop(1, "rgba(255, 86, 0, 0)");
+        context.shadowBlur = 7;
+        context.fillStyle = core;
+        context.globalAlpha = .9;
+        context.beginPath();
+        context.ellipse(innerX, baseY - innerHeight * .13, innerWidth * .46, innerHeight * .2, -wave * .08, 0, Math.PI * 2);
+        context.fill();
+
+        context.restore();
+      }
+
+      function drawEmber(ember, time) {
+        var x = ember.side < 0
+          ? 7 + ember.xOffset * railWidth
+          : width - 7 - ember.xOffset * railWidth;
+        x += Math.sin(ember.phase + time * .0018) * ember.drift;
+        var twinkle = .55 + .45 * Math.sin(ember.phase * 2.1 + time * .006);
+        var alpha = ember.alpha * ember.life * (.72 + twinkle * .28);
+
+        context.save();
+        context.globalCompositeOperation = "lighter";
+        var glow = context.createRadialGradient(x, ember.y, 0, x, ember.y, ember.size * 4.2);
+        glow.addColorStop(0, "rgba(255, 255, 190, " + Math.min(1, alpha) + ")");
+        glow.addColorStop(.22, "rgba(255, 187, 30, " + (alpha * .88) + ")");
+        glow.addColorStop(1, "rgba(255, 55, 0, 0)");
+        context.fillStyle = glow;
+        context.beginPath();
+        context.arc(x, ember.y, ember.size * 4.2, 0, Math.PI * 2);
         context.fill();
         context.restore();
-
-        if (particle.size < 15) {
-          context.beginPath();
-          context.globalAlpha = particle.alpha * .72;
-          context.fillStyle = palette[1];
-          context.arc(x + particle.sway * .25, particle.y - size * 1.6, Math.max(1.2, size * .1), 0, Math.PI * 2);
-          context.fill();
-        }
       }
 
       function draw(time) {
         context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
         context.clearRect(0, 0, width, height);
 
-        context.save();
-        context.beginPath();
-        context.rect(0, 0, Math.max(0, contentEdge - 8), height);
-        context.clip();
-        for (var i = 0; i < particles.length; i += 1) {
-          if (particles[i].side < 0) drawParticle(particles[i], time);
+        function drawRail(side) {
+          context.save();
+          context.beginPath();
+          if (side < 0) {
+            context.rect(0, 0, Math.max(0, contentEdge - 8), height);
+          } else {
+            context.rect(width - Math.max(0, contentEdge - 8), 0, Math.max(0, contentEdge - 8), height);
+          }
+          context.clip();
+          for (var i = 0; i < particles.length; i += 1) {
+            if (particles[i].side === side && Object.prototype.hasOwnProperty.call(particles[i], "baseY")) {
+              drawTongue(particles[i], time);
+            }
+          }
+          for (var j = 0; j < particles.length; j += 1) {
+            if (particles[j].side === side && !Object.prototype.hasOwnProperty.call(particles[j], "baseY")) {
+              drawEmber(particles[j], time);
+            }
+          }
+          context.restore();
         }
-        context.restore();
 
-        context.save();
-        context.beginPath();
-        context.rect(width - Math.max(0, contentEdge - 8), 0, Math.max(0, contentEdge - 8), height);
-        context.clip();
-        for (var j = 0; j < particles.length; j += 1) {
-          if (particles[j].side > 0) drawParticle(particles[j], time);
-        }
-        context.restore();
-        context.globalAlpha = 1;
+        drawRail(-1);
+        drawRail(1);
       }
 
       function animate(time) {
-        var delta = Math.min(32, lastTime ? time - lastTime : 16);
+        if (time - lastTime < 30) {
+          frame = requestAnimationFrame(animate);
+          return;
+        }
+        var delta = Math.min(48, lastTime ? time - lastTime : 30);
         lastTime = time;
         for (var i = 0; i < particles.length; i += 1) {
           var particle = particles[i];
-          particle.y -= particle.speed * delta;
-          particle.phase += delta * .00018;
-          if (particle.y < -particle.size * 2) {
-            particle.y = height + random(15, 70);
-            particle.offset = random(.12, .9);
+          if (!Object.prototype.hasOwnProperty.call(particle, "baseY")) {
+            particle.y -= particle.speed * delta;
+            particle.phase += delta * .00025;
+            particle.life -= delta * .00012;
+            if (particle.y < -12 || particle.life <= 0) {
+              particle.y = height + random(8, 72);
+              particle.xOffset = random(.18, .9);
+              particle.life = random(.55, 1);
+              particle.alpha = random(.38, .88);
+            }
           }
         }
         draw(time);
