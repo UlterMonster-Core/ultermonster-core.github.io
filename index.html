@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light dark" />
-  <meta name="theme-color" content="#fff8ec" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#12172a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f3c95e" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#171638" media="(prefers-color-scheme: dark)" />
   <meta name="description" content="Seven focused Android apps from UlterMonster Core, plus public uploads and unlisted WWE 2K26 sneak peeks from UlterMonster Wrestling." />
   <link rel="icon" href="data:," />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,18 +21,18 @@
   <style>
     :root {
       color-scheme: light dark;
-      --page: #fff8ec;
+      --page: #f3c95e;
       --page-gradient:
-        radial-gradient(ellipse 68% 18% at 7% 3%, rgba(255, 217, 61, .27) 0%, transparent 70%),
-        radial-gradient(ellipse 48% 17% at 96% 21%, rgba(120, 223, 242, .24) 0%, transparent 72%),
-        radial-gradient(ellipse 52% 18% at 3% 52%, rgba(255, 156, 202, .17) 0%, transparent 72%),
-        radial-gradient(ellipse 54% 19% at 98% 77%, rgba(79, 124, 255, .14) 0%, transparent 72%),
-        radial-gradient(ellipse 65% 13% at 18% 100%, rgba(255, 121, 107, .18) 0%, transparent 74%),
-        linear-gradient(160deg, #fff8ec 0%, #fffaf2 28%, #f7f6ff 58%, #eefbff 100%);
-      --surface: #ffffff;
-      --surface-2: #f7efdf;
+        radial-gradient(ellipse 72% 23% at 5% 2%, rgba(255, 217, 61, .92) 0%, rgba(255, 217, 61, .4) 42%, transparent 72%),
+        radial-gradient(ellipse 58% 24% at 100% 19%, rgba(120, 223, 242, .92) 0%, rgba(120, 223, 242, .42) 44%, transparent 74%),
+        radial-gradient(ellipse 61% 25% at 0% 49%, rgba(255, 156, 202, .82) 0%, rgba(255, 156, 202, .36) 46%, transparent 75%),
+        radial-gradient(ellipse 63% 27% at 100% 74%, rgba(79, 124, 255, .72) 0%, rgba(79, 124, 255, .3) 46%, transparent 76%),
+        radial-gradient(ellipse 72% 22% at 16% 100%, rgba(255, 121, 107, .88) 0%, rgba(255, 121, 107, .38) 46%, transparent 76%),
+        linear-gradient(152deg, #f5cc5d 0%, #82dce5 27%, #efa0c9 51%, #7794ed 75%, #f48677 100%);
+      --surface: #fffefa;
+      --surface-2: #efe3cf;
       --ink: #17203b;
-      --muted: #5e6475;
+      --muted: #343b53;
       --line: #17203b;
       --yellow: #ffd93d;
       --blue: #4f7cff;
@@ -41,25 +41,25 @@
       --pink: #ff9cca;
       --green: #78dbab;
       --violet: #9c87ff;
-      --shadow: rgba(23, 32, 59, .14);
+      --shadow: rgba(23, 32, 59, .24);
       --stage: #17203b;
       --stage-ink: #ffffff;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --page: #12172a;
+        --page: #171638;
         --page-gradient:
-          radial-gradient(ellipse 68% 18% at 7% 3%, rgba(255, 217, 79, .13) 0%, transparent 70%),
-          radial-gradient(ellipse 48% 17% at 96% 21%, rgba(117, 220, 237, .13) 0%, transparent 72%),
-          radial-gradient(ellipse 52% 18% at 3% 52%, rgba(246, 164, 201, .09) 0%, transparent 72%),
-          radial-gradient(ellipse 54% 19% at 98% 77%, rgba(114, 148, 255, .15) 0%, transparent 72%),
-          radial-gradient(ellipse 65% 13% at 18% 100%, rgba(255, 136, 125, .1) 0%, transparent 74%),
-          linear-gradient(160deg, #12172a 0%, #171b35 45%, #101b2e 100%);
-        --surface: #1c233b;
-        --surface-2: #252d48;
-        --ink: #f8f6f0;
-        --muted: #bac0d0;
+          radial-gradient(ellipse 72% 23% at 5% 2%, rgba(255, 217, 79, .38) 0%, rgba(255, 217, 79, .13) 43%, transparent 72%),
+          radial-gradient(ellipse 58% 24% at 100% 19%, rgba(117, 220, 237, .36) 0%, rgba(117, 220, 237, .12) 45%, transparent 74%),
+          radial-gradient(ellipse 61% 25% at 0% 49%, rgba(246, 164, 201, .31) 0%, rgba(246, 164, 201, .1) 46%, transparent 75%),
+          radial-gradient(ellipse 63% 27% at 100% 74%, rgba(114, 148, 255, .38) 0%, rgba(114, 148, 255, .13) 46%, transparent 76%),
+          radial-gradient(ellipse 72% 22% at 16% 100%, rgba(255, 136, 125, .34) 0%, rgba(255, 136, 125, .11) 47%, transparent 76%),
+          linear-gradient(152deg, #30271d 0%, #12323c 27%, #34203a 51%, #1b2e59 75%, #3b202f 100%);
+        --surface: #202941;
+        --surface-2: #303a58;
+        --ink: #fffdf7;
+        --muted: #d3d8e7;
         --line: #f8f6f0;
         --yellow: #ffd94f;
         --blue: #7294ff;
@@ -68,7 +68,7 @@
         --pink: #f6a4c9;
         --green: #75d4a7;
         --violet: #ac9bff;
-        --shadow: rgba(0, 0, 0, .3);
+        --shadow: rgba(0, 0, 0, .48);
         --stage: #080c19;
         --stage-ink: #ffffff;
       }
