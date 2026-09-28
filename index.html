@@ -71,6 +71,17 @@
       font-family: "Nunito Sans", sans-serif;
       text-rendering: optimizeLegibility;
     }
+    .flame-rails {
+      position: fixed;
+      z-index: 0;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: .72;
+    }
+    .shell, .privacy-page { position: relative; z-index: 1; }
+    html[data-page="privacy"] .flame-rails { display: none; }
     a { color: inherit; }
     img, svg { display: block; }
     .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; padding: 20px 0 max(42px, env(safe-area-inset-bottom)); }
@@ -335,6 +346,10 @@
 
     .utility a:focus-visible, .store-link:focus-visible, .channel-link:focus-visible, .video-item:focus-visible, .contact-link:focus-visible, .footer-links a:focus-visible, .privacy-nav a:focus-visible, .privacy-meta a:focus-visible, .policy-section a:focus-visible { outline: 4px solid var(--pink); outline-offset: 4px; }
 
+    @media (max-width: 1240px) {
+      .flame-rails { opacity: 0; visibility: hidden; }
+    }
+
     @media (max-width: 920px) {
       .hero { grid-template-columns: minmax(0, 1fr) minmax(330px, .75fr); gap: 36px; }
       .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -393,11 +408,13 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
+      .flame-rails { opacity: .34; }
       .store-link, .channel-link, .video-item { transition: none; }
     }
   </style>
 </head>
 <body>
+  <canvas class="flame-rails" id="flame-rails" aria-hidden="true"></canvas>
   <main class="shell home-page" id="home-page">
     <header class="utility">
       <p>Independent Android apps, built one useful idea at a time.</p>
@@ -643,5 +660,190 @@
       <footer class="privacy-footer"><span>UlterMonster Core</span><span>Smart Serve Study Master</span></footer>
     </div>
   </main>
+
+  <script>
+    (function () {
+      var canvas = document.getElementById("flame-rails");
+      var context = canvas && canvas.getContext("2d");
+      if (!context) return;
+
+      var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      var narrowScreen = window.matchMedia("(max-width: 1240px)");
+      var darkMode = window.matchMedia("(prefers-color-scheme: dark)");
+      var particles = [];
+      var frame = 0;
+      var lastTime = 0;
+      var width = 0;
+      var height = 0;
+      var pixelRatio = 1;
+      var railWidth = 0;
+      var contentEdge = 0;
+      var palette = [];
+
+      function random(min, max) {
+        return min + Math.random() * (max - min);
+      }
+
+      function readPalette() {
+        var styles = getComputedStyle(document.documentElement);
+        palette = [
+          styles.getPropertyValue("--coral").trim(),
+          styles.getPropertyValue("--yellow").trim(),
+          styles.getPropertyValue("--pink").trim()
+        ];
+      }
+
+      function makeParticle(side, spreadHeight) {
+        return {
+          side: side,
+          offset: random(.12, .9),
+          y: random(-30, spreadHeight + 30),
+          size: random(10, 27),
+          speed: random(.025, .062),
+          sway: random(3, 11),
+          phase: random(0, Math.PI * 2),
+          flicker: random(.7, 1.45),
+          alpha: random(.3, .7),
+          color: Math.floor(random(0, 2))
+        };
+      }
+
+      function resetParticles() {
+        particles = [];
+        var count = Math.min(32, Math.max(18, Math.round(height / 34)));
+        for (var i = 0; i < count; i += 1) {
+          particles.push(makeParticle(-1, height));
+          particles.push(makeParticle(1, height));
+        }
+      }
+
+      function flamePath(size) {
+        context.beginPath();
+        context.moveTo(0, size * .68);
+        context.bezierCurveTo(-size * .72, size * .48, -size * .68, -size * .22, -size * .08, -size * 1.35);
+        context.bezierCurveTo(size * .12, -size * .8, size * .78, -size * .25, size * .64, size * .42);
+        context.bezierCurveTo(size * .48, size * .8, -size * .38, size * .86, 0, size * .68);
+        context.closePath();
+      }
+
+      function drawParticle(particle, time) {
+        var baseX = particle.side < 0
+          ? 8 + particle.offset * railWidth
+          : width - 8 - particle.offset * railWidth;
+        var x = baseX + Math.sin(particle.phase + time * .0014 * particle.flicker) * particle.sway;
+        var pulse = .9 + Math.sin(particle.phase * 1.7 + time * .004 * particle.flicker) * .1;
+        var size = particle.size * pulse;
+
+        context.save();
+        context.translate(x, particle.y);
+        context.rotate(Math.sin(particle.phase + time * .002) * .12 * particle.side);
+        context.globalAlpha = particle.alpha;
+        context.fillStyle = palette[particle.color];
+        flamePath(size);
+        context.fill();
+
+        context.translate(0, size * .18);
+        context.scale(.48, .48);
+        context.globalAlpha = Math.min(.9, particle.alpha + .18);
+        context.fillStyle = palette[1];
+        flamePath(size);
+        context.fill();
+        context.restore();
+
+        if (particle.size < 15) {
+          context.beginPath();
+          context.globalAlpha = particle.alpha * .72;
+          context.fillStyle = palette[1];
+          context.arc(x + particle.sway * .25, particle.y - size * 1.6, Math.max(1.2, size * .1), 0, Math.PI * 2);
+          context.fill();
+        }
+      }
+
+      function draw(time) {
+        context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+        context.clearRect(0, 0, width, height);
+
+        context.save();
+        context.beginPath();
+        context.rect(0, 0, Math.max(0, contentEdge - 8), height);
+        context.clip();
+        for (var i = 0; i < particles.length; i += 1) {
+          if (particles[i].side < 0) drawParticle(particles[i], time);
+        }
+        context.restore();
+
+        context.save();
+        context.beginPath();
+        context.rect(width - Math.max(0, contentEdge - 8), 0, Math.max(0, contentEdge - 8), height);
+        context.clip();
+        for (var j = 0; j < particles.length; j += 1) {
+          if (particles[j].side > 0) drawParticle(particles[j], time);
+        }
+        context.restore();
+        context.globalAlpha = 1;
+      }
+
+      function animate(time) {
+        var delta = Math.min(32, lastTime ? time - lastTime : 16);
+        lastTime = time;
+        for (var i = 0; i < particles.length; i += 1) {
+          var particle = particles[i];
+          particle.y -= particle.speed * delta;
+          particle.phase += delta * .00018;
+          if (particle.y < -particle.size * 2) {
+            particle.y = height + random(15, 70);
+            particle.offset = random(.12, .9);
+          }
+        }
+        draw(time);
+        frame = requestAnimationFrame(animate);
+      }
+
+      function resize() {
+        cancelAnimationFrame(frame);
+        frame = 0;
+        lastTime = 0;
+        width = window.innerWidth;
+        height = window.innerHeight;
+        pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+        canvas.width = Math.round(width * pixelRatio);
+        canvas.height = Math.round(height * pixelRatio);
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        contentEdge = Math.max(0, (width - Math.min(1180, width - 40)) / 2);
+        railWidth = Math.max(0, Math.min(128, contentEdge - 14));
+        readPalette();
+        resetParticles();
+
+        if (narrowScreen.matches || document.documentElement.dataset.page === "privacy") {
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          return;
+        }
+
+        draw(0);
+        if (!reducedMotion.matches && !document.hidden) {
+          frame = requestAnimationFrame(animate);
+        }
+      }
+
+      var resizeTimer = 0;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(resize, 120);
+      });
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          cancelAnimationFrame(frame);
+          frame = 0;
+        } else {
+          resize();
+        }
+      });
+      reducedMotion.addEventListener("change", resize);
+      narrowScreen.addEventListener("change", resize);
+      darkMode.addEventListener("change", resize);
+      resize();
+    }());
+  </script>
 </body>
 </html>
