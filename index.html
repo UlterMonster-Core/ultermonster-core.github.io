@@ -71,17 +71,6 @@
       font-family: "Nunito Sans", sans-serif;
       text-rendering: optimizeLegibility;
     }
-    .flame-rails {
-      position: fixed;
-      z-index: 0;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      opacity: .88;
-    }
-    .shell, .privacy-page { position: relative; z-index: 1; }
-    html[data-page="privacy"] .flame-rails { display: none; }
     a { color: inherit; }
     img, svg { display: block; }
     .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; padding: 20px 0 max(42px, env(safe-area-inset-bottom)); }
@@ -346,10 +335,6 @@
 
     .utility a:focus-visible, .store-link:focus-visible, .channel-link:focus-visible, .video-item:focus-visible, .contact-link:focus-visible, .footer-links a:focus-visible, .privacy-nav a:focus-visible, .privacy-meta a:focus-visible, .policy-section a:focus-visible { outline: 4px solid var(--pink); outline-offset: 4px; }
 
-    @media (max-width: 1240px) {
-      .flame-rails { opacity: 0; visibility: hidden; }
-    }
-
     @media (max-width: 920px) {
       .hero { grid-template-columns: minmax(0, 1fr) minmax(330px, .75fr); gap: 36px; }
       .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -408,13 +393,11 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .flame-rails { opacity: .66; }
       .store-link, .channel-link, .video-item { transition: none; }
     }
   </style>
 </head>
 <body>
-  <canvas class="flame-rails" id="flame-rails" aria-hidden="true"></canvas>
   <main class="shell home-page" id="home-page">
     <header class="utility">
       <p>Independent Android apps, built one useful idea at a time.</p>
@@ -661,223 +644,6 @@
     </div>
   </main>
 
-  <script>
-    (function () {
-      var canvas = document.getElementById("flame-rails");
-      var context = canvas && canvas.getContext("2d", { alpha: true });
-      if (!context) return;
 
-      var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-      var narrowScreen = window.matchMedia("(max-width: 1240px)");
-      var frame = 0;
-      var lastStep = 0;
-      var width = 0;
-      var height = 0;
-      var pixelRatio = 1;
-      var contentEdge = 0;
-      var railWidth = 0;
-      var palette = buildPalette();
-      var fires = [];
-
-      function buildPalette() {
-        var stops = [
-          { at: 0, color: [0, 0, 0, 0] },
-          { at: 12, color: [18, 0, 0, 38] },
-          { at: 44, color: [78, 2, 0, 150] },
-          { at: 88, color: [176, 12, 0, 222] },
-          { at: 132, color: [245, 43, 0, 245] },
-          { at: 178, color: [255, 119, 0, 252] },
-          { at: 220, color: [255, 220, 38, 255] },
-          { at: 244, color: [255, 249, 161, 255] },
-          { at: 255, color: [255, 255, 242, 255] }
-        ];
-        var colors = new Array(256);
-        var stopIndex = 0;
-        for (var i = 0; i < 256; i += 1) {
-          while (stopIndex < stops.length - 2 && i > stops[stopIndex + 1].at) stopIndex += 1;
-          var start = stops[stopIndex];
-          var end = stops[stopIndex + 1];
-          var amount = (i - start.at) / Math.max(1, end.at - start.at);
-          colors[i] = [
-            Math.round(start.color[0] + (end.color[0] - start.color[0]) * amount),
-            Math.round(start.color[1] + (end.color[1] - start.color[1]) * amount),
-            Math.round(start.color[2] + (end.color[2] - start.color[2]) * amount),
-            Math.round(start.color[3] + (end.color[3] - start.color[3]) * amount)
-          ];
-        }
-        return colors;
-      }
-
-      function createFire(seed) {
-        var fireWidth = Math.max(18, Math.min(32, Math.round(railWidth / 4)));
-        var fireHeight = Math.max(56, Math.min(92, Math.round(height / 10)));
-        var surface = document.createElement("canvas");
-        surface.width = fireWidth;
-        surface.height = fireHeight;
-        var surfaceContext = surface.getContext("2d", { alpha: true });
-        var heat = new Uint8Array(fireWidth * fireHeight);
-        var image = surfaceContext.createImageData(fireWidth, fireHeight);
-        var fire = {
-          width: fireWidth,
-          height: fireHeight,
-          surface: surface,
-          context: surfaceContext,
-          heat: heat,
-          image: image,
-          seed: seed
-        };
-        fuel(fire);
-        for (var i = 0; i < fireHeight + 18; i += 1) propagate(fire);
-        return fire;
-      }
-
-      function fuel(fire) {
-        var start = (fire.height - 1) * fire.width;
-        for (var x = 0; x < fire.width; x += 1) fire.heat[start + x] = 255;
-      }
-
-      function propagate(fire) {
-        var w = fire.width;
-        var h = fire.height;
-        var heat = fire.heat;
-        fuel(fire);
-
-        for (var y = 0; y < h - 1; y += 1) {
-          for (var x = 0; x < w; x += 1) {
-            var source = heat[(y + 1) * w + x];
-            var roll = (Math.random() * 9) | 0;
-            var drift = (roll % 3) - 1;
-            var decay = (roll < 2) ? 0 : ((Math.random() * 8) | 0);
-            var destinationX = (x + drift + w) % w;
-            heat[y * w + destinationX] = source > decay ? source - decay : 0;
-          }
-        }
-        fuel(fire);
-      }
-
-      function paint(fire) {
-        var heat = fire.heat;
-        var data = fire.image.data;
-        for (var i = 0; i < heat.length; i += 1) {
-          var color = palette[heat[i]];
-          var p = i * 4;
-          data[p] = color[0];
-          data[p + 1] = color[1];
-          data[p + 2] = color[2];
-          data[p + 3] = color[3];
-        }
-        fire.context.putImageData(fire.image, 0, 0);
-      }
-
-      function drawRail(fire, x, mirror) {
-        paint(fire);
-        context.save();
-        context.beginPath();
-        context.rect(x, 0, railWidth, height);
-        context.clip();
-        context.imageSmoothingEnabled = true;
-        context.imageSmoothingQuality = "high";
-
-        context.globalAlpha = .28;
-        context.filter = "blur(7px)";
-        context.globalCompositeOperation = "screen";
-        if (mirror) {
-          context.translate(x + railWidth, 0);
-          context.scale(-1, 1);
-          context.drawImage(fire.surface, -4, 0, railWidth + 8, height);
-        } else {
-          context.drawImage(fire.surface, x - 4, 0, railWidth + 8, height);
-        }
-        context.restore();
-
-        context.save();
-        context.beginPath();
-        context.rect(x, 0, railWidth, height);
-        context.clip();
-        context.imageSmoothingEnabled = true;
-        context.imageSmoothingQuality = "high";
-        context.globalAlpha = .96;
-        if (mirror) {
-          context.translate(x + railWidth, 0);
-          context.scale(-1, 1);
-          context.drawImage(fire.surface, 0, 0, railWidth, height);
-        } else {
-          context.drawImage(fire.surface, x, 0, railWidth, height);
-        }
-        context.restore();
-      }
-
-      function draw() {
-        context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-        context.clearRect(0, 0, width, height);
-        if (!fires.length || railWidth <= 0) return;
-        drawRail(fires[0], 0, false);
-        drawRail(fires[1], width - railWidth, true);
-      }
-
-      function animate(time) {
-        if (!lastStep || time - lastStep >= 34) {
-          propagate(fires[0]);
-          propagate(fires[1]);
-          lastStep = time;
-        }
-        draw();
-        frame = requestAnimationFrame(animate);
-      }
-
-      function shouldHide() {
-        return narrowScreen.matches || document.documentElement.dataset.page === "privacy";
-      }
-
-      function resize() {
-        cancelAnimationFrame(frame);
-        frame = 0;
-        lastStep = 0;
-        width = window.innerWidth;
-        height = window.innerHeight;
-        pixelRatio = Math.min(window.devicePixelRatio || 1, 1.25);
-        canvas.width = Math.round(width * pixelRatio);
-        canvas.height = Math.round(height * pixelRatio);
-        canvas.style.width = width + "px";
-        canvas.style.height = height + "px";
-        contentEdge = Math.max(0, (width - Math.min(1180, width - 40)) / 2);
-        railWidth = Math.max(0, Math.min(128, contentEdge - 8));
-
-        if (shouldHide()) {
-          fires = [];
-          context.setTransform(1, 0, 0, 1, 0, 0);
-          context.clearRect(0, 0, canvas.width, canvas.height);
-          return;
-        }
-
-        fires = [createFire(1), createFire(2)];
-        draw();
-        if (!reducedMotion.matches && !document.hidden) frame = requestAnimationFrame(animate);
-      }
-
-      function listen(query, callback) {
-        if (query.addEventListener) query.addEventListener("change", callback);
-        else if (query.addListener) query.addListener(callback);
-      }
-
-      var resizeTimer = 0;
-      window.addEventListener("resize", function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(resize, 120);
-      });
-      document.addEventListener("visibilitychange", function () {
-        if (document.hidden) {
-          cancelAnimationFrame(frame);
-          frame = 0;
-        } else if (!reducedMotion.matches && !shouldHide() && !frame) {
-          lastStep = 0;
-          frame = requestAnimationFrame(animate);
-        }
-      });
-      listen(reducedMotion, resize);
-      listen(narrowScreen, resize);
-      resize();
-    }());
-  </script>
 </body>
 </html>
