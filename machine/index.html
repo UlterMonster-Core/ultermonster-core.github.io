@@ -122,6 +122,19 @@ async function llmOnce(messages,model,opts){
   return d.choices[0].message.content;
 }
 
+/* ---- model catalog: what this brain is allowed to run ---- */
+const MODELS=[
+ {v:'gemini-3.1-flash-lite',l:'Gemini 3.1 Flash-Lite (default — fast, free)'},
+ {v:'gemini-3-flash-preview',l:'Gemini 3 Flash Preview (verified working)'},
+ {v:'gemini-flash-latest',l:'Gemini Flash — latest alias'},
+ {v:'gemini-2.5-pro',l:'Gemini 2.5 Pro (smarter, slower)'},
+ {v:'gemini-3.1-pro-preview',l:'Gemini 3.1 Pro Preview (smartest)'}
+];
+const RETIRED_MODELS=['gemini-2.0-flash','gemini-2.5-flash','gemini-1.5-flash','gpt-4o-mini'];
+function isCustomModel(){return MODELS.every(m=>m.v!==CFG.model);}
+/* migrate anyone stuck on a retired model */
+if(RETIRED_MODELS.includes(CFG.model)){CFG.model='gemini-3.1-flash-lite';saveCfg();}
+
 /* ---- browser built-in AI (Chrome Prompt API / Gemini Nano, no key) ---- */
 let _bsess=null,_bsys='';
 async function llmBrowser(messages,opts){
@@ -424,7 +437,10 @@ function openSettings(){
   +'<div id="s_keyfields">'
   +'<div class="f"><label>API base URL</label><input id="s_base" value="'+esc(CFG.base)+'"></div>'
   +'<div class="f"><label>API key (free Gemini key works)</label><input id="s_key" type="password" placeholder="paste key…" value="'+esc(CFG.key)+'"></div>'
-  +'<div class="f"><label>Model</label><input id="s_model" value="'+esc(CFG.model)+'"></div>'
+  +'<div class="f"><label>Model</label><select id="s_model" style="width:100%;background:#0d1117;border:1px solid var(--border);color:var(--text);border-radius:8px;padding:10px;font-size:15px">'
+  +MODELS.map(m=>'<option value="'+m.v+'"'+(CFG.model===m.v?' selected':'')+'>'+m.l+'</option>').join('')
+  +'<option value="__custom"'+(isCustomModel()?' selected':'')+'>Custom…</option></select></div>'
+  +'<div class="f" id="s_customwrap" style="display:'+(isCustomModel()?'':'none')+'"><label>Custom model name</label><input id="s_custom" value="'+esc(isCustomModel()?CFG.model:'')+'" placeholder="e.g. gemini-3.8-flash"></div>'
   +'</div>'
   +'<div class="f"><label>Serper key (optional — for /act web search)</label><input id="s_serper" type="password" placeholder="optional" value="'+esc(CFG.serper)+'"></div>'
   +'<div class="btnrow"><button class="btn" id="s_save">Save</button><button class="btn ghost" id="s_close">Close</button></div>'
@@ -435,7 +451,9 @@ function openSettings(){
   const provRadios=sheet.querySelectorAll('input[name="s_prov"]');
   const toggleKeys=()=>{const v=sheet.querySelector('input[name="s_prov"]:checked').value;document.getElementById('s_keyfields').style.display=v==='browser'?'none':'';};
   provRadios.forEach(r=>r.addEventListener('change',toggleKeys));toggleKeys();
-  document.getElementById('s_save').onclick=()=>{CFG.provider=sheet.querySelector('input[name="s_prov"]:checked').value;CFG.base=document.getElementById('s_base').value.trim();CFG.key=document.getElementById('s_key').value.trim();CFG.model=document.getElementById('s_model').value.trim()||CFG.model;CFG.serper=document.getElementById('s_serper').value.trim();saveCfg();modal.classList.remove('open');sysMsg('Settings saved.');};
+  const msel=document.getElementById('s_model');
+  msel.addEventListener('change',()=>{document.getElementById('s_customwrap').style.display=msel.value==='__custom'?'':'none';});
+  document.getElementById('s_save').onclick=()=>{CFG.provider=sheet.querySelector('input[name="s_prov"]:checked').value;CFG.base=document.getElementById('s_base').value.trim();CFG.key=document.getElementById('s_key').value.trim();const mv=msel.value;CFG.model=mv==='__custom'?(document.getElementById('s_custom').value.trim()||'gemini-3.1-flash-lite'):mv;CFG.serper=document.getElementById('s_serper').value.trim();saveCfg();modal.classList.remove('open');sysMsg('Settings saved. Running '+esc(CFG.model)+'.');};
   document.getElementById('s_close').onclick=()=>modal.classList.remove('open');
   document.getElementById('s_exp').onclick=()=>{const b=new Blob([JSON.stringify(DB)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='machine-memory.json';a.click();};
   document.getElementById('s_imp').onclick=()=>{const i=document.createElement('input');i.type='file';i.accept='.json';i.onchange=()=>{const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(d.facts){DB=d;saveDB();updateTitle();sysMsg('Memory imported.');}else sysMsg('Not a brain file.');}catch(e){sysMsg('Import failed.');}};r.readAsText(f);};i.click();};
