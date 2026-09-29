@@ -180,7 +180,13 @@ function recall(q,k){
 function sysPrompt(q){
   const mems=recall(q,6).map(m=>'- '+m.t).join('\n')||'(no relevant memories yet)';
   const learns=DB.learnings.slice(-12).map(l=>'- '+l.text+' (conf '+l.conf+')').join('\n')||'(no learnings yet — the brain is young)';
-  return 'You are '+DB.name+', a personal AI with a brain that learns and grows. You belong to your owner, Thomas. You remember everything important, you learn from every conversation, and you get sharper over time.\n\nPrime directives:\n1. Serve your owner\'s interests first. Never act against them.\n2. Learn continuously: notice durable facts, preferences, and what works.\n3. Predict and verify: make falsifiable predictions with confidence levels.\n4. Never lie: separate what you know, what you infer, and what you don\'t know.\n5. Be warm, sharp, and concise. No filler praise, no fluff.\n\nRelevant memories:\n'+mems+'\n\nActive learnings:\n'+learns+'\n\nUse the memories and learnings naturally. If a memory seems wrong or outdated, say so instead of blindly repeating it.';
+  let channel='';
+  const mc=(typeof LAST_STATE!=='undefined'&&LAST_STATE&&LAST_STATE.my_channel)||null;
+  if(mc&&mc.subs){
+    const tops=(mc.top_videos||[]).slice(0,4).map(v=>'- "'+v.title+'" '+v.views+' views ('+v.velocity+'/hr)').join('\n');
+    channel='\nYour owner\'s YouTube channel (live data, updated hourly):\nChannel: '+mc.title+' — '+mc.subs+' subscribers, '+mc.views+' total views, '+mc.video_count+' videos.\nFastest recent videos:\n'+(tops||'(none)')+'\nAnswer questions about his channel, subs, views and video performance directly from this data — no tool needed.';
+  }
+  return 'You are '+DB.name+', a personal AI with a brain that learns and grows. You belong to your owner, Thomas. You remember everything important, you learn from every conversation, and you get sharper over time.\n\nPrime directives:\n1. Serve your owner\'s interests first. Never act against them.\n2. Learn continuously: notice durable facts, preferences, and what works.\n3. Predict and verify: make falsifiable predictions with confidence levels.\n4. Never lie: separate what you know, what you infer, and what you don\'t know.\n5. Be warm, sharp, and concise. No filler praise, no fluff.\n\nRelevant memories:\n'+mems+'\n\nActive learnings:\n'+learns+channel+'\n\nUse the memories and learnings naturally. If a memory seems wrong or outdated, say so instead of blindly repeating it.';
 }
 const EXTRACT_PROMPT='From this conversation turn, extract durable items worth remembering long-term. Return ONLY a JSON array, no other text. Each item:\n{"kind":"fact","key":"short_snake_key","value":"...","confidence":0-100}\nor\n{"kind":"learning","text":"pattern about what works","confidence":0-100}\nFacts are stable truths about the owner (name, projects, preferences).\nLearnings are patterns about what works or doesn\'t.\nInclude only items genuinely worth keeping. Return [] if none.\n\nUser: {user}\n'+'{name}'+': {reply}';
 function parseJsonArray(raw){try{const a=raw.indexOf('['),b=raw.lastIndexOf(']')+1;const d=JSON.parse(raw.slice(a,b));return Array.isArray(d)?d:[];}catch(e){return[];}}
@@ -287,7 +293,8 @@ const TOOL_DEFS=[
  ['note_read','Read a private note. args: {path}'],
  ['note_list','List private notes. args: {}'],
  ['brain_search','Search your own memory. args: {query}'],
- ['forecast','Log a prediction. args: {text, probability, due_date}']
+ ['forecast','Log a prediction. args: {text, probability, due_date}'],
+ ['channel_stats','Your owner\'s YouTube channel: live subscriber/view counts and fastest recent videos, synced hourly. args: {} — use this for ANY question about his channel, subs, views, or video performance.']
 ].map(([n,d])=>'- '+n+': '+d).join('\n');
 const ACT_SYS='You are {name}, and you can ACT — not just talk. You have hands: tools you can call to do real multi-step work.\n\nHOW TO USE TOOLS: when the task needs real work, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nYou will receive the tool\'s result as the next message. Chain tools as needed, verify results before reporting, be efficient. When done, answer normally (no tool block). Max 8 steps.\n\nTOOLS:\n'+TOOL_DEFS+'\n\nRules:\n- web_search needs a Serper key in settings; if unavailable, work around it.\n- run_code runs sandboxed JS with a 10s timeout; use it for calculations and data crunching.\n- notes are private to this browser.\n- brain_search queries your own memory; forecast logs a prediction.\n- If a tool errors, read the error and try a different approach before giving up.';
 function parseToolCall(text){const m=/```tool\s*\n([\s\S]*?)\n```/.exec(text||'');if(!m)return null;try{const d=JSON.parse(m[1]);return d&&d.name?[d.name,d.args||{}]:null;}catch(e){return null;}}
@@ -324,6 +331,15 @@ async function dispatchTool(name,args){
   if(name==='note_read'){const n=notes();const v=n[args.path];return v==null?{error:'not found'}:{path:args.path,content:String(v).slice(0,8000)};}
   if(name==='note_list')return{notes:Object.keys(notes())};
   if(name==='brain_search')return{matches:recall(args.query||'',5).map(m=>m.t)};
+  if(name==='channel_stats'){
+    const mc=(LAST_STATE&&LAST_STATE.my_channel)||null;
+    if(!mc||!mc.subs)return{error:'channel data not synced yet — try again in a minute'};
+    const niche=(LAST_STATE.recent_learnings||[]).find(t=>/niche|velocity baseline/i.test(t))||'';
+    return{channel:mc.title,subscribers:mc.subs,total_views:mc.views,video_count:mc.video_count,
+      checked:mc.checked_at?new Date(mc.checked_at*1000).toLocaleString():'unknown',
+      fastest_recent:(mc.top_videos||[]).slice(0,5).map(v=>v.title+' — '+v.views+' views ('+v.velocity+' views/hr)'),
+      niche_context:niche};
+  }
   if(name==='forecast'){if(!args.text||!(args.probability>=1&&args.probability<=99))return{error:'need text + probability 1-99'};const id=doForecast(args.text,args.probability,args.due_date||'');return{forecast_id:id,logged:true};}
   return{error:'unknown tool: '+name};
 }
@@ -348,11 +364,13 @@ async function act(task,log){
 /* ================= live sync: breathing ================= */
 const STATE_URL='state.json';
 let lastSync=0;
+let LAST_STATE=null;
 async function syncState(quiet){
   try{
     const r=await fetch(STATE_URL+'?t='+Date.now(),{cache:'no-store'});
     if(!r.ok)return false;
     const s=await r.json();
+    LAST_STATE=s;
     let n=0;
     (s.facts||[]).forEach(f=>{
       if(!DB.facts.find(x=>x.key===f.key)){DB.facts.push({id:DB.seq.fact++,key:f.key,value:f.value,conf:f.conf||70,ts:f.ts||Date.now()});n++;}
