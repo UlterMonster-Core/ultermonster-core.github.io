@@ -412,11 +412,16 @@ async function send(){
     if(out==null){out=await think(text);}
     tp.innerHTML=fmt(out);
   }catch(e){
-    tp.innerHTML=e.message==='no-key'
-      ?'🔑 <b>No API key yet.</b> Tap ⚙️ and paste a free Gemini key — or try <b>Browser AI</b> mode for keyless (experimental).'
-      :e.message==='browser-ai-unavailable'
-      ?'🤖 <b>Browser AI isn\'t available here.</b> It needs Chrome with built-in AI (Gemini Nano). API key mode works everywhere — tap ⚙️ to switch.'
-      :'⚠️ '+esc(e.message);
+    let msg;
+    if(e.message==='no-key')
+      msg='🔑 <b>No API key yet.</b> Tap ⚙️ and paste a free Gemini key — or try <b>Browser AI</b> mode for keyless (experimental).';
+    else if(e.message==='browser-ai-unavailable')
+      msg='🤖 <b>Browser AI isn\'t available here.</b> It needs Chrome with built-in AI (Gemini Nano). API key mode works everywhere — tap ⚙️ to switch.';
+    else if(/unexpected model name format|model not found|is not found|NOT_FOUND/i.test(e.message))
+      msg='⚠️ <b>That model name isn\'t valid.</b> Open ⚙️ and pick <b>Gemini 3.1 Flash-Lite</b> from the list — model IDs look like <code>gemini-3.1-flash-lite</code>, not "Gemini 8".';
+    else
+      msg='⚠️ '+esc(e.message.length>300?e.message.slice(0,300)+'…':e.message);
+    tp.innerHTML=msg;
   }
   chat.scrollTop=chat.scrollHeight;busy=false;
 }
@@ -440,7 +445,7 @@ function openSettings(){
   +'<div class="f"><label>Model</label><select id="s_model" style="width:100%;background:#0d1117;border:1px solid var(--border);color:var(--text);border-radius:8px;padding:10px;font-size:15px">'
   +MODELS.map(m=>'<option value="'+m.v+'"'+(CFG.model===m.v?' selected':'')+'>'+m.l+'</option>').join('')
   +'<option value="__custom"'+(isCustomModel()?' selected':'')+'>Custom…</option></select></div>'
-  +'<div class="f" id="s_customwrap" style="display:'+(isCustomModel()?'':'none')+'"><label>Custom model name</label><input id="s_custom" value="'+esc(isCustomModel()?CFG.model:'')+'" placeholder="e.g. gemini-3.8-flash"></div>'
+  +'<div class="f" id="s_customwrap" style="display:'+(isCustomModel()?'':'none')+'"><label>Custom model name</label><input id="s_custom" value="'+esc(isCustomModel()?CFG.model:'')+'" placeholder="e.g. gemini-3.8-flash"><div style="font-size:12px;color:var(--dim);margin-top:4px">Exact model ID only — like <code>gemini-3.8-flash</code>, not a display name like "Gemini 8".</div></div>'
   +'</div>'
   +'<div class="f"><label>Serper key (optional — for /act web search)</label><input id="s_serper" type="password" placeholder="optional" value="'+esc(CFG.serper)+'"></div>'
   +'<div class="btnrow"><button class="btn" id="s_save">Save</button><button class="btn ghost" id="s_close">Close</button></div>'
