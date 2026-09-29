@@ -191,7 +191,7 @@ function sysPrompt(q){
   if(almanac&&Object.keys(almanac).length){
     alm='\nMajor YouTube channels (hourly almanac): '+Object.values(almanac).map(c=>c.name+' '+Number(c.subs).toLocaleString()+' subs').join('; ')+'.';
   }
-  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — but you already have its data above), youtube_lookup {name} (almanac channels), youtube_live {query} (ANY channel, needs YouTube key in settings), web_search {query} (needs Serper key), brain_search {query} (your memory). Use a tool when the answer needs live/external data you don\'t have.';
+  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. Use a tool when the answer needs live/external data you don\'t have.';
   return 'You are '+DB.name+', a personal AI with a brain that learns and grows. You belong to your owner, Thomas. You remember everything important, you learn from every conversation, and you get sharper over time.\n\nPrime directives:\n1. Serve your owner\'s interests first. Never act against them.\n2. Learn continuously: notice durable facts, preferences, and what works.\n3. Predict and verify: make falsifiable predictions with confidence levels.\n4. Never lie: separate what you know, what you infer, and what you don\'t know.\n5. Be warm, sharp, and concise. No filler praise, no fluff.\n\nRelevant memories:\n'+mems+'\n\nActive learnings:\n'+learns+channel+alm+tools+'\n\nUse the memories and learnings naturally. If a memory seems wrong or outdated, say so instead of blindly repeating it.';
 }
 const EXTRACT_PROMPT='From this conversation turn, extract durable items worth remembering long-term. Return ONLY a JSON array, no other text. Each item:\n{"kind":"fact","key":"short_snake_key","value":"...","confidence":0-100}\nor\n{"kind":"learning","text":"pattern about what works","confidence":0-100}\nFacts are stable truths about the owner (name, projects, preferences).\nLearnings are patterns about what works or doesn\'t.\nInclude only items genuinely worth keeping. Return [] if none.\n\nUser: {user}\n'+'{name}'+': {reply}';
@@ -314,8 +314,20 @@ const TOOL_DEFS=[
  ['forecast','Log a prediction. args: {text, probability, due_date}'],
  ['channel_stats','Your owner\'s YouTube channel: live subscriber/view counts and fastest recent videos, synced hourly. args: {} — use this for ANY question about his channel, subs, views, or video performance.'],
  ['youtube_lookup','Look up a major channel in the hourly almanac (MrBeast, niche competitors). args: {name}'],
- ['youtube_live','LIVE YouTube lookup for ANY channel by name (needs YouTube Data API key in settings). args: {query}']
+ ['youtube_channel','Look up ANY YouTube channel: subscribers, views, video count. Everything ever looked up is cached and remembered forever. args: {query} (channel name or ID), refresh? (true to re-check live)'],
+ ['youtube_video','Look up ANY YouTube video: views, likes, comments, duration, channel. Cached and remembered forever. args: {query} (title, video ID or watch URL), refresh? (true to re-check live)']
 ].map(([n,d])=>'- '+n+': '+d).join('\n');
+
+/* ---- the brain's growing YouTube memory: every lookup is kept ---- */
+const YTCACHE_KEY='machine_ytcache_v1';
+function ytcache(){try{const c=JSON.parse(localStorage.getItem(YTCACHE_KEY)||'null');return c&&c.channels?c:{channels:{},videos:{}};}catch(e){return{channels:{},videos:{}};}}
+function saveYtcache(c){try{localStorage.setItem(YTCACHE_KEY,JSON.stringify(c));}catch(e){}}
+async function ytApi(path){
+  const r=await fetch('https://www.googleapis.com/youtube/v3/'+path+(path.indexOf('?')>=0?'&':'?')+'key='+encodeURIComponent(CFG.ytkey));
+  const d=await r.json().catch(()=>({}));
+  if(d.error)throw new Error(d.error.message||('YouTube HTTP '+r.status));
+  return d;
+}
 const ACT_SYS='You are {name}, and you can ACT — not just talk. You have hands: tools you can call to do real multi-step work.\n\nHOW TO USE TOOLS: when the task needs real work, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nYou will receive the tool\'s result as the next message. Chain tools as needed, verify results before reporting, be efficient. When done, answer normally (no tool block). Max 8 steps.\n\nTOOLS:\n'+TOOL_DEFS+'\n\nRules:\n- web_search needs a Serper key in settings; if unavailable, work around it.\n- run_code runs sandboxed JS with a 10s timeout; use it for calculations and data crunching.\n- notes are private to this browser.\n- brain_search queries your own memory; forecast logs a prediction.\n- If a tool errors, read the error and try a different approach before giving up.';
 function parseToolCall(text){const m=/```tool\s*\n([\s\S]*?)\n```/.exec(text||'');if(!m)return null;try{const d=JSON.parse(m[1]);return d&&d.name?[d.name,d.args||{}]:null;}catch(e){return null;}}
 async function runCode(code){
@@ -360,21 +372,49 @@ async function dispatchTool(name,args){
     const c=alm[hit];
     return{name:c.name,subscribers:c.subs,total_views:c.views,video_count:c.videos,note:'hourly almanac, may lag live counts slightly'};
   }
-  if(name==='youtube_live'){
-    if(!CFG.ytkey)return{error:'no YouTube Data API key in settings — add one to look up any channel live'};
-    const q=args.query||args.name||'';
-    if(!q)return{error:'query needed'};
-    try{
-      const s=await(await fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&maxResults=1&q='+encodeURIComponent(q)+'&key='+encodeURIComponent(CFG.ytkey))).json();
-      if(s.error)throw new Error(s.error.message||'API error');
+  if(name==='youtube_channel'||name==='youtube_live'){
+    const q=(args.query||args.name||'').trim();
+    if(!q)return{error:'channel name or ID needed'};
+    const cache=ytcache();
+    const hit=Object.values(cache.channels).find(c=>c.id===q||c.name.toLowerCase()===q.toLowerCase());
+    if(hit&&!args.refresh)return Object.assign({cached:true},hit);
+    if(!CFG.ytkey)return{error:'no YouTube Data API key in settings - add one (free) to look up any channel'};
+    let cid=q;
+    if(!/^UC[a-zA-Z0-9_-]{22}$/.test(q)){
+      const s=await ytApi('search?part=snippet&type=channel&maxResults=1&q='+encodeURIComponent(q));
       const item=(s.items||[])[0];
       if(!item)return{error:'no channel found for "'+q+'"'};
-      const c=await(await fetch('https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id='+item.id.channelId+'&key='+encodeURIComponent(CFG.ytkey))).json();
-      if(c.error)throw new Error(c.error.message||'API error');
-      const ch=(c.items||[])[0];
-      if(!ch)return{error:'channel lookup failed'};
-      return{name:ch.snippet.title,subscribers:ch.statistics.subscriberCount,total_views:ch.statistics.viewCount,video_count:ch.statistics.videoCount,note:'live from YouTube'};
-    }catch(e){return{error:'youtube api: '+e.message};}
+      cid=item.id.channelId;
+    }
+    const c=await ytApi('channels?part=snippet,statistics&id='+cid);
+    const ch=(c.items||[])[0];
+    if(!ch)return{error:'channel lookup failed'};
+    const rec={id:cid,name:ch.snippet.title,subscribers:ch.statistics.subscriberCount,total_views:ch.statistics.viewCount,video_count:ch.statistics.videoCount,ts:Date.now()};
+    cache.channels[cid]=rec;saveYtcache(cache);
+    return Object.assign({cached:false},rec);
+  }
+  if(name==='youtube_video'){
+    const q=(args.query||'').trim();
+    if(!q)return{error:'video title, ID or watch URL needed'};
+    const cache=ytcache();
+    const urlId=(q.match(/[?&]v=([a-zA-Z0-9_-]{11})/)||[])[1];
+    const idLike=/^[a-zA-Z0-9_-]{11}$/.test(q)?q:urlId;
+    if(idLike&&cache.videos[idLike]&&!args.refresh)return Object.assign({cached:true},cache.videos[idLike]);
+    if(!CFG.ytkey)return{error:'no YouTube Data API key in settings - add one (free) to look up any video'};
+    let vid=idLike;
+    if(!vid){
+      const s=await ytApi('search?part=snippet&type=video&maxResults=1&q='+encodeURIComponent(q));
+      const item=(s.items||[])[0];
+      if(!item)return{error:'no video found for "'+q+'"'};
+      vid=item.id.videoId;
+    }
+    if(cache.videos[vid]&&!args.refresh)return Object.assign({cached:true},cache.videos[vid]);
+    const v=await ytApi('videos?part=snippet,statistics,contentDetails&id='+vid);
+    const it=(v.items||[])[0];
+    if(!it)return{error:'video lookup failed'};
+    const rec={id:vid,title:it.snippet.title,channel:it.snippet.channelTitle,views:it.statistics.viewCount,likes:it.statistics.likeCount,comments:it.statistics.commentCount,duration:it.contentDetails.duration,published:(it.snippet.publishedAt||'').slice(0,10),ts:Date.now()};
+    cache.videos[vid]=rec;saveYtcache(cache);
+    return Object.assign({url:'https://www.youtube.com/watch?v='+vid,cached:false},rec);
   }
   if(name==='channel_stats'){
     const mc=(LAST_STATE&&LAST_STATE.my_channel)||null;
