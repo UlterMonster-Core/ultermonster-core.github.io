@@ -102,10 +102,20 @@ async function llm(messages,opts){
   opts=opts||{};
   if(CFG.provider==='browser')return llmBrowser(messages,opts);
   if(!CFG.key)throw new Error('no-key');
+  const models=[CFG.model,'gemini-3-flash-preview','gemini-flash-latest'].filter((v,i,a)=>v&&a.indexOf(v)===i);
+  let lastErr=null;
+  for(const m of models){
+    try{return await llmOnce(messages,m,opts);}
+    catch(e){lastErr=e;if(!/API (404|429|503)/.test(e.message))throw e;}
+  }
+  throw lastErr;
+}
+async function llmOnce(messages,model,opts){
+  opts=opts||{};
   const r=await fetch(CFG.base.replace(/\/$/,'')+'/chat/completions',{
     method:'POST',
     headers:{'Content-Type':'application/json','Authorization':'Bearer '+CFG.key},
-    body:JSON.stringify({model:CFG.model,messages,temperature:opts.temp!=null?opts.temp:0.7,max_tokens:opts.max||1500})
+    body:JSON.stringify({model:model,messages,temperature:opts.temp!=null?opts.temp:0.7,max_tokens:opts.max||1500})
   });
   if(!r.ok){const t=await r.text().catch(()=> '');throw new Error('API '+r.status+': '+t.slice(0,200));}
   const d=await r.json();
