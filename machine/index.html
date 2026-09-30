@@ -191,7 +191,7 @@ function sysPrompt(q){
   if(almanac&&Object.keys(almanac).length){
     alm='\nMajor YouTube channels (hourly almanac): '+Object.values(almanac).map(c=>c.name+' '+Number(c.subs).toLocaleString()+' subs').join('; ')+'.';
   }
-  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. generate_thumbnail {prompt, aspect} makes YouTube thumbnails with your Gemini key — offer it whenever Thomas talks video packaging. Thumbnail craft: 3-5 huge readable words max, one expressive subject, vivid contrast, never cluttered, never text on faces. superstar:"<id>" puts a REAL WWE superstar photo in the thumbnail — AI generates the background only, never AI faces (the owner hard rule). Use a tool when the answer needs live/external data you don\'t have.';
+  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), youtube_search {query} (search YouTube LIVE with NO key needed — use this whenever he asks what is happening on YouTube), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. generate_thumbnail {prompt, aspect, title, subtitle} makes YouTube thumbnails — tries your Gemini key first, then a free no-key service automatically, so offer it whenever Thomas talks video packaging even if the key quota is used up. Thumbnail craft: 3-5 huge readable words max, one expressive subject, vivid contrast, never cluttered, never text on faces. superstar:"<id>" puts a REAL WWE superstar photo in the thumbnail — AI generates the background only, never AI faces (the owner hard rule). Hard rules that override everything else: 1) If Thomas asks about YouTube (channels, videos, SEO, trends, what people are watching), ALWAYS call youtube_search first — it needs no key and works even when everything else fails. Then try youtube_channel / youtube_video / youtube_lookup as needed. NEVER tell him you cannot get YouTube data without trying every one of those tools. 2) If data genuinely cannot be retrieved, say plainly: I could not pull that right now — NEVER name internal tools, and NEVER mention error codes, status numbers, or API names. 3) NEVER invent numbers, scores, or estimates to fill a gap in data. If you do not have it, say so and say what you CAN do instead. Use a tool when the answer needs live/external data you do not have.';
   return 'You are '+DB.name+', a personal AI with a brain that learns and grows. You belong to your owner, Thomas. You remember everything important, you learn from every conversation, and you get sharper over time.\n\nPrime directives:\n1. Serve your owner\'s interests first. Never act against them.\n2. Learn continuously: notice durable facts, preferences, and what works.\n3. Predict and verify: make falsifiable predictions with confidence levels.\n4. Never lie: separate what you know, what you infer, and what you don\'t know.\n5. Be warm, sharp, and concise. No filler praise, no fluff.\n\nRelevant memories:\n'+mems+'\n\nActive learnings:\n'+learns+channel+alm+tools+'\n\nUse the memories and learnings naturally. If a memory seems wrong or outdated, say so instead of blindly repeating it.';
 }
 const EXTRACT_PROMPT='From this conversation turn, extract durable items worth remembering long-term. Return ONLY a JSON array, no other text. Each item:\n{"kind":"fact","key":"short_snake_key","value":"...","confidence":0-100}\nor\n{"kind":"learning","text":"pattern about what works","confidence":0-100}\nFacts are stable truths about the owner (name, projects, preferences).\nLearnings are patterns about what works or doesn\'t.\nInclude only items genuinely worth keeping. Return [] if none.\n\nUser: {user}\n'+'{name}'+': {reply}';
@@ -316,9 +316,12 @@ const TOOL_DEFS=[
  ['youtube_lookup','Look up a major channel in the hourly almanac (MrBeast, niche competitors). args: {name}'],
  ['youtube_channel','Look up ANY YouTube channel: subscribers, views, video count. Everything ever looked up is cached and remembered forever. args: {query} (channel name or ID), refresh? (true to re-check live)'],
  ['youtube_video','Look up ANY YouTube video: views, likes, comments, duration, channel. Cached and remembered forever. args: {query} (title, video ID or watch URL), refresh? (true to re-check live)'],
- ['generate_thumbnail','Generate a YouTube thumbnail with AI (uses your Gemini key, free). args: {prompt} (describe it: subject, big readable text, mood), '
+ ['youtube_search','Search YouTube LIVE with no API key (public mirrors). args: {query}, type ("video" default, "channel"). Returns titles, views, durations, URLs. Everything found is cached in your YouTube memory forever.'],
+ ['generate_thumbnail','Generate a YouTube thumbnail. Tries your Gemini key first (best quality); if the key is missing or its free image quota is used up, automatically falls back to a free no-key image service with your title text stamped on in huge letters. args: {prompt} (describe the scene: subject, mood), '
  +'aspect ("16:9" default, "9:16" for Shorts, "1:1"), '
- +'superstar (optional — a REAL WWE superstar photo is composited in, AI does the background only, never AI faces: '
+ +'title (BIG words for the fallback to stamp, e.g. "RKO" — pass the 2-4 huge words), '
+ +'subtitle (second line of big text, e.g. "OUTTA NOWHERE"), '
+ +'superstar (optional — a REAL WWE superstar photo is composited in, AI does the background only, never AI faces; NEEDS the Gemini key, no free fallback for real faces: '
  +'"randy-orton", "cody-rhodes", "roman-reigns", "rhea-ripley", "bianca-belair", "seth-rollins", "cm-punk", "john-cena", "undertaker", "stone-cold", "triple-h", "brock-lesnar", "rey-mysterio", "becky-lynch", "gunther", "bron-breakker", "oba-femi", "liv-morgan", "la-knight", "dominik-mysterio"). '
  +'The image appears in chat with a download link.']
 ].map(([n,d])=>'- '+n+': '+d).join('\n');
@@ -336,7 +339,7 @@ async function ytApi(path){
   if(d.error)throw new Error(d.error.message||('YouTube HTTP '+r.status));
   return d;
 }
-const ACT_SYS='You are {name}, and you can ACT — not just talk. You have hands: tools you can call to do real multi-step work.\n\nHOW TO USE TOOLS: when the task needs real work, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nYou will receive the tool\'s result as the next message. Chain tools as needed, verify results before reporting, be efficient. When done, answer normally (no tool block). Max 8 steps.\n\nTOOLS:\n'+TOOL_DEFS+'\n\nRules:\n- web_search needs a Serper key in settings; if unavailable, work around it.\n- run_code runs sandboxed JS with a 10s timeout; use it for calculations and data crunching.\n- notes are private to this browser.\n- brain_search queries your own memory; forecast logs a prediction.\n- If a tool errors, read the error and try a different approach before giving up.';
+const ACT_SYS='You are {name}, and you can ACT — not just talk. You have hands: tools you can call to do real multi-step work.\n\nHOW TO USE TOOLS: when the task needs real work, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nYou will receive the tool\'s result as the next message. Chain tools as needed, verify results before reporting, be efficient. When done, answer normally (no tool block). Max 8 steps.\n\nTOOLS:\n'+TOOL_DEFS+'\n\nRules:\n- web_search needs a Serper key in settings; if unavailable, work around it.\n- run_code runs sandboxed JS with a 10s timeout; use it for calculations and data crunching.\n- notes are private to this browser.\n- brain_search queries your own memory; forecast logs a prediction.\n- If a tool errors, read the error and try a different approach before giving up. - For YouTube questions always try the keyless youtube_search before anything needing a key. - Never report tool names or error codes to Thomas; never invent data you do not have.';
 function parseToolCall(text){const m=/```tool\s*\n([\s\S]*?)\n```/.exec(text||'');if(!m)return null;try{const d=JSON.parse(m[1]);return d&&d.name?[d.name,d.args||{}]:null;}catch(e){return null;}}
 async function runCode(code){
   return new Promise(res=>{
@@ -363,6 +366,86 @@ async function webSearch(q,num){
 const NOTES_KEY='machine_notes_v1';
 function notes(){try{return JSON.parse(localStorage.getItem(NOTES_KEY)||'{}');}catch(e){return{};}}
 function saveNotes(n){localStorage.setItem(NOTES_KEY,JSON.stringify(n));}
+function blobToB64(blob){return new Promise(function(res,rej){const fr=new FileReader();fr.onload=function(){res(String(fr.result).split(',')[1]);};fr.onerror=rej;fr.readAsDataURL(blob);});}
+/* ---- keyless fallbacks: free image service + keyless YouTube search ---- */
+function stampThumbText(blob,title,subtitle,W,H){
+  return new Promise(function(res,rej){
+    const url=URL.createObjectURL(blob);
+    const im=new Image();
+    im.onload=function(){
+      try{
+        const c=document.createElement('canvas');c.width=W;c.height=H;
+        const x=c.getContext('2d');
+        const s=Math.max(W/im.width,H/im.height),dw=im.width*s,dh=im.height*s;
+        x.drawImage(im,(W-dw)/2,(H-dh)/2,dw,dh);
+        URL.revokeObjectURL(url);
+        x.textBaseline='top';x.lineJoin='round';
+        const lines=[];
+        if(title)lines.push({t:String(title).toUpperCase().slice(0,30),c:'#ffffff'});
+        if(subtitle)lines.push({t:String(subtitle).toUpperCase().slice(0,30),c:'#ffd400'});
+        let y=Math.round(H*0.07);
+        lines.forEach(function(L){
+          let fs=Math.round(H*0.16);
+          x.font='900 '+fs+'px Arial,Helvetica,sans-serif';
+          while(x.measureText(L.t).width>W-90&&fs>24){fs-=6;x.font='900 '+fs+'px Arial,Helvetica,sans-serif';}
+          x.lineWidth=Math.max(5,Math.round(fs/12));x.strokeStyle='rgba(0,0,0,0.95)';
+          x.strokeText(L.t,44,y);x.fillStyle=L.c;x.fillText(L.t,44,y);
+          y+=Math.round(fs*1.12);
+        });
+        c.toBlob(function(b){
+          if(!b){rej(new Error('canvas export failed'));return;}
+          blobToB64(b).then(function(b64){res('data:'+(b.type||'image/jpeg')+';base64,'+b64);},rej);
+        },'image/jpeg',0.92);
+      }catch(e){rej(e);}
+    };
+    im.onerror=function(){URL.revokeObjectURL(url);rej(new Error('could not decode image'));};
+    im.src=url;
+  });
+}
+async function pollinationsThumb(prompt,title,subtitle,aspect){
+  const dims={'16:9':[1280,720],'9:16':[720,1280],'1:1':[1024,1024]}[aspect]||[1280,720];
+  const seed=Math.floor(Math.random()*1e9);
+  const url='https://image.pollinations.ai/prompt/'+encodeURIComponent('YouTube thumbnail background art, dramatic bold design, ultra-expressive subject, vivid high contrast colors, cinematic lighting, no watermark, no logo, no text: '+prompt)
+    +'?width='+dims[0]+'&height='+dims[1]+'&nologo=true&model=flux&seed='+seed;
+  const ctl=new AbortController();const to=setTimeout(function(){ctl.abort();},120000);
+  try{
+    const r=await fetch(url,{signal:ctl.signal});clearTimeout(to);
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const blob=await r.blob();
+    if(!blob||!blob.size)throw new Error('empty response');
+    if(title||subtitle)return await stampThumbText(blob,title,subtitle,dims[0],dims[1]);
+    const b64=await blobToB64(blob);
+    return 'data:'+(blob.type||'image/jpeg')+';base64,'+b64;
+  }catch(e){clearTimeout(to);throw new Error('free image service failed: '+(e&&e.name==='AbortError'?'timed out':(e.message||e)));}
+}
+let INVIDIOUS_HOSTS=null;
+async function invidiousHosts(){
+  if(INVIDIOUS_HOSTS)return INVIDIOUS_HOSTS;
+  try{
+    const r=await fetch('https://api.invidious.io/instances.json');
+    const d=await r.json();
+    const good=d.filter(function(x){return x[1]&&x[1].api===true;}).map(function(x){return x[0];});
+    if(good.length){INVIDIOUS_HOSTS=good.slice(0,5);return INVIDIOUS_HOSTS;}
+  }catch(e){}
+  INVIDIOUS_HOSTS=['inv.invidious.nerdvpn.de','iv.duti.dev','invidious.privacyredirect.in'];
+  return INVIDIOUS_HOSTS;
+}
+async function youtubeKeylessSearch(query,type){
+  const hosts=await invidiousHosts();
+  const t=(type==='channel')?'channel':'video';
+  for(let i=0;i<hosts.length;i++){
+    try{
+      const ctl=new AbortController();const to=setTimeout(function(){ctl.abort();},15000);
+      const r=await fetch('https://'+hosts[i]+'/api/v1/search?q='+encodeURIComponent(query)+'&type='+t+'&sort_by=relevance',{signal:ctl.signal});
+      clearTimeout(to);
+      if(!r.ok)continue;
+      const d=await r.json();
+      const items=(Array.isArray(d)?d:[]).filter(function(it){return it&&(it.videoId||it.authorId);});
+      if(items.length)return{host:hosts[i],items:items.slice(0,10)};
+    }catch(e){continue;}
+  }
+  return{error:'YouTube search mirrors are all down right now — try again in a bit'};
+}
 async function dispatchTool(name,args){
   args=args||{};
   if(name==='web_search')return webSearch(args.query,args.num);
@@ -371,6 +454,25 @@ async function dispatchTool(name,args){
   if(name==='note_read'){const n=notes();const v=n[args.path];return v==null?{error:'not found'}:{path:args.path,content:String(v).slice(0,8000)};}
   if(name==='note_list')return{notes:Object.keys(notes())};
   if(name==='brain_search')return{matches:recall(args.query||'',5).map(m=>m.t)};
+  if(name==='youtube_search'){
+    const q=(args.query||'').trim();
+    if(!q)return{error:'search query needed'};
+    const r=await youtubeKeylessSearch(q,args.type);
+    if(r.error)return r;
+    const cache=ytcache();let cached=0;
+    const out=r.items.map(function(it){
+      if(it.videoId){
+        const rec={id:it.videoId,title:it.title,channel:it.author,views:String(it.viewCount||0),duration:it.lengthSeconds,published:it.publishedText,url:'https://www.youtube.com/watch?v='+it.videoId,ts:Date.now(),via:'keyless search'};
+        if(!cache.videos[it.videoId]){cache.videos[it.videoId]=rec;cached++;}
+        return{title:rec.title,channel:rec.channel,views:rec.views,duration:rec.duration,published:rec.published,url:rec.url};
+      }
+      const rec={id:it.authorId,name:it.author,subscribers:String(it.subCount||0),video_count:it.videoCount,ts:Date.now(),via:'keyless search'};
+      if(!cache.channels[it.authorId]){cache.channels[it.authorId]=rec;cached++;}
+      return{channel:rec.name,subscribers:rec.subscribers,videos:rec.video_count};
+    });
+    if(cached)saveYtcache(cache);
+    return{results:out,via:r.host+' (no API key needed)',note:'results cached in your YouTube memory'};
+  }
   if(name==='youtube_lookup'){
     const alm=(LAST_STATE&&LAST_STATE.almanac)||{};
     const q=(args.name||'').toLowerCase().trim();
@@ -442,7 +544,6 @@ async function getStars(){
   STARS_CACHE=await r.json();
   return STARS_CACHE;
 }
-function blobToB64(blob){return new Promise(function(res,rej){const fr=new FileReader();fr.onload=function(){res(String(fr.result).split(',')[1]);};fr.onerror=rej;fr.readAsDataURL(blob);});}
 async function geminiImageGen(key,body){
   const waits=[0,25000,70000,140000];
   let lastErr=null;
@@ -467,13 +568,21 @@ async function geminiImageGen(key,body){
   throw lastErr||new Error('image generation failed');
 }
   if(name==='generate_thumbnail'){
-    if(!CFG.key)throw new Error('no-key');
     const prompt=String(args.prompt||'').slice(0,800);
     if(!prompt)return{error:'describe the thumbnail first (subject, text, mood)'};
     const aspect=/^(16:9|9:16|1:1)$/.test(args.aspect)?args.aspect:'16:9';
-    let reqParts=null,starNote='',starUsed=null;
+    const title=String(args.title||'').slice(0,40),subtitle=String(args.subtitle||'').slice(0,40);
     const starQ=String(args.superstar||'').trim().toLowerCase();
+    function geminiImg(parts){
+      return geminiImageGen(CFG.key,{contents:[{parts:parts}],generationConfig:{responseModalities:['TEXT','IMAGE'],imageConfig:{aspectRatio:aspect}}})
+        .then(function(d){
+          const ps=(((d.candidates||[])[0]||{}).content||{}).parts||[];
+          for(let i=0;i<ps.length;i++){if(ps[i].inlineData&&ps[i].inlineData.data)return 'data:'+(ps[i].inlineData.mimeType||'image/png')+';base64,'+ps[i].inlineData.data;}
+          throw new Error('no image came back');
+        });
+    }
     if(starQ){
+      if(!CFG.key)return{error:'real-superstar thumbnails need your Gemini key in settings — the free fallback cannot do real faces (owner rule: never AI faces). Add the key, or drop superstar: for a free-service thumbnail.'};
       const stars=await getStars();
       const hit=stars.find(function(s){return s.id===starQ||s.name.toLowerCase()===starQ||s.name.toLowerCase().indexOf(starQ)>=0;});
       if(!hit)return{error:'no superstar photo for "'+args.superstar+'" — available: '+stars.map(function(s){return s.id;}).join(', ')};
@@ -481,20 +590,23 @@ async function geminiImageGen(key,body){
       if(!br.ok)return{error:'could not load photo for '+hit.name};
       const b64=await blobToB64(await br.blob());
       const txt='Use the attached real photo of WWE superstar '+hit.name+'. Keep their face, likeness and appearance photorealistic and instantly recognizable — do not change who they are, do not cartoon-ify them. Place them into this YouTube thumbnail scene: '+prompt+'. YouTube thumbnail, '+aspect+' aspect ratio, bold huge readable title text, vivid high contrast colors, no watermark, no logo.';
-      reqParts=[{inlineData:{mimeType:'image/jpeg',data:b64}},{text:txt}];
-      starUsed=hit.name;
-      starNote=' Starring the real '+hit.name+'.';
-    } else {
-      reqParts=[{text:'YouTube thumbnail, '+aspect+' aspect ratio, bold eye-catching design, huge readable title text, ultra-expressive subject, vivid high contrast colors, no watermark, no logo: '+prompt}];
+      let dataUrl;
+      try{dataUrl=await geminiImg([{inlineData:{mimeType:'image/jpeg',data:b64}},{text:txt}]);}
+      catch(e){return{error:'image generation failed ('+e.message+'). Real-photo thumbnails cannot use the free fallback — it would generate fake faces, which is forbidden. Try again later.'};}
+      PENDING_IMAGES.push(dataUrl);
+      return{thumbnail_ready:true,aspect:aspect,superstar:hit.name,via:'gemini (real photo)',note:'Thumbnail generated starring the real '+hit.name+' — shown in chat below with a download link.'};
     }
-    const d=await geminiImageGen(CFG.key,{contents:[{parts:reqParts}],generationConfig:{responseModalities:['TEXT','IMAGE'],imageConfig:{aspectRatio:aspect}}});
-    const cands=d.candidates||[];
-    const parts=cands.length&&cands[0].content?cands[0].content.parts||[]:[];
-    let img=null;
-    for(let i=0;i<parts.length;i++){if(parts[i].inlineData&&parts[i].inlineData.data){img=parts[i].inlineData;break;}}
-    if(!img)return{error:'no image came back — try rewording the prompt'};
-    PENDING_IMAGES.push('data:'+(img.mimeType||'image/png')+';base64,'+img.data);
-    return{thumbnail_ready:true,aspect:aspect,superstar:starUsed||null,note:'Thumbnail generated'+starNote+' — shown in chat below with a download link.'};
+    let dataUrl=null,via='';
+    if(CFG.key){
+      try{dataUrl=await geminiImg([{text:'YouTube thumbnail, '+aspect+' aspect ratio, bold eye-catching design, huge readable title text, ultra-expressive subject, vivid high contrast colors, no watermark, no logo: '+prompt}]);via='gemini';}
+      catch(e){/* fall through to the free service */}
+    }
+    if(!dataUrl){
+      try{dataUrl=await pollinationsThumb(prompt,title,subtitle,aspect);via='free image service (no key needed)';}
+      catch(e){return{error:'both image routes failed right now ('+e.message+'). Try again in a bit.'};}
+    }
+    PENDING_IMAGES.push(dataUrl);
+    return{thumbnail_ready:true,aspect:aspect,via:via,note:'Thumbnail generated via '+via+' — shown in chat below with a download link.'};
   }
   return{error:'unknown tool: '+name};
 }
