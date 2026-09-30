@@ -3408,6 +3408,16 @@
    "top_terms": [],
    "best_video": null,
    "rank": null
+  },
+  {
+   "name": "Bobby Lashley",
+   "status": "unscanned",
+   "top10_views": 0,
+   "median_views": 0,
+   "video_count": 0,
+   "top_terms": [],
+   "best_video": null,
+   "rank": null
   }
  ],
  "pending_rescan": [
