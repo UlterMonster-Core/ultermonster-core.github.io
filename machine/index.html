@@ -443,6 +443,27 @@ async function getStars(){
   return STARS_CACHE;
 }
 function blobToB64(blob){return new Promise(function(res,rej){const fr=new FileReader();fr.onload=function(){res(String(fr.result).split(',')[1]);};fr.onerror=rej;fr.readAsDataURL(blob);});}
+async function geminiImageGen(key,body){
+  const waits=[0,25000,70000,140000];
+  let lastErr=null;
+  for(let i=0;i<waits.length;i++){
+    if(waits[i])await new Promise(function(r){setTimeout(r,waits[i]);});
+    let r,d;
+    try{
+      r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key='+encodeURIComponent(key),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+      d=await r.json().catch(function(){return{};});
+    }catch(e){lastErr=e;if(i<waits.length-1)continue;throw e;}
+    if(d.error){
+      const msg=String(d.error.message||('image api '+r.status));
+      const limited=(d.error.code===429||r.status===429||/quota|rate limit|resource.?exhausted/i.test(msg));
+      if(limited&&i<waits.length-1){lastErr=new Error(msg);continue;}
+      if(limited)throw new Error('free-tier image limit hit — even after waiting. Give it a few minutes and try again; nothing is broken.');
+      throw new Error(msg);
+    }
+    return d;
+  }
+  throw lastErr||new Error('image generation failed');
+}
   if(name==='generate_thumbnail'){
     if(!CFG.key)throw new Error('no-key');
     const prompt=String(args.prompt||'').slice(0,800);
@@ -464,11 +485,7 @@ function blobToB64(blob){return new Promise(function(res,rej){const fr=new FileR
     } else {
       reqParts=[{text:'YouTube thumbnail, '+aspect+' aspect ratio, bold eye-catching design, huge readable title text, ultra-expressive subject, vivid high contrast colors, no watermark, no logo: '+prompt}];
     }
-    const r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key='+encodeURIComponent(CFG.key),{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({contents:[{parts:reqParts}],generationConfig:{responseModalities:['TEXT','IMAGE'],imageConfig:{aspectRatio:aspect}}})});
-    const d=await r.json().catch(function(){return{};});
-    if(d.error)throw new Error(d.error.message||('image api '+r.status));
+    const d=await geminiImageGen(CFG.key,{contents:[{parts:reqParts}],generationConfig:{responseModalities:['TEXT','IMAGE'],imageConfig:{aspectRatio:aspect}}});
     const cands=d.candidates||[];
     const parts=cands.length&&cands[0].content?cands[0].content.parts||[]:[];
     let img=null;
