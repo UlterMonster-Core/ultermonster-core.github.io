@@ -1,7 +1,33 @@
 {
- "updated": 1790776372,
- "updated_human": "2026-09-30 09:52 ET",
+ "updated": 1790778742,
+ "updated_human": "2026-09-30 10:32 ET",
  "superstars": [
+  {
+   "id": "nikki-bella",
+   "name": "Nikki Bella",
+   "status": "active",
+   "top10_views": 3331713902,
+   "median_views": 312007747,
+   "video_count": 10,
+   "top_terms": [
+    "vlad",
+    "niki",
+    "stories",
+    "kids",
+    "children",
+    "play",
+    "mom",
+    "about"
+   ],
+   "best_video": {
+    "title": "Vlad and Niki help their friends - best stories for children",
+    "channel": "Vlad and Niki",
+    "views": 614042391,
+    "published": "2022-07-31",
+    "id": "CZTCdYsSh_A"
+   },
+   "rank": 1
+  },
   {
    "id": "the-rock",
    "name": "The Rock",
@@ -26,7 +52,7 @@
     "published": "2022-10-21",
     "id": "S_CUEOBZ0P4"
    },
-   "rank": 1
+   "rank": 2
   },
   {
    "id": "john-cena",
@@ -52,7 +78,7 @@
     "published": "2020-11-22",
     "id": "ChiLWi-mBvU"
    },
-   "rank": 2
+   "rank": 3
   },
   {
    "id": "logan-paul",
@@ -78,7 +104,7 @@
     "published": "2017-07-10",
     "id": "oeCytho8wq4"
    },
-   "rank": 3
+   "rank": 4
   },
   {
    "id": "roman-reigns",
@@ -104,7 +130,7 @@
     "published": "2015-12-15",
     "id": "NlQTV2pi0Bg"
    },
-   "rank": 4
+   "rank": 5
   },
   {
    "id": "brock-lesnar",
@@ -130,7 +156,7 @@
     "published": "2012-04-10",
     "id": "kU553MOaBdM"
    },
-   "rank": 5
+   "rank": 6
   },
   {
    "id": "triple-h",
@@ -156,7 +182,7 @@
     "published": "2013-10-20",
     "id": "FYCCs4cpKqw"
    },
-   "rank": 6
+   "rank": 7
   },
   {
    "id": "randy-orton",
@@ -182,7 +208,7 @@
     "published": "2013-10-20",
     "id": "FYCCs4cpKqw"
    },
-   "rank": 7
+   "rank": 8
   },
   {
    "id": "the-miz",
@@ -208,7 +234,7 @@
     "published": "2020-11-22",
     "id": "ChiLWi-mBvU"
    },
-   "rank": 8
+   "rank": 9
   },
   {
    "id": "seth-rollins",
@@ -234,7 +260,7 @@
     "published": "2018-11-06",
     "id": "gD7qJ3TW1jw"
    },
-   "rank": 9
+   "rank": 10
   },
   {
    "id": "undertaker",
@@ -260,7 +286,7 @@
     "published": "2020-03-26",
     "id": "sBBFSuHATmw"
    },
-   "rank": 10
+   "rank": 11
   },
   {
    "id": "rey-mysterio",
@@ -286,7 +312,7 @@
     "published": "2013-12-20",
     "id": "_TT7PlX5PCQ"
    },
-   "rank": 11
+   "rank": 12
   },
   {
    "id": "cody-rhodes",
@@ -312,7 +338,7 @@
     "published": "2025-10-05",
     "id": "N0Xni0Ew6SA"
    },
-   "rank": 12
+   "rank": 13
   },
   {
    "id": "alexa-bliss",
@@ -338,7 +364,7 @@
     "published": "2024-06-08",
     "id": "h4O-sQg8PHQ"
    },
-   "rank": 13
+   "rank": 14
   },
   {
    "id": "shinsuke-nakamura",
@@ -364,7 +390,7 @@
     "published": "2020-11-14",
     "id": "cIivnffFgl4"
    },
-   "rank": 14
+   "rank": 15
   },
   {
    "id": "drew-mcintyre",
@@ -390,7 +416,7 @@
     "published": "2021-01-31",
     "id": "sZX4MmdXPRA"
    },
-   "rank": 15
+   "rank": 16
   },
   {
    "id": "la-knight",
@@ -416,7 +442,7 @@
     "published": "2026-04-07",
     "id": "9mvJPTiuiQg"
    },
-   "rank": 16
+   "rank": 17
   },
   {
    "id": "jordynne-grace",
@@ -442,7 +468,7 @@
     "published": "2023-10-09",
     "id": "EBpY36fuQNg"
    },
-   "rank": 17
+   "rank": 18
   },
   {
    "id": "aj-styles",
@@ -468,7 +494,7 @@
     "published": "2018-11-07",
     "id": "aXlCC8HCFMc"
    },
-   "rank": 18
+   "rank": 19
   },
   {
    "id": "andrade",
@@ -494,7 +520,7 @@
     "published": "2018-05-24",
     "id": "CZyCDQ0BMxM"
    },
-   "rank": 19
+   "rank": 20
   },
   {
    "id": "nia-jax",
@@ -520,7 +546,7 @@
     "published": "2024-05-18",
     "id": "A1aYc3uOGTI"
    },
-   "rank": 20
+   "rank": 21
   },
   {
    "id": "stone-cold",
@@ -546,7 +572,7 @@
     "published": "2012-03-26",
     "id": "wHaGqxQJ5f4"
    },
-   "rank": 21
+   "rank": 22
   },
   {
    "id": "charlotte-flair",
@@ -572,7 +598,7 @@
     "published": "2025-08-11",
     "id": "VNVVYPnz38U"
    },
-   "rank": 22
+   "rank": 23
   },
   {
    "id": "sheamus",
@@ -598,7 +624,7 @@
     "published": "2016-01-05",
     "id": "k35ZCvNW2Ag"
    },
-   "rank": 23
+   "rank": 24
   },
   {
    "id": "cm-punk",
@@ -624,7 +650,7 @@
     "published": "2012-06-12",
     "id": "CQG2o8E-zuw"
    },
-   "rank": 24
+   "rank": 25
   },
   {
    "id": "sami-zayn",
@@ -650,7 +676,7 @@
     "published": "2024-12-26",
     "id": "EOt1G2yc7XQ"
    },
-   "rank": 25
+   "rank": 26
   },
   {
    "id": "dominik-mysterio",
@@ -676,7 +702,7 @@
     "published": "2025-06-07",
     "id": "vnCj_2549iA"
    },
-   "rank": 26
+   "rank": 27
   },
   {
    "id": "bianca-belair",
@@ -702,7 +728,7 @@
     "published": "2022-12-28",
     "id": "Gf-j-FE_i_Y"
    },
-   "rank": 27
+   "rank": 28
   },
   {
    "id": "kevin-owens",
@@ -728,7 +754,7 @@
     "published": "2018-11-07",
     "id": "aXlCC8HCFMc"
    },
-   "rank": 28
+   "rank": 29
   },
   {
    "id": "rusev",
@@ -754,7 +780,7 @@
     "published": "2014-10-07",
     "id": "2ff6LxpfVAo"
    },
-   "rank": 29
+   "rank": 30
   },
   {
    "id": "jimmy-uso",
@@ -780,7 +806,7 @@
     "published": "2021-01-31",
     "id": "QZ4RpUcNCl8"
    },
-   "rank": 30
+   "rank": 31
   },
   {
    "id": "kofi-kingston",
@@ -806,7 +832,7 @@
     "published": "2017-08-12",
     "id": "QELrxLxEnnc"
    },
-   "rank": 31
+   "rank": 32
   },
   {
    "id": "natalya",
@@ -832,7 +858,7 @@
     "published": "2018-06-19",
     "id": "XfJuw5EfXAE"
    },
-   "rank": 32
+   "rank": 33
   },
   {
    "id": "rhea-ripley",
@@ -858,7 +884,33 @@
     "published": "2024-09-03",
     "id": "IPZCowfSDHs"
    },
-   "rank": 33
+   "rank": 34
+  },
+  {
+   "id": "brie-bella",
+   "name": "Brie Bella",
+   "status": "active",
+   "top10_views": 288081928,
+   "median_views": 22310929,
+   "video_count": 10,
+   "top_terms": [
+    "raw",
+    "twins",
+    "ronda",
+    "rousey",
+    "daniel",
+    "bryan",
+    "riott",
+    "squad"
+   ],
+   "best_video": {
+    "title": "The Bellas challenge Daniel Bryan and John Cena: Total Divas, Aug. 4, 2013",
+    "channel": "WWE",
+    "views": 53968753,
+    "published": "2013-08-05",
+    "id": "vu42rF3NpsA"
+   },
+   "rank": 35
   },
   {
    "id": "becky-lynch",
@@ -884,7 +936,7 @@
     "published": "2020-07-18",
     "id": "CiNP3-1Kk6I"
    },
-   "rank": 34
+   "rank": 36
   },
   {
    "id": "liv-morgan",
@@ -910,7 +962,7 @@
     "published": "2024-11-19",
     "id": "7Tt0cpllHCw"
    },
-   "rank": 35
+   "rank": 37
   },
   {
    "id": "asuka",
@@ -936,7 +988,7 @@
     "published": "2022-09-18",
     "id": "yy_FymuS7yY"
    },
-   "rank": 36
+   "rank": 38
   },
   {
    "id": "jade-cargill",
@@ -962,7 +1014,7 @@
     "published": "2024-05-18",
     "id": "A1aYc3uOGTI"
    },
-   "rank": 37
+   "rank": 39
   },
   {
    "id": "gunther",
@@ -988,7 +1040,7 @@
     "published": "2020-03-20",
     "id": "PLLTVHfHV8g"
    },
-   "rank": 38
+   "rank": 40
   },
   {
    "id": "tiffany-stratton",
@@ -1014,7 +1066,7 @@
     "published": "2023-09-26",
     "id": "2SsT5_zpVqc"
    },
-   "rank": 39
+   "rank": 41
   },
   {
    "id": "bayley",
@@ -1040,7 +1092,7 @@
     "published": "2021-01-21",
     "id": "8q5afAjlStE"
    },
-   "rank": 40
+   "rank": 42
   },
   {
    "id": "jey-uso",
@@ -1066,7 +1118,7 @@
     "published": "2025-01-24",
     "id": "7wq3q5ID-zw"
    },
-   "rank": 41
+   "rank": 43
   },
   {
    "id": "finn-balor",
@@ -1092,7 +1144,33 @@
     "published": "2020-07-05",
     "id": "B13XLQIAIyw"
    },
-   "rank": 42
+   "rank": 44
+  },
+  {
+   "id": "trish-stratus",
+   "name": "Trish Stratus",
+   "status": "active",
+   "top10_views": 132440236,
+   "median_views": 5816384,
+   "video_count": 10,
+   "top_terms": [
+    "raw",
+    "lita",
+    "women's",
+    "dec",
+    "royal",
+    "rumble",
+    "rock",
+    "kisses"
+   ],
+   "best_video": {
+    "title": "The Rock kisses Trish Stratus: Raw, Dec. 3, 2001",
+    "channel": "WWE",
+    "views": 46677227,
+    "published": "2016-12-31",
+    "id": "LKT55UCqLyE"
+   },
+   "rank": 45
   },
   {
    "id": "bron-breakker",
@@ -1118,7 +1196,7 @@
     "published": "2025-09-18",
     "id": "Jqv4CquIaM8"
    },
-   "rank": 43
+   "rank": 46
   },
   {
    "id": "solo-sikoa",
@@ -1144,7 +1222,7 @@
     "published": "2026-06-25",
     "id": "6OnJ6AoiMGo"
    },
-   "rank": 44
+   "rank": 47
   },
   {
    "id": "penta",
@@ -1170,7 +1248,7 @@
     "published": "2025-07-14",
     "id": "rUp5Slv3268"
    },
-   "rank": 45
+   "rank": 48
   },
   {
    "id": "iyo-sky",
@@ -1196,7 +1274,7 @@
     "published": "2025-10-13",
     "id": "BZsNsn7yVvs"
    },
-   "rank": 46
+   "rank": 49
   },
   {
    "id": "dragon-lee",
@@ -1222,7 +1300,7 @@
     "published": "2015-05-29",
     "id": "A0ys2v3Vd4E"
    },
-   "rank": 47
+   "rank": 50
   },
   {
    "id": "oba-femi",
@@ -1248,7 +1326,7 @@
     "published": "2026-04-18",
     "id": "s89kGvP42Ro"
    },
-   "rank": 48
+   "rank": 51
   },
   {
    "id": "bronson-reed",
@@ -1274,7 +1352,7 @@
     "published": "2025-09-18",
     "id": "Jqv4CquIaM8"
    },
-   "rank": 49
+   "rank": 52
   },
   {
    "id": "jacob-fatu",
@@ -1300,7 +1378,7 @@
     "published": "2026-01-21",
     "id": "U0-D_wSStlk"
    },
-   "rank": 50
+   "rank": 53
   },
   {
    "id": "damian-priest",
@@ -1326,7 +1404,7 @@
     "published": "2023-05-10",
     "id": "ZpvSh6iAImM"
    },
-   "rank": 51
+   "rank": 54
   },
   {
    "id": "zelina-vega",
@@ -1352,7 +1430,7 @@
     "published": "2025-02-09",
     "id": "gUSh654cQYc"
    },
-   "rank": 52
+   "rank": 55
   },
   {
    "id": "roxanne-perez",
@@ -1378,7 +1456,7 @@
     "published": "2020-03-09",
     "id": "8vqJZa-fRQI"
    },
-   "rank": 53
+   "rank": 56
   },
   {
    "id": "raquel-rodriguez",
@@ -1404,7 +1482,7 @@
     "published": "2022-09-10",
     "id": "j5b6QwNKQ7E"
    },
-   "rank": 54
+   "rank": 57
   },
   {
    "id": "kairi-sane",
@@ -1430,7 +1508,7 @@
     "published": "2025-11-24",
     "id": "hmMItmvuupc"
    },
-   "rank": 55
+   "rank": 58
   },
   {
    "id": "aleister-black",
@@ -1456,7 +1534,7 @@
     "published": "2024-05-27",
     "id": "OkC9K3wgWkw"
    },
-   "rank": 56
+   "rank": 59
   },
   {
    "id": "chad-gable",
@@ -1482,7 +1560,7 @@
     "published": "2023-08-22",
     "id": "vuWlLLX0ct0"
    },
-   "rank": 57
+   "rank": 60
   },
   {
    "id": "tama-tonga",
@@ -1508,7 +1586,7 @@
     "published": "2025-04-23",
     "id": "yma7lNibtVk"
    },
-   "rank": 58
+   "rank": 61
   },
   {
    "id": "stephanie-vaquer",
@@ -1534,7 +1612,7 @@
     "published": "2026-07-20",
     "id": "hPun6QUiAl8"
    },
-   "rank": 59
+   "rank": 62
   },
   {
    "id": "ethan-page",
@@ -1560,7 +1638,7 @@
     "published": "2017-04-26",
     "id": "VaUjEbRURFo"
    },
-   "rank": 60
+   "rank": 63
   },
   {
    "id": "jd-mcdonagh",
@@ -1586,7 +1664,7 @@
     "published": "2024-08-22",
     "id": "0mJ70q00hV8"
    },
-   "rank": 61
+   "rank": 64
   },
   {
    "id": "santos-escobar",
@@ -1612,7 +1690,7 @@
     "published": "2024-03-02",
     "id": "uURlGJZGHww"
    },
-   "rank": 62
+   "rank": 65
   },
   {
    "id": "carmelo-hayes",
@@ -1638,7 +1716,7 @@
     "published": "2024-05-24",
     "id": "DODfEafVza4"
    },
-   "rank": 63
+   "rank": 66
   },
   {
    "id": "trick-williams",
@@ -1664,7 +1742,7 @@
     "published": "2025-07-23",
     "id": "C-30bAdD-Uo"
    },
-   "rank": 64
+   "rank": 67
   },
   {
    "id": "maxxine-dupri",
@@ -1690,7 +1768,7 @@
     "published": "2024-01-16",
     "id": "7WwmbXjkyDM"
    },
-   "rank": 65
+   "rank": 68
   },
   {
    "id": "tonga-loa",
@@ -1716,7 +1794,7 @@
     "published": "2024-08-10",
     "id": "HFsk6Z_Opq8"
    },
-   "rank": 66
+   "rank": 69
   },
   {
    "id": "el-grande-americano",
@@ -1742,7 +1820,7 @@
     "published": "2025-04-08",
     "id": "N5RHeCqjFBU"
    },
-   "rank": 67
+   "rank": 70
   },
   {
    "id": "jevon-evans",
@@ -1768,7 +1846,7 @@
     "published": "2025-12-10",
     "id": "QB6q50VKPvs"
    },
-   "rank": 68
+   "rank": 71
   },
   {
    "id": "lyra-valkyria",
@@ -1794,7 +1872,7 @@
     "published": "2025-07-29",
     "id": "CsMZw4HVG_M"
    },
-   "rank": 69
+   "rank": 72
   },
   {
    "id": "rey-fenix",
@@ -1820,7 +1898,7 @@
     "published": "2026-09-15",
     "id": "t7m12y_xvr0"
    },
-   "rank": 70
+   "rank": 73
   },
   {
    "id": "ivy-nile",
@@ -1846,7 +1924,7 @@
     "published": "2026-02-10",
     "id": "zmv23L8nKEo"
    },
-   "rank": 71
+   "rank": 74
   },
   {
    "id": "giulia",
@@ -1872,7 +1950,7 @@
     "published": "2026-05-11",
     "id": "1IsTxglzl58"
    },
-   "rank": 72
+   "rank": 75
   },
   {
    "id": "karrion-kross",
@@ -1898,7 +1976,7 @@
     "published": "2025-10-21",
     "id": "c9-hViJ5MrY"
    },
-   "rank": 73
+   "rank": 76
   },
   {
    "id": "sol-ruca",
@@ -1924,7 +2002,7 @@
     "published": "2026-01-13",
     "id": "LCjK_G-qpGY"
    },
-   "rank": 74
+   "rank": 77
   },
   {
    "id": "kelani-jordan",
@@ -1950,7 +2028,7 @@
     "published": "2025-07-17",
     "id": "2t62AAqDlGU"
    },
-   "rank": 75
+   "rank": 78
   },
   {
    "id": "ricky-saints",
@@ -1976,7 +2054,7 @@
     "published": "2026-06-27",
     "id": "gDhvB3pyhtI"
    },
-   "rank": 76
+   "rank": 79
   },
   {
    "id": "zaria",
@@ -2002,7 +2080,7 @@
     "published": "2025-10-04",
     "id": "NwfVD_cqHM0"
    },
-   "rank": 77
+   "rank": 80
   },
   {
    "id": "super-cena",
@@ -2057,6 +2135,12 @@
    "name": "Mami",
    "status": "alias",
    "alias_of": "rhea-ripley"
+  },
+  {
+   "id": "io-shirai",
+   "name": "Io Shirai",
+   "status": "alias",
+   "alias_of": "iyo-sky"
   }
  ],
  "pending_rescan": [
