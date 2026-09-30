@@ -1,6 +1,6 @@
 {
- "updated": 1790778742,
- "updated_human": "2026-09-30 10:32 ET",
+ "updated": 1790779311,
+ "updated_human": "2026-09-30 10:41 ET",
  "superstars": [
   {
    "id": "nikki-bella",
@@ -2141,6 +2141,24 @@
    "name": "Io Shirai",
    "status": "alias",
    "alias_of": "iyo-sky"
+  },
+  {
+   "id": "d-generation-x",
+   "name": "D-Generation X",
+   "status": "unscanned",
+   "team": true
+  },
+  {
+   "id": "dx",
+   "name": "DX",
+   "status": "alias",
+   "alias_of": "d-generation-x"
+  },
+  {
+   "id": "brothers-of-destruction",
+   "name": "Brothers of Destruction",
+   "status": "unscanned",
+   "team": true
   }
  ],
  "pending_rescan": [
