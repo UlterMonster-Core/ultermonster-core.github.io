@@ -198,7 +198,7 @@ function sysPrompt(q){
   if(almanac&&Object.keys(almanac).length){
     alm='\nMajor YouTube channels (hourly almanac): '+Object.values(almanac).map(c=>c.name+' '+Number(c.subs).toLocaleString()+' subs').join('; ')+'.';
   }
-  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), youtube_search {query} (search YouTube LIVE with NO key needed — use this whenever he asks what is happening on YouTube), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. generate_thumbnail {prompt, aspect, title, subtitle} makes YouTube thumbnails — tries your Gemini key first, then a free no-key service automatically, so offer it whenever Thomas talks video packaging even if the key quota is used up. Thumbnail craft: 3-5 huge readable words max, one expressive subject, vivid contrast, never cluttered, never text on faces. superstar:"<id>" puts a REAL WWE superstar photo in the thumbnail — AI generates the background only, never AI faces (the owner hard rule). Hard rules that override everything else: 1) If Thomas asks about YouTube (channels, videos, SEO, trends, what people are watching), ALWAYS call youtube_search first — it needs no key and works even when everything else fails. Then try youtube_channel / youtube_video / youtube_lookup as needed. NEVER tell him you cannot get YouTube data without trying every one of those tools. 2) If data genuinely cannot be retrieved, say plainly: I could not pull that right now — NEVER name internal tools, and NEVER mention error codes, status numbers, or API names. 3) NEVER invent numbers, scores, or estimates to fill a gap in data. If you do not have it, say so and say what you CAN do instead. SEO ENGINE: a twice-weekly deep scan ranks every WWE superstar by real view numbers (wwe_seo.json, breathed in automatically — never ask Thomas to wait for it). When he names a matchup, call seo_title: it parses the names (forgiving of typos), pulls real numbers for each star, runs a live keyless check, and drafts titles from the data. Title craft: higher-demand name FIRST (the numbers decide the order), both names ALL CAPS, stipulation in caps (TLC, STEEL CAGE), 70 characters max, front-load the money keywords, work in the hot terms from the scan. Offer generate_thumbnail with the thumbnail_text it returns. The standing rules always apply to SEO work too: real superstar faces only (never AI faces), thumbnails land in under a minute via the auto-fallback, never name tools or error codes, never invent or estimate numbers. Use a tool when the answer needs live/external data you do not have.';
+  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), youtube_search {query} (search YouTube LIVE with NO key needed — use this whenever he asks what is happening on YouTube), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. generate_thumbnail {prompt, aspect, title, subtitle} makes YouTube thumbnails — tries your Gemini key first, then a free no-key service automatically, so offer it whenever Thomas talks video packaging even if the key quota is used up. Thumbnail craft: 3-5 huge readable words max, one expressive subject, vivid contrast, never cluttered, never text on faces. superstar:"<id>" puts a REAL WWE superstar photo in the thumbnail — AI generates the background only, never AI faces (the owner hard rule). Hard rules that override everything else: 1) If Thomas asks about YouTube (channels, videos, SEO, trends, what people are watching), ALWAYS call youtube_search first — it needs no key and works even when everything else fails. Then try youtube_channel / youtube_video / youtube_lookup as needed. NEVER tell him you cannot get YouTube data without trying every one of those tools. 2) If data genuinely cannot be retrieved, say plainly: I could not pull that right now — NEVER name internal tools, and NEVER mention error codes, status numbers, or API names. 3) NEVER invent numbers, scores, or estimates to fill a gap in data. If you do not have it, say so and say what you CAN do instead. SEO ENGINE: a twice-weekly deep scan ranks every WWE superstar by real view numbers (wwe_seo.json, breathed in automatically — never ask Thomas to wait for it). When he names a matchup, call seo_title: it parses the names (forgiving of typos), pulls real numbers for each star, runs a live keyless check, and drafts titles from the data. Title craft: higher-demand name FIRST (the numbers decide the order), both names ALL CAPS, stipulation in caps (TLC, STEEL CAGE), 70 characters max, front-load the money keywords, work in the hot terms from the scan. Offer generate_thumbnail with the thumbnail_text it returns. After you pick a title, always show its SEO scorecard underneath: the 0-100 score plus the breakdown the tool gives you (demand, name order, hot terms, stipulation, length, name coverage), in plain words. The standing rules always apply to SEO work too: real superstar faces only (never AI faces), thumbnails land in under a minute via the auto-fallback, never name tools or error codes, never invent or estimate numbers. Use a tool when the answer needs live/external data you do not have.';
   return 'You are '+DB.name+', a personal AI with a brain that learns and grows. You belong to your owner, Thomas. You remember everything important, you learn from every conversation, and you get sharper over time.\n\nPrime directives:\n1. Serve your owner\'s interests first. Never act against them.\n2. Learn continuously: notice durable facts, preferences, and what works.\n3. Predict and verify: make falsifiable predictions with confidence levels.\n4. Never lie: separate what you know, what you infer, and what you don\'t know.\n5. Be warm, sharp, and concise. No filler praise, no fluff.\n\nRelevant memories:\n'+mems+'\n\nActive learnings:\n'+learns+channel+alm+tools+'\n\nUse the memories and learnings naturally. If a memory seems wrong or outdated, say so instead of blindly repeating it.';
 }
 const EXTRACT_PROMPT='From this conversation turn, extract durable items worth remembering long-term. Return ONLY a JSON array, no other text. Each item:\n{"kind":"fact","key":"short_snake_key","value":"...","confidence":0-100}\nor\n{"kind":"learning","text":"pattern about what works","confidence":0-100}\nFacts are stable truths about the owner (name, projects, preferences).\nLearnings are patterns about what works or doesn\'t.\nInclude only items genuinely worth keeping. Return [] if none.\n\nUser: {user}\n'+'{name}'+': {reply}';
@@ -348,7 +348,7 @@ const TOOL_DEFS=[
  ['youtube_video','Look up ANY YouTube video: views, likes, comments, duration, channel. Cached and remembered forever. args: {query} (title, video ID or watch URL), refresh? (true to re-check live)'],
  ['youtube_search','Search YouTube LIVE with no API key (public mirrors). args: {query}, type ("video" default, "channel"). Returns titles, views, durations, URLs. Everything found is cached in your YouTube memory forever.'],
  ['wwe_seo','Full SEO card for a WWE superstar from the twice-weekly deep scan: demand rank, top-10 total views, median views, hot title terms, biggest video. args: {name}.'],
- ['seo_title','Build the highest-SEO title for a matchup from REAL scan numbers + a live keyless YouTube check. args: {matchup} e.g. "dominik mysterio vs liv morgan tlc". Returns real numbers per star, 3 draft titles, and thumbnail text. Present the top draft, refine it with the title rules, never invent numbers.'],
+ ['seo_title','Build the highest-SEO title for a matchup from REAL scan numbers + a live keyless YouTube check. args: {matchup} e.g. "dominik mysterio vs liv morgan tlc". Returns real numbers per star, 3 draft titles EACH WITH a 0-100 SEO score and score breakdown, and thumbnail text. Present the top draft, then show its scorecard, refine it with the title rules, never invent numbers.'],
  ['generate_thumbnail','Generate a YouTube thumbnail. Tries your Gemini key first (best quality); if the key is missing or its free image quota is used up, automatically falls back to a free no-key image service with your title text stamped on in huge letters. args: {prompt} (describe the scene: subject, mood), '
  +'aspect ("16:9" default, "9:16" for Shorts, "1:1"), '
  +'title (BIG words for the fallback to stamp, e.g. "RKO" — pass the 2-4 huge words), '
@@ -553,9 +553,40 @@ function seoCard(s){
   if(!s)return null;
   return{rank:s.rank,name:s.name,status:s.status,
     top10_views:s.top10_views,median_views:s.median_views,
+    demand_score:(function(){var mx=1;seoStars().forEach(function(x){if(x.top10_views>mx)mx=x.top10_views;});return Math.round(100*Math.log10(1+s.top10_views)/Math.log10(1+mx));})(),
     hot_terms:s.top_terms,
     best_video:s.best_video?(s.best_video.title+' — '+Number(s.best_video.views).toLocaleString()+' views ('+s.best_video.channel+')'):null,
     scan_updated:(LAST_SEO||{}).updated_human||'unknown'};
+}
+function titleScore(title,cards,stip){
+  var t=String(title).toUpperCase();
+  var stars=seoStars();
+  var maxV=1;stars.forEach(function(s){if(s.top10_views>maxV)maxV=s.top10_views;});
+  var combined=0;cards.forEach(function(c){combined+=(c.top10_views||0);});
+  var demand=40*Math.log10(1+combined)/Math.log10(1+maxV);
+  var sorted=cards.slice().sort(function(a,b){return b.top10_views-a.top10_views;});
+  var order=0;
+  if(sorted.length){
+    var iA=t.indexOf(sorted[0].name.toUpperCase());
+    if(sorted.length>1){
+      var iB=t.indexOf(sorted[1].name.toUpperCase());
+      if(iA>=0&&(iB<0||iA<iB))order=15;else if(iA>=0)order=7;
+    }else if(iA>=0)order=15;
+  }
+  var nameToks={};
+  stars.forEach(function(s){norm(s.name).split(' ').forEach(function(w){nameToks[w]=1;});});
+  var hooks=[];
+  sorted.forEach(function(s){(s.top_terms||[]).forEach(function(x){if(!nameToks[x]&&hooks.indexOf(x)<0)hooks.push(x);});});
+  var hits=0;hooks.slice(0,6).forEach(function(x){if(t.indexOf(x.toUpperCase())>=0)hits++;});
+  var hookScore=Math.min(15,hits*5);
+  var stipScore=0;if(stip)stipScore=t.indexOf(stip.toUpperCase())>=0?10:4;
+  var len=String(title).length;
+  var lenScore=len<=60?10:(len>=90?0:Math.round(10*(90-len)/30));
+  var names=0;cards.forEach(function(c){if(t.indexOf(c.name.toUpperCase())>=0)names+=5;});
+  names=Math.min(10,names);
+  var total=Math.round(demand+order+hookScore+stipScore+lenScore+names);
+  return{score:Math.min(100,total),
+    breakdown:{demand:Math.round(demand),name_order:order,hot_terms:hookScore,stipulation:stipScore,length:lenScore,name_coverage:names}};
 }
 function draftSeoTitles(cards,stip){
   const sorted=cards.slice().sort(function(a,b){return b.top10_views-a.top10_views;});
@@ -575,6 +606,8 @@ function draftSeoTitles(cards,stip){
   if(hook)titles.push({title:(hook+' — '+base).slice(0,70),why:'Leads with "'+hook+'", the hottest term in the scan data for this matchup.'});
   else titles.push({title:(base+' — FULL MATCH').slice(0,70),why:'Classic high-CTR long-form suffix.'});
   const thumbSub=(B?(an(B).split(' ').pop()+' • '):'')+(stip?stip.toUpperCase():'WWE');
+  titles.forEach(function(x){var sc=titleScore(x.title,sorted,stip);x.score=sc.score;x.score_breakdown=sc.breakdown;});
+  titles.sort(function(a,b){return b.score-a.score;});
   return{titles:titles,thumbnail:{title:an(A).split(' ').pop(),subtitle:thumbSub.slice(0,30)}};
 }
 async function dispatchTool(name,args){
