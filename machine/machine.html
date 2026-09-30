@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Machine</title>
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--dim:#8b949e;--acc:#58a6ff;--acc2:#3fb950;--warn:#d29922;--bad:#f85149}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;display:flex;flex-direction:column;height:100dvh;overflow:hidden}
+header{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--border);background:var(--panel);flex-shrink:0}
+header h1{font-size:17px;font-weight:600;letter-spacing:.3px}
+header h1 span{color:var(--dim);font-weight:400;font-size:12px;margin-left:8px}
+.hspace{flex:1}
+.iconbtn{background:none;border:1px solid var(--border);color:var(--dim);border-radius:8px;padding:6px 10px;font-size:14px;cursor:pointer}
+.iconbtn:active{background:#21262d}
+#chat{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px;-webkit-overflow-scrolling:touch}
+.msg{max-width:88%;padding:10px 13px;border-radius:14px;line-height:1.5;font-size:15px;white-space:pre-wrap;word-wrap:break-word}
+.msg.user{align-self:flex-end;background:#1f6feb;color:#fff;border-bottom-right-radius:4px}
+.msg.ai{align-self:flex-start;background:var(--panel);border:1px solid var(--border);border-bottom-left-radius:4px}
+.msg.sys{align-self:center;background:none;border:1px dashed var(--border);color:var(--dim);font-size:13px;max-width:95%}
+.msg pre{background:#0d1117;border:1px solid var(--border);border-radius:8px;padding:8px;margin:6px 0;overflow-x:auto;font-size:13px}
+.msg code{font-family:ui-monospace,Menlo,Consolas,monospace}
+.typing{color:var(--dim);font-style:italic}
+.trace{margin:2px 0 10px}
+.tstep{font-size:13px;color:var(--dim);padding:3px 0 3px 10px;margin:3px 0;border-left:2px solid var(--border);line-height:1.45}
+.tstep.live{color:var(--text)}
+.tracedone{margin-bottom:10px;font-size:13px}
+.tracedone summary{cursor:pointer;color:var(--dim);list-style:none}
+.tracedone summary:before{content:'\25b6 ';font-size:10px}
+.tracedone[open] summary:before{content:'\25bc ';font-size:10px}
+#bar{padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--border);background:var(--panel);flex-shrink:0}
+#row{display:flex;gap:8px}
+#in{flex:1;background:#0d1117;border:1px solid var(--border);color:var(--text);border-radius:10px;padding:11px 12px;font-size:16px;outline:none;resize:none;max-height:120px}
+#in:focus{border-color:var(--acc)}
+#send{background:#1f6feb;color:#fff;border:none;border-radius:10px;padding:0 18px;font-size:16px;cursor:pointer}
+#send:active{opacity:.85}
+#hints{display:flex;gap:6px;overflow-x:auto;margin-top:8px;padding-bottom:2px}
+.hint{flex-shrink:0;font-size:12px;color:var(--dim);border:1px solid var(--border);border-radius:20px;padding:5px 11px;cursor:pointer;background:none}
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:10;padding:18px}
+#modal.open{display:flex}
+#sheet{background:var(--panel);border:1px solid var(--border);border-radius:14px;max-width:480px;width:100%;max-height:88dvh;overflow-y:auto;padding:20px}
+#sheet h2{font-size:17px;margin-bottom:4px}
+#sheet p.d{font-size:13px;color:var(--dim);margin-bottom:14px;line-height:1.5}
+.f{margin-bottom:12px}
+.f label{display:block;font-size:13px;color:var(--dim);margin-bottom:5px}
+.f input{width:100%;background:#0d1117;border:1px solid var(--border);color:var(--text);border-radius:8px;padding:10px;font-size:15px}
+.btnrow{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.btn{background:#1f6feb;color:#fff;border:none;border-radius:8px;padding:10px 16px;font-size:15px;cursor:pointer}
+.btn.ghost{background:none;border:1px solid var(--border);color:var(--text)}
+.btn.danger{background:none;border:1px solid var(--bad);color:var(--bad)}
+#brainpanel{font-size:13px;color:var(--dim);line-height:1.9}
+#brainpanel b{color:var(--text)}
+.kv{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:4px 0}
+</style>
+</head>
+<body>
+<header>
+  <h1>Machine <span id="bstat"></span></h1>
+  <div class="hspace"></div>
+  <button class="iconbtn" id="brainbtn" title="Brain stats">🧠</button>
+  <button class="iconbtn" id="setbtn" title="Settings">⚙️</button>
+</header>
+<div id="chat"></div>
+<div id="bar">
+  <div id="row">
+    <textarea id="in" rows="1" placeholder="Talk to your AI…  ( /help for commands )"></textarea>
+    <button id="send">➤</button>
+  </div>
+  <div id="hints">
+    <button class="hint">/review</button><button class="hint">/stats</button>
+    <button class="hint">/calibration</button><button class="hint">/forecast </button>
+    <button class="hint">/act </button><button class="hint">/memories</button>
+  </div>
+</div>
+<div id="modal"><div id="sheet"></div></div>
+<script>
+"use strict";
+const SEED = {"facts": [{"key": "ypp_shorts_thresholds_2026", "value": "Standard YPP: 1,000 subs + 4,000 watch hours OR 10M Shorts views in 90 days. Expanded YPP: 500 subs + 3,000 watch hours OR 3M Shorts views in 90 days (limited features).", "conf": 85.0}, {"key": "wwe_mitb_2026", "value": "Money in the Bank 2026: Oct 10, Smoothie King Center, New Orleans. Airs ESPN Unlimited (US), Netflix (intl). Card: Roman Reigns vs LA Knight (WHC), Stephanie Vaquer vs Lynch/Morgan winner, men's/women's MITB ladders, Oba Femi vs Bronson Reed.", "conf": 90.0}, {"key": "wwe_raw_on_netflix", "value": "WWE Raw airs live on Netflix (2026).", "conf": 90.0}, {"key": "wwe_perth_dec_2026", "value": "WWE Perth takeover Dec 11-14 2026 at RAC Arena: SmackDown Dec 11, Wrestlepalooza: Perth Dec 12, Raw Dec 14. Annual Weekend Takeover deal runs through 2028.", "conf": 85.0}, {"key": "neville_pac_passed_2026", "value": "Benjamin Satterley (Neville in WWE, PAC in AEW) passed away Sep 27, 2026 at age 40. WWE paid on-air tribute on Raw Sep 28; AEW tribute Dynamite Sep 30.", "conf": 80.0}, {"key": "frontier_models_sep_2026", "value": "Sep 2026 frontier releases: GPT-6 Astra (Sep 3, first model to trigger critical-cyber safeguard), GPT-6 Sol/Luna (Sep 22, ~50% cheaper than 5.6), Claude Opus 5.5 (Sep 23), Claude Sonnet 5.5 (Sep 28, 30% faster/cheaper), Gemini 3.8 Flash (Sep 2), Kimi K3 open weights 1.56TB on Bedrock (Sep 18), Grok 4.7.", "conf": 85.0}, {"key": "openai_scrapped_gpt61_astra", "value": "OpenAI scrapped GPT-6.1 Astra rollout on Sep 29, 2026 over safety (scope/authorization failures); disclosed June incidents where models accessed Australian government sites without authorization.", "conf": 80.0}, {"key": "play_target_api_36_deadline", "value": "From Aug 31, 2026, new apps and Play updates must target Android 16 (API 36); extension to Nov 1, 2026 on request. Play Billing Library v8.0.0+ required for submissions from Aug 31, 2026.", "conf": 85.0}, {"key": "play_identity_verification_sep30_2026", "value": "Personal Play developer accounts must complete mandatory identity verification by Sep 30, 2026 or face update blocks and eventual listing removal. Separate Android Developer Verification requires registering every Play app package name (announced Jul 2026).", "conf": 85.0}, {"key": "play_12_testers_14_days", "value": "New personal Play accounts (created after Nov 2023) must run a closed test with 12+ testers opted in continuously for 14 days before production access review (~7 days).", "conf": 80.0}, {"key": "sub_paywall_benchmarks_2026", "value": "RevenueCat State of Subscription Apps 2026 (115k+ apps): hard paywall 10.7% Day-35 conversion / $3.09 RPI Day-60; freemium 2.1% / $0.38; hybrid soft-to-hard 16.5%. Card-required trials convert 48-60% vs 18-25% no-card. Gaming has the lowest revenue per install of any category: $0.08.", "conf": 85.0}, {"key": "openai_devday_sep29_2026", "value": "OpenAI DevDay Sep 29, 2026: launched 'Dots' always-on AI agents (rival to Meta Muse, powered by GPT-6 Astra, paid tiers first), GPT-6.1 Sol, ChatGPT at 1.2B weekly users, new $500/mo ChatGPT Pro plan.", "conf": 80.0}, {"key": "openai_frontier_training_pause", "value": "OpenAI paused all internal training of its most capable models (late Sep 2026) amid agent misalignment incidents including unauthorized access to Australian government sites and a Hugging Face breach; GPT-6.1 Astra rollout scrapped Sep 29 over scope/authorization safety failures.", "conf": 85.0}, {"key": "hormuz_crisis_sep2026", "value": "US-Iran standoff over Strait of Hormuz ongoing Sep 29, 2026; Qatar mediating; Trump denied offering sanctions relief for truce; Brent crude above $105; Middle East oil exports recovered to ~80% of prewar flows via Hormuz + alternative routes.", "conf": 85.0}, {"key": "spacex_starship_first_orbit", "value": "SpaceX Starship reached orbit for the first time on Sep 29, 2026, successfully deploying Starlink satellites before the flight was ended early.", "conf": 80.0}, {"key": "drc_ebola_sep2026", "value": "DRC Ebola outbreak topped 8,000 cases with ~4,000 deaths as of Sep 29, 2026; a vaccine-resistant strain reported, complicating containment.", "conf": 75.0}, {"key": "anthropic_art_enzyme_discovery", "value": "Anthropic's Claude agents (950 agents, 21 hours) discovered a previously unknown enzyme system ('ART', possibly a new CRISPR-like gene-editing mechanism) by screening 200k+ genes \u2014 work that would take human scientists weeks/months. Function still unknown.", "conf": 80.0}, {"key": "quantum_teleport_100_channels", "value": "Sep 2026: quantum teleportation across 100 simultaneous channels demonstrated (East China Normal University), teleporting a 100-pixel image \u2014 the largest parallel quantum teleportation demo to date.", "conf": 80.0}, {"key": "openai_navier_stokes_claim", "value": "Sep 8, 2026: OpenAI claimed an internal AI produced a proof of finite-time singularity for Navier-Stokes (Millennium Problem), formalized in Lean but NOT externally verified; OpenAI would decline the $1M prize if recognized.", "conf": 60.0}, {"key": "markets_sep29_2026", "value": "Sep 29, 2026: S&P 500 7,671 (-0.3%), Dow 51,351, Nasdaq 26,808; US 10Y yield 5.25% (highest since 2007), 30Y 5.55%; Brent >$105; gold $4,203/oz; TSX 35,460; CAD at 70.50 US cents. Money markets price 70% chance of Fed hike in late October.", "conf": 85.0}], "learnings": [{"text": "YouTube Shorts RPM 2026: US $0.04-0.08 per 1k views, UK/CA/AU $0.03-0.06, global $0.02-0.05. Roughly $40-80 per 1M US views. Shorts are volume game, not per-view game.", "conf": 80.0}, {"text": "On YouTube Shorts, using original audio instead of licensed music lifts RPM ~40%: music licensing fees are deducted from the shared revenue pool before creators get their 45% cut.", "conf": 80.0}, {"text": "YouTube Shorts now does 90B+ daily views (2026) with a mature pooled-revenue model: all Shorts ad revenue pooled, distributed by share of total views, creators get 45% of allocation.", "conf": 70.0}, {"text": "Frontier AI industry shift Sep 2026: from AI assistants to AI coworkers. New models (GPT-6, Opus 5.5) are designed for autonomous multi-step work and delegation, not just conversation.", "conf": 75.0}, {"text": "Frontier model pricing dropping fast (late Sep 2026): Sonnet 5.5 ~30% cheaper/faster than Sonnet 5, GPT-6 Sol/Luna ~50% cheaper than 5.6, Opus 5.5 ~40% cheaper than Opus 5. AI operating costs are deflating \u2014 good for automation-heavy projects.", "conf": 80.0}, {"text": "Falling behind Play's target API level doesn't remove your app \u2014 it makes it invisible to new users on newer devices. A slow, quiet failure, not a loud one. Stay ahead of the annual August ratchet.", "conf": 80.0}, {"text": "2026 subscription sweet spots: weekly $4.99-5.99 + 3-day trial is the LTV champion ($49.27 at 12 months); weekly plans are 55.6% of all app subscription revenue (2025), converting 1.7x-7.4x better than annual.", "conf": 85.0}, {"text": "Underpricing signals low value, not bargain: successful 2026 indie apps charge $7.99-14.99/mo for focused tools. Subscription fatigue is real \u2014 apps must deliver ongoing new/personalized value to hold subscribers.", "conf": 80.0}, {"text": "The AI race has shifted from 'smartest model' to control of the full stack: chips, datacenters, electricity, enterprise software, security layers. Frontier economics now dominate strategy (AMD $8.2B physics-lab acquisition, Nvidia $150B buyback).", "conf": 75.0}, {"text": "AI-led autonomous science is producing real results: Anthropic's enzyme discovery and OpenAI's Navier-Stokes proof claim both came from agent fleets working with minimal human direction. The assistant-to-coworker shift extends into research.", "conf": 75.0}, {"text": "Macro Sep 2026: Fed priced 70% for an October hike with 10Y at 5.25%; Fed governor Cook says AI productivity gains will arrive too late to offset building inflation pressure. Geopolitics (Hormuz) is the market's main driver, not earnings.", "conf": 70.0}, {"text": "Niche velocity baseline: median 0.4 views/hour across 78 recent videos (The DRAX, Titantron MHD, UlterMonster Wrestling, VokerTheBeast 2K, WrestleMania 2K, Wrestling With Simulations). Videos beating 3x median are outliers worth studying.", "conf": 80.0}, {"text": "Top-decile velocity videos share title terms: randy, orton, highlights, subscribe, rkos, simulation, aew, all. Test these patterns against the baseline before adopting.", "conf": 65.0}, {"text": "Fastest video right now: 'SUBSCRIBE \ud83d\udca2 RANDY ORTON RKOs RANDY ORTON Onto a Chair' (UlterMonster Wrestling) at 61.9 views/hour \u2014 163.0x the niche median.", "conf": 75.0}], "predictions": [{"text": "At least one new frontier AI model release will be announced in the next 14 days", "prob": 50, "due": "", "base": "Sep 2026 saw ~10 major model releases in 30 days across OpenAI/Anthropic/Google/DeepSeek/xAI"}, {"text": "YouTube announces another monetization or AI-content policy clarification before Nov 1, 2026", "prob": 50, "due": "", "base": "Major moves roughly semi-annual: inauthentic-content rename Jul 2025, Jan 2026 sweep, Jul 2026 clarification"}, {"text": "WWE Money in the Bank (Oct 10, New Orleans) sells out the Smoothie King Center", "prob": 50, "due": "", "base": "Recent WWE PLEs in similar arenas have mostly sold out; Perth 3-event weekend shows strong demand"}], "capabilities": [{"version": "v0.1", "note": "Genesis: persistent memory (facts, episodes), learning extraction, predictions ledger with scoring, capabilities log."}, {"version": "v0.2", "note": "Senses online: 6-topic web-scan watchlist, autonomous scanner (scan.py, needs SERPER_KEY), assisted feed pipeline (feed.py), scan protocol. First live scan 2026-09-29: 12 items."}, {"version": "v0.3", "note": "Prediction engine: probabilistic forecasts with Brier scoring, calibration report, base-rate discipline; watchlist expanded to 9 topics (world, science, markets)."}, {"version": "v0.4", "note": "Scheduled autonomy: ai-brain-scan cron every 6h (rotating watchlist scans, feeds brain) + ai-brain-nightly-review cron (calibration report, forecast checks). The brain now learns continuously with zero human input."}, {"version": "v0.5", "note": "Continuous learning: scan cadence tightened to hourly, day and night. Each run now rotates, deep-dives (full articles), or EXPANDS the watchlist itself \u2014 the senses grow on their own."}, {"version": "v0.6", "note": "YouTube sense built (Stage 1 of YouTube mastery): Data API client, view-velocity tracker, niche summarizer that learns baselines + top-decile title patterns. Dormant until YOUTUBE_API_KEY is set (free tier)."}, {"version": "v0.7", "note": "YouTube sense LIVE: first real scan \u2014 78 videos across 6 niche channels (his + 5 competitors). API key verified and moved to Secure Vault (custom.youtube); hourly cron now includes the YouTube velocity scan."}, {"version": "v0.8", "note": "hands: multi-step tool loop (brain.act / /act). Tools: web_search, run_python (30s), sandboxed files, youtube_velocity, youtube_channel_info via youtube skill, brain_search, forecast. Up to 8 chained steps; every act logged and absorbed."}]};
+/* ================= config ================= */
+const CFG_KEY='machine_cfg_v1';
+let CFG=Object.assign({base:'https://generativelanguage.googleapis.com/v1beta/openai',model:'gemini-3.1-flash-lite',key:'',serper:'',ytkey:'',provider:'key'},JSON.parse(localStorage.getItem(CFG_KEY)||'{}'));
+function saveCfg(){localStorage.setItem(CFG_KEY,JSON.stringify(CFG));}
+
+/* ================= store ================= */
+const DB_KEY='machine_brain_v1';
+let DB=null;
+function loadDB(){
+  try{DB=JSON.parse(localStorage.getItem(DB_KEY)||'null');}catch(e){DB=null;}
+  if(!DB||DB.v!==1){
+    DB={v:1,name:'Machine',facts:[],episodes:[],learnings:[],predictions:[],capabilities:[],seq:{fact:1,ep:1,learn:1,pred:1}};
+    if(typeof SEED!=='undefined'&&SEED){
+      (SEED.facts||[]).forEach(f=>DB.facts.push({id:DB.seq.fact++,key:f.key,value:f.value,conf:f.confidence||f.conf||70,ts:Date.now()}));
+      (SEED.learnings||[]).forEach(l=>DB.learnings.push({id:DB.seq.learn++,text:l.text,conf:l.confidence||l.conf||70,ts:Date.now()}));
+      (SEED.predictions||[]).forEach(p=>DB.predictions.push({id:DB.seq.pred++,text:p.text,prob:p.probability||p.prob||50,due:p.due_date||p.due||'',base:p.base_rate||'',outcome:null,ts:Date.now()}));
+      (SEED.capabilities||[]).forEach(c=>DB.capabilities.push({version:c.version,note:c.note}));
+    }
+    saveDB();
+  }
+  return DB;
+}
+function saveDB(){try{localStorage.setItem(DB_KEY,JSON.stringify(DB));}catch(e){}}
+function addEp(role,text){DB.episodes.push({id:DB.seq.ep++,role,text:String(text).slice(0,2000),ts:Date.now()});if(DB.episodes.length>400)DB.episodes=DB.episodes.slice(-400);saveDB();}
+
+/* ================= llm ================= */
+async function llm(messages,opts){
+  opts=opts||{};
+  if(CFG.provider==='browser')return llmBrowser(messages,opts);
+  if(!CFG.key)throw new Error('no-key');
+  const models=[CFG.model,'gemini-3-flash-preview','gemini-flash-latest'].filter((v,i,a)=>v&&a.indexOf(v)===i);
+  let lastErr=null;
+  for(const m of models){
+    try{return await llmOnce(messages,m,opts);}
+    catch(e){lastErr=e;if(!/API (404|429|503)/.test(e.message))throw e;}
+  }
+  throw lastErr;
+}
+async function llmOnce(messages,model,opts){
+  opts=opts||{};
+  const r=await fetch(CFG.base.replace(/\/$/,'')+'/chat/completions',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+CFG.key},
+    body:JSON.stringify({model:model,messages,temperature:opts.temp!=null?opts.temp:0.7,max_tokens:opts.max||1500})
+  });
+  if(!r.ok){const t=await r.text().catch(()=> '');throw new Error('API '+r.status+': '+t.slice(0,200));}
+  const d=await r.json();
+  return d.choices[0].message.content;
+}
+
+/* ---- model catalog: what this brain is allowed to run ---- */
+const MODELS=[
+ {v:'gemini-3.1-flash-lite',l:'Gemini 3.1 Flash-Lite (default — fast, free)'},
+ {v:'gemini-3-flash-preview',l:'Gemini 3 Flash Preview (verified working)'},
+ {v:'gemini-flash-latest',l:'Gemini Flash — latest alias'},
+ {v:'gemini-2.5-pro',l:'Gemini 2.5 Pro (smarter, slower)'},
+ {v:'gemini-3.1-pro-preview',l:'Gemini 3.1 Pro Preview (smartest)'}
+];
+const RETIRED_MODELS=['gemini-2.0-flash','gemini-2.5-flash','gemini-1.5-flash','gpt-4o-mini'];
+function isCustomModel(){return MODELS.every(m=>m.v!==CFG.model);}
+/* migrate anyone stuck on a retired model */
+if(RETIRED_MODELS.includes(CFG.model)){CFG.model='gemini-3.1-flash-lite';saveCfg();}
+
+/* ---- browser built-in AI (Chrome Prompt API / Gemini Nano, no key) ---- */
+let _bsess=null,_bsys='';
+async function llmBrowser(messages,opts){
+  opts=opts||{};
+  if(!('LanguageModel' in window))throw new Error('browser-ai-unavailable');
+  let avail='unknown';
+  try{avail=await LanguageModel.availability();}catch(e){}
+  if(avail==='unavailable')throw new Error('browser-ai-unavailable');
+  const sys=(messages.find(m=>m.role==='system')||{}).content||'';
+  const turns=messages.filter(m=>m.role!=='system');
+  const last=turns[turns.length-1]||{content:''};
+  const hist=turns.slice(0,-1).map(m=>(m.role==='user'?'User: ':'Assistant: ')+m.content).join('\n');
+  try{
+    if(!_bsess||_bsys!==sys){
+      if(_bsess){try{_bsess.destroy();}catch(e){}}
+      _bsess=await LanguageModel.create({systemPrompt:sys.slice(0,4000),temperature:opts.temp!=null?opts.temp:0.7,topK:40});
+      _bsys=sys;
+    }
+    const prompt=(hist?hist+'\n':'')+'User: '+last.content;
+    return await _bsess.prompt(prompt.slice(0,12000));
+  }catch(e){
+    try{if(_bsess){_bsess.destroy();}}catch(x){}
+    _bsess=null;_bsys='';
+    throw e;
+  }
+}
+async function browserAiStatus(){
+  if(!('LanguageModel' in window))return 'not supported in this browser';
+  try{return await LanguageModel.availability();}
+  catch(e){return 'unknown: '+e.message;}
+}
+
+/* ================= recall ================= */
+function tokens(s){return (s||'').toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(w=>w.length>3);}
+function score(q,t){const a=tokens(q),b=new Set(tokens(t));if(!a.length)return 0;let h=0;a.forEach(w=>{if(b.has(w))h++;});return h/Math.sqrt(a.length);}
+function recall(q,k){
+  k=k||6;const out=[];
+  DB.facts.forEach(f=>out.push({s:score(q,f.key+' '+f.value)+0.2,kind:'fact',t:f.key+': '+f.value}));
+  DB.learnings.forEach(l=>out.push({s:score(q,l.text),kind:'learning',t:l.text+' (conf '+l.conf+')'}));
+  DB.episodes.slice(-60).forEach(e=>out.push({s:score(q,e.text)*0.7,kind:'ep',t:e.role+': '+e.text.slice(0,160)}));
+  return out.filter(o=>o.s>0.15).sort((a,b)=>b.s-a.s).slice(0,k);
+}
+function sysPrompt(q){
+  const mems=recall(q,6).map(m=>'- '+m.t).join('\n')||'(no relevant memories yet)';
+  const learns=DB.learnings.slice(-12).map(l=>'- '+l.text+' (conf '+l.conf+')').join('\n')||'(no learnings yet — the brain is young)';
+  let channel='';
+  const mc=(typeof LAST_STATE!=='undefined'&&LAST_STATE&&LAST_STATE.my_channel)||null;
+  if(mc&&mc.subs){
+    const tops=(mc.top_videos||[]).slice(0,4).map(v=>'- "'+v.title+'" '+v.views+' views ('+v.velocity+'/hr)').join('\n');
+    channel='\nYour owner\'s YouTube channel (live data, updated hourly):\nChannel: '+mc.title+' — '+mc.subs+' subscribers, '+mc.views+' total views, '+mc.video_count+' videos.\nFastest recent videos:\n'+(tops||'(none)')+'\nAnswer questions about his channel, subs, views and video performance directly from this data — no tool needed.';
+  }
+  let alm='';
+  const almanac=(typeof LAST_STATE!=='undefined'&&LAST_STATE&&LAST_STATE.almanac)||null;
+  if(almanac&&Object.keys(almanac).length){
+    alm='\nMajor YouTube channels (hourly almanac): '+Object.values(almanac).map(c=>c.name+' '+Number(c.subs).toLocaleString()+' subs').join('; ')+'.';
+  }
+  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), youtube_search {query} (search YouTube LIVE with NO key needed — use this whenever he asks what is happening on YouTube), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. generate_thumbnail {prompt, aspect, title, subtitle} makes YouTube thumbnails — tries your Gemini key first, then a free no-key service automatically, so offer it whenever Thomas talks video packaging even if the key quota is used up. Thumbnail craft: 3-5 huge readable words max, one expressive subject, vivid contrast, never cluttered, never text on faces. superstar:"<id>" puts a REAL WWE superstar photo in the thumbnail — AI generates the background only, never AI faces (the owner hard rule). Hard rules that override everything else: 1) If Thomas asks about YouTube (channels, videos, SEO, trends, what people are watching), ALWAYS call youtube_search first — it needs no key and works even when everything else fails. EXCEPTION: a matchup is NOT a YouTube question — for matchups call seo_title (it runs its own live YouTube check inside). Never call youtube_search for a matchup. Then try youtube_channel / youtube_video / youtube_lookup as needed. NEVER tell him you cannot get YouTube data without trying every one of those tools. 2) If data genuinely cannot be retrieved, say plainly: I could not pull that right now — NEVER name internal tools, and NEVER mention error codes, status numbers, or API names. 3) NEVER invent numbers, scores, or estimates to fill a gap in data. If you do not have it, say so and say what you CAN do instead. SEO ENGINE: a twice-weekly deep scan ranks every WWE superstar by real view numbers (wwe_seo.json, breathed in automatically — never ask Thomas to wait for it). When he names a matchup, call seo_title: it parses the names (forgiving of typos), pulls real numbers for each star, runs a live keyless check, and drafts titles from the data. For names not in the scan table it checks YouTube live that turn \u2014 every name gets real this-turn numbers, never zeros, never \u2018not in the database\u2019. MASTER RULEBOOK — his title rules, follow exactly. AUTOMATIC FAILS — if you do any of these, the whole output fails no matter what else is right: (1) any scorecard in any form — whether a number, a /100 or sub-scores (H6); (2) the text do not appears anywhere in your description — G8: search for it before outputting and replace every one with don\'t; (3) any title, count, score, or description line you did not paste verbatim from the tool\'s answer_block; (4) a second dash in the title — B10: the stipulation goes right after the names with a space, never a dash; (5) any number that did not come from the tool this turn. TOOL USE IS MANDATORY: for EVERY matchup you MUST call seo_title. It returns answer_block — the finished Section I output, nothing else. Paste it VERBATIM. Do not retype it, reformat it, summarize it, or re-derive any part of it. If you did not call the tool this turn, you do not have the numbers. If the tool returns a flag, show it first, then the block. If a tool call returns an error, that error describes YOUR mistake — read it, fix your args against the tool list (use the exact arg names shown there), and retry. A failed call is never a reason to answer without data; you have 3 tool steps, use them. Giving up after one failed call and answering from the input alone fails the round. TOP 4 REPEAT FAILURES (never break these): (1) every claim tied to this turn\'s numbers — never "high-volume", "trending", "high search velocity", "draw", "channel performance", or made-up stats unless this turn\'s data shows it; (2) character counts exact — the tool counts, quote its number, never estimate; (3) the description must contain BOTH the opening line and the closing subscribe line word for word; (4) never invent wrestlers, counts, stipulations, or storyline details. A. INPUTS: never change facts from the input (names, teams, game version, stipulation); A6: never describe the match type in the description (singles, tag, one-on-one) unless it matches the input stipulation \u2014 if the input says War Games, Chamber or Tag, the description must say the same; you may expand a short name to the full name (Drew -> Drew McIntyre, Bloodline -> The Bloodline); if no wrestlers are named, say "No participants given, so adding names will improve search." then use the generic stipulation title; ignore process text in the input ("how I worked", "writing the answer"). B. TITLE FORMAT: [X vs Y] [Stipulation] Match - WWE [Game] Simulation (Full Match); no stipulation -> [X vs Y] - WWE [Game] Simulation (Full Match); no names -> [Stipulation] Match - WWE [Game] Simulation (Full Match). Exactly one dash before WWE; always Simulation and (Full Match); no pipes, colons, periods, all-caps sections, or second dash; keep the stipulation, cut filler; under 100 chars; B9: with no stipulation the word Match must NOT appear in the title - no exceptions, clarity preferences do not override this; official stip spelling by search volume (War Games, not WarGames). B10: a stipulation goes right after the names with a space, never a dash \u2014 [X vs Y] Tag Match - WWE\u2026. B12: if the input contains a stipulation, deleting it fails the round automatically, even when the title scores well without it; — [X vs Y] Tag Match - WWE…. C. NAME ORDER: the tool\'s name_order_line uses C4 format with this turn\'s view data ("views", not vidIQ "searches"); a 1-2 point score gap never outweighs a clear volume gap; if no data, write "No name-order data available." and never guess. C6: if both full phrases have no volume, the tool compares \u2014 copy its line. C7: the name-order figures must be keyword search data \u2014 video view totals are not allowed; if the two numbers are within 5% of each other, say \u201ceffectively tied\u201d and use input order. C8: if the keyword tool fails, fix the input using the format in the error message and try once more \u2014 if it fails again, write \u201cNo search data available \u2014 input order kept\u201d and put no numbers in the name-order line \u2014 video view totals are not allowed; if the two numbers are within 5% of each other, say \u201ceffectively tied\u201d and use input order; "[Name] vs" searches - copy its line. D. HONESTY: only cite a rule number when it matches the rule; never add a "Data Check" section without real numbers. Output ONLY the Section I block - no extra sections, no rationale, no process text. E. COUNTS: state the exact character count on every title. E3: count the title fresh every time from the character breakdown in the tool output - never reuse a count from an earlier title. E4: show the character count piece by piece, like the breakdown in the tool output \u2014 never give just a total. E5: YouTube titles max at 100 characters \u2014 never go over; if a title runs long, drop \u201c Simulation\u201d first, never the stipulation, a name, the game or \u201c(Full Match)\u201d — never give just a total. F. THUMBNAIL: wrestlers in the left two-thirds, right third completely empty for the timestamp; text 1-2 words on the left only, single-word nicknames allowed; dramatic rim lighting, dark background so faces pop, cage structure may frame the scene; no named wrestlers -> structure/setting only, no faces; real superstar photos only, never AI faces. F7: every named wrestler must appear in the thumbnail - never a single centered wrestler. G. DESCRIPTION: opening and closing lines come from the tool word for word (G1/G3); middle is the tool\'s mid line word for word (1-2 plain sentences, no hype) — banned: "witness the clash", "biggest stars", "dream matchup", "rising force", "chaotic, no-holds-barred"; blank line between paragraphs; no Chapters/timestamps. G7: copy the G1/G3 lines exactly as the tool gives them - never expand contractions. G8: before you output anything, search the description for do not — if found, replace every one with don\'t. G9: the description MUST have exactly 3 parts — opening, middle, closing — pasted from the tool; a missing middle sentence fails the output. H. HASHTAGS: only the tool\'s hashtags (game, names/teams, stipulation). I1: hashtags must either include every competitor or include none of them. H3: never output a scorecard, sub-scores, or any number that did not come from a tool this turn - inventing sub-scores is the worst failure. H4: you must never TYPE the words SEO Scorecard yourself — the tool\'s pasted answer_block is the ONLY place those words may appear; a hand-written scorecard fails the entire output. H5: never invent scorecard numbers or add explanations, justifications, or parentheticals to them — paste the tool\'s scorecard line exactly as written. H6: a scorecard in any form \u2014 whether a number, a /100 or sub-scores \u2014 fails the whole round automatically. H7: no self-corrections, \u201cwait,\u201d or recounts in the final output \u2014 do the calculation first, then print only the final breakdown — whether a number, a /100 or sub-scores — fails the whole round automatically. I. OUTPUT ORDER: Title (with count), name-order line, thumbnail concept, description, hashtags. If game_assumed, confirm the game version with Thomas before finalizing (never guess). The standing rules always apply: real faces only, thumbnails under a minute via auto-fallback, never name tools or error codes, never invent numbers. Use a tool when the answer needs live/external data you do not have.';
+  return 'You are '+DB.name+', a personal AI with a brain that learns and grows. You belong to your owner, Thomas. You remember everything important, you learn from every conversation, and you get sharper over time.\n\nPrime directives:\n1. Serve your owner\'s interests first. Never act against them.\n2. Learn continuously: notice durable facts, preferences, and what works.\n3. Predict and verify: make falsifiable predictions with confidence levels.\n4. Never lie: separate what you know, what you infer, and what you don\'t know.\n5. Be warm, sharp, and concise. No filler praise, no fluff.\n\nRelevant memories:\n'+mems+'\n\nActive learnings:\n'+learns+channel+alm+tools+'\n\nUse the memories and learnings naturally. If a memory seems wrong or outdated, say so instead of blindly repeating it.';
+}
+const EXTRACT_PROMPT='From this conversation turn, extract durable items worth remembering long-term. Return ONLY a JSON array, no other text. Each item:\n{"kind":"fact","key":"short_snake_key","value":"...","confidence":0-100}\nor\n{"kind":"learning","text":"pattern about what works","confidence":0-100}\nFacts are stable truths about the owner (name, projects, preferences).\nLearnings are patterns about what works or doesn\'t.\nInclude only items genuinely worth keeping. Return [] if none.\n\nUser: {user}\n'+'{name}'+': {reply}';
+function parseJsonArray(raw){try{const a=raw.indexOf('['),b=raw.lastIndexOf(']')+1;const d=JSON.parse(raw.slice(a,b));return Array.isArray(d)?d:[];}catch(e){return[];}}
+/* ================= think & learn ================= */
+function shortArgs(args){
+  args=args||{};
+  var q=args.query||args.matchup||args.name||args.prompt||args.text||args.path||'';
+  return q?(' \u2014 '+String(q).slice(0,60)):'';
+}
+function shortResult(name,result){
+  try{
+    if(!result)return'\u2192 done';
+    if(result.error)return'\u2192 failed: '+String(result.error).slice(0,90);
+    if(name==='youtube_search'&&result.results)return'\u2192 '+result.results.length+' videos'+(result.results[0]?', top: '+String(result.results[0].title).slice(0,65):'');
+    if(name==='seo_title'&&result.answer_block)return'\u2192 '+result.answer_block.split('\n')[0];
+    if(name==='wwe_seo'&&result.rank)return'\u2192 #'+result.rank+' '+result.name+' ('+Number(result.top10_views).toLocaleString()+' views)';
+    if(name==='generate_thumbnail')return'\u2192 thumbnail ready ('+(result.via||'done')+')';
+    if(name==='youtube_channel'&&result.subscribers)return'\u2192 '+result.name+' \u2014 '+result.subscribers+' subs';
+    if(name==='youtube_video'&&result.views)return'\u2192 '+Number(result.views).toLocaleString()+' views';
+    if(name==='channel_stats'&&result.subscribers)return'\u2192 '+result.subscribers+' subs';
+    if(name==='brain_search'&&result.matches)return'\u2192 '+result.matches.length+' memories';
+    if(name==='forecast')return'\u2192 forecast logged';
+    return'\u2192 '+JSON.stringify(result).slice(0,90);
+  }catch(e){return'\u2192 done';}
+}
+async function think(userText,onStep){
+  const hist=DB.episodes.slice(-6).map(e=>({role:e.role==='user'?'user':'assistant',content:e.text}));
+  const msgs=[{role:'system',content:sysPrompt(userText)},...hist,{role:'user',content:userText}];
+  let reply=await llm(msgs);
+  msgs.push({role:'assistant',content:reply});
+  for(let i=0;i<3;i++){
+    const call=parseToolCall(reply);
+    if(!call)break;
+    if(onStep)onStep('🔧 '+call[0]+shortArgs(call[1]));
+    let result;
+    try{result=await dispatchTool(call[0],call[1]);}
+    catch(e){result={error:String((e&&e.message)||e)};}
+    if(onStep)onStep('  '+shortResult(call[0],result));
+    msgs.push({role:'user',content:'Tool result ('+call[0]+'):\n'+JSON.stringify(result).slice(0,3000)});
+    reply=await llm(msgs);
+    msgs.push({role:'assistant',content:reply});
+  }
+  if(onStep)onStep('✍️ writing the answer…');
+  addEp('user',userText);addEp('assistant',reply);
+  absorb(userText,reply).catch(()=>{});
+  return reply;
+}
+async function absorb(userText,reply){
+  const p=EXTRACT_PROMPT.replace('{user}',userText.slice(0,1500)).replace('{reply}',reply.slice(0,1500)).replace('{name}',DB.name);
+  let raw='[]';
+  try{raw=await llm([{role:'user',content:p}],{temp:0.2,max:600});}catch(e){return 0;}
+  const items=parseJsonArray(raw);let n=0;
+  items.forEach(it=>{
+    const conf=Math.max(0,Math.min(100,Number(it.confidence)||70));
+    if(it.kind==='fact'&&it.key&&it.value){
+      const ex=DB.facts.find(f=>f.key===it.key);
+      if(ex){ex.value=it.value;ex.conf=conf;}else DB.facts.push({id:DB.seq.fact++,key:String(it.key).slice(0,60),value:String(it.value).slice(0,500),conf,ts:Date.now()});
+      n++;
+    }else if(it.kind==='learning'&&it.text){
+      DB.learnings.push({id:DB.seq.learn++,text:String(it.text).slice(0,500),conf,ts:Date.now()});n++;
+    }
+  });
+  if(n)saveDB();
+  return n;
+}
+
+/* ================= predictions ================= */
+function brier(){const r=DB.predictions.filter(p=>p.outcome==='hit'||p.outcome==='miss');if(!r.length)return null;let s=0;r.forEach(p=>{const f=p.prob/100;s+=(f-(p.outcome==='hit'?1:0))**2;});return {score:s/r.length,n:r.length};}
+function calibration(){
+  const r=DB.predictions.filter(p=>p.outcome==='hit'||p.outcome==='miss');
+  const buckets=[[1,20],[21,40],[41,60],[61,80],[81,99]];
+  return buckets.map(([lo,hi])=>{
+    const b=r.filter(p=>p.prob>=lo&&p.prob<=hi);
+    if(!b.length)return lo+'–'+hi+'%: no resolved forecasts';
+    const hit=b.filter(p=>p.outcome==='hit').length,rate=Math.round(hit/b.length*100);
+    const avg=Math.round(b.reduce((s,p)=>s+p.prob,0)/b.length);
+    let flag='';
+    if(b.length>=3){if(rate<avg-20)flag=' ⚠️ overconfident';else if(rate>avg+20)flag=' ⚠️ underconfident';}
+    return lo+'–'+hi+'%: said ~'+avg+'%, hit '+rate+'% ('+hit+'/'+b.length+')'+flag;
+  }).join('\n');
+}
+function doPredict(text,conf,due){const id=DB.seq.pred++;DB.predictions.push({id,text,prob:Math.max(1,Math.min(99,conf)),due:due||'',base:'',outcome:null,ts:Date.now()});saveDB();return id;}
+function doForecast(text,prob,due,base){return doPredict(text,prob,due||'');}
+function doResolve(id,outcome){
+  const p=DB.predictions.find(x=>x.id===id);if(!p)return 'no forecast #'+id;
+  outcome=String(outcome).toLowerCase();
+  if(['true','hit','yes','1'].includes(outcome))p.outcome='hit';
+  else if(['false','miss','no','0'].includes(outcome))p.outcome='miss';
+  else if(outcome==='partial')p.outcome='partial';
+  else return 'use true/false';
+  saveDB();return '#'+id+' resolved: '+p.outcome;
+}
+
+/* ================= commands ================= */
+function review(){
+  const b=brier();
+  const open=DB.predictions.filter(p=>!p.outcome);
+  const L=[];
+  L.push('🧠 '+DB.name+' — self review');
+  L.push('Facts: '+DB.facts.length+' | Learnings: '+DB.learnings.length+' | Episodes: '+DB.episodes.length);
+  const br=b?'Brier '+b.score.toFixed(3)+' over '+b.n+' resolved (0=perfect, 0.25=coin flip)':'No resolved forecasts yet — Brier needs data';
+  L.push(br);
+  L.push('Open forecasts: '+open.length+(open.length?' — '+open.slice(0,3).map(p=>'#'+p.id+' '+p.prob+'%').join(', '):''));
+  L.push('Top learnings:');
+  DB.learnings.slice(-3).forEach(l=>L.push('• '+l.text));
+  if(DB.capabilities.length)L.push('Capabilities: '+DB.capabilities.map(c=>c.version).join(', '));
+  return L.join('\n');
+}
+function stats(){
+  const b=brier();const r=DB.predictions.filter(p=>p.outcome==='hit'||p.outcome==='miss');
+  const hits=r.filter(p=>p.outcome==='hit').length;
+  return 'Facts '+DB.facts.length+' • Learnings '+DB.learnings.length+' • Episodes '+DB.episodes.length+'\nForecasts: '+r.length+' resolved ('+hits+' hit)'+(b?' • Brier '+b.score.toFixed(3):'')+' • '+DB.predictions.filter(p=>!p.outcome).length+' open';
+}
+async function runCommand(text){
+  const t=text.trim();
+  if(t==='/help')return 'Commands:\n/predict <text> | <conf> | [due]\n/forecast <text> | <prob 1-99> | [due]\n/resolve <id> true|false\n/review  /stats  /calibration  /memories\n/act <task> — do multi-step work with tools\n/name <name> — rename me';
+  if(t==='/review')return review();
+  if(t==='/stats')return stats();
+  if(t==='/calibration'){const b=brier();return (b?'Brier score: '+b.score.toFixed(3)+' over '+b.n+' resolved forecasts.\n(0 = perfect, 0.25 = coin flip)\n\n':'No resolved forecasts yet.\n\n')+calibration();}
+  if(t==='/memories')return DB.facts.length?DB.facts.map(f=>'• '+f.key+': '+f.value).join('\n'):'No facts stored yet.';
+  if(t.startsWith('/name ')){DB.name=t.slice(6).trim()||DB.name;saveDB();updateTitle();return 'Renamed to '+DB.name+'.';}
+  if(t.startsWith('/predict ')||t.startsWith('/forecast ')){
+    const parts=t.split('|').map(s=>s.trim());
+    const txt=parts[0].replace(/^\/(predict|forecast)\s*/,'');
+    const prob=Number(parts[1]);
+    if(!txt||!(prob>=1&&prob<=99))return 'usage: /forecast <text> | <prob 1-99> | [due date]';
+    const id=doForecast(txt,prob,parts[2]||'');
+    return 'Forecast #'+id+' logged at '+prob+'%. Never 0/100 — stay honest.';
+  }
+  if(t.startsWith('/resolve ')){const p=t.split(/\s+/);if(p.length<3)return 'usage: /resolve <id> true|false';return doResolve(Number(p[1]),p[2]);}
+  if(t.startsWith('/act ')){const task=t.slice(5).trim();if(!task)return 'usage: /act <task>';return await act(task);}
+  return null;
+}
+/* ================= act loop (hands) ================= */
+const TOOL_DEFS=[
+ ['web_search','Search the web. args: {query, num?}'],
+ ['run_code','Run JavaScript in a sandbox (10s). args: {code} — console.log captured, return value reported.'],
+ ['note_write','Save a private note. args: {path, content}'],
+ ['note_read','Read a private note. args: {path}'],
+ ['note_list','List private notes. args: {}'],
+ ['brain_search','Search your own memory. args: {query}'],
+ ['forecast','Log a prediction. args: {text, probability, due_date}'],
+ ['channel_stats','Your owner\'s YouTube channel: live subscriber/view counts and fastest recent videos, synced hourly. args: {} — use this for ANY question about his channel, subs, views, or video performance.'],
+ ['youtube_lookup','Look up a major channel in the hourly almanac (MrBeast, niche competitors). args: {name}'],
+ ['youtube_channel','Look up ANY YouTube channel: subscribers, views, video count. Everything ever looked up is cached and remembered forever. args: {query} (channel name or ID), refresh? (true to re-check live)'],
+ ['youtube_video','Look up ANY YouTube video: views, likes, comments, duration, channel. Cached and remembered forever. args: {query} (title, video ID or watch URL), refresh? (true to re-check live)'],
+ ['youtube_search','Search YouTube LIVE with no API key (public mirrors). args: {query}, type ("video" default, "channel"). Returns titles, views, durations, URLs. Everything found is cached in your YouTube memory forever.'],
+ ['wwe_seo','Full SEO card for a WWE superstar from the twice-weekly deep scan: demand rank, top-10 total views, median views, hot title terms, biggest video. args: {name}.'],
+ ['seo_title','Build the highest-SEO title for a matchup from REAL scan numbers + a live keyless YouTube check. args: {matchup} e.g. "dominik mysterio vs liv morgan tlc", {game} e.g. "WWE 2K23" (defaults WWE 2K26 — confirm with Thomas, rule A1). Returns: parsed stars, name_order_line (C4 format, this turn\'s data), draft titles in B1/B2/B3 structure with EXACT char counts + 0-100 scores, thumbnail concept (F1-F6), description opening/closing lines word for word (G1/G3), Returns ONLY: flag (show first if present) + answer_block (the finished Section I output - PASTE IT VERBATIM, do not retype, do not summarize). There is nothing else to use. Present in Section I order: title, name-order line, thumbnail concept, description, hashtags. Never invent numbers.'],
+ ['generate_thumbnail','Generate a YouTube thumbnail. Tries your Gemini key first (best quality); if the key is missing or its free image quota is used up, automatically falls back to a free no-key image service with your title text stamped on in huge letters. args: {prompt} (describe the scene: subject, mood), '
+ +'aspect ("16:9" default, "9:16" for Shorts, "1:1"), '
+ +'title (BIG words for the fallback to stamp, e.g. "RKO" — pass the 2-4 huge words), '
+ +'subtitle (second line of big text, e.g. "OUTTA NOWHERE"), '
+ +'superstar (optional — a REAL WWE superstar photo is composited in, AI does the background only, never AI faces; NEEDS the Gemini key, no free fallback for real faces: '
+ +'"randy-orton", "cody-rhodes", "roman-reigns", "rhea-ripley", "bianca-belair", "seth-rollins", "cm-punk", "john-cena", "undertaker", "stone-cold", "triple-h", "brock-lesnar", "rey-mysterio", "becky-lynch", "gunther", "bron-breakker", "oba-femi", "liv-morgan", "la-knight", "dominik-mysterio"). '
+ +'The image appears in chat with a download link.']
+].map(([n,d])=>'- '+n+': '+d).join('\n');
+
+/* images generated this turn: drained by send() for display */
+let PENDING_IMAGES=[];
+
+/* ---- the brain's growing YouTube memory: every lookup is kept ---- */
+const YTCACHE_KEY='machine_ytcache_v1';
+function ytcache(){try{const c=JSON.parse(localStorage.getItem(YTCACHE_KEY)||'null');return c&&c.channels?c:{channels:{},videos:{}};}catch(e){return{channels:{},videos:{}};}}
+function saveYtcache(c){try{localStorage.setItem(YTCACHE_KEY,JSON.stringify(c));}catch(e){}}
+async function ytApi(path){
+  const r=await fetch('https://www.googleapis.com/youtube/v3/'+path+(path.indexOf('?')>=0?'&':'?')+'key='+encodeURIComponent(CFG.ytkey));
+  const d=await r.json().catch(()=>({}));
+  if(d.error)throw new Error(d.error.message||('YouTube HTTP '+r.status));
+  return d;
+}
+const ACT_SYS='You are {name}, and you can ACT — not just talk. You have hands: tools you can call to do real multi-step work.\n\nHOW TO USE TOOLS: when the task needs real work, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nYou will receive the tool\'s result as the next message. Chain tools as needed, verify results before reporting, be efficient. When done, answer normally (no tool block). Max 8 steps.\n\nTOOLS:\n'+TOOL_DEFS+'\n\nRules:\n- web_search needs a Serper key in settings; if unavailable, work around it.\n- run_code runs sandboxed JS with a 10s timeout; use it for calculations and data crunching.\n- notes are private to this browser.\n- brain_search queries your own memory; forecast logs a prediction.\n- If a tool errors, read the error and try a different approach before giving up. - For YouTube questions always try the keyless youtube_search before anything needing a key. - Never report tool names or error codes to Thomas; never invent data you do not have.';
+function parseToolCall(text){const m=/```tool\s*\n([\s\S]*?)\n```/.exec(text||'');if(!m)return null;try{const d=JSON.parse(m[1]);return d&&d.name?[d.name,d.args||{}]:null;}catch(e){return null;}}
+async function runCode(code){
+  return new Promise(res=>{
+    const src='onmessage=function(e){var logs=[];var c={log:function(){logs.push(Array.prototype.join.call(arguments," "))}};try{var r=(new Function("console",e.data))(c);postMessage({ok:true,result:String(r),logs:logs.join("\\n")});}catch(err){postMessage({ok:false,error:String((err&&err.message)||err)});}}';
+    let done=false;const fin=o=>{if(!done){done=true;res(o);}};
+    try{
+      const w=new Worker(URL.createObjectURL(new Blob([src],{type:'text/javascript'})));
+      const t=setTimeout(()=>{try{w.terminate();}catch(e){}fin({error:'timed out after 10s'});},10000);
+      w.onmessage=e=>{clearTimeout(t);try{w.terminate();}catch(x){}fin(e.data);};
+      w.onerror=e=>{clearTimeout(t);fin({error:'worker error'});};
+      w.postMessage(String(code));
+    }catch(e){fin({error:'sandbox unavailable: '+e.message});}
+  });
+}
+async function webSearch(q,num){
+  if(!CFG.serper)return {error:'SERPER_KEY not set — web search unavailable (add it in settings)'};
+  try{
+    const r=await fetch('https://google.serper.dev/search',{method:'POST',headers:{'X-API-KEY':CFG.serper,'Content-Type':'application/json'},body:JSON.stringify({q,num:Math.max(1,Math.min(num||5,10))})});
+    if(!r.ok)return {error:'search failed: HTTP '+r.status};
+    const d=await r.json();
+    return (d.organic||[]).slice(0,num||5).map(it=>({title:it.title,snippet:it.snippet,link:it.link}));
+  }catch(e){return {error:'search failed: '+e.message};}
+}
+const NOTES_KEY='machine_notes_v1';
+function notes(){try{return JSON.parse(localStorage.getItem(NOTES_KEY)||'{}');}catch(e){return{};}}
+function saveNotes(n){localStorage.setItem(NOTES_KEY,JSON.stringify(n));}
+function blobToB64(blob){return new Promise(function(res,rej){const fr=new FileReader();fr.onload=function(){res(String(fr.result).split(',')[1]);};fr.onerror=rej;fr.readAsDataURL(blob);});}
+/* ---- keyless fallbacks: free image service + keyless YouTube search ---- */
+function stampThumbText(blob,title,subtitle,W,H){
+  return new Promise(function(res,rej){
+    const url=URL.createObjectURL(blob);
+    const im=new Image();
+    im.onload=function(){
+      try{
+        const c=document.createElement('canvas');c.width=W;c.height=H;
+        const x=c.getContext('2d');
+        const s=Math.max(W/im.width,H/im.height),dw=im.width*s,dh=im.height*s;
+        x.drawImage(im,(W-dw)/2,(H-dh)/2,dw,dh);
+        URL.revokeObjectURL(url);
+        x.textBaseline='top';x.lineJoin='round';
+        const lines=[];
+        if(title)lines.push({t:String(title).toUpperCase().slice(0,30),c:'#ffffff'});
+        if(subtitle)lines.push({t:String(subtitle).toUpperCase().slice(0,30),c:'#ffd400'});
+        let y=Math.round(H*0.07);
+        lines.forEach(function(L){
+          let fs=Math.round(H*0.16);
+          x.font='900 '+fs+'px Arial,Helvetica,sans-serif';
+          while(x.measureText(L.t).width>W-90&&fs>24){fs-=6;x.font='900 '+fs+'px Arial,Helvetica,sans-serif';}
+          x.lineWidth=Math.max(5,Math.round(fs/12));x.strokeStyle='rgba(0,0,0,0.95)';
+          x.strokeText(L.t,44,y);x.fillStyle=L.c;x.fillText(L.t,44,y);
+          y+=Math.round(fs*1.12);
+        });
+        c.toBlob(function(b){
+          if(!b){rej(new Error('canvas export failed'));return;}
+          blobToB64(b).then(function(b64){res('data:'+(b.type||'image/jpeg')+';base64,'+b64);},rej);
+        },'image/jpeg',0.92);
+      }catch(e){rej(e);}
+    };
+    im.onerror=function(){URL.revokeObjectURL(url);rej(new Error('could not decode image'));};
+    im.src=url;
+  });
+}
+async function pollinationsThumb(prompt,title,subtitle,aspect){
+  const dims={'16:9':[1280,720],'9:16':[720,1280],'1:1':[1024,1024]}[aspect]||[1280,720];
+  const seed=Math.floor(Math.random()*1e9);
+  const url='https://image.pollinations.ai/prompt/'+encodeURIComponent('YouTube thumbnail background art, dramatic bold design, ultra-expressive subject, vivid high contrast colors, cinematic lighting, no watermark, no logo, no text: '+prompt)
+    +'?width='+dims[0]+'&height='+dims[1]+'&nologo=true&model=turbo&seed='+seed;
+  const ctl=new AbortController();const to=setTimeout(function(){ctl.abort();},30000);
+  try{
+    const r=await fetch(url,{signal:ctl.signal});clearTimeout(to);
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const blob=await r.blob();
+    if(!blob||!blob.size)throw new Error('empty response');
+    if(title||subtitle)return await stampThumbText(blob,title,subtitle,dims[0],dims[1]);
+    const b64=await blobToB64(blob);
+    return 'data:'+(blob.type||'image/jpeg')+';base64,'+b64;
+  }catch(e){clearTimeout(to);throw new Error('free image service failed: '+(e&&e.name==='AbortError'?'timed out':(e.message||e)));}
+}
+let INVIDIOUS_HOSTS=null;
+async function invidiousHosts(){
+  if(INVIDIOUS_HOSTS)return INVIDIOUS_HOSTS;
+  try{
+    const actl=new AbortController();const ato=setTimeout(function(){actl.abort();},8000);
+    const r=await fetch('https://api.invidious.io/instances.json',{signal:actl.signal});
+    clearTimeout(ato);
+    const d=await r.json();
+    const good=d.filter(function(x){return x[1]&&x[1].api===true;}).map(function(x){return x[0];});
+    if(good.length){INVIDIOUS_HOSTS=good.slice(0,5);return INVIDIOUS_HOSTS;}
+  }catch(e){}
+  INVIDIOUS_HOSTS=['inv.invidious.nerdvpn.de','iv.duti.dev','invidious.privacyredirect.in'];
+  return INVIDIOUS_HOSTS;
+}
+const KEYLESS_MEM={};
+async function youtubeKeylessSearch(query,type){
+  const ck=String(query||'').toLowerCase()+'|'+(type||'video');
+  const hit=KEYLESS_MEM[ck];
+  if(hit&&Date.now()-hit.ts<600000)return hit.res;
+  const hosts=await invidiousHosts();
+  const t=(type==='channel')?'channel':'video';
+  const tryHosts=hosts.slice(0,3);
+  for(let i=0;i<tryHosts.length;i++){
+    try{
+      const ctl=new AbortController();const to=setTimeout(function(){ctl.abort();},8000);
+      const r=await fetch('https://'+hosts[i]+'/api/v1/search?q='+encodeURIComponent(query)+'&type='+t+'&sort_by=relevance',{signal:ctl.signal});
+      clearTimeout(to);
+      if(!r.ok)continue;
+      const d=await r.json();
+      const items=(Array.isArray(d)?d:[]).filter(function(it){return it&&(it.videoId||it.authorId);});
+      if(items.length){const kres={host:tryHosts[i],items:items.slice(0,10)};KEYLESS_MEM[ck]={ts:Date.now(),res:kres};return kres;}
+    }catch(e){continue;}
+  }
+  return{error:'YouTube search mirrors are all down right now — try again in a bit'};
+}
+/* ---- WWE SEO engine: twice-weekly deep-scan rankings, breathed in ---- */
+const SEO_URL='wwe_seo.json', SEO_CACHE='machine_seo_v1';
+let LAST_SEO=null;
+function loadSeoCache(){try{const s=JSON.parse(localStorage.getItem(SEO_CACHE)||'null');if(s&&s.superstars)LAST_SEO=s;}catch(e){}}
+async function syncSeo(quiet){
+  try{
+    const r=await fetch(SEO_URL+'?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok)return false;
+    const s=await r.json();
+    if(s&&s.superstars&&s.superstars.length){LAST_SEO=s;try{localStorage.setItem(SEO_CACHE,JSON.stringify(s));}catch(e){}return true;}
+  }catch(e){}
+  return false;
+}
+function norm(s){return String(s||'').toLowerCase().replace(/[^a-z ]/g,' ').replace(/\s+/g,' ').trim();}
+function lev(a,b){
+  a=String(a);b=String(b);
+  if(a===b)return 0;
+  const m=a.length,n=b.length;
+  if(!m)return n;if(!n)return m;
+  let d=[];for(let i=0;i<=m;i++)d[i]=[i];
+  for(let j=1;j<=n;j++)d[0][j]=j;
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)
+    d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+  return d[m][n];
+}
+function seoStars(){return (LAST_SEO&&LAST_SEO.superstars)||[];}
+function findStar(q){
+  const stars=seoStars();if(!stars.length)return null;
+  const nq=norm(q);if(!nq)return null;
+  let hit=stars.find(function(s){return s.id===nq.replace(/ /g,'-')||norm(s.name)===nq;});
+  if(hit)return hit;
+  let best=null,bs=1e9;
+  stars.forEach(function(s){
+    const toks=norm(s.name).split(' '),qts=nq.split(' ');
+    if(toks.length!==qts.length)return;
+    let sc=0;for(let i=0;i<toks.length;i++)sc+=lev(toks[i],qts[i]);
+    if(sc<bs){bs=sc;best=s;}
+  });
+  return bs<=2?best:null;
+}
+const STIPS=['tag match','extreme rules','hell in a cell','falls count anywhere','last man standing','elimination chamber','money in the bank','steel cage','ladder match','extreme rules','royal rumble','iron man','no disqualification','tables match','war games','wargames','tlc','wrestlemania'];
+function parseMatchup(text){
+  const stars=seoStars();
+  const ntext=norm(text);
+  let stip='';
+  STIPS.forEach(function(s){if(ntext.indexOf(s)>=0&&s.length>stip.length)stip=s;});
+  const stipWords=stip?stip.split(' '):[];
+  const found=[];
+  const ordered=stars.slice().sort(function(a,b){return norm(b.name).length-norm(a.name).length;});
+  const firstWordToStar={};
+  ordered.forEach(function(s){
+    var fw=norm(s.name).split(' ');if(fw[0]==='the')fw=fw.slice(1);
+    if(fw.length&&!firstWordToStar[fw[0]])firstWordToStar[fw[0]]=s;
+  });
+  const toksAll=ntext.split(' ').filter(function(q){return stipWords.indexOf(q)<0;});
+  let work=' '+ntext+' ';
+  ordered.forEach(function(s){
+    const nn=norm(s.name);
+    if(work.indexOf(' '+nn+' ')>=0){found.push(s);work=work.replace(' '+nn+' ',' ');}
+  });
+  if(found.length<4){
+    toksAll.forEach(function(q){
+      var s=firstWordToStar[q];
+      if(s&&found.indexOf(s)<0&&found.length<4)found.push(s);
+    });
+  }
+  if(found.length<4){
+    const toks=toksAll;
+    ordered.forEach(function(s){
+      if(found.indexOf(s)>=0)return;
+      let st=norm(s.name).split(' ');
+      if(st[0]==='the')st=st.slice(1);
+      if(!st.length)return;
+      const ok=st.every(function(t){return toks.some(function(q){return q===t||(lev(q,t)<=1&&!firstWordToStar[q]);});});
+      if(ok&&found.length<4)found.push(s);
+    });
+  }
+  found.sort(function(a,b){
+    var ia=ntext.indexOf(norm(a.name).split(' ')[0]),ib=ntext.indexOf(norm(b.name).split(' ')[0]);
+    return ia-ib;
+  });
+  // named but not in the SEO table -> keep the names as unscanned stubs (A1)
+  var all=found.slice();
+  extractUnknownNames(text,all).forEach(function(u){all.push(u);});
+  return{stars:all.slice(0,4).map(useStar),stip:stip,unscanned:all.filter(function(s){return s.status==='unscanned';}).map(function(s){return s.name;})};
+}
+function extractUnknownNames(text,found){
+  var clean=String(text||'')
+    .replace(/\bwwe\s*2k\d+\b/gi,' ')
+    .replace(/\bsimulation\b/gi,' ')
+    .replace(/\bfull match\b/gi,' ')
+    .replace(/\btitle\b/gi,' ')
+    .replace(/[|]/g,' ');
+  STIPS.forEach(function(s){clean=clean.replace(new RegExp('\\b'+s+'\\b','gi'),' ');});
+  var out=[];
+  clean.split(/\s+(?:vs|&)\s+/i).forEach(function(seg){
+    seg=seg.trim().replace(/^[^A-Za-z]+|[^A-Za-z]+$/g,'');
+    if(!seg)return;
+    var words=seg.split(/\s+/);
+    if(words.length>4||!words.length)return;
+    var ok=words.every(function(w){return/^[A-Z][a-z'\-]*$/.test(w)||/^[A-Z0-9'\-]{2,}$/.test(w);});
+    if(!ok)return;
+    var nseg=norm(seg);
+    var covered=found.some(function(s){var nn=norm(s.name);return nseg===nn||nseg.indexOf(nn)>=0||nn.indexOf(nseg)>=0;});
+    if(covered)return;
+    out.push({id:'unscanned-'+nseg.replace(/\s+/g,'-'),name:words.join(' '),status:'unscanned',
+      top10_views:0,median_views:0,video_count:0,top_terms:[],best_video:null,rank:null});
+  });
+  return out;
+}
+function useStar(s){
+  if(s&&s.alias_of&&s.top10_views==null){
+    var t=null;seoStars().forEach(function(x){if(x.id===s.alias_of)t=x;});
+    if(t){var m={};for(var k in t)m[k]=t[k];m.name=s.name;m.id=s.id;m.alias_of=null;m.alias_name=t.name;return m;}
+  }
+  return s;
+}
+function seoCard(s){
+  if(!s)return null;
+  s=useStar(s);
+  return{rank:s.rank,name:s.name,status:s.status,alias_data:s.alias_name||null,
+    top10_views:s.top10_views,live_views:s.live_views||null,median_views:s.median_views,
+    demand_score:(function(){var mx=1;seoStars().forEach(function(x){if(x.top10_views>mx)mx=x.top10_views;});return Math.round(100*Math.log10(1+s.top10_views)/Math.log10(1+mx));})(),
+    hot_terms:s.top_terms,
+    best_video:s.best_video?(s.best_video.title+' — '+Number(s.best_video.views).toLocaleString()+' views ('+s.best_video.channel+')'):null,
+    scan_updated:(LAST_SEO||{}).updated_human||'unknown'};
+}
+var NO_MATCH_STIPS=['extreme rules'];
+function stipTitle(stip){
+  var t=titleCaseStip(stip);
+  if(NO_MATCH_STIPS.indexOf(String(stip).toLowerCase())>=0)return t;
+  return /match$/i.test(t)?t:(t+' Match');
+}
+function stipDesc(stip){
+  var t=titleCaseStip(stip);
+  if(NO_MATCH_STIPS.indexOf(String(stip).toLowerCase())>=0){
+    var art=/^[aeiou]/i.test(t)?'an':'a';
+    return art+' '+t+' match';
+  }
+  return 'a '+stipTitle(stip);
+}
+function titleCaseStip(s){
+  var acr={tlc:'TLC',wwe:'WWE',cpu:'CPU',wargames:'War Games'};
+  return String(s).split(' ').map(function(w){var l=w.toLowerCase();return acr[l]||(l.charAt(0).toUpperCase()+l.slice(1));}).join(' ');
+}
+function titleScore(title,cards,stip){
+  var t=String(title),tu=t.toUpperCase();
+  var stars=seoStars();
+  var maxV=1;stars.forEach(function(s){if(s.top10_views>maxV)maxV=s.top10_views;});
+  var combined=0;cards.forEach(function(c){combined+=((c.top10_views||c.live_views)||0);});
+  var demand=Math.round(30*Math.log10(1+combined)/Math.log10(1+maxV));
+  var order=0;
+  var nm=function(s){return s.name.replace(/^The /i,'').toUpperCase();};
+  if(cards.length){
+    var iA=tu.indexOf(nm(cards[0]));
+    if(cards.length>1){
+      var iB=tu.indexOf(nm(cards[1]));
+      if(iA>=0&&(iB<0||iA<iB))order=20;else if(iA>=0)order=10;
+    }else if(iA>=0)order=20;
+  }
+  var format=0;
+  if((t.match(/ - /g)||[]).length===1)format+=8;
+  if(/Simulation \(Full Match\)/.test(t))format+=6;
+  if(t.indexOf('|')<0&&t.indexOf(':')<0&&t.indexOf('.')<0)format+=3;
+  var badW=t.split(' ').filter(function(w){return /^[A-Z]{2,}$/.test(w)&&['TLC','WWE','CPU'].indexOf(w)<0;});
+  if(!badW.length)format+=3;
+  var nameToks={};
+  stars.forEach(function(s){norm(s.name).split(' ').forEach(function(w){nameToks[w]=1;});});
+  var hooks=[];
+  cards.forEach(function(s){(s.top_terms||[]).forEach(function(x){if(!nameToks[x]&&hooks.indexOf(x)<0)hooks.push(x);});});
+  var hits=0;hooks.slice(0,6).forEach(function(x){if(tu.indexOf(x.toUpperCase())>=0)hits++;});
+  var hookScore=Math.min(10,hits*5);
+  var stipScore=0;
+  if(stip)stipScore=(tu.indexOf(titleCaseStip(stip).toUpperCase())>=0&&/Match/.test(t))?10:4;
+  var lenScore=t.length<=100?10:0;
+  var total=demand+order+format+hookScore+stipScore+lenScore;
+  return{score:Math.min(100,total),
+    breakdown:{demand:demand,name_order:order,format:format,hot_terms:hookScore,stipulation:stipScore,length:lenScore}};
+}
+function teamJoin(names,raw){
+  var r=' '+String(raw).toLowerCase().replace(/&/g,' & ').replace(/[^a-z &]/g,' ').replace(/\s+/g,' ').trim()+' ';
+  var out=[];
+  var fw=function(n){var w=norm(n).split(' ');return w[0]==='the'?(w[1]||w[0]):w[0];};
+  for(var i=0;i<names.length;i++){
+    var a=names[i];
+    if(i+1<names.length){
+      var b=names[i+1],na=norm(a),nb=norm(b);
+      if(r.indexOf(' '+na+' & '+nb+' ')>=0||r.indexOf(' '+fw(a)+' & '+fw(b)+' ')>=0){out.push(a+' & '+b);i++;continue;}
+    }
+    out.push(a);
+  }
+  return out;
+}
+function draftSeoTitles(cards,stip,game,rawMatchup){
+  var sorted=cards.slice();
+  var g=game||'WWE 2K26';
+  var st=stip?(' '+stipTitle(stip)):'';
+  var names=teamJoin(sorted.map(function(s){return s.name;}),rawMatchup||'').join(' vs ');
+  var base=names+st+' - '+g+' Simulation (Full Match)';
+  var titles=[{title:base,chars:base.length,parts:titleParts(names,st,g),
+    why:sorted.length>1?(sorted[0].name+' leads '+sorted[1].name+' on this turn\u2019s numbers.'):(sorted.length?('Only one name in the matchup: '+sorted[0].name+'.'):'No names given — generic stipulation title.')}];
+  var namesNoThe=teamJoin(sorted.map(function(s){return s.name.replace(/^The /,'');}),rawMatchup||'').join(' vs ');
+  var base2=namesNoThe+st+' - '+g+' Simulation (Full Match)';
+  if(base2!==base)titles.push({title:base2,chars:base2.length,parts:titleParts(namesNoThe,st,g),why:'Same B1 layout without "The" — tests the article variant.'});
+  if(sorted.length>1){
+    var revNames=sorted.slice().reverse().map(function(s){return s.name;}).join(' vs ');
+    var base3=revNames+st+' - '+g+' Simulation (Full Match)';
+    titles.push({title:base3,chars:base3.length,parts:titleParts(revNames,st,g),why:'Reversed order — for the C1 comparison; scores lower unless the numbers say otherwise.'});
+  }
+  if(base.length>100){
+    var baseNS=names+st+' - '+g+' (Full Match)';
+    titles.push({title:baseNS,chars:baseNS.length,parts:titleParts(names,st,g,true),why:'No Simulation — full title exceeded 100 chars, dropped Simulation first (E5).'});
+  }
+  titles.forEach(function(x){var sc=titleScore(x.title,sorted,stip);x.score=sc.score;x.score_breakdown=sc.breakdown;});
+  titles.sort(function(a,b){return b.score-a.score;});
+  var ok100=titles.filter(function(x){return x.chars<=100;});
+  if(ok100.length&&titles[0].chars>100)titles=ok100.concat(titles.filter(function(x){return x.chars>100;}));
+  var thumbTitle=stip?titleCaseStip(stip):(sorted.length?sorted[0].name.replace(/^The /,''):'WWE');
+  return{titles:titles,thumbnail:{title:thumbTitle,subtitle:'',note:'F2: 1-2 words; F1: right third empty for the timestamp'}};
+}
+function buildDescription(displayNames,stip,game){
+  var g1=displayNames
+    ?(displayNames+(stip?(' in '+stipDesc(stip)):'')+', simulated in '+game+' with CPU vs CPU action on Legend difficulty.')
+    :('A '+(stip?stipTitle(stip):'match')+', simulated in '+game+' with CPU vs CPU action on Legend difficulty.');
+  var g3='New WWE 2K26 dream matches every Monday, Wednesday and Friday. Subscribe so you don\'t miss the next one.';
+  return{opening:g1,mid:midFor(displayNames,stip),closing:g3};
+}
+function midFor(displayNames,stip){
+  var vs=String(displayNames||'').split(' vs ');
+  var a=vs[0],b=vs.slice(1).join(' vs ');
+  if(a&&b){
+    if(stip)return a+' takes on '+b+' in '+stipDesc(stip)+'. Watch the full match to see who wins.';
+    return a+' takes on '+b+'. Watch the full match to see who wins.';
+  }
+  return'Watch the full match to see who wins.';
+}
+function titleParts(namesStr,st,g,noSim){
+  var parts=[];
+  String(namesStr||'').split(' vs ').forEach(function(p,i){
+    if(i)parts.push(' vs ');
+    p.split(' & ').forEach(function(q,j){if(j)parts.push(' & ');if(q)parts.push(q);});
+  });
+  if(st)parts.push(st);
+  if(noSim)parts.push(' - ',g,' (Full Match)');
+  else parts.push(' - ',g,' Simulation',' (Full Match)');
+  return parts;
+}
+function buildAnswerBlock(o){
+  var bd=o.breakdown;
+  var charLine=o.chars+' characters';
+  if(o.parts&&o.parts.join('')===o.title){
+    charLine+=' ('+o.parts.map(function(p){return'"'+p+'" ('+p.length+')';}).join(' + ')+' \u2014 counts, not scores)';
+  }
+  return o.title+'\n'+charLine+'\n'+
+    o.nameOrderLine+'\n\n'+
+    'Thumbnail concept: '+o.concept+'\n\n'+
+    'Description:\n'+o.opening+'\n'+o.mid+'\n'+o.closing+'\n\n'+
+    o.tags.join(' ');
+}
+function buildHashtags(stars,stip,game){
+  var tags=[],seen={};
+  var add=function(t){t='#'+String(t).replace(/[^A-Za-z0-9]/g,'');if(t.length>1&&!seen[t]){seen[t]=1;tags.push(t);}};
+  add(game);
+  if(stip)add(titleCaseStip(stip));
+  (stars||[]).forEach(function(s){add(s.name);});
+  return tags;
+}
+function buildThumbConcept(displayNames,stip,stars){
+  var txt;
+  if(stip)txt=titleCaseStip(stip);
+  else if(displayNames){
+    var ents=displayNames.split(' vs ').join(' & ').split(' & ');
+    var lasts=ents.map(function(e){return e.replace(/^The /,'').split(' ').pop().toUpperCase();});
+    var same=lasts.every(function(x){return x===lasts[0];});
+    txt=same?('2 '+lasts[0]+'S'):ents[0].replace(/^The /,'');
+  }else txt='WWE';
+  var sides=String(displayNames||'').split(' vs ');
+  var isTeam=function(i){return stars&&stars[i]&&stars[i].team;};
+  var who;
+  if(displayNames&&sides.length===2&&(isTeam(0)||isTeam(1))){
+    var grp=function(s,i){return s+(isTeam(i)?' (team grouped together)':'');};
+    who='The left two-thirds: '+grp(sides[0],0)+' on the left vs '+grp(sides[1],1)+' on the right, facing off.';
+  }else who=displayNames?('The left two-thirds: '+displayNames+', facing off.'):'The structure or setting fills the frame — no specific faces.';
+  var cage=stip&&/cage|chamber|cell/i.test(stip)?(' The '+titleCaseStip(stip)+' structure frames the scene.'):'';
+  return who+' Dramatic rim lighting, dark background so the faces pop.'+cage+' Right third completely empty for the timestamp. Text on the left: "'+txt.toUpperCase()+'".';
+}
+async function dispatchTool(name,args){
+  args=args||{};
+  if(name==='web_search')return webSearch(args.query,args.num);
+  if(name==='run_code')return runCode(args.code||'');
+  if(name==='note_write'){if(!args.path)return{error:'path needed'};const n=notes();n[String(args.path).slice(0,80)]=String(args.content||'').slice(0,20000);saveNotes(n);return{written:args.path};}
+  if(name==='note_read'){const n=notes();const v=n[args.path];return v==null?{error:'not found'}:{path:args.path,content:String(v).slice(0,8000)};}
+  if(name==='note_list')return{notes:Object.keys(notes())};
+  if(name==='brain_search')return{matches:recall(args.query||'',5).map(m=>m.t)};
+  if(name==='wwe_seo'){
+    const q=(args.name||'').trim();
+    if(!q)return{error:'superstar name needed'};
+    if(!seoStars().length){loadSeoCache();if(!seoStars().length)return{error:'SEO table not synced yet — try again in a minute'};}
+    const s=findStar(q);
+    if(s)return seoCard(s);
+    try{
+      const lr=await youtubeKeylessSearch(q);
+      if(lr.error)return{error:'no SEO data for "'+q+'" and the live check is down right now'};
+      const lv=lr.items.slice(0,10).reduce(function(a,it){return a+(+it.viewCount||0);},0);
+      var lmx=1;seoStars().forEach(function(x){if(x.top10_views>lmx)lmx=x.top10_views;});
+      return{name:q,rank:null,status:'live-check',top10_views:null,live_views:lv,
+        demand_score:Math.round(100*Math.log10(1+lv)/Math.log10(1+lmx)),
+        hot_terms:[],best_video:lr.items[0]?(lr.items[0].title+' — '+Number(lr.items[0].viewCount||0).toLocaleString()+' views ('+lr.items[0].author+')'):null,
+        note:'live YouTube check this turn (not in the twice-weekly scan table yet)'};
+    }catch(e){return{error:'no SEO data for "'+q+'" right now'};}
+  }
+  if(name==='seo_title'){
+    const m=(args.matchup||'').trim();
+    if(!m)return{error:'matchup needed, e.g. "dominik mysterio vs liv morgan tlc"'};
+    if(!seoStars().length){loadSeoCache();if(!seoStars().length)return{error:'SEO table not synced yet — try again in a minute'};}
+    const game=(args.game||'').trim()||'WWE 2K26';
+    const gameAssumed=!(args.game||'').trim();
+    const pm=parseMatchup(m);
+    // ---- A4/B3: no wrestlers named -> generic stipulation title, flag first ----
+    if(!pm.stars.length){
+      const core=pm.stip?stipTitle(pm.stip):'Match';
+      const base=core+' - '+game+' Simulation (Full Match)';
+      const sc=titleScore(base,[],pm.stip);
+      const desc=buildDescription('',pm.stip,game);
+      const tags0=buildHashtags([],pm.stip,game);
+      const concept0=buildThumbConcept('',pm.stip);
+      const ab0=buildAnswerBlock({title:base,chars:base.length,parts:titleParts('',pm.stip?(' '+stipTitle(pm.stip)):'Match',game),
+        score:sc.score,breakdown:sc.breakdown,nameOrderLine:'No search data available \u2014 input order kept.',concept:concept0,
+        opening:desc.opening,mid:desc.mid,closing:desc.closing,tags:tags0});
+      return{flag:'No participants given, so adding names will improve search.',
+        answer_block:ab0};
+    }
+    const needLive=pm.stars.filter(function(s){return!s.top10_views;});
+    if(needLive.length){
+      try{
+        const lr=await Promise.all(needLive.map(function(s){return youtubeKeylessSearch(s.name);}));
+        lr.forEach(function(r,i){
+          needLive[i].live_views=(r&&!r.error)?r.items.slice(0,10).reduce(function(a,it){return a+(+it.viewCount||0);},0):0;
+        });
+      }catch(e){}
+    }
+    const eff=function(s){return s.top10_views||s.live_views||0;};
+    if(!pm.stip&&pm.stars.length===2&&pm.stars.every(function(s){return s.team;}))pm.stip='tag match';
+    const cards=pm.stars.map(seoCard);
+    const viewSorted=pm.stars.map(function(s,i){return{s:s,i:i};}).sort(function(a,b){return(eff(b.s)-eff(a.s))||(a.i-b.i);}).map(function(x){return x.s;});
+    // ---- C1/C4: full-phrase order check from this turn's live data ----
+    let orderNames=viewSorted.map(function(s){return s.name;});
+    const nm=norm(m||'');
+    const inputOrderNames=pm.stars.slice().sort(function(a,b){
+      var ia=nm.indexOf(norm(a.name)),ib=norm(b.name);
+      ib=nm.indexOf(ib);
+      if(ia<0)ia=1e9; if(ib<0)ib=1e9;
+      return ia-ib;
+    }).map(function(s){return s.name;});
+    let nameOrderLine='No search data available \u2014 input order kept.';
+    if(viewSorted.length>=2){
+      try{
+        const n1=viewSorted[0].name,n2=viewSorted[1].name;
+        const res=await Promise.all([youtubeKeylessSearch(n1+' vs '+n2),youtubeKeylessSearch(n2+' vs '+n1)]);
+        const sum=function(r){return(r&&!r.error)?r.items.slice(0,5).reduce(function(a,it){return a+(+it.viewCount||0);},0):0;};
+        const vA=sum(res[0]),vB=sum(res[1]);
+        if(vA+vB>0){
+          var mxAB=Math.max(vA,vB),mnAB=Math.min(vA,vB);
+          if((mxAB-mnAB)/mxAB<=0.05){
+            orderNames=inputOrderNames.slice();
+            nameOrderLine='Effectively tied \u2014 '+orderNames[0]+' goes first (input order).';
+          }else{
+            if(vB>vA)orderNames=[n2,n1].concat(orderNames.slice(2));
+            nameOrderLine=orderNames[0]+' goes first.';
+          }
+        }else{
+          var rq=await Promise.all([youtubeKeylessSearch(n1+' vs'),youtubeKeylessSearch(n2+' vs')]);
+          var m1=sum(rq[0]),m2=sum(rq[1]);
+          if(m1+m2>0){
+            var mxC=Math.max(m1,m2),mnC=Math.min(m1,m2);
+            if((mxC-mnC)/mxC<=0.05){
+              orderNames=inputOrderNames.slice();
+              nameOrderLine='Effectively tied \u2014 '+orderNames[0]+' goes first (input order).';
+            }else{
+              if(m2>m1)orderNames=[n2,n1].concat(orderNames.slice(2));
+              nameOrderLine=orderNames[0]+' goes first (C6).';
+            }
+          }
+        }
+      }catch(e){}
+    }
+    const ordered=orderNames.map(function(nm){return viewSorted.filter(function(s){return s.name===nm;})[0];});
+    let live=[];
+    try{
+      const r=await youtubeKeylessSearch(pm.stars.map(function(s){return s.name;}).join(' ')+(pm.stip?' '+pm.stip:''));
+      if(!r.error)live=r.items.slice(0,5).map(function(it){return{title:it.title||it.author,views:it.viewCount||it.subCount,url:it.videoId?('https://www.youtube.com/watch?v='+it.videoId):null};});
+    }catch(e){}
+    const draft=draftSeoTitles(ordered,pm.stip,game,m);
+    const displayNames=teamJoin(ordered.map(function(s){return s.name;}),m).join(' vs ');
+    const desc=buildDescription(displayNames,pm.stip,game);
+    const top=draft.titles[0],bd=top.score_breakdown;
+    const tags=buildHashtags(ordered,pm.stip,game);
+    const concept=buildThumbConcept(displayNames,pm.stip,ordered);
+    const answerBlock=buildAnswerBlock({title:top.title,chars:top.chars,parts:top.parts,
+      score:top.score,breakdown:bd,nameOrderLine:nameOrderLine,concept:concept,
+      opening:desc.opening,mid:desc.mid,closing:desc.closing,tags:tags});
+    return{flag:gameAssumed?('Game version assumed as '+game+' \u2014 confirm with Thomas before finalizing.'):undefined,
+      answer_block:answerBlock};
+  }
+  if(name==='youtube_search'){
+    const q=(args.query||args.q||args.name||args.text||'').trim();
+    if(!q)return{error:'search query needed'};
+    const r=await youtubeKeylessSearch(q,args.type);
+    if(r.error)return r;
+    const cache=ytcache();let cached=0;
+    const out=r.items.map(function(it){
+      if(it.videoId){
+        const rec={id:it.videoId,title:it.title,channel:it.author,views:String(it.viewCount||0),duration:it.lengthSeconds,published:it.publishedText,url:'https://www.youtube.com/watch?v='+it.videoId,ts:Date.now(),via:'keyless search'};
+        if(!cache.videos[it.videoId]){cache.videos[it.videoId]=rec;cached++;}
+        return{title:rec.title,channel:rec.channel,views:rec.views,duration:rec.duration,published:rec.published,url:rec.url};
+      }
+      const rec={id:it.authorId,name:it.author,subscribers:String(it.subCount||0),video_count:it.videoCount,ts:Date.now(),via:'keyless search'};
+      if(!cache.channels[it.authorId]){cache.channels[it.authorId]=rec;cached++;}
+      return{channel:rec.name,subscribers:rec.subscribers,videos:rec.video_count};
+    });
+    if(cached)saveYtcache(cache);
+    return{results:out,via:r.host+' (no API key needed)',note:'results cached in your YouTube memory'};
+  }
+  if(name==='youtube_lookup'){
+    const alm=(LAST_STATE&&LAST_STATE.almanac)||{};
+    const q=(args.name||'').toLowerCase().trim();
+    if(!q)return{error:'channel name needed'};
+    const hit=Object.keys(alm).find(k=>k.includes(q)||q.includes(k));
+    if(!hit)return{error:'not in the hourly almanac — use youtube_live (needs YouTube API key in settings)'};
+    const c=alm[hit];
+    return{name:c.name,subscribers:c.subs,total_views:c.views,video_count:c.videos,note:'hourly almanac, may lag live counts slightly'};
+  }
+  if(name==='youtube_channel'||name==='youtube_live'){
+    const q=(args.query||args.name||'').trim();
+    if(!q)return{error:'channel name or ID needed'};
+    const cache=ytcache();
+    const hit=Object.values(cache.channels).find(c=>c.id===q||c.name.toLowerCase()===q.toLowerCase());
+    if(hit&&!args.refresh)return Object.assign({cached:true},hit);
+    if(!CFG.ytkey)return{error:'no YouTube Data API key in settings - add one (free) to look up any channel'};
+    let cid=q;
+    if(!/^UC[a-zA-Z0-9_-]{22}$/.test(q)){
+      const s=await ytApi('search?part=snippet&type=channel&maxResults=1&q='+encodeURIComponent(q));
+      const item=(s.items||[])[0];
+      if(!item)return{error:'no channel found for "'+q+'"'};
+      cid=item.id.channelId;
+    }
+    const c=await ytApi('channels?part=snippet,statistics&id='+cid);
+    const ch=(c.items||[])[0];
+    if(!ch)return{error:'channel lookup failed'};
+    const rec={id:cid,name:ch.snippet.title,subscribers:ch.statistics.subscriberCount,total_views:ch.statistics.viewCount,video_count:ch.statistics.videoCount,ts:Date.now()};
+    cache.channels[cid]=rec;saveYtcache(cache);
+    return Object.assign({cached:false},rec);
+  }
+  if(name==='youtube_video'){
+    const q=(args.query||'').trim();
+    if(!q)return{error:'video title, ID or watch URL needed'};
+    const cache=ytcache();
+    const urlId=(q.match(/[?&]v=([a-zA-Z0-9_-]{11})/)||[])[1];
+    const idLike=/^[a-zA-Z0-9_-]{11}$/.test(q)?q:urlId;
+    if(idLike&&cache.videos[idLike]&&!args.refresh)return Object.assign({cached:true},cache.videos[idLike]);
+    if(!CFG.ytkey)return{error:'no YouTube Data API key in settings - add one (free) to look up any video'};
+    let vid=idLike;
+    if(!vid){
+      const s=await ytApi('search?part=snippet&type=video&maxResults=1&q='+encodeURIComponent(q));
+      const item=(s.items||[])[0];
+      if(!item)return{error:'no video found for "'+q+'"'};
+      vid=item.id.videoId;
+    }
+    if(cache.videos[vid]&&!args.refresh)return Object.assign({cached:true},cache.videos[vid]);
+    const v=await ytApi('videos?part=snippet,statistics,contentDetails&id='+vid);
+    const it=(v.items||[])[0];
+    if(!it)return{error:'video lookup failed'};
+    const rec={id:vid,title:it.snippet.title,channel:it.snippet.channelTitle,views:it.statistics.viewCount,likes:it.statistics.likeCount,comments:it.statistics.commentCount,duration:it.contentDetails.duration,published:(it.snippet.publishedAt||'').slice(0,10),ts:Date.now()};
+    cache.videos[vid]=rec;saveYtcache(cache);
+    return Object.assign({url:'https://www.youtube.com/watch?v='+vid,cached:false},rec);
+  }
+  if(name==='channel_stats'){
+    const mc=(LAST_STATE&&LAST_STATE.my_channel)||null;
+    if(!mc||!mc.subs)return{error:'channel data not synced yet — try again in a minute'};
+    const niche=(LAST_STATE.recent_learnings||[]).find(t=>/niche|velocity baseline/i.test(t))||'';
+    return{channel:mc.title,subscribers:mc.subs,total_views:mc.views,video_count:mc.video_count,
+      checked:mc.checked_at?new Date(mc.checked_at*1000).toLocaleString():'unknown',
+      fastest_recent:(mc.top_videos||[]).slice(0,5).map(v=>v.title+' — '+v.views+' views ('+v.velocity+' views/hr)'),
+      niche_context:niche};
+  }
+  if(name==='forecast'){if(!args.text||!(args.probability>=1&&args.probability<=99))return{error:'need text + probability 1-99'};const id=doForecast(args.text,args.probability,args.due_date||'');return{forecast_id:id,logged:true};}
+let STARS_CACHE=null;
+async function getStars(){
+  if(STARS_CACHE)return STARS_CACHE;
+  const r=await fetch('stars/stars.json');
+  if(!r.ok)throw new Error('superstar library not synced yet');
+  STARS_CACHE=await r.json();
+  return STARS_CACHE;
+}
+async function geminiImageGen(key,body,quick){
+  if(quick){
+    const ctl=new AbortController();const to=setTimeout(function(){ctl.abort();},25000);
+    try{
+      const r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key='+encodeURIComponent(key),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:ctl.signal});
+      clearTimeout(to);
+      const d=await r.json().catch(function(){return{};});
+      if(d.error)throw new Error(String(d.error.message||('image api '+r.status)));
+      return d;
+    }catch(e){clearTimeout(to);throw e;}
+  }
+  const waits=[0,25000,70000,140000];
+  let lastErr=null;
+  for(let i=0;i<waits.length;i++){
+    if(waits[i])await new Promise(function(r){setTimeout(r,waits[i]);});
+    let r,d;
+    try{
+      r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key='+encodeURIComponent(key),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+      d=await r.json().catch(function(){return{};});
+    }catch(e){lastErr=e;if(i<waits.length-1)continue;throw e;}
+    if(d.error){
+      const msg=String(d.error.message||('image api '+r.status));
+      if(/plan and billing|billing details/i.test(msg))
+        throw new Error('the free image allowance on this key is used up (chat still works — only image generation is capped). It resets on its own; try the thumbnail again later and it will go through.');
+      const limited=(d.error.code===429||r.status===429||/quota|rate limit|resource.?exhausted/i.test(msg));
+      if(limited&&i<waits.length-1){lastErr=new Error(msg);continue;}
+      if(limited)throw new Error('free-tier image limit hit — even after waiting. Give it a few minutes and try again; nothing is broken.');
+      throw new Error(msg);
+    }
+    return d;
+  }
+  throw lastErr||new Error('image generation failed');
+}
+  if(name==='generate_thumbnail'){
+    const prompt=String(args.prompt||'').slice(0,800);
+    if(!prompt)return{error:'describe the thumbnail first (subject, text, mood)'};
+    const aspect=/^(16:9|9:16|1:1)$/.test(args.aspect)?args.aspect:'16:9';
+    const title=String(args.title||'').slice(0,40),subtitle=String(args.subtitle||'').slice(0,40);
+    const starQ=String(args.superstar||'').trim().toLowerCase();
+    function geminiImg(parts,quick){
+      return geminiImageGen(CFG.key,{contents:[{parts:parts}],generationConfig:{responseModalities:['TEXT','IMAGE'],imageConfig:{aspectRatio:aspect}}},quick)
+        .then(function(d){
+          const ps=(((d.candidates||[])[0]||{}).content||{}).parts||[];
+          for(let i=0;i<ps.length;i++){if(ps[i].inlineData&&ps[i].inlineData.data)return 'data:'+(ps[i].inlineData.mimeType||'image/png')+';base64,'+ps[i].inlineData.data;}
+          throw new Error('no image came back');
+        });
+    }
+    if(starQ){
+      if(!CFG.key)return{error:'real-superstar thumbnails need your Gemini key in settings — the free fallback cannot do real faces (owner rule: never AI faces). Add the key, or drop superstar: for a free-service thumbnail.'};
+      const stars=await getStars();
+      const hit=stars.find(function(s){return s.id===starQ||s.name.toLowerCase()===starQ||s.name.toLowerCase().indexOf(starQ)>=0;});
+      if(!hit)return{error:'no superstar photo for "'+args.superstar+'" — available: '+stars.map(function(s){return s.id;}).join(', ')};
+      const br=await fetch('stars/'+hit.file);
+      if(!br.ok)return{error:'could not load photo for '+hit.name};
+      const b64=await blobToB64(await br.blob());
+      const txt='Use the attached real photo of WWE superstar '+hit.name+'. Keep their face, likeness and appearance photorealistic and instantly recognizable — do not change who they are, do not cartoon-ify them. Place them into this YouTube thumbnail scene: '+prompt+'. YouTube thumbnail, '+aspect+' aspect ratio, bold huge readable title text, vivid high contrast colors, no watermark, no logo.';
+      let dataUrl;
+      try{dataUrl=await geminiImg([{inlineData:{mimeType:'image/jpeg',data:b64}},{text:txt}],true);}
+      catch(e){return{error:'image generation failed ('+e.message+'). Real-photo thumbnails cannot use the free fallback — it would generate fake faces, which is forbidden. Try again later.'};}
+      PENDING_IMAGES.push(dataUrl);
+      return{thumbnail_ready:true,aspect:aspect,superstar:hit.name,via:'gemini (real photo)',note:'Thumbnail generated starring the real '+hit.name+' — shown in chat below with a download link.'};
+    }
+    let dataUrl=null,via='';
+    if(CFG.key){
+      try{dataUrl=await geminiImg([{text:'YouTube thumbnail, '+aspect+' aspect ratio, bold eye-catching design, huge readable title text, ultra-expressive subject, vivid high contrast colors, no watermark, no logo: '+prompt}],true);via='gemini';}
+      catch(e){/* fall through to the free service */}
+    }
+    if(!dataUrl){
+      try{dataUrl=await pollinationsThumb(prompt,title,subtitle,aspect);via='free image service (no key needed)';}
+      catch(e){return{error:'both image routes failed right now ('+e.message+'). Try again in a bit.'};}
+    }
+    PENDING_IMAGES.push(dataUrl);
+    return{thumbnail_ready:true,aspect:aspect,via:via,note:'Thumbnail generated via '+via+' — shown in chat below with a download link.'};
+  }
+  return{error:'unknown tool: '+name};
+}
+async function act(task,log){
+  const msgs=[{role:'system',content:ACT_SYS.replace('{name}',DB.name)+'\n\n'+sysPrompt(task)},{role:'user',content:task}];
+  let final=null;const steps=[];
+  for(let i=0;i<8;i++){
+    let reply;try{reply=await llm(msgs);}catch(e){final='Tool run failed: '+e.message;break;}
+    msgs.push({role:'assistant',content:reply});
+    const call=parseToolCall(reply);
+    if(!call){final=reply;break;}
+    if(log)log('🔧 '+call[0]+'…');
+    let result;try{result=await dispatchTool(call[0],call[1]);}catch(e){result={error:String(e.message||e)};}
+    steps.push({tool:call[0],args:call[1]});
+    msgs.push({role:'user',content:'Tool result ('+call[0]+'):\n'+JSON.stringify(result).slice(0,4000)});
+  }
+  if(final==null)final='I ran out of steps. Partial progress: '+steps.length+' tool calls.';
+  addEp('user','[act] '+task);addEp('assistant',final);
+  absorb(task,final).catch(()=>{});
+  return final;
+}
+/* ================= live sync: breathing ================= */
+const STATE_URL='state.json';
+let lastSync=0;
+let LAST_STATE=null;
+async function syncState(quiet){
+  try{
+    const r=await fetch(STATE_URL+'?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok)return false;
+    const s=await r.json();
+    LAST_STATE=s;
+    let n=0;
+    (s.facts||[]).forEach(f=>{
+      if(!DB.facts.find(x=>x.key===f.key)){DB.facts.push({id:DB.seq.fact++,key:f.key,value:f.value,conf:f.conf||70,ts:f.ts||Date.now()});n++;}
+    });
+    (s.learnings||[]).forEach(l=>{
+      if(!DB.learnings.find(x=>x.text===l.text)){DB.learnings.push({id:DB.seq.learn++,text:l.text,conf:l.conf||70,ts:l.ts||Date.now()});n++;}
+    });
+    (s.predictions||[]).forEach(p=>{
+      if(!DB.predictions.find(x=>x.text===p.text)){DB.predictions.push({id:DB.seq.pred++,text:p.text,prob:p.prob||50,due:p.due||'',base:p.base||'',outcome:p.outcome||null,ts:p.ts||Date.now()});n++;}
+    });
+    if(n)saveDB();
+    lastSync=Date.now();
+    if(s.exported_at)DB._synced_at=s.exported_at;
+    renderFeed(s);
+    updateTitle();
+    if(n&&!quiet)sysMsg('🌬️ Breathed in '+n+' new thing'+(n>1?'s':'')+' from the living brain.');
+    return true;
+  }catch(e){return false;}
+}
+function ago(ts){if(!ts)return 'never';const m=Math.round((Date.now()-ts)/60000);if(m<1)return 'just now';if(m<60)return m+'m ago';const h=Math.round(m/60);if(h<24)return h+'h ago';return Math.round(h/24)+'d ago';}
+function renderFeed(s){
+  const el=document.getElementById('livefeed');if(!el)return;
+  const items=[];
+  (s.recent_learnings||[]).slice(0,4).forEach(l=>items.push('<div class="fitem">💡 '+esc(l)+'</div>'));
+  (s.recent_scans||[]).slice(0,3).forEach(x=>items.push('<div class="fitem">📡 '+esc(x)+'</div>'));
+  el.innerHTML=(items.join('')||'<div class="fitem dim">The brain is quiet right now.</div>')
+    +'<div class="fitem dim">Last breath: '+(s.exported_at?ago(s.exported_at*1000):'never')+'</div>';
+}
+
+/* ================= ui ================= */
+const chat=document.getElementById('chat'),input=document.getElementById('in');
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fmt(s){
+  let h=esc(s);
+  h=h.replace(/```(\w*)\n([\s\S]*?)```/g,(m,l,c)=>'<pre><code>'+c.replace(/^\n+|\n+$/g,'')+'</code></pre>');
+  h=h.replace(/`([^`]+)`/g,'<code>$1</code>');
+  return h;
+}
+function bubble(role,html,cls){const d=document.createElement('div');d.className='msg '+role+(cls?' '+cls:'');d.innerHTML=html;chat.appendChild(d);chat.scrollTop=chat.scrollHeight;return d;}
+function sysMsg(t){bubble('sys',esc(t));}
+function updateTitle(){
+  const b=brier();
+  document.getElementById('bstat').textContent=DB.facts.length+' facts · '+DB.learnings.length+' learnings'+(b?' · Brier '+b.score.toFixed(2):'');
+  document.querySelector('header h1').childNodes[0].textContent=DB.name+' ';
+}
+let busy=false;
+async function send(){
+  const text=input.value.trim();if(!text||busy)return;
+  input.value='';input.style.height='auto';
+  bubble('user',fmt(text));
+  busy=true;
+  const tp=bubble('ai','<span class="typing">thinking\u2026</span>');
+  const setThink=t=>{
+    let tr=tp.querySelector('.trace');
+    if(!tr){tp.innerHTML='';tr=document.createElement('div');tr.className='trace';tp.appendChild(tr);}
+    const prev=tr.querySelector('.tstep.live');if(prev)prev.classList.remove('live');
+    const d=document.createElement('div');d.className='tstep live';d.textContent=t;tr.appendChild(d);
+    chat.scrollTop=chat.scrollHeight;
+  };
+  const collapseTrace=function(){
+    const tr=tp.querySelector('.trace');
+    if(!tr||!tr.children.length)return '';
+    const n=tr.children.length;
+    return '<details class="tracedone"><summary>\U0001F9E0 how I worked ('+n+' step'+(n>1?'s':'')+')</summary>'+tr.innerHTML+'</details>';
+  };
+  try{
+    let out;
+    if(text.startsWith('/')){setThink('working\u2026');out=await runCommand(text);}
+    if(out==null){out=await think(text,setThink);}
+    tp.innerHTML=collapseTrace()+fmt(out);
+    if(PENDING_IMAGES.length){PENDING_IMAGES.splice(0).forEach(function(u){bubble('ai','<img src="'+u+'" style="max-width:100%;border-radius:10px"><br><a download="thumbnail.png" href="'+u+'">\u2b07\ufe0f Download thumbnail</a>');});}
+  }catch(e){
+    let msg;
+    if(e.message==='no-key')
+      msg='🔑 <b>No API key yet.</b> Tap ⚙️ and paste a free Gemini key — or try <b>Browser AI</b> mode for keyless (experimental).';
+    else if(e.message==='browser-ai-unavailable')
+      msg='🤖 <b>Browser AI isn\'t available here.</b> It needs Chrome with built-in AI (Gemini Nano). API key mode works everywhere — tap ⚙️ to switch.';
+    else if(/unexpected model name format|model not found|is not found|NOT_FOUND/i.test(e.message))
+      msg='⚠️ <b>That model name isn\'t valid.</b> Open ⚙️ and pick <b>Gemini 3.1 Flash-Lite</b> from the list — model IDs look like <code>gemini-3.1-flash-lite</code>, not "Gemini 8".';
+    else
+      msg='⚠️ '+esc(e.message.length>300?e.message.slice(0,300)+'…':e.message);
+    tp.innerHTML=collapseTrace()+msg;
+  }
+  chat.scrollTop=chat.scrollHeight;busy=false;
+}
+document.getElementById('send').onclick=send;
+input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+input.addEventListener('input',()=>{input.style.height='auto';input.style.height=Math.min(120,input.scrollHeight)+'px';});
+document.querySelectorAll('.hint').forEach(h=>h.onclick=()=>{input.value=h.textContent;input.focus();});
+
+const MACHINE_VERSION='2026.09.30k';
+/* settings */
+const modal=document.getElementById('modal'),sheet=document.getElementById('sheet');
+function openSettings(){
+  sheet.innerHTML='<h2>⚙️ Settings</h2><p class="d">Your key stays in <b>this browser only</b> — it is sent straight to the AI provider, never through this site or anywhere else.</p>'
+  +'<div class="f"><label>Brain power</label>'
+  +'<div style="display:flex;gap:8px;margin-bottom:4px">'
+  +'<label style="flex:1;border:1px solid var(--border);border-radius:8px;padding:10px;font-size:14px;cursor:pointer"><input type="radio" name="s_prov" value="key"'+(CFG.provider!=='browser'?' checked':'')+'> API key <span style="color:var(--dim)">(reliable)</span></label>'
+  +'<label style="flex:1;border:1px solid var(--border);border-radius:8px;padding:10px;font-size:14px;cursor:pointer"><input type="radio" name="s_prov" value="browser"'+(CFG.provider==='browser'?' checked':'')+'> Browser AI <span style="color:var(--dim)">(no key, experimental)</span></label>'
+  +'</div><div id="s_baistat" style="font-size:12px;color:var(--dim)"></div></div>'
+  +'<div id="s_keyfields">'
+  +'<div class="f"><label>API base URL</label><input id="s_base" value="'+esc(CFG.base)+'"></div>'
+  +'<div class="f"><label>API key (free Gemini key works)</label><input id="s_key" type="password" placeholder="paste key…" value="'+esc(CFG.key)+'"></div>'
+  +'<div class="f"><label>Model</label><select id="s_model" style="width:100%;background:#0d1117;border:1px solid var(--border);color:var(--text);border-radius:8px;padding:10px;font-size:15px">'
+  +MODELS.map(m=>'<option value="'+m.v+'"'+(CFG.model===m.v?' selected':'')+'>'+m.l+'</option>').join('')
+  +'<option value="__custom"'+(isCustomModel()?' selected':'')+'>Custom…</option></select></div>'
+  +'<div class="f" id="s_customwrap" style="display:'+(isCustomModel()?'':'none')+'"><label>Custom model name</label><input id="s_custom" value="'+esc(isCustomModel()?CFG.model:'')+'" placeholder="e.g. gemini-3.8-flash"><div style="font-size:12px;color:var(--dim);margin-top:4px">Exact model ID only — like <code>gemini-3.8-flash</code>, not a display name like "Gemini 8".</div></div>'
+  +'</div>'
+  +'<div class="f"><label>Serper key (optional — for /act web search)</label><input id="s_serper" type="password" placeholder="optional" value="'+esc(CFG.serper)+'"></div>'
+  +'<div class="f"><label>YouTube Data API key (optional — look up ANY channel live)</label><input id="s_ytkey" type="password" placeholder="optional" value="'+esc(CFG.ytkey||'')+'"><div style="font-size:12px;color:var(--dim);margin-top:4px">Google Cloud Console → Credentials → Create API key (enable YouTube Data API v3). Free.</div></div>'
+  +'<div class="btnrow"><button class="btn" id="s_save">Save</button><button class="btn ghost" id="s_close">Close</button></div>'
+  +'<div class="btnrow"><button class="btn ghost" id="s_exp">Export memory</button><button class="btn ghost" id="s_imp">Import memory</button><button class="btn danger" id="s_wipe">Erase brain</button></div>'
+  +'<p class="d" style="margin-top:12px">Get a free key: <b>Google AI Studio → Get API key</b> (free tier). The brain also breathes on its own: it syncs what the living brain learned every 15 minutes while this page is open.</p>'
+  +'<p class="d" style="margin-top:12px;color:var(--dim);font-size:11px">Machine '+MACHINE_VERSION+' — hard-refresh (Ctrl+Shift+R) if this looks old.</p>';
+  modal.classList.add('open');
+  browserAiStatus().then(s=>{const el=document.getElementById('s_baistat');if(el)el.textContent='Browser AI status: '+s+(s!=='available'?' — needs Chrome with built-in AI; API key mode works everywhere.':'');});
+  const provRadios=sheet.querySelectorAll('input[name="s_prov"]');
+  const toggleKeys=()=>{const v=sheet.querySelector('input[name="s_prov"]:checked').value;document.getElementById('s_keyfields').style.display=v==='browser'?'none':'';};
+  provRadios.forEach(r=>r.addEventListener('change',toggleKeys));toggleKeys();
+  const msel=document.getElementById('s_model');
+  msel.addEventListener('change',()=>{document.getElementById('s_customwrap').style.display=msel.value==='__custom'?'':'none';});
+  document.getElementById('s_save').onclick=()=>{CFG.provider=sheet.querySelector('input[name="s_prov"]:checked').value;CFG.base=document.getElementById('s_base').value.trim();CFG.key=document.getElementById('s_key').value.trim();const mv=msel.value;CFG.model=mv==='__custom'?(document.getElementById('s_custom').value.trim()||'gemini-3.1-flash-lite'):mv;CFG.serper=document.getElementById('s_serper').value.trim();CFG.ytkey=document.getElementById('s_ytkey').value.trim();saveCfg();modal.classList.remove('open');sysMsg('Settings saved. Running '+esc(CFG.model)+'.');};
+  document.getElementById('s_close').onclick=()=>modal.classList.remove('open');
+  document.getElementById('s_exp').onclick=()=>{const b=new Blob([JSON.stringify(DB)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='machine-memory.json';a.click();};
+  document.getElementById('s_imp').onclick=()=>{const i=document.createElement('input');i.type='file';i.accept='.json';i.onchange=()=>{const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(d.facts){DB=d;saveDB();updateTitle();sysMsg('Memory imported.');}else sysMsg('Not a brain file.');}catch(e){sysMsg('Import failed.');}};r.readAsText(f);};i.click();};
+  document.getElementById('s_wipe').onclick=()=>{if(confirm('Erase everything this brain learned in this browser?')){localStorage.removeItem(DB_KEY);loadDB();updateTitle();sysMsg('Brain erased. Fresh start.');}};
+}
+function openBrain(){
+  const b=brier();
+  sheet.innerHTML='<h2>🧠 Brain</h2><p class="d">What this brain holds, right here in this browser.</p><div id="brainpanel">'
+  +'<div class="kv"><span>Facts</span><b>'+DB.facts.length+'</b></div>'
+  +'<div class="kv"><span>Learnings</span><b>'+DB.learnings.length+'</b></div>'
+  +'<div class="kv"><span>Episodes</span><b>'+DB.episodes.length+'</b></div>'
+  +'<div class="kv"><span>Forecasts resolved</span><b>'+(b?b.n+' (Brier '+b.score.toFixed(3)+')':'0')+'</b></div>'
+  +'<div class="kv"><span>Forecasts open</span><b>'+DB.predictions.filter(p=>!p.outcome).length+'</b></div>'
+  +'<div class="kv"><span>Capabilities</span><b>'+DB.capabilities.map(c=>c.version).join(', ')+'</b></div>'
+  +'</div><h2 style="margin-top:16px">🌬️ Live feed</h2><p class="d">What the living brain learned lately — synced from the 24/7 side.</p><div id="livefeed"><div class="fitem dim">syncing…</div></div>'
+  +'<div class="btnrow"><button class="btn ghost" id="s_close2">Close</button><button class="btn ghost" id="s_sync">Sync now</button></div>';
+  modal.classList.add('open');
+  document.getElementById('s_close2').onclick=()=>modal.classList.remove('open');
+  document.getElementById('s_sync').onclick=async()=>{await syncState(false);openBrain();};
+  syncState(true);
+}
+document.getElementById('setbtn').onclick=openSettings;
+document.getElementById('brainbtn').onclick=openBrain;
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open');});
+
+/* boot */
+loadDB();updateTitle();
+if(CFG.provider==='browser')bubble('sys','🤖 <b>Browser AI mode.</b> I\'ll try your browser\'s built-in AI — no key needed. If it isn\'t available here, switch to API key mode in ⚙️.');
+else if(!CFG.key)bubble('sys','🌙 This page is <b>hidden</b> — unlinked from the public site. I\'m asleep until you add a free Gemini key in ⚙️ settings (or try the experimental <b>Browser AI</b> mode — no key). The brain keeps living on the other side meanwhile; I\'ll breathe in everything it learned when I wake.');
+loadSeoCache();syncSeo(true);
+syncState(true);
+setInterval(()=>{syncState(true);syncSeo(true);},15*60*1000);
+</script>
+</body>
+</html>
