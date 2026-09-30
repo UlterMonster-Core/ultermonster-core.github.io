@@ -230,6 +230,7 @@ async function think(userText,onStep){
   const msgs=[{role:'system',content:sysPrompt(userText)},...hist,{role:'user',content:userText}];
   let reply=await llm(msgs);
   msgs.push({role:'assistant',content:reply});
+  let seoPaste=null;
   for(let i=0;i<3;i++){
     const call=parseToolCall(reply);
     if(!call)break;
@@ -237,10 +238,20 @@ async function think(userText,onStep){
     let result;
     try{result=await dispatchTool(call[0],call[1]);}
     catch(e){result={error:String((e&&e.message)||e)};}
+    if(call[0]==='seo_title'&&result&&result.answer_block)seoPaste={flag:result.flag||'',block:String(result.answer_block)};
     if(onStep)onStep('  '+shortResult(call[0],result));
     msgs.push({role:'user',content:'Tool result ('+call[0]+'):\n'+JSON.stringify(result).slice(0,3000)});
     reply=await llm(msgs);
     msgs.push({role:'assistant',content:reply});
+  }
+  if(seoPaste){
+    const wnorm=function(s){return String(s||'').replace(/\s+/g,' ').trim();};
+    const want=(seoPaste.flag?seoPaste.flag+'\n\n':'')+seoPaste.block;
+    if(wnorm(reply)===wnorm(want)){if(onStep)onStep('✓ pasted verbatim');}
+    else{
+      if(onStep)onStep(wnorm(reply).indexOf(wnorm(seoPaste.block))>=0?'✓ pasted verbatim (trimmed)':'⚠️ retyped \u2014 enforced verbatim paste');
+      reply=want;
+    }
   }
   if(onStep)onStep('✍️ writing the answer…');
   addEp('user',userText);addEp('assistant',reply);
@@ -1204,7 +1215,7 @@ input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventD
 input.addEventListener('input',()=>{input.style.height='auto';input.style.height=Math.min(120,input.scrollHeight)+'px';});
 document.querySelectorAll('.hint').forEach(h=>h.onclick=()=>{input.value=h.textContent;input.focus();});
 
-const MACHINE_VERSION='2026.09.30n';
+const MACHINE_VERSION='2026.09.30o';
 /* settings */
 const modal=document.getElementById('modal'),sheet=document.getElementById('sheet');
 function openSettings(){
