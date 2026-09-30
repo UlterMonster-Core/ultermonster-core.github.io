@@ -534,26 +534,42 @@ function parseMatchup(text){
   const stipWords=stip?stip.split(' '):[];
   const found=[];
   const ordered=stars.slice().sort(function(a,b){return norm(b.name).length-norm(a.name).length;});
+  const firstWordToStar={};
+  ordered.forEach(function(s){
+    var fw=norm(s.name).split(' ');if(fw[0]==='the')fw=fw.slice(1);
+    if(fw.length&&!firstWordToStar[fw[0]])firstWordToStar[fw[0]]=s;
+  });
+  const toksAll=ntext.split(' ').filter(function(q){return stipWords.indexOf(q)<0;});
   let work=' '+ntext+' ';
   ordered.forEach(function(s){
     const nn=norm(s.name);
     if(work.indexOf(' '+nn+' ')>=0){found.push(s);work=work.replace(' '+nn+' ',' ');}
   });
-  if(found.length<3){
-    const toks=ntext.split(' ').filter(function(q){return stipWords.indexOf(q)<0;});
+  if(found.length<4){
+    toksAll.forEach(function(q){
+      var s=firstWordToStar[q];
+      if(s&&found.indexOf(s)<0&&found.length<4)found.push(s);
+    });
+  }
+  if(found.length<4){
+    const toks=toksAll;
     ordered.forEach(function(s){
       if(found.indexOf(s)>=0)return;
       let st=norm(s.name).split(' ');
       if(st[0]==='the')st=st.slice(1);
       if(!st.length)return;
-      const ok=st.every(function(t){return toks.some(function(q){return q===t||lev(q,t)<=1;});});
-      if(ok&&found.length<3)found.push(s);
+      const ok=st.every(function(t){return toks.some(function(q){return q===t||(lev(q,t)<=1&&!firstWordToStar[q]);});});
+      if(ok&&found.length<4)found.push(s);
     });
   }
+  found.sort(function(a,b){
+    var ia=ntext.indexOf(norm(a.name).split(' ')[0]),ib=ntext.indexOf(norm(b.name).split(' ')[0]);
+    return ia-ib;
+  });
   // named but not in the SEO table -> keep the names as unscanned stubs (A1)
   var all=found.slice();
   extractUnknownNames(text,all).forEach(function(u){all.push(u);});
-  return{stars:all.slice(0,3).map(useStar),stip:stip,unscanned:all.filter(function(s){return s.status==='unscanned';}).map(function(s){return s.name;})};
+  return{stars:all.slice(0,4).map(useStar),stip:stip,unscanned:all.filter(function(s){return s.status==='unscanned';}).map(function(s){return s.name;})};
 }
 function extractUnknownNames(text,found){
   var clean=String(text||'')
@@ -650,10 +666,15 @@ function titleScore(title,cards,stip){
 }
 function teamJoin(names,raw){
   var r=' '+String(raw).toLowerCase().replace(/&/g,' & ').replace(/[^a-z &]/g,' ').replace(/\s+/g,' ').trim()+' ';
-  var out=names.slice();
-  for(var i=0;i<out.length-1;i++){
-    var a=norm(out[i]),b=norm(out[i+1]);
-    if(r.indexOf(' '+a+' & '+b+' ')>=0){out[i]=out[i]+' & '+out[i+1];out.splice(i+1,1);i--;}
+  var out=[];
+  var fw=function(n){var w=norm(n).split(' ');return w[0]==='the'?(w[1]||w[0]):w[0];};
+  for(var i=0;i<names.length;i++){
+    var a=names[i];
+    if(i+1<names.length){
+      var b=names[i+1],na=norm(a),nb=norm(b);
+      if(r.indexOf(' '+na+' & '+nb+' ')>=0||r.indexOf(' '+fw(a)+' & '+fw(b)+' ')>=0){out.push(a+' & '+b);i++;continue;}
+    }
+    out.push(a);
   }
   return out;
 }
@@ -673,8 +694,15 @@ function draftSeoTitles(cards,stip,game,rawMatchup){
     var base3=revNames+st+' - '+g+' Simulation (Full Match)';
     titles.push({title:base3,chars:base3.length,parts:titleParts(revNames,st,g),why:'Reversed order — for the C1 comparison; scores lower unless the numbers say otherwise.'});
   }
+  if(base.length>100){
+    var shortN=teamJoin(sorted.map(function(s){var w=String(s.name).split(' ');return w[0]==='The'?(w[1]||w[0]):w[0];}),rawMatchup||'').join(' vs ');
+    var baseS=shortN+st+' - '+g+' Simulation (Full Match)';
+    titles.push({title:baseS,chars:baseS.length,parts:titleParts(shortN,st,g),why:'First-names only — full names exceeded 100 chars (B7).'});
+  }
   titles.forEach(function(x){var sc=titleScore(x.title,sorted,stip);x.score=sc.score;x.score_breakdown=sc.breakdown;});
   titles.sort(function(a,b){return b.score-a.score;});
+  var ok100=titles.filter(function(x){return x.chars<=100;});
+  if(ok100.length&&titles[0].chars>100)titles=ok100.concat(titles.filter(function(x){return x.chars>100;}));
   var thumbTitle=stip?titleCaseStip(stip):(sorted.length?sorted[0].name.replace(/^The /,''):'WWE');
   return{titles:titles,thumbnail:{title:thumbTitle,subtitle:'',note:'F2: 1-2 words; F1: right third empty for the timestamp'}};
 }
@@ -821,7 +849,7 @@ async function dispatchTool(name,args){
         if(vA+vB>0){
           var mxAB=Math.max(vA,vB),mnAB=Math.min(vA,vB);
           if((mxAB-mnAB)/mxAB<=0.05){
-            orderNames=inputOrderNames.slice(0,2).concat(orderNames.slice(2));
+            orderNames=inputOrderNames.slice();
             nameOrderLine='Effectively tied \u2014 '+orderNames[0]+' goes first (input order).';
           }else{
             if(vB>vA)orderNames=[n2,n1].concat(orderNames.slice(2));
@@ -833,7 +861,7 @@ async function dispatchTool(name,args){
           if(m1+m2>0){
             var mxC=Math.max(m1,m2),mnC=Math.min(m1,m2);
             if((mxC-mnC)/mxC<=0.05){
-              orderNames=inputOrderNames.slice(0,2).concat(orderNames.slice(2));
+              orderNames=inputOrderNames.slice();
               nameOrderLine='Effectively tied \u2014 '+orderNames[0]+' goes first (input order).';
             }else{
               if(m2>m1)orderNames=[n2,n1].concat(orderNames.slice(2));
@@ -1145,7 +1173,7 @@ input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventD
 input.addEventListener('input',()=>{input.style.height='auto';input.style.height=Math.min(120,input.scrollHeight)+'px';});
 document.querySelectorAll('.hint').forEach(h=>h.onclick=()=>{input.value=h.textContent;input.focus();});
 
-const MACHINE_VERSION='2026.09.30i';
+const MACHINE_VERSION='2026.09.30j';
 /* settings */
 const modal=document.getElementById('modal'),sheet=document.getElementById('sheet');
 function openSettings(){
