@@ -24,6 +24,13 @@ header h1 span{color:var(--dim);font-weight:400;font-size:12px;margin-left:8px}
 .msg pre{background:#0d1117;border:1px solid var(--border);border-radius:8px;padding:8px;margin:6px 0;overflow-x:auto;font-size:13px}
 .msg code{font-family:ui-monospace,Menlo,Consolas,monospace}
 .typing{color:var(--dim);font-style:italic}
+.trace{margin:2px 0 10px}
+.tstep{font-size:13px;color:var(--dim);padding:3px 0 3px 10px;margin:3px 0;border-left:2px solid var(--border);line-height:1.45}
+.tstep.live{color:var(--text)}
+.tracedone{margin-bottom:10px;font-size:13px}
+.tracedone summary{cursor:pointer;color:var(--dim);list-style:none}
+.tracedone summary:before{content:'\25b6 ';font-size:10px}
+.tracedone[open] summary:before{content:'\25bc ';font-size:10px}
 #bar{padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--border);background:var(--panel);flex-shrink:0}
 #row{display:flex;gap:8px}
 #in{flex:1;background:#0d1117;border:1px solid var(--border);color:var(--text);border-radius:10px;padding:11px 12px;font-size:16px;outline:none;resize:none;max-height:120px}
@@ -197,6 +204,27 @@ function sysPrompt(q){
 const EXTRACT_PROMPT='From this conversation turn, extract durable items worth remembering long-term. Return ONLY a JSON array, no other text. Each item:\n{"kind":"fact","key":"short_snake_key","value":"...","confidence":0-100}\nor\n{"kind":"learning","text":"pattern about what works","confidence":0-100}\nFacts are stable truths about the owner (name, projects, preferences).\nLearnings are patterns about what works or doesn\'t.\nInclude only items genuinely worth keeping. Return [] if none.\n\nUser: {user}\n'+'{name}'+': {reply}';
 function parseJsonArray(raw){try{const a=raw.indexOf('['),b=raw.lastIndexOf(']')+1;const d=JSON.parse(raw.slice(a,b));return Array.isArray(d)?d:[];}catch(e){return[];}}
 /* ================= think & learn ================= */
+function shortArgs(args){
+  args=args||{};
+  var q=args.query||args.matchup||args.name||args.prompt||args.text||args.path||'';
+  return q?(' \u2014 '+String(q).slice(0,60)):'';
+}
+function shortResult(name,result){
+  try{
+    if(!result)return'\u2192 done';
+    if(result.error)return'\u2192 failed: '+String(result.error).slice(0,90);
+    if(name==='youtube_search'&&result.results)return'\u2192 '+result.results.length+' videos'+(result.results[0]?', top: '+String(result.results[0].title).slice(0,65):'');
+    if(name==='seo_title'&&result.draft_titles)return'\u2192 '+result.draft_titles[0].title;
+    if(name==='wwe_seo'&&result.rank)return'\u2192 #'+result.rank+' '+result.name+' ('+Number(result.top10_views).toLocaleString()+' views)';
+    if(name==='generate_thumbnail')return'\u2192 thumbnail ready ('+(result.via||'done')+')';
+    if(name==='youtube_channel'&&result.subscribers)return'\u2192 '+result.name+' \u2014 '+result.subscribers+' subs';
+    if(name==='youtube_video'&&result.views)return'\u2192 '+Number(result.views).toLocaleString()+' views';
+    if(name==='channel_stats'&&result.subscribers)return'\u2192 '+result.subscribers+' subs';
+    if(name==='brain_search'&&result.matches)return'\u2192 '+result.matches.length+' memories';
+    if(name==='forecast')return'\u2192 forecast logged';
+    return'\u2192 '+JSON.stringify(result).slice(0,90);
+  }catch(e){return'\u2192 done';}
+}
 async function think(userText,onStep){
   const hist=DB.episodes.slice(-6).map(e=>({role:e.role==='user'?'user':'assistant',content:e.text}));
   const msgs=[{role:'system',content:sysPrompt(userText)},...hist,{role:'user',content:userText}];
@@ -205,14 +233,16 @@ async function think(userText,onStep){
   for(let i=0;i<3;i++){
     const call=parseToolCall(reply);
     if(!call)break;
-    if(onStep)onStep('🔧 '+call[0]+'…');
+    if(onStep)onStep('🔧 '+call[0]+shortArgs(call[1]));
     let result;
     try{result=await dispatchTool(call[0],call[1]);}
     catch(e){result={error:String((e&&e.message)||e)};}
+    if(onStep)onStep('  '+shortResult(call[0],result));
     msgs.push({role:'user',content:'Tool result ('+call[0]+'):\n'+JSON.stringify(result).slice(0,3000)});
     reply=await llm(msgs);
     msgs.push({role:'assistant',content:reply});
   }
+  if(onStep)onStep('✍️ writing the answer…');
   addEp('user',userText);addEp('assistant',reply);
   absorb(userText,reply).catch(()=>{});
   return reply;
@@ -826,13 +856,25 @@ async function send(){
   input.value='';input.style.height='auto';
   bubble('user',fmt(text));
   busy=true;
-  const tp=bubble('ai','<span class="typing">thinking…</span>');
-  const setThink=t=>{tp.innerHTML='<span class="typing">'+esc(t)+'</span>';};
+  const tp=bubble('ai','<span class="typing">thinking\u2026</span>');
+  const setThink=t=>{
+    let tr=tp.querySelector('.trace');
+    if(!tr){tp.innerHTML='';tr=document.createElement('div');tr.className='trace';tp.appendChild(tr);}
+    const prev=tr.querySelector('.tstep.live');if(prev)prev.classList.remove('live');
+    const d=document.createElement('div');d.className='tstep live';d.textContent=t;tr.appendChild(d);
+    chat.scrollTop=chat.scrollHeight;
+  };
+  const collapseTrace=function(){
+    const tr=tp.querySelector('.trace');
+    if(!tr||!tr.children.length)return '';
+    const n=tr.children.length;
+    return '<details class="tracedone"><summary>\U0001F9E0 how I worked ('+n+' step'+(n>1?'s':'')+')</summary>'+tr.innerHTML+'</details>';
+  };
   try{
     let out;
-    if(text.startsWith('/')){setThink('working…');out=await runCommand(text);}
+    if(text.startsWith('/')){setThink('working\u2026');out=await runCommand(text);}
     if(out==null){out=await think(text,setThink);}
-    tp.innerHTML=fmt(out);
+    tp.innerHTML=collapseTrace()+fmt(out);
     if(PENDING_IMAGES.length){PENDING_IMAGES.splice(0).forEach(function(u){bubble('ai','<img src="'+u+'" style="max-width:100%;border-radius:10px"><br><a download="thumbnail.png" href="'+u+'">\u2b07\ufe0f Download thumbnail</a>');});}
   }catch(e){
     let msg;
@@ -844,7 +886,7 @@ async function send(){
       msg='⚠️ <b>That model name isn\'t valid.</b> Open ⚙️ and pick <b>Gemini 3.1 Flash-Lite</b> from the list — model IDs look like <code>gemini-3.1-flash-lite</code>, not "Gemini 8".';
     else
       msg='⚠️ '+esc(e.message.length>300?e.message.slice(0,300)+'…':e.message);
-    tp.innerHTML=msg;
+    tp.innerHTML=collapseTrace()+msg;
   }
   chat.scrollTop=chat.scrollHeight;busy=false;
 }
