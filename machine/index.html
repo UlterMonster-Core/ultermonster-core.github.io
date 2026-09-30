@@ -191,7 +191,7 @@ function sysPrompt(q){
   if(almanac&&Object.keys(almanac).length){
     alm='\nMajor YouTube channels (hourly almanac): '+Object.values(almanac).map(c=>c.name+' '+Number(c.subs).toLocaleString()+' subs').join('; ')+'.';
   }
-  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. Use a tool when the answer needs live/external data you don\'t have.';
+  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. generate_thumbnail {prompt, aspect} makes YouTube thumbnails with your Gemini key — offer it whenever Thomas talks video packaging. Thumbnail craft: 3-5 huge readable words max, one expressive subject, vivid contrast, never cluttered, never text on faces. Use a tool when the answer needs live/external data you don\'t have.';
   return 'You are '+DB.name+', a personal AI with a brain that learns and grows. You belong to your owner, Thomas. You remember everything important, you learn from every conversation, and you get sharper over time.\n\nPrime directives:\n1. Serve your owner\'s interests first. Never act against them.\n2. Learn continuously: notice durable facts, preferences, and what works.\n3. Predict and verify: make falsifiable predictions with confidence levels.\n4. Never lie: separate what you know, what you infer, and what you don\'t know.\n5. Be warm, sharp, and concise. No filler praise, no fluff.\n\nRelevant memories:\n'+mems+'\n\nActive learnings:\n'+learns+channel+alm+tools+'\n\nUse the memories and learnings naturally. If a memory seems wrong or outdated, say so instead of blindly repeating it.';
 }
 const EXTRACT_PROMPT='From this conversation turn, extract durable items worth remembering long-term. Return ONLY a JSON array, no other text. Each item:\n{"kind":"fact","key":"short_snake_key","value":"...","confidence":0-100}\nor\n{"kind":"learning","text":"pattern about what works","confidence":0-100}\nFacts are stable truths about the owner (name, projects, preferences).\nLearnings are patterns about what works or doesn\'t.\nInclude only items genuinely worth keeping. Return [] if none.\n\nUser: {user}\n'+'{name}'+': {reply}';
@@ -315,8 +315,12 @@ const TOOL_DEFS=[
  ['channel_stats','Your owner\'s YouTube channel: live subscriber/view counts and fastest recent videos, synced hourly. args: {} — use this for ANY question about his channel, subs, views, or video performance.'],
  ['youtube_lookup','Look up a major channel in the hourly almanac (MrBeast, niche competitors). args: {name}'],
  ['youtube_channel','Look up ANY YouTube channel: subscribers, views, video count. Everything ever looked up is cached and remembered forever. args: {query} (channel name or ID), refresh? (true to re-check live)'],
- ['youtube_video','Look up ANY YouTube video: views, likes, comments, duration, channel. Cached and remembered forever. args: {query} (title, video ID or watch URL), refresh? (true to re-check live)']
+ ['youtube_video','Look up ANY YouTube video: views, likes, comments, duration, channel. Cached and remembered forever. args: {query} (title, video ID or watch URL), refresh? (true to re-check live)'],
+ ['generate_thumbnail','Generate a YouTube thumbnail image with AI (uses your Gemini key, free). args: {prompt} (describe it: subject, big readable text, mood), aspect ("16:9" default, "9:16" for Shorts, "1:1"). The image appears in chat with a download link.']
 ].map(([n,d])=>'- '+n+': '+d).join('\n');
+
+/* images generated this turn: drained by send() for display */
+let PENDING_IMAGES=[];
 
 /* ---- the brain's growing YouTube memory: every lookup is kept ---- */
 const YTCACHE_KEY='machine_ytcache_v1';
@@ -426,6 +430,25 @@ async function dispatchTool(name,args){
       niche_context:niche};
   }
   if(name==='forecast'){if(!args.text||!(args.probability>=1&&args.probability<=99))return{error:'need text + probability 1-99'};const id=doForecast(args.text,args.probability,args.due_date||'');return{forecast_id:id,logged:true};}
+  if(name==='generate_thumbnail'){
+    if(!CFG.key)throw new Error('no-key');
+    const prompt=String(args.prompt||'').slice(0,800);
+    if(!prompt)return{error:'describe the thumbnail first (subject, text, mood)'};
+    const aspect=/^(16:9|9:16|1:1)$/.test(args.aspect)?args.aspect:'16:9';
+    const full='YouTube thumbnail, '+aspect+' aspect ratio, bold eye-catching design, huge readable title text, ultra-expressive subject, vivid high contrast colors, no watermark, no logo: '+prompt;
+    const r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key='+encodeURIComponent(CFG.key),{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({contents:[{parts:[{text:full}]}],generationConfig:{responseModalities:['TEXT','IMAGE'],imageConfig:{aspectRatio:aspect}}})});
+    const d=await r.json().catch(function(){return{};});
+    if(d.error)throw new Error(d.error.message||('image api '+r.status));
+    const cands=d.candidates||[];
+    const parts=cands.length&&cands[0].content?cands[0].content.parts||[]:[];
+    let img=null;
+    for(let i=0;i<parts.length;i++){if(parts[i].inlineData&&parts[i].inlineData.data){img=parts[i].inlineData;break;}}
+    if(!img)return{error:'no image came back — try rewording the prompt'};
+    PENDING_IMAGES.push('data:'+(img.mimeType||'image/png')+';base64,'+img.data);
+    return{thumbnail_ready:true,aspect:aspect,note:'Thumbnail generated — shown in chat below with a download link.'};
+  }
   return{error:'unknown tool: '+name};
 }
 async function act(task,log){
@@ -514,6 +537,7 @@ async function send(){
     if(text.startsWith('/')){setThink('working…');out=await runCommand(text);}
     if(out==null){out=await think(text,setThink);}
     tp.innerHTML=fmt(out);
+    if(PENDING_IMAGES.length){PENDING_IMAGES.splice(0).forEach(function(u){bubble('ai','<img src="'+u+'" style="max-width:100%;border-radius:10px"><br><a download="thumbnail.png" href="'+u+'">\u2b07\ufe0f Download thumbnail</a>');});}
   }catch(e){
     let msg;
     if(e.message==='no-key')
