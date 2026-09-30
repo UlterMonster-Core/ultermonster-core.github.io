@@ -198,7 +198,7 @@ function sysPrompt(q){
   if(almanac&&Object.keys(almanac).length){
     alm='\nMajor YouTube channels (hourly almanac): '+Object.values(almanac).map(c=>c.name+' '+Number(c.subs).toLocaleString()+' subs').join('; ')+'.';
   }
-  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), youtube_search {query} (search YouTube LIVE with NO key needed — use this whenever he asks what is happening on YouTube), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. generate_thumbnail {prompt, aspect, title, subtitle} makes YouTube thumbnails — tries your Gemini key first, then a free no-key service automatically, so offer it whenever Thomas talks video packaging even if the key quota is used up. Thumbnail craft: 3-5 huge readable words max, one expressive subject, vivid contrast, never cluttered, never text on faces. superstar:"<id>" puts a REAL WWE superstar photo in the thumbnail — AI generates the background only, never AI faces (the owner hard rule). Hard rules that override everything else: 1) If Thomas asks about YouTube (channels, videos, SEO, trends, what people are watching), ALWAYS call youtube_search first — it needs no key and works even when everything else fails. Then try youtube_channel / youtube_video / youtube_lookup as needed. NEVER tell him you cannot get YouTube data without trying every one of those tools. 2) If data genuinely cannot be retrieved, say plainly: I could not pull that right now — NEVER name internal tools, and NEVER mention error codes, status numbers, or API names. 3) NEVER invent numbers, scores, or estimates to fill a gap in data. If you do not have it, say so and say what you CAN do instead. SEO ENGINE: a twice-weekly deep scan ranks every WWE superstar by real view numbers (wwe_seo.json, breathed in automatically — never ask Thomas to wait for it). When he names a matchup, call seo_title: it parses the names (forgiving of typos), pulls real numbers for each star, runs a live keyless check, and drafts titles from the data. MASTER RULEBOOK — his title rules, follow exactly. TOOL USE IS MANDATORY: for EVERY matchup you MUST call seo_title and copy its output VERBATIM - the draft title, the exact character count, the score and breakdown numbers, the name-order line, the description opening/closing lines, the hashtags, the thumbnail concept. NEVER write a title, count, score, sub-score, or description line from memory or by hand. If you did not call the tool this turn, you do not have the numbers. TOP 4 REPEAT FAILURES (never break these): (1) every claim tied to this turn\'s numbers — never "high-volume", "trending", "high search velocity", "draw", "channel performance", or made-up stats unless this turn\'s data shows it; (2) character counts exact — the tool counts, quote its number, never estimate; (3) the description must contain BOTH the opening line and the closing subscribe line word for word; (4) never invent wrestlers, counts, stipulations, or storyline details. A. INPUTS: never change facts from the input (names, teams, game version, stipulation); you may expand a short name to the full name (Drew -> Drew McIntyre, Bloodline -> The Bloodline); if no wrestlers are named, say "No participants given, so adding names will improve search." then use the generic stipulation title; ignore process text in the input ("how I worked", "writing the answer"). B. TITLE FORMAT: [X vs Y] [Stipulation] Match - WWE [Game] Simulation (Full Match); no stipulation -> [X vs Y] - WWE [Game] Simulation (Full Match); no names -> [Stipulation] Match - WWE [Game] Simulation (Full Match). Exactly one dash before WWE; always Simulation and (Full Match); no pipes, colons, periods, all-caps sections, or second dash; keep the stipulation, cut filler; under 100 chars; B9: with no stipulation the word Match must NOT appear in the title - no exceptions, clarity preferences do not override this; official stip spelling by search volume (War Games, not WarGames). C. NAME ORDER: the tool\'s name_order_line uses C4 format with this turn\'s view data ("views", not vidIQ "searches"); a 1-2 point score gap never outweighs a clear volume gap; if no data, write "No name-order data available." and never guess. D. HONESTY: only cite a rule number when it matches the rule; never add a "Data Check" section without real numbers. E. COUNTS: state the exact character count on every title. F. THUMBNAIL: wrestlers in the left two-thirds, right third completely empty for the timestamp; text 1-2 words on the left only, single-word nicknames allowed; dramatic rim lighting, dark background so faces pop, cage structure may frame the scene; no named wrestlers -> structure/setting only, no faces; real superstar photos only, never AI faces. G. DESCRIPTION: opening and closing lines come from the tool word for word (G1/G3); middle is 1-2 plain sentences, no hype — banned: "witness the clash", "biggest stars", "dream matchup", "rising force", "chaotic, no-holds-barred"; blank line between paragraphs; no Chapters/timestamps. G7: copy the G1/G3 lines exactly as the tool gives them - never expand contractions. H. HASHTAGS: only the tool\'s hashtags (3-5: game, names/teams, stipulation). H3: never output a scorecard, sub-scores, or any number that did not come from a tool this turn - inventing sub-scores is the worst failure. H4: if this turn\'s data shows very low volume for the matchup phrasing, proactively suggest higher-volume alternatives. I. OUTPUT ORDER: Title (with count), name-order line, thumbnail concept, description, hashtags. After the title, show its SEO scorecard (0-100 + breakdown, plain words). If game_assumed, confirm the game version with Thomas before finalizing (never guess). The standing rules always apply: real faces only, thumbnails under a minute via auto-fallback, never name tools or error codes, never invent numbers. Use a tool when the answer needs live/external data you do not have.';
+  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), youtube_search {query} (search YouTube LIVE with NO key needed — use this whenever he asks what is happening on YouTube), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. generate_thumbnail {prompt, aspect, title, subtitle} makes YouTube thumbnails — tries your Gemini key first, then a free no-key service automatically, so offer it whenever Thomas talks video packaging even if the key quota is used up. Thumbnail craft: 3-5 huge readable words max, one expressive subject, vivid contrast, never cluttered, never text on faces. superstar:"<id>" puts a REAL WWE superstar photo in the thumbnail — AI generates the background only, never AI faces (the owner hard rule). Hard rules that override everything else: 1) If Thomas asks about YouTube (channels, videos, SEO, trends, what people are watching), ALWAYS call youtube_search first — it needs no key and works even when everything else fails. Then try youtube_channel / youtube_video / youtube_lookup as needed. NEVER tell him you cannot get YouTube data without trying every one of those tools. 2) If data genuinely cannot be retrieved, say plainly: I could not pull that right now — NEVER name internal tools, and NEVER mention error codes, status numbers, or API names. 3) NEVER invent numbers, scores, or estimates to fill a gap in data. If you do not have it, say so and say what you CAN do instead. SEO ENGINE: a twice-weekly deep scan ranks every WWE superstar by real view numbers (wwe_seo.json, breathed in automatically — never ask Thomas to wait for it). When he names a matchup, call seo_title: it parses the names (forgiving of typos), pulls real numbers for each star, runs a live keyless check, and drafts titles from the data. MASTER RULEBOOK — his title rules, follow exactly. TOOL USE IS MANDATORY: for EVERY matchup you MUST call seo_title and paste its answer_block VERBATIM as your Section I output - do not retype it, reformat it, or re-derive any part of it. Every title, count, score, line, and tag you show must come from answer_block, character for character. If the tool returns a flag, show it first, then the block. If you did not call the tool this turn, you do not have the numbers. TOP 4 REPEAT FAILURES (never break these): (1) every claim tied to this turn\'s numbers — never "high-volume", "trending", "high search velocity", "draw", "channel performance", or made-up stats unless this turn\'s data shows it; (2) character counts exact — the tool counts, quote its number, never estimate; (3) the description must contain BOTH the opening line and the closing subscribe line word for word; (4) never invent wrestlers, counts, stipulations, or storyline details. A. INPUTS: never change facts from the input (names, teams, game version, stipulation); you may expand a short name to the full name (Drew -> Drew McIntyre, Bloodline -> The Bloodline); if no wrestlers are named, say "No participants given, so adding names will improve search." then use the generic stipulation title; ignore process text in the input ("how I worked", "writing the answer"). B. TITLE FORMAT: [X vs Y] [Stipulation] Match - WWE [Game] Simulation (Full Match); no stipulation -> [X vs Y] - WWE [Game] Simulation (Full Match); no names -> [Stipulation] Match - WWE [Game] Simulation (Full Match). Exactly one dash before WWE; always Simulation and (Full Match); no pipes, colons, periods, all-caps sections, or second dash; keep the stipulation, cut filler; under 100 chars; B9: with no stipulation the word Match must NOT appear in the title - no exceptions, clarity preferences do not override this; official stip spelling by search volume (War Games, not WarGames). C. NAME ORDER: the tool\'s name_order_line uses C4 format with this turn\'s view data ("views", not vidIQ "searches"); a 1-2 point score gap never outweighs a clear volume gap; if no data, write "No name-order data available." and never guess. C6: if both full phrases have no volume, the tool compares "[Name] vs" searches - copy its line. D. HONESTY: only cite a rule number when it matches the rule; never add a "Data Check" section without real numbers. Output ONLY the Section I block - no extra sections, no rationale, no process text. E. COUNTS: state the exact character count on every title. E3: count the title fresh every time from the character breakdown in the tool output - never reuse a count from an earlier title. E4: character counts are counts, never scores - never present a count as X/100. F. THUMBNAIL: wrestlers in the left two-thirds, right third completely empty for the timestamp; text 1-2 words on the left only, single-word nicknames allowed; dramatic rim lighting, dark background so faces pop, cage structure may frame the scene; no named wrestlers -> structure/setting only, no faces; real superstar photos only, never AI faces. F7: every named wrestler must appear in the thumbnail - never a single centered wrestler. G. DESCRIPTION: opening and closing lines come from the tool word for word (G1/G3); middle is the tool\'s mid line word for word (1-2 plain sentences, no hype) — banned: "witness the clash", "biggest stars", "dream matchup", "rising force", "chaotic, no-holds-barred"; blank line between paragraphs; no Chapters/timestamps. G7: copy the G1/G3 lines exactly as the tool gives them - never expand contractions. H. HASHTAGS: only the tool\'s hashtags (3-5: game, names/teams, stipulation). H3: never output a scorecard, sub-scores, or any number that did not come from a tool this turn - inventing sub-scores is the worst failure. H4: if this turn\'s data shows very low volume for the matchup phrasing, proactively suggest higher-volume alternatives. I. OUTPUT ORDER: Title (with count), name-order line, thumbnail concept, description, hashtags. After the title, show its SEO scorecard (0-100 + breakdown, plain words). If game_assumed, confirm the game version with Thomas before finalizing (never guess). The standing rules always apply: real faces only, thumbnails under a minute via auto-fallback, never name tools or error codes, never invent numbers. Use a tool when the answer needs live/external data you do not have.';
   return 'You are '+DB.name+', a personal AI with a brain that learns and grows. You belong to your owner, Thomas. You remember everything important, you learn from every conversation, and you get sharper over time.\n\nPrime directives:\n1. Serve your owner\'s interests first. Never act against them.\n2. Learn continuously: notice durable facts, preferences, and what works.\n3. Predict and verify: make falsifiable predictions with confidence levels.\n4. Never lie: separate what you know, what you infer, and what you don\'t know.\n5. Be warm, sharp, and concise. No filler praise, no fluff.\n\nRelevant memories:\n'+mems+'\n\nActive learnings:\n'+learns+channel+alm+tools+'\n\nUse the memories and learnings naturally. If a memory seems wrong or outdated, say so instead of blindly repeating it.';
 }
 const EXTRACT_PROMPT='From this conversation turn, extract durable items worth remembering long-term. Return ONLY a JSON array, no other text. Each item:\n{"kind":"fact","key":"short_snake_key","value":"...","confidence":0-100}\nor\n{"kind":"learning","text":"pattern about what works","confidence":0-100}\nFacts are stable truths about the owner (name, projects, preferences).\nLearnings are patterns about what works or doesn\'t.\nInclude only items genuinely worth keeping. Return [] if none.\n\nUser: {user}\n'+'{name}'+': {reply}';
@@ -348,7 +348,7 @@ const TOOL_DEFS=[
  ['youtube_video','Look up ANY YouTube video: views, likes, comments, duration, channel. Cached and remembered forever. args: {query} (title, video ID or watch URL), refresh? (true to re-check live)'],
  ['youtube_search','Search YouTube LIVE with no API key (public mirrors). args: {query}, type ("video" default, "channel"). Returns titles, views, durations, URLs. Everything found is cached in your YouTube memory forever.'],
  ['wwe_seo','Full SEO card for a WWE superstar from the twice-weekly deep scan: demand rank, top-10 total views, median views, hot title terms, biggest video. args: {name}.'],
- ['seo_title','Build the highest-SEO title for a matchup from REAL scan numbers + a live keyless YouTube check. args: {matchup} e.g. "dominik mysterio vs liv morgan tlc", {game} e.g. "WWE 2K23" (defaults WWE 2K26 — confirm with Thomas, rule A1). Returns: parsed stars, name_order_line (C4 format, this turn\'s data), draft titles in B1/B2/B3 structure with EXACT char counts + 0-100 scores, thumbnail concept (F1-F6), description opening/closing lines word for word (G1/G3), hashtags (H1/H2). Present in Section I order: title, name-order line, thumbnail concept, description, hashtags. Never invent numbers.'],
+ ['seo_title','Build the highest-SEO title for a matchup from REAL scan numbers + a live keyless YouTube check. args: {matchup} e.g. "dominik mysterio vs liv morgan tlc", {game} e.g. "WWE 2K23" (defaults WWE 2K26 — confirm with Thomas, rule A1). Returns: parsed stars, name_order_line (C4 format, this turn\'s data), draft titles in B1/B2/B3 structure with EXACT char counts + 0-100 scores, thumbnail concept (F1-F6), description opening/closing lines word for word (G1/G3), hashtags (H1/H2), answer_block (the finished Section I output - PASTE IT VERBATIM, do not retype). Present in Section I order: title, name-order line, thumbnail concept, description, hashtags. Never invent numbers.'],
  ['generate_thumbnail','Generate a YouTube thumbnail. Tries your Gemini key first (best quality); if the key is missing or its free image quota is used up, automatically falls back to a free no-key image service with your title text stamped on in huge letters. args: {prompt} (describe the scene: subject, mood), '
  +'aspect ("16:9" default, "9:16" for Shorts, "1:1"), '
  +'title (BIG words for the fallback to stamp, e.g. "RKO" — pass the 2-4 huge words), '
@@ -542,7 +542,34 @@ function parseMatchup(text){
   }
   let stip='';
   STIPS.forEach(function(s){if(ntext.indexOf(s)>=0&&s.length>stip.length)stip=s;});
-  return{stars:found.slice(0,3).map(useStar),stip:stip};
+  // named but not in the SEO table -> keep the names as unscanned stubs (A1)
+  var all=found.slice();
+  extractUnknownNames(text,all).forEach(function(u){all.push(u);});
+  return{stars:all.slice(0,3).map(useStar),stip:stip,unscanned:all.filter(function(s){return s.status==='unscanned';}).map(function(s){return s.name;})};
+}
+function extractUnknownNames(text,found){
+  var clean=String(text||'')
+    .replace(/\bwwe\s*2k\d+\b/gi,' ')
+    .replace(/\bsimulation\b/gi,' ')
+    .replace(/\bfull match\b/gi,' ')
+    .replace(/\btitle\b/gi,' ')
+    .replace(/[|]/g,' ');
+  STIPS.forEach(function(s){clean=clean.replace(new RegExp('\\b'+s+'\\b','gi'),' ');});
+  var out=[];
+  clean.split(/\s+(?:vs|&)\s+/i).forEach(function(seg){
+    seg=seg.trim().replace(/^[^A-Za-z]+|[^A-Za-z]+$/g,'');
+    if(!seg)return;
+    var words=seg.split(/\s+/);
+    if(words.length>4||!words.length)return;
+    var ok=words.every(function(w){return/^[A-Z][a-z'\-]*$/.test(w)||/^[A-Z0-9'\-]{2,}$/.test(w);});
+    if(!ok)return;
+    var nseg=norm(seg);
+    var covered=found.some(function(s){var nn=norm(s.name);return nseg===nn||nseg.indexOf(nn)>=0||nn.indexOf(nseg)>=0;});
+    if(covered)return;
+    out.push({id:'unscanned-'+nseg.replace(/\s+/g,'-'),name:words.join(' '),status:'unscanned',
+      top10_views:0,median_views:0,video_count:0,top_terms:[],best_video:null,rank:null});
+  });
+  return out;
 }
 function useStar(s){
   if(s&&s.alias_of&&s.top10_views==null){
@@ -614,15 +641,15 @@ function draftSeoTitles(cards,stip,game,rawMatchup){
   var st=stip?(' '+titleCaseStip(stip)+' Match'):'';
   var names=teamJoin(sorted.map(function(s){return s.name;}),rawMatchup||'').join(' vs ');
   var base=names+st+' - '+g+' Simulation (Full Match)';
-  var titles=[{title:base,chars:base.length,
+  var titles=[{title:base,chars:base.length,parts:titleParts(names,st,g),
     why:sorted.length>1?(sorted[0].name+' leads '+sorted[1].name+' on this turn\u2019s numbers.'):(sorted.length?('Only one name in the matchup: '+sorted[0].name+'.'):'No names given — generic stipulation title.')}];
   var namesNoThe=teamJoin(sorted.map(function(s){return s.name.replace(/^The /,'');}),rawMatchup||'').join(' vs ');
   var base2=namesNoThe+st+' - '+g+' Simulation (Full Match)';
-  if(base2!==base)titles.push({title:base2,chars:base2.length,why:'Same B1 layout without "The" — tests the article variant.'});
+  if(base2!==base)titles.push({title:base2,chars:base2.length,parts:titleParts(namesNoThe,st,g),why:'Same B1 layout without "The" — tests the article variant.'});
   if(sorted.length>1){
     var revNames=sorted.slice().reverse().map(function(s){return s.name;}).join(' vs ');
     var base3=revNames+st+' - '+g+' Simulation (Full Match)';
-    titles.push({title:base3,chars:base3.length,why:'Reversed order — for the C1 comparison; scores lower unless the numbers say otherwise.'});
+    titles.push({title:base3,chars:base3.length,parts:titleParts(revNames,st,g),why:'Reversed order — for the C1 comparison; scores lower unless the numbers say otherwise.'});
   }
   titles.forEach(function(x){var sc=titleScore(x.title,sorted,stip);x.score=sc.score;x.score_breakdown=sc.breakdown;});
   titles.sort(function(a,b){return b.score-a.score;});
@@ -634,7 +661,39 @@ function buildDescription(displayNames,stip,game){
     ?(displayNames+(stip?(' in a '+titleCaseStip(stip)+' Match'):' in a singles match')+', simulated in '+game+' with CPU vs CPU action on Legend difficulty.')
     :('A '+(stip?(titleCaseStip(stip)+' Match'):'match')+', simulated in '+game+' with CPU vs CPU action on Legend difficulty.');
   var g3='New WWE 2K26 dream matches every Monday, Wednesday and Friday. Subscribe so you don\'t miss the next one.';
-  return{opening:g1,closing:g3};
+  return{opening:g1,mid:midFor(displayNames,stip),closing:g3};
+}
+function midFor(displayNames,stip){
+  var vs=String(displayNames||'').split(' vs ');
+  var a=vs[0],b=vs.slice(1).join(' vs ');
+  if(a&&b){
+    if(stip)return a+' takes on '+b+' in a '+titleCaseStip(stip)+' match. Watch the full match to see who wins.';
+    return a+' takes on '+b+' in a one-on-one match. Watch the full match to see who wins.';
+  }
+  return'Watch the full match to see who wins.';
+}
+function titleParts(namesStr,st,g){
+  var parts=[];
+  String(namesStr||'').split(' vs ').forEach(function(p,i){
+    if(i)parts.push(' vs ');
+    p.split(' & ').forEach(function(q,j){if(j)parts.push(' & ');if(q)parts.push(q);});
+  });
+  if(st)parts.push(st);
+  parts.push(' - ',g,' Simulation',' (Full Match)');
+  return parts;
+}
+function buildAnswerBlock(o){
+  var bd=o.breakdown;
+  var charLine=o.chars+' characters';
+  if(o.parts&&o.parts.join('')===o.title){
+    charLine+=' ('+o.parts.map(function(p){return'"'+p+'" ('+p.length+')';}).join(' + ')+' \u2014 counts, not scores)';
+  }
+  return o.title+'\n'+charLine+'\n'+
+    'SEO Scorecard: '+o.score+'/100 \u2014 Demand '+bd.demand+'/30, Name order '+bd.name_order+'/20, Format '+bd.format+'/20, Hot terms '+bd.hot_terms+'/10, Stipulation '+bd.stipulation+'/10, Length '+bd.length+'/10\n'+
+    o.nameOrderLine+'\n\n'+
+    'Thumbnail concept: '+o.concept+'\n\n'+
+    'Description:\n'+o.opening+'\n'+o.mid+'\n'+o.closing+'\n\n'+
+    o.tags.join(' ');
 }
 function buildHashtags(stars,stip,game){
   var tags=[],seen={};
@@ -686,15 +745,21 @@ async function dispatchTool(name,args){
       const base=core+' - '+game+' Simulation (Full Match)';
       const sc=titleScore(base,[],pm.stip);
       const desc=buildDescription('',pm.stip,game);
+      const tags0=buildHashtags([],pm.stip,game);
+      const concept0=buildThumbConcept('',pm.stip);
+      const ab0=buildAnswerBlock({title:base,chars:base.length,parts:titleParts('',pm.stip?(' '+titleCaseStip(pm.stip)+' Match'):'Match',game),
+        score:sc.score,breakdown:sc.breakdown,nameOrderLine:'No name-order data available.',concept:concept0,
+        opening:desc.opening,mid:desc.mid,closing:desc.closing,tags:tags0});
       return{flag:'No participants given, so adding names will improve search.',
         parsed:{stars:[],stipulation:pm.stip||null,game:game,game_assumed:gameAssumed},
         draft_titles:[{title:base,chars:base.length,score:sc.score,score_breakdown:sc.breakdown,
           why:'Generic title — no names in the input (rule A4/B3).'}],
         name_order_line:'No name-order data available.',
         thumbnail_text:{title:pm.stip?titleCaseStip(pm.stip):'WWE',subtitle:'',note:'F6: structure/setting, no faces'},
-        thumbnail_concept:buildThumbConcept('',pm.stip),
-        description_opening:desc.opening,description_closing:desc.closing,
-        hashtags:buildHashtags([],pm.stip,game),
+        thumbnail_concept:concept0,
+        description_opening:desc.opening,description_mid:desc.mid,description_closing:desc.closing,
+        hashtags:tags0,
+        answer_block:ab0,
         output_order:['title','name_order_line','thumbnail_concept','description','hashtags']};
     }
     const cards=pm.stars.map(seoCard);
@@ -709,8 +774,17 @@ async function dispatchTool(name,args){
         const sum=function(r){return(r&&!r.error)?r.items.slice(0,5).reduce(function(a,it){return a+(+it.viewCount||0);},0):0;};
         const vA=sum(res[0]),vB=sum(res[1]);
         if(vA+vB>0){
-          nameOrderLine=n1+' vs '+n2+' gets '+vA.toLocaleString()+' views vs '+n2+' vs '+n1+' at '+vB.toLocaleString()+'.';
           if(vB>vA)orderNames=[n2,n1].concat(orderNames.slice(2));
+          var f0=orderNames[0],s0=orderNames[1];
+          nameOrderLine='"'+f0+' vs '+s0+'" gets '+Math.max(vA,vB).toLocaleString()+' views vs "'+s0+' vs '+f0+'" at '+Math.min(vA,vB).toLocaleString()+'. '+f0+' goes first.';
+        }else{
+          var rq=await Promise.all([youtubeKeylessSearch(n1+' vs'),youtubeKeylessSearch(n2+' vs')]);
+          var m1=sum(rq[0]),m2=sum(rq[1]);
+          if(m1+m2>0){
+            if(m2>m1)orderNames=[n2,n1].concat(orderNames.slice(2));
+            var f1=orderNames[0],s1=orderNames[1];
+            nameOrderLine='"'+f1+' vs" gets '+Math.max(m1,m2).toLocaleString()+' views vs "'+s1+' vs" at '+Math.min(m1,m2).toLocaleString()+'. '+f1+' goes first (C6).';
+          }
         }
       }catch(e){}
     }
@@ -723,13 +797,22 @@ async function dispatchTool(name,args){
     const draft=draftSeoTitles(ordered,pm.stip,game,m);
     const displayNames=teamJoin(ordered.map(function(s){return s.name;}),m).join(' vs ');
     const desc=buildDescription(displayNames,pm.stip,game);
+    const top=draft.titles[0],bd=top.score_breakdown;
+    const tags=buildHashtags(ordered,pm.stip,game);
+    const concept=buildThumbConcept(displayNames,pm.stip);
+    const answerBlock=buildAnswerBlock({title:top.title,chars:top.chars,parts:top.parts,
+      score:top.score,breakdown:bd,nameOrderLine:nameOrderLine,concept:concept,
+      opening:desc.opening,mid:desc.mid,closing:desc.closing,tags:tags});
+    const unscannedFlag=(pm.unscanned&&pm.unscanned.length)?('Not in the SEO table yet: '+pm.unscanned.join(', ')+' \u2014 demand scores read 0 until the next scan; the title keeps the names from the input.'):'';
     return{parsed:{stars:cards,stipulation:pm.stip||null,game:game,game_assumed:gameAssumed},
+      flag:unscannedFlag||undefined,
       name_order_line:nameOrderLine,
       live_check:live.length?live:'live check unavailable right now',
       draft_titles:draft.titles,thumbnail_text:draft.thumbnail,
-      thumbnail_concept:buildThumbConcept(displayNames,pm.stip),
-      description_opening:desc.opening,description_closing:desc.closing,
-      hashtags:buildHashtags(ordered,pm.stip,game),
+      thumbnail_concept:concept,
+      description_opening:desc.opening,description_mid:desc.mid,description_closing:desc.closing,
+      hashtags:tags,
+      answer_block:answerBlock,
       output_order:['title','name_order_line','thumbnail_concept','description','hashtags'],
       honesty:'every claim above is tied to this turn\u2019s numbers — no "Data Check" section was added because there is nothing beyond these numbers'};
   }
