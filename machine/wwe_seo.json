@@ -2003,6 +2003,60 @@
     "id": "NwfVD_cqHM0"
    },
    "rank": 77
+  },
+  {
+   "id": "super-cena",
+   "name": "Super Cena",
+   "status": "alias",
+   "alias_of": "john-cena"
+  },
+  {
+   "id": "tribal-chief",
+   "name": "The Tribal Chief",
+   "status": "alias",
+   "alias_of": "roman-reigns"
+  },
+  {
+   "id": "american-nightmare",
+   "name": "The American Nightmare",
+   "status": "alias",
+   "alias_of": "cody-rhodes"
+  },
+  {
+   "id": "the-man",
+   "name": "The Man",
+   "status": "alias",
+   "alias_of": "becky-lynch"
+  },
+  {
+   "id": "the-beast",
+   "name": "The Beast",
+   "status": "alias",
+   "alias_of": "brock-lesnar"
+  },
+  {
+   "id": "the-viper",
+   "name": "The Viper",
+   "status": "alias",
+   "alias_of": "randy-orton"
+  },
+  {
+   "id": "the-deadman",
+   "name": "The Deadman",
+   "status": "alias",
+   "alias_of": "the-undertaker"
+  },
+  {
+   "id": "the-game-moniker",
+   "name": "The Game",
+   "status": "alias",
+   "alias_of": "triple-h"
+  },
+  {
+   "id": "mami",
+   "name": "Mami",
+   "status": "alias",
+   "alias_of": "rhea-ripley"
   }
  ],
  "pending_rescan": [
