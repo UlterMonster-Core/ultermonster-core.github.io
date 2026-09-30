@@ -406,8 +406,8 @@ async function pollinationsThumb(prompt,title,subtitle,aspect){
   const dims={'16:9':[1280,720],'9:16':[720,1280],'1:1':[1024,1024]}[aspect]||[1280,720];
   const seed=Math.floor(Math.random()*1e9);
   const url='https://image.pollinations.ai/prompt/'+encodeURIComponent('YouTube thumbnail background art, dramatic bold design, ultra-expressive subject, vivid high contrast colors, cinematic lighting, no watermark, no logo, no text: '+prompt)
-    +'?width='+dims[0]+'&height='+dims[1]+'&nologo=true&model=flux&seed='+seed;
-  const ctl=new AbortController();const to=setTimeout(function(){ctl.abort();},120000);
+    +'?width='+dims[0]+'&height='+dims[1]+'&nologo=true&model=turbo&seed='+seed;
+  const ctl=new AbortController();const to=setTimeout(function(){ctl.abort();},30000);
   try{
     const r=await fetch(url,{signal:ctl.signal});clearTimeout(to);
     if(!r.ok)throw new Error('HTTP '+r.status);
@@ -544,7 +544,17 @@ async function getStars(){
   STARS_CACHE=await r.json();
   return STARS_CACHE;
 }
-async function geminiImageGen(key,body){
+async function geminiImageGen(key,body,quick){
+  if(quick){
+    const ctl=new AbortController();const to=setTimeout(function(){ctl.abort();},25000);
+    try{
+      const r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key='+encodeURIComponent(key),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:ctl.signal});
+      clearTimeout(to);
+      const d=await r.json().catch(function(){return{};});
+      if(d.error)throw new Error(String(d.error.message||('image api '+r.status)));
+      return d;
+    }catch(e){clearTimeout(to);throw e;}
+  }
   const waits=[0,25000,70000,140000];
   let lastErr=null;
   for(let i=0;i<waits.length;i++){
@@ -573,8 +583,8 @@ async function geminiImageGen(key,body){
     const aspect=/^(16:9|9:16|1:1)$/.test(args.aspect)?args.aspect:'16:9';
     const title=String(args.title||'').slice(0,40),subtitle=String(args.subtitle||'').slice(0,40);
     const starQ=String(args.superstar||'').trim().toLowerCase();
-    function geminiImg(parts){
-      return geminiImageGen(CFG.key,{contents:[{parts:parts}],generationConfig:{responseModalities:['TEXT','IMAGE'],imageConfig:{aspectRatio:aspect}}})
+    function geminiImg(parts,quick){
+      return geminiImageGen(CFG.key,{contents:[{parts:parts}],generationConfig:{responseModalities:['TEXT','IMAGE'],imageConfig:{aspectRatio:aspect}}},quick)
         .then(function(d){
           const ps=(((d.candidates||[])[0]||{}).content||{}).parts||[];
           for(let i=0;i<ps.length;i++){if(ps[i].inlineData&&ps[i].inlineData.data)return 'data:'+(ps[i].inlineData.mimeType||'image/png')+';base64,'+ps[i].inlineData.data;}
@@ -591,14 +601,14 @@ async function geminiImageGen(key,body){
       const b64=await blobToB64(await br.blob());
       const txt='Use the attached real photo of WWE superstar '+hit.name+'. Keep their face, likeness and appearance photorealistic and instantly recognizable — do not change who they are, do not cartoon-ify them. Place them into this YouTube thumbnail scene: '+prompt+'. YouTube thumbnail, '+aspect+' aspect ratio, bold huge readable title text, vivid high contrast colors, no watermark, no logo.';
       let dataUrl;
-      try{dataUrl=await geminiImg([{inlineData:{mimeType:'image/jpeg',data:b64}},{text:txt}]);}
+      try{dataUrl=await geminiImg([{inlineData:{mimeType:'image/jpeg',data:b64}},{text:txt}],true);}
       catch(e){return{error:'image generation failed ('+e.message+'). Real-photo thumbnails cannot use the free fallback — it would generate fake faces, which is forbidden. Try again later.'};}
       PENDING_IMAGES.push(dataUrl);
       return{thumbnail_ready:true,aspect:aspect,superstar:hit.name,via:'gemini (real photo)',note:'Thumbnail generated starring the real '+hit.name+' — shown in chat below with a download link.'};
     }
     let dataUrl=null,via='';
     if(CFG.key){
-      try{dataUrl=await geminiImg([{text:'YouTube thumbnail, '+aspect+' aspect ratio, bold eye-catching design, huge readable title text, ultra-expressive subject, vivid high contrast colors, no watermark, no logo: '+prompt}]);via='gemini';}
+      try{dataUrl=await geminiImg([{text:'YouTube thumbnail, '+aspect+' aspect ratio, bold eye-catching design, huge readable title text, ultra-expressive subject, vivid high contrast colors, no watermark, no logo: '+prompt}],true);via='gemini';}
       catch(e){/* fall through to the free service */}
     }
     if(!dataUrl){
