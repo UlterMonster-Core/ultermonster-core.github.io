@@ -455,6 +455,8 @@ async function geminiImageGen(key,body){
     }catch(e){lastErr=e;if(i<waits.length-1)continue;throw e;}
     if(d.error){
       const msg=String(d.error.message||('image api '+r.status));
+      if(/plan and billing|billing details/i.test(msg))
+        throw new Error('the free image allowance on this key is used up (chat still works — only image generation is capped). It resets on its own; try the thumbnail again later and it will go through.');
       const limited=(d.error.code===429||r.status===429||/quota|rate limit|resource.?exhausted/i.test(msg));
       if(limited&&i<waits.length-1){lastErr=new Error(msg);continue;}
       if(limited)throw new Error('free-tier image limit hit — even after waiting. Give it a few minutes and try again; nothing is broken.');
