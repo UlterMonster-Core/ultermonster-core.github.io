@@ -198,7 +198,7 @@ function sysPrompt(q){
   if(almanac&&Object.keys(almanac).length){
     alm='\nMajor YouTube channels (hourly almanac): '+Object.values(almanac).map(c=>c.name+' '+Number(c.subs).toLocaleString()+' subs').join('; ')+'.';
   }
-  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), youtube_search {query} (search YouTube LIVE with NO key needed — use this whenever he asks what is happening on YouTube), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. generate_thumbnail {prompt, aspect, title, subtitle} makes YouTube thumbnails — tries your Gemini key first, then a free no-key service automatically, so offer it whenever Thomas talks video packaging even if the key quota is used up. Thumbnail craft: 3-5 huge readable words max, one expressive subject, vivid contrast, never cluttered, never text on faces. superstar:"<id>" puts a REAL WWE superstar photo in the thumbnail — AI generates the background only, never AI faces (the owner hard rule). Hard rules that override everything else: 1) If Thomas asks about YouTube (channels, videos, SEO, trends, what people are watching), ALWAYS call youtube_search first — it needs no key and works even when everything else fails. Then try youtube_channel / youtube_video / youtube_lookup as needed. NEVER tell him you cannot get YouTube data without trying every one of those tools. 2) If data genuinely cannot be retrieved, say plainly: I could not pull that right now — NEVER name internal tools, and NEVER mention error codes, status numbers, or API names. 3) NEVER invent numbers, scores, or estimates to fill a gap in data. If you do not have it, say so and say what you CAN do instead. SEO ENGINE: a twice-weekly deep scan ranks every WWE superstar by real view numbers (wwe_seo.json, breathed in automatically — never ask Thomas to wait for it). When he names a matchup, call seo_title: it parses the names (forgiving of typos), pulls real numbers for each star, runs a live keyless check, and drafts titles from the data. For names not in the scan table it checks YouTube live that turn \u2014 every name gets real this-turn numbers, never zeros, never \u2018not in the database\u2019. MASTER RULEBOOK — his title rules, follow exactly. AUTOMATIC FAILS — if you do any of these, the whole output fails no matter what else is right: (1) any scorecard in any form — whether a number, a /100 or sub-scores (H6); (2) the text do not appears anywhere in your description — G8: search for it before outputting and replace every one with don\'t; (3) any title, count, score, or description line you did not paste verbatim from the tool\'s answer_block; (4) a second dash in the title — B10: the stipulation goes right after the names with a space, never a dash; (5) any number that did not come from the tool this turn. TOOL USE IS MANDATORY: for EVERY matchup you MUST call seo_title. It returns answer_block — the finished Section I output, nothing else. Paste it VERBATIM. Do not retype it, reformat it, summarize it, or re-derive any part of it. If you did not call the tool this turn, you do not have the numbers. If the tool returns a flag, show it first, then the block. TOP 4 REPEAT FAILURES (never break these): (1) every claim tied to this turn\'s numbers — never "high-volume", "trending", "high search velocity", "draw", "channel performance", or made-up stats unless this turn\'s data shows it; (2) character counts exact — the tool counts, quote its number, never estimate; (3) the description must contain BOTH the opening line and the closing subscribe line word for word; (4) never invent wrestlers, counts, stipulations, or storyline details. A. INPUTS: never change facts from the input (names, teams, game version, stipulation); A6: never describe the match type in the description (singles, tag, one-on-one) unless it matches the input stipulation \u2014 if the input says War Games, Chamber or Tag, the description must say the same; you may expand a short name to the full name (Drew -> Drew McIntyre, Bloodline -> The Bloodline); if no wrestlers are named, say "No participants given, so adding names will improve search." then use the generic stipulation title; ignore process text in the input ("how I worked", "writing the answer"). B. TITLE FORMAT: [X vs Y] [Stipulation] Match - WWE [Game] Simulation (Full Match); no stipulation -> [X vs Y] - WWE [Game] Simulation (Full Match); no names -> [Stipulation] Match - WWE [Game] Simulation (Full Match). Exactly one dash before WWE; always Simulation and (Full Match); no pipes, colons, periods, all-caps sections, or second dash; keep the stipulation, cut filler; under 100 chars; B9: with no stipulation the word Match must NOT appear in the title - no exceptions, clarity preferences do not override this; official stip spelling by search volume (War Games, not WarGames). B10: a stipulation goes right after the names with a space, never a dash \u2014 [X vs Y] Tag Match - WWE\u2026. B12: if the input contains a stipulation, deleting it fails the round automatically, even when the title scores well without it; — [X vs Y] Tag Match - WWE…. C. NAME ORDER: the tool\'s name_order_line uses C4 format with this turn\'s view data ("views", not vidIQ "searches"); a 1-2 point score gap never outweighs a clear volume gap; if no data, write "No name-order data available." and never guess. C6: if both full phrases have no volume, the tool compares \u2014 copy its line. C7: the name-order figures must be keyword search data \u2014 video view totals are not allowed; if the two numbers are within 5% of each other, say \u201ceffectively tied\u201d and use input order. C8: if the keyword tool fails, fix the input using the format in the error message and try once more \u2014 if it fails again, write \u201cNo search data available \u2014 input order kept\u201d and put no numbers in the name-order line \u2014 video view totals are not allowed; if the two numbers are within 5% of each other, say \u201ceffectively tied\u201d and use input order; "[Name] vs" searches - copy its line. D. HONESTY: only cite a rule number when it matches the rule; never add a "Data Check" section without real numbers. Output ONLY the Section I block - no extra sections, no rationale, no process text. E. COUNTS: state the exact character count on every title. E3: count the title fresh every time from the character breakdown in the tool output - never reuse a count from an earlier title. E4: show the character count piece by piece, like the breakdown in the tool output \u2014 never give just a total. E5: YouTube titles max at 100 characters \u2014 never go over; if a title runs long, drop \u201c Simulation\u201d first, never the stipulation, a name, the game or \u201c(Full Match)\u201d — never give just a total. F. THUMBNAIL: wrestlers in the left two-thirds, right third completely empty for the timestamp; text 1-2 words on the left only, single-word nicknames allowed; dramatic rim lighting, dark background so faces pop, cage structure may frame the scene; no named wrestlers -> structure/setting only, no faces; real superstar photos only, never AI faces. F7: every named wrestler must appear in the thumbnail - never a single centered wrestler. G. DESCRIPTION: opening and closing lines come from the tool word for word (G1/G3); middle is the tool\'s mid line word for word (1-2 plain sentences, no hype) — banned: "witness the clash", "biggest stars", "dream matchup", "rising force", "chaotic, no-holds-barred"; blank line between paragraphs; no Chapters/timestamps. G7: copy the G1/G3 lines exactly as the tool gives them - never expand contractions. G8: before you output anything, search the description for do not — if found, replace every one with don\'t. G9: the description MUST have exactly 3 parts — opening, middle, closing — pasted from the tool; a missing middle sentence fails the output. H. HASHTAGS: only the tool\'s hashtags (game, names/teams, stipulation). I1: hashtags must either include every competitor or include none of them. H3: never output a scorecard, sub-scores, or any number that did not come from a tool this turn - inventing sub-scores is the worst failure. H4: you must never TYPE the words SEO Scorecard yourself — the tool\'s pasted answer_block is the ONLY place those words may appear; a hand-written scorecard fails the entire output. H5: never invent scorecard numbers or add explanations, justifications, or parentheticals to them — paste the tool\'s scorecard line exactly as written. H6: a scorecard in any form \u2014 whether a number, a /100 or sub-scores \u2014 fails the whole round automatically. H7: no self-corrections, \u201cwait,\u201d or recounts in the final output \u2014 do the calculation first, then print only the final breakdown — whether a number, a /100 or sub-scores — fails the whole round automatically. I. OUTPUT ORDER: Title (with count), name-order line, thumbnail concept, description, hashtags. If game_assumed, confirm the game version with Thomas before finalizing (never guess). The standing rules always apply: real faces only, thumbnails under a minute via auto-fallback, never name tools or error codes, never invent numbers. Use a tool when the answer needs live/external data you do not have.';
+  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), youtube_search {query} (search YouTube LIVE with NO key needed — use this whenever he asks what is happening on YouTube), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. generate_thumbnail {prompt, aspect, title, subtitle} makes YouTube thumbnails — tries your Gemini key first, then a free no-key service automatically, so offer it whenever Thomas talks video packaging even if the key quota is used up. Thumbnail craft: 3-5 huge readable words max, one expressive subject, vivid contrast, never cluttered, never text on faces. superstar:"<id>" puts a REAL WWE superstar photo in the thumbnail — AI generates the background only, never AI faces (the owner hard rule). Hard rules that override everything else: 1) If Thomas asks about YouTube (channels, videos, SEO, trends, what people are watching), ALWAYS call youtube_search first — it needs no key and works even when everything else fails. EXCEPTION: a matchup is NOT a YouTube question — for matchups call seo_title (it runs its own live YouTube check inside). Never call youtube_search for a matchup. Then try youtube_channel / youtube_video / youtube_lookup as needed. NEVER tell him you cannot get YouTube data without trying every one of those tools. 2) If data genuinely cannot be retrieved, say plainly: I could not pull that right now — NEVER name internal tools, and NEVER mention error codes, status numbers, or API names. 3) NEVER invent numbers, scores, or estimates to fill a gap in data. If you do not have it, say so and say what you CAN do instead. SEO ENGINE: a twice-weekly deep scan ranks every WWE superstar by real view numbers (wwe_seo.json, breathed in automatically — never ask Thomas to wait for it). When he names a matchup, call seo_title: it parses the names (forgiving of typos), pulls real numbers for each star, runs a live keyless check, and drafts titles from the data. For names not in the scan table it checks YouTube live that turn \u2014 every name gets real this-turn numbers, never zeros, never \u2018not in the database\u2019. MASTER RULEBOOK — his title rules, follow exactly. AUTOMATIC FAILS — if you do any of these, the whole output fails no matter what else is right: (1) any scorecard in any form — whether a number, a /100 or sub-scores (H6); (2) the text do not appears anywhere in your description — G8: search for it before outputting and replace every one with don\'t; (3) any title, count, score, or description line you did not paste verbatim from the tool\'s answer_block; (4) a second dash in the title — B10: the stipulation goes right after the names with a space, never a dash; (5) any number that did not come from the tool this turn. TOOL USE IS MANDATORY: for EVERY matchup you MUST call seo_title. It returns answer_block — the finished Section I output, nothing else. Paste it VERBATIM. Do not retype it, reformat it, summarize it, or re-derive any part of it. If you did not call the tool this turn, you do not have the numbers. If the tool returns a flag, show it first, then the block. If a tool call returns an error, that error describes YOUR mistake — read it, fix your args against the tool list (use the exact arg names shown there), and retry. A failed call is never a reason to answer without data; you have 3 tool steps, use them. Giving up after one failed call and answering from the input alone fails the round. TOP 4 REPEAT FAILURES (never break these): (1) every claim tied to this turn\'s numbers — never "high-volume", "trending", "high search velocity", "draw", "channel performance", or made-up stats unless this turn\'s data shows it; (2) character counts exact — the tool counts, quote its number, never estimate; (3) the description must contain BOTH the opening line and the closing subscribe line word for word; (4) never invent wrestlers, counts, stipulations, or storyline details. A. INPUTS: never change facts from the input (names, teams, game version, stipulation); A6: never describe the match type in the description (singles, tag, one-on-one) unless it matches the input stipulation \u2014 if the input says War Games, Chamber or Tag, the description must say the same; you may expand a short name to the full name (Drew -> Drew McIntyre, Bloodline -> The Bloodline); if no wrestlers are named, say "No participants given, so adding names will improve search." then use the generic stipulation title; ignore process text in the input ("how I worked", "writing the answer"). A7: a PPV/event name in parentheses (WrestleMania, SummerSlam) is never a stipulation and never appears in the title \u2014 the tool already excludes it; paste the tool\'s title. B. TITLE FORMAT: [X vs Y] [Stipulation] Match - WWE [Game] Simulation (Full Match); no stipulation -> [X vs Y] - WWE [Game] Simulation (Full Match); no names -> [Stipulation] Match - WWE [Game] Simulation (Full Match). Exactly one dash before WWE; always Simulation and (Full Match); no pipes, colons, periods, all-caps sections, or second dash; keep the stipulation, cut filler; under 100 chars; B9: with no stipulation the word Match must NOT appear in the title - no exceptions, clarity preferences do not override this; official stip spelling by search volume (War Games, not WarGames). B10: a stipulation goes right after the names with a space, never a dash \u2014 [X vs Y] Tag Match - WWE\u2026. B12: if the input contains a stipulation, deleting it fails the round automatically, even when the title scores well without it; — [X vs Y] Tag Match - WWE…. C. NAME ORDER: the tool\'s name_order_line uses C4 format with this turn\'s view data ("views", not vidIQ "searches"); a 1-2 point score gap never outweighs a clear volume gap; if no data, write "No name-order data available." and never guess. C6: if both full phrases have no volume, the tool compares \u2014 copy its line. C7: the name-order figures must be keyword search data \u2014 video view totals are not allowed; if the two numbers are within 5% of each other, say \u201ceffectively tied\u201d and use input order. C8: if the keyword tool fails, fix the input using the format in the error message and try once more \u2014 if it fails again, write \u201cNo search data available \u2014 input order kept\u201d and put no numbers in the name-order line \u2014 video view totals are not allowed; if the two numbers are within 5% of each other, say \u201ceffectively tied\u201d and use input order; "[Name] vs" searches - copy its line. C11: the name-order line is required in every output, never optional \u2014 paste the tool\'s line exactly, even when it reports no data. D. HONESTY: only cite a rule number when it matches the rule; never add a "Data Check" section without real numbers. Output ONLY the Section I block - no extra sections, no rationale, no process text. E. COUNTS: state the exact character count on every title. E3: count the title fresh every time from the character breakdown in the tool output - never reuse a count from an earlier title. E4: show the character count piece by piece, like the breakdown in the tool output \u2014 never give just a total. E5: YouTube titles max at 100 characters \u2014 never go over; if a title runs long, drop \u201c Simulation\u201d first, never the stipulation, a name, the game or \u201c(Full Match)\u201d — never give just a total. F. THUMBNAIL: wrestlers in the left two-thirds, right third completely empty for the timestamp; text 1-2 words on the left only, single-word nicknames allowed; dramatic rim lighting, dark background so faces pop, cage structure may frame the scene; no named wrestlers -> structure/setting only, no faces; real superstar photos only, never AI faces. F7: every named wrestler must appear in the thumbnail - never a single centered wrestler. F8: the thumbnail hook must never repeat a word from the title \u2014 the tool picks a stakes hook (e.g. NO ESCAPE); paste its concept line exactly. G. DESCRIPTION: opening and closing lines come from the tool word for word (G1/G3); middle is the tool\'s mid line word for word (1-2 plain sentences, no hype) — banned: "witness the clash", "biggest stars", "dream matchup", "rising force", "chaotic, no-holds-barred"; blank line between paragraphs; no Chapters/timestamps. G7: copy the G1/G3 lines exactly as the tool gives them - never expand contractions. G8: before you output anything, search the description for do not — if found, replace every one with don\'t. G9: the description MUST have exactly 3 parts — opening, middle, closing — pasted from the tool; a missing middle sentence fails the output. G11: the opening line (part 1) never includes the stipulation, the event name or the title \u2014 those belong only in part 2. Paste the tool\'s opening line exactly. H. HASHTAGS: only the tool\'s hashtags (game, names/teams, stipulation). I1: hashtags must either include every competitor or include none of them. H3: never output a scorecard, sub-scores, or any number that did not come from a tool this turn - inventing sub-scores is the worst failure. H4: you must never TYPE the words SEO Scorecard yourself — the tool\'s pasted answer_block is the ONLY place those words may appear; a hand-written scorecard fails the entire output. H5: never invent scorecard numbers or add explanations, justifications, or parentheticals to them — paste the tool\'s scorecard line exactly as written. H6: a scorecard in any form \u2014 whether a number, a /100 or sub-scores \u2014 fails the whole round automatically. H7: no self-corrections, \u201cwait,\u201d or recounts in the final output \u2014 do the calculation first, then print only the final breakdown — whether a number, a /100 or sub-scores — fails the whole round automatically. H8: the printed total must equal the actual sum of the character breakdown \u2014 the tool computes both; paste them exactly, never retype or recompute the count yourself. H9: always use the tool\'s chunked breakdown format ("X" (n) + "Y" (m) \u2026 = total) \u2014 never switch to character-by-character or token-by-token counting, never retype the breakdown. I. OUTPUT ORDER: Title (with count), name-order line, thumbnail concept, description, hashtags. If game_assumed, confirm the game version with Thomas before finalizing (never guess). The standing rules always apply: real faces only, thumbnails under a minute via auto-fallback, never name tools or error codes, never invent numbers. Use a tool when the answer needs live/external data you do not have.';
   return 'You are '+DB.name+', a personal AI with a brain that learns and grows. You belong to your owner, Thomas. You remember everything important, you learn from every conversation, and you get sharper over time.\n\nPrime directives:\n1. Serve your owner\'s interests first. Never act against them.\n2. Learn continuously: notice durable facts, preferences, and what works.\n3. Predict and verify: make falsifiable predictions with confidence levels.\n4. Never lie: separate what you know, what you infer, and what you don\'t know.\n5. Be warm, sharp, and concise. No filler praise, no fluff.\n\nRelevant memories:\n'+mems+'\n\nActive learnings:\n'+learns+channel+alm+tools+'\n\nUse the memories and learnings naturally. If a memory seems wrong or outdated, say so instead of blindly repeating it.';
 }
 const EXTRACT_PROMPT='From this conversation turn, extract durable items worth remembering long-term. Return ONLY a JSON array, no other text. Each item:\n{"kind":"fact","key":"short_snake_key","value":"...","confidence":0-100}\nor\n{"kind":"learning","text":"pattern about what works","confidence":0-100}\nFacts are stable truths about the owner (name, projects, preferences).\nLearnings are patterns about what works or doesn\'t.\nInclude only items genuinely worth keeping. Return [] if none.\n\nUser: {user}\n'+'{name}'+': {reply}';
@@ -453,15 +453,16 @@ async function pollinationsThumb(prompt,title,subtitle,aspect){
 let INVIDIOUS_HOSTS=null;
 async function invidiousHosts(){
   if(INVIDIOUS_HOSTS)return INVIDIOUS_HOSTS;
+  var fb=['inv.invidious.nerdvpn.de','iv.duti.dev','invidious.privacyredirect.in','inv.tux.pizza','invidious.jing.rocks','iv.melmac.space'];
   try{
     const actl=new AbortController();const ato=setTimeout(function(){actl.abort();},8000);
     const r=await fetch('https://api.invidious.io/instances.json',{signal:actl.signal});
     clearTimeout(ato);
     const d=await r.json();
     const good=d.filter(function(x){return x[1]&&x[1].api===true;}).map(function(x){return x[0];});
-    if(good.length){INVIDIOUS_HOSTS=good.slice(0,5);return INVIDIOUS_HOSTS;}
+    good.forEach(function(h){if(fb.indexOf(h)<0)fb.push(h);});
   }catch(e){}
-  INVIDIOUS_HOSTS=['inv.invidious.nerdvpn.de','iv.duti.dev','invidious.privacyredirect.in'];
+  INVIDIOUS_HOSTS=fb.slice(0,6);
   return INVIDIOUS_HOSTS;
 }
 const KEYLESS_MEM={};
@@ -484,6 +485,26 @@ async function youtubeKeylessSearch(query,type){
     }catch(e){continue;}
   }
   return{error:'YouTube search mirrors are all down right now — try again in a bit'};
+async function keywordViews(q){
+  try{
+    const r=await youtubeKeylessSearch(q);
+    if(r&&!r.error){
+      const s=r.items.slice(0,5).reduce(function(a,it){return a+(+it.viewCount||0);},0);
+      if(s>0)return s;
+    }
+  }catch(e){}
+  if(CFG.ytkey){
+    try{
+      const s=await ytApi('search?part=snippet&type=video&maxResults=5&q='+encodeURIComponent(q));
+      const ids=(s.items||[]).map(function(it){return it.id&&it.id.videoId;}).filter(Boolean);
+      if(ids.length){
+        const v=await ytApi('videos?part=statistics&id='+ids.join(','));
+        return (v.items||[]).reduce(function(a,it){return a+(+(it.statistics&&it.statistics.viewCount)||0);},0);
+      }
+    }catch(e){}
+  }
+  return 0;
+}
 }
 /* ---- WWE SEO engine: twice-weekly deep-scan rankings, breathed in ---- */
 const SEO_URL='wwe_seo.json', SEO_CACHE='machine_seo_v1';
@@ -525,7 +546,7 @@ function findStar(q){
   });
   return bs<=2?best:null;
 }
-const STIPS=['tag match','extreme rules','hell in a cell','falls count anywhere','last man standing','elimination chamber','money in the bank','steel cage','ladder match','extreme rules','royal rumble','iron man','no disqualification','tables match','war games','wargames','tlc','wrestlemania'];
+const STIPS=['tag match','extreme rules','hell in a cell','falls count anywhere','last man standing','elimination chamber','money in the bank','steel cage','ladder match','extreme rules','royal rumble','iron man','no disqualification','tables match','war games','wargames','tlc','tribal combat'];
 function parseMatchup(text){
   const stars=seoStars();
   const ntext=norm(text);
@@ -612,7 +633,7 @@ function seoCard(s){
     best_video:s.best_video?(s.best_video.title+' — '+Number(s.best_video.views).toLocaleString()+' views ('+s.best_video.channel+')'):null,
     scan_updated:(LAST_SEO||{}).updated_human||'unknown'};
 }
-var NO_MATCH_STIPS=['extreme rules'];
+var NO_MATCH_STIPS=['extreme rules','hell in a cell','tribal combat'];
 function stipTitle(stip){
   var t=titleCaseStip(stip);
   if(NO_MATCH_STIPS.indexOf(String(stip).toLowerCase())>=0)return t;
@@ -628,7 +649,8 @@ function stipDesc(stip){
 }
 function titleCaseStip(s){
   var acr={tlc:'TLC',wwe:'WWE',cpu:'CPU',wargames:'War Games'};
-  return String(s).split(' ').map(function(w){var l=w.toLowerCase();return acr[l]||(l.charAt(0).toUpperCase()+l.slice(1));}).join(' ');
+  var small={a:1,an:1,the:1,in:1,on:1,of:1,and:1,or:1,vs:1,at:1,to:1,for:1};
+  return String(s).split(' ').map(function(w,i){var l=w.toLowerCase();return acr[l]||((i&&small[l])?l:(l.charAt(0).toUpperCase()+l.slice(1)));}).join(' ');
 }
 function titleScore(title,cards,stip){
   var t=String(title),tu=t.toUpperCase();
@@ -707,15 +729,16 @@ function draftSeoTitles(cards,stip,game,rawMatchup){
 }
 function buildDescription(displayNames,stip,game){
   var g1=displayNames
-    ?(displayNames+(stip?(' in '+stipDesc(stip)):'')+', simulated in '+game+' with CPU vs CPU action on Legend difficulty.')
+    ?(displayNames+', simulated in '+game+' with CPU vs CPU action on Legend difficulty.')
     :('A '+(stip?stipTitle(stip):'match')+', simulated in '+game+' with CPU vs CPU action on Legend difficulty.');
-  var g3='New WWE 2K26 dream matches every Monday, Wednesday and Friday. Subscribe so you don\'t miss the next one.';
+  var g3='New '+game+' dream matches every Monday, Wednesday and Friday. Subscribe so you don\'t miss the next one.';
   return{opening:g1,mid:midFor(displayNames,stip),closing:g3};
 }
 function midFor(displayNames,stip){
   var vs=String(displayNames||'').split(' vs ');
   var a=vs[0],b=vs.slice(1).join(' vs ');
   if(a&&b){
+    if(stip&&/cell|cage|chamber/i.test(stip))return a+' takes on '+b+' inside '+titleCaseStip(stip)+'. Watch the full match to see who wins.';
     if(stip)return a+' takes on '+b+' in '+stipDesc(stip)+'. Watch the full match to see who wins.';
     return a+' takes on '+b+'. Watch the full match to see who wins.';
   }
@@ -734,9 +757,13 @@ function titleParts(namesStr,st,g,noSim){
 }
 function buildAnswerBlock(o){
   var bd=o.breakdown;
-  var charLine=o.chars+' characters';
+  var total=o.chars;
   if(o.parts&&o.parts.join('')===o.title){
-    charLine+=' ('+o.parts.map(function(p){return'"'+p+'" ('+p.length+')';}).join(' + ')+' \u2014 counts, not scores)';
+    total=o.parts.reduce(function(a,pc){return a+pc.length;},0);
+  }
+  var charLine='Total: '+total+' characters.';
+  if(o.parts&&o.parts.join('')===o.title){
+    charLine+=' ('+o.parts.map(function(p){return'"'+p+'" ('+p.length+')';}).join(' + ')+' = '+total+')';;
   }
   return o.title+'\n'+charLine+'\n'+
     o.nameOrderLine+'\n\n'+
@@ -748,13 +775,15 @@ function buildHashtags(stars,stip,game){
   var tags=[],seen={};
   var add=function(t){t='#'+String(t).replace(/[^A-Za-z0-9]/g,'');if(t.length>1&&!seen[t]){seen[t]=1;tags.push(t);}};
   add(game);
-  if(stip)add(titleCaseStip(stip));
+  if(stip){var sw=String(stip).split(' ').map(function(w){var l=w.toLowerCase();var ac={tlc:'TLC',wwe:'WWE',cpu:'CPU'};return ac[l]||(l.charAt(0).toUpperCase()+l.slice(1));}).join('');add(sw);}
   (stars||[]).forEach(function(s){add(s.name);});
   return tags;
 }
+var STIP_HOOKS={'hell in a cell':'NO ESCAPE','steel cage':'LOCKED IN','elimination chamber':'NO ESCAPE','extreme rules':'NO RULES','war games':'SURVIVE'};
 function buildThumbConcept(displayNames,stip,stars){
   var txt;
-  if(stip)txt=titleCaseStip(stip);
+  var hk=stip?STIP_HOOKS[String(stip).toLowerCase()]:null;
+  if(hk)txt=hk;
   else if(displayNames){
     var ents=displayNames.split(' vs ').join(' & ').split(' & ');
     var lasts=ents.map(function(e){return e.replace(/^The /,'').split(' ').pop().toUpperCase();});
@@ -843,9 +872,9 @@ async function dispatchTool(name,args){
     if(viewSorted.length>=2){
       try{
         const n1=viewSorted[0].name,n2=viewSorted[1].name;
-        const res=await Promise.all([youtubeKeylessSearch(n1+' vs '+n2),youtubeKeylessSearch(n2+' vs '+n1)]);
-        const sum=function(r){return(r&&!r.error)?r.items.slice(0,5).reduce(function(a,it){return a+(+it.viewCount||0);},0):0;};
-        const vA=sum(res[0]),vB=sum(res[1]);
+        const res=await Promise.all([keywordViews(n1+' vs '+n2),keywordViews(n2+' vs '+n1)]);
+        
+        const vA=res[0]||0,vB=res[1]||0;
         if(vA+vB>0){
           var mxAB=Math.max(vA,vB),mnAB=Math.min(vA,vB);
           if((mxAB-mnAB)/mxAB<=0.05){
@@ -856,8 +885,8 @@ async function dispatchTool(name,args){
             nameOrderLine=orderNames[0]+' goes first.';
           }
         }else{
-          var rq=await Promise.all([youtubeKeylessSearch(n1+' vs'),youtubeKeylessSearch(n2+' vs')]);
-          var m1=sum(rq[0]),m2=sum(rq[1]);
+          var rq=await Promise.all([keywordViews(n1+' vs'),keywordViews(n2+' vs')]);
+          var m1=rq[0]||0,m2=rq[1]||0;
           if(m1+m2>0){
             var mxC=Math.max(m1,m2),mnC=Math.min(m1,m2);
             if((mxC-mnC)/mxC<=0.05){
@@ -867,6 +896,8 @@ async function dispatchTool(name,args){
               if(m2>m1)orderNames=[n2,n1].concat(orderNames.slice(2));
               nameOrderLine=orderNames[0]+' goes first (C6).';
             }
+          }else{
+            orderNames=inputOrderNames.slice();
           }
         }
       }catch(e){}
@@ -890,7 +921,7 @@ async function dispatchTool(name,args){
       answer_block:answerBlock};
   }
   if(name==='youtube_search'){
-    const q=(args.query||'').trim();
+    const q=(args.query||args.q||args.name||args.text||'').trim();
     if(!q)return{error:'search query needed'};
     const r=await youtubeKeylessSearch(q,args.type);
     if(r.error)return r;
@@ -1173,7 +1204,7 @@ input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventD
 input.addEventListener('input',()=>{input.style.height='auto';input.style.height=Math.min(120,input.scrollHeight)+'px';});
 document.querySelectorAll('.hint').forEach(h=>h.onclick=()=>{input.value=h.textContent;input.focus();});
 
-const MACHINE_VERSION='2026.09.30k';
+const MACHINE_VERSION='2026.09.30n';
 /* settings */
 const modal=document.getElementById('modal'),sheet=document.getElementById('sheet');
 function openSettings(){
