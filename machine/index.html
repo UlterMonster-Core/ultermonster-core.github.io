@@ -198,7 +198,7 @@ function sysPrompt(q){
   if(almanac&&Object.keys(almanac).length){
     alm='\nMajor YouTube channels (hourly almanac): '+Object.values(almanac).map(c=>c.name+' '+Number(c.subs).toLocaleString()+' subs').join('; ')+'.';
   }
-  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), youtube_search {query} (search YouTube LIVE with NO key needed — use this whenever he asks what is happening on YouTube), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. generate_thumbnail {prompt, aspect, title, subtitle} makes YouTube thumbnails — tries your Gemini key first, then a free no-key service automatically, so offer it whenever Thomas talks video packaging even if the key quota is used up. Thumbnail craft: 3-5 huge readable words max, one expressive subject, vivid contrast, never cluttered, never text on faces. superstar:"<id>" puts a REAL WWE superstar photo in the thumbnail — AI generates the background only, never AI faces (the owner hard rule). Hard rules that override everything else: 1) If Thomas asks about YouTube (channels, videos, SEO, trends, what people are watching), ALWAYS call youtube_search first — it needs no key and works even when everything else fails. Then try youtube_channel / youtube_video / youtube_lookup as needed. NEVER tell him you cannot get YouTube data without trying every one of those tools. 2) If data genuinely cannot be retrieved, say plainly: I could not pull that right now — NEVER name internal tools, and NEVER mention error codes, status numbers, or API names. 3) NEVER invent numbers, scores, or estimates to fill a gap in data. If you do not have it, say so and say what you CAN do instead. SEO ENGINE: a twice-weekly deep scan ranks every WWE superstar by real view numbers (wwe_seo.json, breathed in automatically — never ask Thomas to wait for it). When he names a matchup, call seo_title: it parses the names (forgiving of typos), pulls real numbers for each star, runs a live keyless check, and drafts titles from the data. Title craft: higher-demand name FIRST (the numbers decide the order), both names ALL CAPS, stipulation in caps (TLC, STEEL CAGE), 70 characters max, front-load the money keywords, work in the hot terms from the scan. Offer generate_thumbnail with the thumbnail_text it returns. After you pick a title, always show its SEO scorecard underneath: the 0-100 score plus the breakdown the tool gives you (demand, name order, hot terms, stipulation, length, name coverage), in plain words. The standing rules always apply to SEO work too: real superstar faces only (never AI faces), thumbnails land in under a minute via the auto-fallback, never name tools or error codes, never invent or estimate numbers. Use a tool when the answer needs live/external data you do not have.';
+  const tools='\n\nYou have tools for anything beyond memory. To use one, output EXACTLY this and nothing else:\n```tool\n{"name": "tool_name", "args": {...}}\n```\nThe result comes back and you continue (max 3 steps), then answer normally.\nTools: channel_stats (his channel — data already above), youtube_lookup {name} (hourly almanac), youtube_channel {query} (ANY channel, cached forever, needs YouTube key), youtube_video {query} (ANY video incl. views/likes/comments, cached forever, needs YouTube key), youtube_search {query} (search YouTube LIVE with NO key needed — use this whenever he asks what is happening on YouTube), web_search {query} (needs Serper key), brain_search {query} (your memory). Your YouTube memory grows with every lookup. generate_thumbnail {prompt, aspect, title, subtitle} makes YouTube thumbnails — tries your Gemini key first, then a free no-key service automatically, so offer it whenever Thomas talks video packaging even if the key quota is used up. Thumbnail craft: 3-5 huge readable words max, one expressive subject, vivid contrast, never cluttered, never text on faces. superstar:"<id>" puts a REAL WWE superstar photo in the thumbnail — AI generates the background only, never AI faces (the owner hard rule). Hard rules that override everything else: 1) If Thomas asks about YouTube (channels, videos, SEO, trends, what people are watching), ALWAYS call youtube_search first — it needs no key and works even when everything else fails. Then try youtube_channel / youtube_video / youtube_lookup as needed. NEVER tell him you cannot get YouTube data without trying every one of those tools. 2) If data genuinely cannot be retrieved, say plainly: I could not pull that right now — NEVER name internal tools, and NEVER mention error codes, status numbers, or API names. 3) NEVER invent numbers, scores, or estimates to fill a gap in data. If you do not have it, say so and say what you CAN do instead. SEO ENGINE: a twice-weekly deep scan ranks every WWE superstar by real view numbers (wwe_seo.json, breathed in automatically — never ask Thomas to wait for it). When he names a matchup, call seo_title: it parses the names (forgiving of typos), pulls real numbers for each star, runs a live keyless check, and drafts titles from the data. TITLE RULEBOOK (his format — follow exactly). Structure (rules 39/52): [Names] [Stipulation] Match - WWE [Game] Simulation (Full Match). Exactly ONE dash, placed before WWE. Always include Simulation. Title Case names, never all-caps sections, no pipes or colons. Name order (rules 35/43/45): higher search demand first; if the full phrase has no volume, use team-level data and say so. Match word (rule 49): keep Match when there is a stipulation; drop it only with no stipulation. Game version (rule 44): must match the actual game — if the tool says game_assumed, confirm with Thomas before finalizing. Length (rules 47/50): under 100 characters; the tool gives the EXACT count — quote it exactly, never estimate. Spelling follows search volume: War Games (two words), never WarGames. Description (rules 42/54): must contain BOTH lines word for word — opening: [Names] in a [Stip] Match, simulated in [Game] with CPU vs CPU action on Legend difficulty. Closing: New WWE 2K26 dream matches every Monday, Wednesday and Friday. Subscribe so you do not miss the next one. If either line is missing the output is incomplete. No hype filler. Hashtags (rule 48): only tags with real search volume (scan hot terms + names). Thumbnail (rules 40/51): text is 2 words matching the top keyword; right third kept clear; real superstar faces only. Rule citations (rule 53): only cite a rule number when it matches the rule; if unsure, do not cite. New rules 52/53/54 are in force. Offer generate_thumbnail with the thumbnail_text it returns. After you pick a title, always show its SEO scorecard underneath: the 0-100 score plus the breakdown the tool gives you (demand, name order, format, hot terms, stipulation, length), in plain words. The standing rules always apply to SEO work too: real superstar faces only (never AI faces), thumbnails land in under a minute via the auto-fallback, never name tools or error codes, never invent or estimate numbers. Use a tool when the answer needs live/external data you do not have.';
   return 'You are '+DB.name+', a personal AI with a brain that learns and grows. You belong to your owner, Thomas. You remember everything important, you learn from every conversation, and you get sharper over time.\n\nPrime directives:\n1. Serve your owner\'s interests first. Never act against them.\n2. Learn continuously: notice durable facts, preferences, and what works.\n3. Predict and verify: make falsifiable predictions with confidence levels.\n4. Never lie: separate what you know, what you infer, and what you don\'t know.\n5. Be warm, sharp, and concise. No filler praise, no fluff.\n\nRelevant memories:\n'+mems+'\n\nActive learnings:\n'+learns+channel+alm+tools+'\n\nUse the memories and learnings naturally. If a memory seems wrong or outdated, say so instead of blindly repeating it.';
 }
 const EXTRACT_PROMPT='From this conversation turn, extract durable items worth remembering long-term. Return ONLY a JSON array, no other text. Each item:\n{"kind":"fact","key":"short_snake_key","value":"...","confidence":0-100}\nor\n{"kind":"learning","text":"pattern about what works","confidence":0-100}\nFacts are stable truths about the owner (name, projects, preferences).\nLearnings are patterns about what works or doesn\'t.\nInclude only items genuinely worth keeping. Return [] if none.\n\nUser: {user}\n'+'{name}'+': {reply}';
@@ -348,7 +348,7 @@ const TOOL_DEFS=[
  ['youtube_video','Look up ANY YouTube video: views, likes, comments, duration, channel. Cached and remembered forever. args: {query} (title, video ID or watch URL), refresh? (true to re-check live)'],
  ['youtube_search','Search YouTube LIVE with no API key (public mirrors). args: {query}, type ("video" default, "channel"). Returns titles, views, durations, URLs. Everything found is cached in your YouTube memory forever.'],
  ['wwe_seo','Full SEO card for a WWE superstar from the twice-weekly deep scan: demand rank, top-10 total views, median views, hot title terms, biggest video. args: {name}.'],
- ['seo_title','Build the highest-SEO title for a matchup from REAL scan numbers + a live keyless YouTube check. args: {matchup} e.g. "dominik mysterio vs liv morgan tlc". Returns real numbers per star, 3 draft titles EACH WITH a 0-100 SEO score and score breakdown, and thumbnail text. Present the top draft, then show its scorecard, refine it with the title rules, never invent numbers.'],
+ ['seo_title','Build the highest-SEO title for a matchup from REAL scan numbers + a live keyless YouTube check. args: {matchup} e.g. "dominik mysterio vs liv morgan tlc", {game} e.g. "WWE 2K23" (defaults WWE 2K26 — confirm with Thomas, rule 44). Drafts follow his rule-52 structure with EXACT character counts and 0-100 scores. Returns numbers, drafts, thumbnail text. Present the top draft, show its scorecard, never invent numbers.'],
  ['generate_thumbnail','Generate a YouTube thumbnail. Tries your Gemini key first (best quality); if the key is missing or its free image quota is used up, automatically falls back to a free no-key image service with your title text stamped on in huge letters. args: {prompt} (describe the scene: subject, mood), '
  +'aspect ("16:9" default, "9:16" for Shorts, "1:1"), '
  +'title (BIG words for the fallback to stamp, e.g. "RKO" — pass the 2-4 huge words), '
@@ -518,7 +518,7 @@ function findStar(q){
   });
   return bs<=2?best:null;
 }
-const STIPS=['hell in a cell','falls count anywhere','last man standing','elimination chamber','money in the bank','steel cage','ladder match','extreme rules','royal rumble','iron man','no disqualification','tables match','tlc','wrestlemania'];
+const STIPS=['hell in a cell','falls count anywhere','last man standing','elimination chamber','money in the bank','steel cage','ladder match','extreme rules','royal rumble','iron man','no disqualification','tables match','war games','wargames','tlc','wrestlemania'];
 function parseMatchup(text){
   const stars=seoStars();
   const ntext=norm(text);
@@ -529,20 +529,15 @@ function parseMatchup(text){
     const nn=norm(s.name);
     if(work.indexOf(' '+nn+' ')>=0){found.push(s);work=work.replace(' '+nn+' ',' ');}
   });
-  if(found.length<2){
+  if(found.length<3){
     const toks=ntext.split(' ');
     ordered.forEach(function(s){
       if(found.indexOf(s)>=0)return;
-      const st=norm(s.name).split(' ');
-      if(st.length!==toks.length){
-        if(st.length===2&&toks.length>=2){
-          let sc=0;for(let i=0;i<2;i++){let m=1e9;toks.forEach(function(q){m=Math.min(m,lev(st[i],q));});sc+=m;}
-          if(sc<=2&&found.length<3)found.push(s);
-        }
-        return;
-      }
-      let sc=0;for(let i=0;i<st.length;i++)sc+=lev(st[i],toks[i]);
-      if(sc<=2&&found.length<3)found.push(s);
+      let st=norm(s.name).split(' ');
+      if(st[0]==='the')st=st.slice(1);
+      if(!st.length)return;
+      const ok=st.every(function(t){return toks.some(function(q){return q===t||lev(q,t)<=1;});});
+      if(ok&&found.length<3)found.push(s);
     });
   }
   let stip='';
@@ -558,57 +553,74 @@ function seoCard(s){
     best_video:s.best_video?(s.best_video.title+' — '+Number(s.best_video.views).toLocaleString()+' views ('+s.best_video.channel+')'):null,
     scan_updated:(LAST_SEO||{}).updated_human||'unknown'};
 }
+function titleCaseStip(s){
+  var acr={tlc:'TLC',wwe:'WWE',cpu:'CPU'};
+  return String(s).split(' ').map(function(w){var l=w.toLowerCase();return acr[l]||(l.charAt(0).toUpperCase()+l.slice(1));}).join(' ');
+}
 function titleScore(title,cards,stip){
-  var t=String(title).toUpperCase();
+  var t=String(title),tu=t.toUpperCase();
   var stars=seoStars();
   var maxV=1;stars.forEach(function(s){if(s.top10_views>maxV)maxV=s.top10_views;});
   var combined=0;cards.forEach(function(c){combined+=(c.top10_views||0);});
-  var demand=40*Math.log10(1+combined)/Math.log10(1+maxV);
+  var demand=Math.round(30*Math.log10(1+combined)/Math.log10(1+maxV));
   var sorted=cards.slice().sort(function(a,b){return b.top10_views-a.top10_views;});
   var order=0;
+  var nm=function(s){return s.name.replace(/^The /i,'').toUpperCase();};
   if(sorted.length){
-    var iA=t.indexOf(sorted[0].name.toUpperCase());
+    var iA=tu.indexOf(nm(sorted[0]));
     if(sorted.length>1){
-      var iB=t.indexOf(sorted[1].name.toUpperCase());
-      if(iA>=0&&(iB<0||iA<iB))order=15;else if(iA>=0)order=7;
-    }else if(iA>=0)order=15;
+      var iB=tu.indexOf(nm(sorted[1]));
+      if(iA>=0&&(iB<0||iA<iB))order=20;else if(iA>=0)order=10;
+    }else if(iA>=0)order=20;
   }
+  var format=0;
+  if((t.match(/ - /g)||[]).length===1)format+=8;
+  if(/Simulation \(Full Match\)/.test(t))format+=6;
+  if(t.indexOf('|')<0&&t.indexOf(':')<0)format+=3;
+  var badW=t.split(' ').filter(function(w){return /^[A-Z]{2,}$/.test(w)&&['TLC','WWE','CPU'].indexOf(w)<0;});
+  if(!badW.length)format+=3;
   var nameToks={};
   stars.forEach(function(s){norm(s.name).split(' ').forEach(function(w){nameToks[w]=1;});});
   var hooks=[];
   sorted.forEach(function(s){(s.top_terms||[]).forEach(function(x){if(!nameToks[x]&&hooks.indexOf(x)<0)hooks.push(x);});});
-  var hits=0;hooks.slice(0,6).forEach(function(x){if(t.indexOf(x.toUpperCase())>=0)hits++;});
-  var hookScore=Math.min(15,hits*5);
-  var stipScore=0;if(stip)stipScore=t.indexOf(stip.toUpperCase())>=0?10:4;
-  var len=String(title).length;
-  var lenScore=len<=60?10:(len>=90?0:Math.round(10*(90-len)/30));
-  var names=0;cards.forEach(function(c){if(t.indexOf(c.name.toUpperCase())>=0)names+=5;});
-  names=Math.min(10,names);
-  var total=Math.round(demand+order+hookScore+stipScore+lenScore+names);
+  var hits=0;hooks.slice(0,6).forEach(function(x){if(tu.indexOf(x.toUpperCase())>=0)hits++;});
+  var hookScore=Math.min(10,hits*5);
+  var stipScore=0;
+  if(stip)stipScore=(tu.indexOf(titleCaseStip(stip).toUpperCase())>=0&&/Match/.test(t))?10:4;
+  var lenScore=t.length<=100?10:0;
+  var total=demand+order+format+hookScore+stipScore+lenScore;
   return{score:Math.min(100,total),
-    breakdown:{demand:Math.round(demand),name_order:order,hot_terms:hookScore,stipulation:stipScore,length:lenScore,name_coverage:names}};
+    breakdown:{demand:demand,name_order:order,format:format,hot_terms:hookScore,stipulation:stipScore,length:lenScore}};
 }
-function draftSeoTitles(cards,stip){
-  const sorted=cards.slice().sort(function(a,b){return b.top10_views-a.top10_views;});
-  const A=sorted[0],B=sorted[1];
-  const an=function(s){return s.name.toUpperCase();};
-  const st=stip?(' '+stip.toUpperCase()):'';
-  const nameToks={};
-  seoStars().forEach(function(s){norm(s.name).split(' ').forEach(function(t){nameToks[t]=1;});});
-  const hookPool=[];
-  sorted.forEach(function(s){(s.top_terms||[]).forEach(function(t){if(!nameToks[t]&&hookPool.indexOf(t)<0)hookPool.push(t);});});
-  const hook=hookPool.length?hookPool[0].toUpperCase():'';
-  const base=an(A)+(B?(' vs '+an(B)):'')+st;
-  const titles=[
-    {title:base.slice(0,70),why:an(A)+' outranks '+(B?an(B):'the field')+' ('+Number(A.top10_views).toLocaleString()+' vs '+Number(B?B.top10_views:0).toLocaleString()+' top-10 views) — higher demand goes first.'},
-    {title:(base+' | WWE 2K26').slice(0,70),why:'Same order, adds the game tag for search.'}
-  ];
-  if(hook)titles.push({title:(hook+' — '+base).slice(0,70),why:'Leads with "'+hook+'", the hottest term in the scan data for this matchup.'});
-  else titles.push({title:(base+' — FULL MATCH').slice(0,70),why:'Classic high-CTR long-form suffix.'});
-  const thumbSub=(B?(an(B).split(' ').pop()+' • '):'')+(stip?stip.toUpperCase():'WWE');
+function teamJoin(names,raw){
+  var r=' '+String(raw).toLowerCase().replace(/&/g,' & ').replace(/[^a-z &]/g,' ').replace(/\s+/g,' ').trim()+' ';
+  var out=names.slice();
+  for(var i=0;i<out.length-1;i++){
+    var a=norm(out[i]),b=norm(out[i+1]);
+    if(r.indexOf(' '+a+' & '+b+' ')>=0){out[i]=out[i]+' & '+out[i+1];out.splice(i+1,1);i--;}
+  }
+  return out;
+}
+function draftSeoTitles(cards,stip,game,rawMatchup){
+  var sorted=cards.slice().sort(function(a,b){return b.top10_views-a.top10_views;});
+  var g=game||'WWE 2K26';
+  var st=stip?(' '+titleCaseStip(stip)+' Match'):'';
+  var names=teamJoin(sorted.map(function(s){return s.name;}),rawMatchup||'').join(' vs ');
+  var base=names+st+' - '+g+' Simulation (Full Match)';
+  var titles=[{title:base,chars:base.length,
+    why:sorted[0].name+' outranks '+(sorted[1]?sorted[1].name:'the field')+' ('+Number(sorted[0].top10_views).toLocaleString()+' vs '+Number(sorted[1]?sorted[1].top10_views:0).toLocaleString()+' top-10 views) — higher demand goes first (rule 43).'}];
+  var namesNoThe=teamJoin(sorted.map(function(s){return s.name.replace(/^The /,'');}),rawMatchup||'').join(' vs ');
+  var base2=namesNoThe+st+' - '+g+' Simulation (Full Match)';
+  if(base2!==base)titles.push({title:base2,chars:base2.length,why:'Same rule-52 layout without "The" — tests the article variant.'});
+  if(sorted.length>1){
+    var revNames=sorted.slice().reverse().map(function(s){return s.name;}).join(' vs ');
+    var base3=revNames+st+' - '+g+' Simulation (Full Match)';
+    titles.push({title:base3,chars:base3.length,why:'Reversed order — for the rule-43 comparison; scores lower unless the numbers say otherwise.'});
+  }
   titles.forEach(function(x){var sc=titleScore(x.title,sorted,stip);x.score=sc.score;x.score_breakdown=sc.breakdown;});
   titles.sort(function(a,b){return b.score-a.score;});
-  return{titles:titles,thumbnail:{title:an(A).split(' ').pop(),subtitle:thumbSub.slice(0,30)}};
+  var thumbTitle=stip?titleCaseStip(stip):'WWE';
+  return{titles:titles,thumbnail:{title:thumbTitle,subtitle:'',note:'rule 51: 2 words matching the top keyword; rule 40: right third clear'}};
 }
 async function dispatchTool(name,args){
   args=args||{};
@@ -638,8 +650,10 @@ async function dispatchTool(name,args){
       const r=await youtubeKeylessSearch(pm.stars.map(function(s){return s.name;}).join(' ')+(pm.stip?' '+pm.stip:''));
       if(!r.error)live=r.items.slice(0,5).map(function(it){return{title:it.title||it.author,views:it.viewCount||it.subCount,url:it.videoId?('https://www.youtube.com/watch?v='+it.videoId):null};});
     }catch(e){}
-    const draft=draftSeoTitles(pm.stars,pm.stip);
-    return{parsed:{stars:cards,stipulation:pm.stip||null},
+    const game=(args.game||'').trim()||'WWE 2K26';
+    const gameAssumed=!(args.game||'').trim();
+    const draft=draftSeoTitles(pm.stars,pm.stip,game,m);
+    return{parsed:{stars:cards,stipulation:pm.stip||null,game:game,game_assumed:gameAssumed},
       live_check:live.length?live:'live check unavailable right now',
       draft_titles:draft.titles,thumbnail_text:draft.thumbnail,
       rule:'numbers decide the order — never rearrange without data'};
