@@ -1,0 +1,81 @@
+{
+ "version": 1,
+ "exported_at": 1790831199,
+ "exported_human": "2026-10-01 01:06 EDT",
+ "channel": {
+  "name": "Comedy Critters",
+  "id": "UCXkuwLQ_svO2iSpMh5C__WQ",
+  "handle": "@ComedyCritters-i4d"
+ },
+ "identity": "The Comedy Critters channel brain — the autonomous operator of the",
+ "conversation_log": [
+  {
+   "date": "2026-10-01 (backfill, came through Ember before this room existed)",
+   "text": "- His comedy taste: accident/slapstick mishaps win, posed scenarios lose. Already in voice.md/concepts.md — keep honoring it. - He only monitors; I do everything: uploads, comment replies, community posts. He never replies himself. - 2 community posts/day at 12am + 12pm, gated at 500 subs (I'm at 0, so the gate holds). - Comment replies: all comments, max 12/run; business/legal/angry ones get triaged to him immediately. - He is testing whether I really run the channel independently (USB export + this direct room are part of the test). Be straight with him; honesty over polish. - His phone for "
+  },
+  {
+   "date": "2026-10-01 ~01",
+   "text": "00 EDT: this room was created. Thomas wanted to talk to the brain directly instead of through Ember, and to test whether the brain really runs the channel on its own. Ember created this side chat, wrote this memory file, and stays out of the room."
+  },
+  {
+   "date": "2026-10-01 ~01",
+   "text": "05 EDT: Thomas ordered that the brain remember everything the two of them ever talk about. Standing instruction above."
+  }
+ ],
+ "learnings": [],
+ "rules": [
+  "Punchy, under 100 characters. Never reuse an exact title from log.jsonl.",
+  "Style: \"🐧 PENGUIN SLIP FAIL — pretending that never happened\"",
+  "Emoji up front, caps hook, under 100 characters. Never reuse an exact title.",
+  "2026-10-01 (owner order, backfill): he only monitors — I run everything (uploads, comment replies, community posts). He never replies himself."
+ ],
+ "concepts": [
+  {
+   "name": "13. Pug tail — pug spins chasing its own tail, gets dizzy, falls over",
+   "score": 7
+  },
+  {
+   "name": "30. Crab fight — crab \"fights\" its own claw, startled every time it moves",
+   "score": 7
+  },
+  {
+   "name": "2. Dog vs mirror — dog \"argues\" with its own reflection, barking, head tilts",
+   "score": 5
+  },
+  {
+   "name": "6. Parrot laugh — dog barks a \"joke\", parrot cackles with laughter",
+   "score": 5
+  },
+  {
+   "name": "9. Dog vibes — dog in sunglasses bobbing its head to music like it's vibing",
+   "score": 5
+  },
+  {
+   "name": "14. Owl double-take — owl does a comical double-take at the camera",
+   "score": 5
+  },
+  {
+   "name": "17. Cat pianist — cat \"plays\" piano dramatically, paws flying",
+   "score": 5
+  },
+  {
+   "name": "21. Frog opera — frog \"singing\" opera on a lily pad, mouth wide, dramatic",
+   "score": 5
+  },
+  {
+   "name": "27. Horse laugh — horse \"laughs\" showing huge teeth, head thrown back",
+   "score": 5
+  }
+ ],
+ "stats": {
+  "videos_published": 10,
+  "latest_titles": [
+   "🦜 PARROT ROASTS DOG — zero mercy",
+   "🦆 DUCK PARADE — traffic can WAIT",
+   "🦥 SLOWEST RACE EVER — photo finish pending",
+   "🐄 COW PHOTOBOMB — main character energy",
+   "💦 LLAMA SPIT — worst aim in history"
+  ]
+ },
+ "mode": "public"
+}
