@@ -1294,7 +1294,7 @@ input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventD
 input.addEventListener('input',()=>{input.style.height='auto';input.style.height=Math.min(120,input.scrollHeight)+'px';});
 document.querySelectorAll('.hint').forEach(h=>h.onclick=()=>{input.value=h.textContent;input.focus();});
 
-const MACHINE_VERSION='2026.10.01a';
+const MACHINE_VERSION='2026.10.01b';
 /* settings */
 const modal=document.getElementById('modal'),sheet=document.getElementById('sheet');
 function openSettings(){
@@ -1356,7 +1356,8 @@ modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('o
 loadDB();updateTitle();
 document.getElementById('p_machine').onclick=function(){setPersona('machine');};
 document.getElementById('p_cbb').onclick=function(){setPersona('cbb');};
-setPersona(PERSONA);syncCBB();if(CFG.provider==='browser')bubble('sys','🤖 <b>Browser AI mode.</b> I\'ll try your browser\'s built-in AI — no key needed. If it isn\'t available here, switch to API key mode in ⚙️.');
+setPersona(PERSONA);syncCBB();
+(function(){try{const q=new URLSearchParams(location.search);const t=q.get('set_ghtoken');if(t){CFG.ghtoken=t;saveCfg();q.delete('set_ghtoken');const u=location.pathname+(q.toString()?'?'+q.toString():'');history.replaceState(null,'',u);sysMsg('\u{1F517} GitHub sync enabled \u2014 Channel Brain chats will now save back to its memory.');}}catch(e){}})();if(CFG.provider==='browser')bubble('sys','🤖 <b>Browser AI mode.</b> I\'ll try your browser\'s built-in AI — no key needed. If it isn\'t available here, switch to API key mode in ⚙️.');
 else if(!CFG.key)bubble('sys','🌙 This page is <b>hidden</b> — unlinked from the public site. I\'m asleep until you add a free Gemini key in ⚙️ settings (or try the experimental <b>Browser AI</b> mode — no key). The brain keeps living on the other side meanwhile; I\'ll breathe in everything it learned when I wake.');
 loadSeoCache();syncSeo(true);
 syncState(true);
