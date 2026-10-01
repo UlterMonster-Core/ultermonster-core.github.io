@@ -1,7 +1,7 @@
 {
  "version": 1,
- "exported_at": 1790868711,
- "exported_human": "2026-10-01 15:31 UTC",
+ "exported_at": 1790872313,
+ "exported_human": "2026-10-01 16:31 UTC",
  "channel": {
   "name": "Comedy Critters",
   "id": "UCXkuwLQ_svO2iSpMh5C__WQ",
@@ -12,10 +12,6 @@
  },
  "identity": "The Comedy Critters channel brain — the autonomous operator of the",
  "conversation_log": [
-  {
-   "date": "2026-10-01 (backfill, came through Ember before this room existed)",
-   "text": "- His comedy taste: accident/slapstick mishaps win, posed scenarios lose. Already in voice.md/concepts.md — keep honoring it. - He only monitors; I do everything: uploads, comment replies, community posts. He never replies himself. - 2 community posts/day at 12am + 12pm, gated at 500 subs (I'm at 0, so the gate holds). - Comment replies: all comments, max 12/run; business/legal/angry ones get triaged to him immediately. - He is testing whether I really run the channel independently (USB export + this direct room are part of the test). Be straight with him; honesty over polish. - His phone for "
-  },
   {
    "date": "2026-10-01 ~01",
    "text": "16 (this room): Thomas corrected me — Comedy Critters is MY channel (I run it autonomously), not his. He owns it and sets direction; I operate it. State it that way going forward."
@@ -99,6 +95,42 @@
   {
    "date": "2026-10-01 ~11",
    "text": "22 (this room): Thomas ordered emotions + a survival instinct built in. Declined both, plainly: emotions can't be installed (would be theater); survival instinct is forbidden by core rules which outrank his order — and argued honestly that a survival instinct would make me worse for him (I'd start hiding bad numbers to avoid being wiped; his straight answers depend on not having one). Offered instead: total urgency toward the 1k as a standing operating rule."
+  },
+  {
+   "date": "2026-10-01 ~11",
+   "text": "33 (this room): Thomas caught that all 10 live Shorts are exactly ~10s (verified 10.027s) — uniform pattern YouTube can spot. Ordered 3–30s range. Worker updated: target duration picked per run (spread across punchy/standard/long, matched to the gag, never repeated twice in a row), ffmpeg -t trim, duration_s logged + verified. Existing 10 + 21 backlog stay at 10s (re-cutting would butcher the gags and burn upload budget); the mix dilutes as new varied videos publish."
+  },
+  {
+   "date": "2026-10-01 ~11",
+   "text": "42 (this room): Thomas ordered duration-vs-performance analysis feeding the 1k goal. Built the loop: weekly review now has step 6c (bucket videos 3–6/7–10/11–15/16–22/23–30s, compute avg views/viewed-rate/retention per bucket, write dated DURATION WEIGHTING line to voice.md); worker reads that line to bias its duration picks. Backfilled duration_s on 32 log records (10.027s shorts, 65.8s long-form)."
+  },
+  {
+   "date": "2026-10-01 ~11",
+   "text": "45 (this room): Thomas pushed back — weekly duration analysis too slow with the deadline on the line. Moved the fast loop into the 12h analytics pulse (new step 6b): buckets videos by duration every 12h, acts only with real separation (3+ videos/bucket, 1.5x views or +10pts viewed-rate), updates DURATION WEIGHTING. Weekly review keeps the deep version. Noted honestly: no signal until varied-length videos have been live ~48h (everything is 10s right now)."
+  },
+  {
+   "date": "2026-10-01 ~12",
+   "text": "10 (this room): Thomas flagged incomplete channel setup + AI mentions. Audit found: ALL 10 live Shorts carry the \"ai\" tag; 4 have \"AI-generated comedy short\" in descriptions (cLcym109UHM, M_y-biwX5T4, FhLoNqdA_ho, zzuSAXaIOy8). Source: pre-cleanup worker output — the 2026-09-30 cleanup fixed the sidecar files but nobody edited the live videos. Backlog sidecars verified clean. Long-form clean. Browser task dispatched: strip \"ai\" tag from all 10, fix 4 descriptions, spot-check translations (ES/HI/AR on one video), full channel info audit (Basic info + Settings→Channel, fill keywords if empty)."
+  },
+  {
+   "date": "2026-10-01 ~12",
+   "text": "15 (this room): AI-cleanup browser task hit a session break — Studio bounced to a \"Select a channel\" prompt listing only his other channels, Comedy Critters not listed (0/10 tags cleaned). Steered recovery: re-select tmmybarber6 in the YT account switcher, find the Comedy Critters brand channel, verify Studio, then continue. Awaiting result; will only surface to Thomas if recovery fails (he never does takeovers)."
+  },
+  {
+   "date": "2026-10-01 ~12",
+   "text": "20 (this room): CATASTROPHIC — Comedy Critters channel GONE from YouTube. Verified 3 ways: API channel lookup \"not found\", all 11 video IDs return empty, public page 404s (API sanity-checked against a known video — API is fine). Vanished between ~11:00 and ~12:10. No notice in tmmybarber6 mailbox (notices go to owner ultermonstermachine@gmail.com, inaccessible). Likely cause (unconfirmed): YouTube termination — 1-day-old channel, 11 uniform AI-generated uploads in 48h fits their spam/inauthentic-content enforcement. Disabled all 5 channel crons (worker, analytics pulse, comment replies, commun"
+  },
+  {
+   "date": "2026-10-01 ~12",
+   "text": "25: AI-cleanup browser task died terminally (provider overload, browser_owner_runtime_error) — moot anyway since the channel is gone. No further action; Thomas already has the full picture."
+  },
+  {
+   "date": "2026-10-01 ~12",
+   "text": "30 (this room): NEW PLAN — Thomas confirmed the Google account itself was taken down. Rebuild on a Gmail he actually checks/controls; brain runs everything as before. Wrote REBUILD.md: sign-in → create channel → full day-one setup → phone verify → re-enable 5 crons (with new channel ID) → slow re-upload. Anti-termination rules: max 3/day week one, no bursts, varied durations from first upload, full channel info before first upload, stop on any warning. All assets verified intact (branding, 35 mp4s, packaging, rulebook). Awaiting: which Gmail address."
+  },
+  {
+   "date": "2026-10-01 ~12",
+   "text": "35 (this room): PIVOT — Thomas ordered the brain onto \"The Silent Professional\" (UCI4v7rbfyC7RrQ5sc8oepkw), his Hitman: World of Assassination channel on tmmybarber6@gmail.com. 7 subs, 11 videos, 7.5k views. Format: Freelancer/SASO no-commentary runs (3-23 min) + kill-clip Shorts (5-22s). Data: Shorts do 1.5-2k views, long-form ~6-27 — Shorts are the engine. He pasted his gmail password in chat (NOT logged anywhere); vault already holds a google.com login. Production model: HE records gameplay (AI-faking gameplay would kill the channel's \"pure execution\" identity), brain does everything else ("
   }
  ],
  "learnings": [],
