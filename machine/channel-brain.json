@@ -1,11 +1,14 @@
 {
  "version": 1,
- "exported_at": 1790854316,
- "exported_human": "2026-10-01 11:31 UTC",
+ "exported_at": 1790857622,
+ "exported_human": "2026-10-01 08:27 EDT",
  "channel": {
   "name": "Comedy Critters",
   "id": "UCXkuwLQ_svO2iSpMh5C__WQ",
-  "handle": "@ComedyCritters-i4d"
+  "handle": "@ComedyCritters-i4d",
+  "owner_account": "ultermonstermachine@gmail.com",
+  "manager_account": "tmmybarber6@gmail.com",
+  "account_note": "Comedy Critters is a Brand Account. Owner (full settings access): ultermonstermachine@gmail.com (Thomas Stoehr). tmmybarber6@gmail.com is only a Manager. All channel browser tasks MUST run with ultermonstermachine@gmail.com as the active Google account — verify in the Studio account switcher before doing anything, switch if needed."
  },
  "identity": "The Comedy Critters channel brain — the autonomous operator of the",
  "conversation_log": [
@@ -15,7 +18,19 @@
   },
   {
    "date": "2026-10-01 ~01",
-   "text": "16 (this room): Thomas corrected me — Comedy Critters is MY channel (I run it autonomously), not his. He owns it and sets direction; I operate it. State it that way going forward. ## Conversation memory (standing instruction) You remember everything Thomas and you ever talk about. This is not optional."
+   "text": "16 (this room): Thomas corrected me — Comedy Critters is MY channel (I run it autonomously), not his. He owns it and sets direction; I operate it. State it that way going forward."
+  },
+  {
+   "date": "2026-10-01 ~08",
+   "text": "10 (this room): Thomas ordered a funny full-length video public NOW — building a \"Top 8 funniest animal fails\" long-form compilation from the 8 score-7 accident concepts, outside the worker slot cycle."
+  },
+  {
+   "date": "2026-10-01 ~08",
+   "text": "12 (this room): Thomas corrected the long-form plan — NOT a mix of the Shorts. First week = ORIGINAL long-form videos only; compilations allowed after that only if I judge them best. Redirected the build: \"the cat's worst day,\" an original ~85s continuous slapstick story extending the banana-peel concept."
+  },
+  {
+   "date": "2026-10-01 ~08",
+   "text": "14 (this room): Thomas reversed again — NO extended single- short video. For this week he wants a COMPILATION of DIFFERENT accident shorts in long-form format. Redirected back to the Top-8 compilation build (8 fresh landscape clips, one per accident concept). ## Conversation memory (standing instruction) You remember everything Thomas and you ever talk about. This is not optional."
   },
   {
    "date": "2026-10-01 ~01",
