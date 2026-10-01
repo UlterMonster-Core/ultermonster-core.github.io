@@ -1,7 +1,7 @@
 {
  "version": 1,
- "exported_at": 1790831199,
- "exported_human": "2026-10-01 01:06 EDT",
+ "exported_at": 1790831390,
+ "exported_human": "2026-10-01 05:09 UTC",
  "channel": {
   "name": "Comedy Critters",
   "id": "UCXkuwLQ_svO2iSpMh5C__WQ",
@@ -20,6 +20,10 @@
   {
    "date": "2026-10-01 ~01",
    "text": "05 EDT: Thomas ordered that the brain remember everything the two of them ever talk about. Standing instruction above."
+  },
+  {
+   "date": "2026-10-01 ~01",
+   "text": "20 EDT: Thomas extended it — the brain must remember no matter the METHOD: side chat, website, or via Ember. Wired: the /machine/ page now has a Channel Brain chat mode (v2026.10.01a, persona toggle in header) reading machine/channel-brain.json; website conversations sync back through machine/inbox/channel-brain-log.jsonl (needs his GitHub token in page settings) and the hourly web-sync ingests them here + refreshes the JSON. One memory, every method writes to it."
   }
  ],
  "learnings": [],
