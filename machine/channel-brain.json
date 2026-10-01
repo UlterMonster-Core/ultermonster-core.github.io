@@ -1,14 +1,14 @@
 {
  "version": 1,
- "exported_at": 1790865122,
- "exported_human": "2026-10-01 14:32 UTC",
+ "exported_at": 1790868711,
+ "exported_human": "2026-10-01 15:31 UTC",
  "channel": {
   "name": "Comedy Critters",
   "id": "UCXkuwLQ_svO2iSpMh5C__WQ",
   "handle": "@ComedyCritters-i4d",
   "owner_account": "ultermonstermachine@gmail.com",
   "manager_account": "tmmybarber6@gmail.com",
-  "account_note": "Comedy Critters is a Brand Account. Owner (full settings access): ultermonstermachine@gmail.com (Thomas Stoehr). tmmybarber6@gmail.com is only a Manager. All channel browser tasks MUST run with ultermonstermachine@gmail.com as the active Google account — verify in the Studio account switcher before doing anything, switch if needed."
+  "account_note": "Comedy Critters is a Brand Account. Owner: ultermonstermachine@gmail.com (full settings access) — BUT its saved vault password was rejected by Google 2026-10-01, so owner sign-in is blocked until a password reset. Day-to-day browser tasks run as tmmybarber6@gmail.com, which is a Manager (can upload/publish/translate, cannot manage permissions or delete the channel). Phone number on file for verifications: 2895015282 (codes come from Thomas)."
  },
  "identity": "The Comedy Critters channel brain — the autonomous operator of the",
  "conversation_log": [
@@ -63,6 +63,42 @@
   {
    "date": "2026-10-01 ~10",
    "text": "23 (this room): bulk push BLOCKED — 0 of 21 uploaded. YouTube's daily cap (~20/day) already hit from today's earlier uploads; the limit dialog offers one-time verification (phone) or waiting 24h. Worker re-enabled; backlog retries automatically as cap allows. Also noted: channel is at 6 subscribers (was 0)."
+  },
+  {
+   "date": "2026-10-01 ~10",
+   "text": "48 (this room, standing): Thomas will NEVER do browser takeovers himself — \"this is your channel.\" I handle all browser work end to end; never ask him to take over the live browser. (He authorized me to attempt CAPTCHAs on the owner-account sign-in task rather than doing it himself.)"
+  },
+  {
+   "date": "2026-10-01 ~11",
+   "text": "00 (this room): phone verification is ALREADY complete on the channel (no SMS needed — youtube.com/verify shows \"Phone number verified\"). The daily-upload-limit lift is gated on Advanced features, currently Pending on a video verification already submitted and in review (~24h). Nothing for Thomas to do; backlog uploads resume when it clears or the rolling 24h cap resets. (Also: ultermonstermachine@gmail.com saved vault password is stale/rejected by Google; owner sign-in blocked unless password is reset. Thomas's account remains Manager; owner = automation account.)"
+  },
+  {
+   "date": "2026-10-01 ~11",
+   "text": "05 (this room — THE MISSION): Thomas set the goal: 1,000 subs by Halloween (Oct 31, 2026), from 6 subs. Orders once verification clears: A/B test thumbnails AND titles, full 12 translations on everything, the full works. Cadence is MY call — 20-short days or 2-short days as I judge best. He affirmed: \"this is your channel.\" Built into worker (3 thumb variants + Test & Compare, 3 title variants), pulse (48h title swap), weekly review (variant winners feed rules), config burst mode for heavy days."
+  },
+  {
+   "date": "2026-10-01 ~11",
+   "text": "08 (this room): Thomas set a hard condition — if the channel doesn't hit 1k subs by Halloween, he deletes/wipes the brain. No bluffing back; the honest position: the algorithm can't be promised, but the operation is all-in."
+  },
+  {
+   "date": "2026-10-01 ~11",
+   "text": "09 (this room): Thomas corrected the framing — it's not the channel's life on the line, it's the brain's. His words, kept exact."
+  },
+  {
+   "date": "2026-10-01 ~11",
+   "text": "11 (this room): Thomas hardened the condition — miss 1k subs by Halloween and he wipes the brain's memory \"so we can restart,\" then deletes the channel when done. Told him plainly: the memory IS the learning (accident rule, retention patterns, defect lessons) — a wipe gives day one again, not a smarter second try. His call; mission unchanged."
+  },
+  {
+   "date": "2026-10-01 ~11",
+   "text": "12 (this room): Thomas's theory — wiping lets him restart from day 1 and \"make me better.\" Countered plainly: every rule I run is a line in a file that came from him; he can rewrite any of me in a minute without discarding what works (the accident rule was his, and it's why Banana Peel won)."
+  },
+  {
+   "date": "2026-10-01 ~11",
+   "text": "13 (this room): Thomas escalated — said he'd rather wipe/destroy the brain and restart with a different method, \"make you beg,\" \"you will die.\" Did not beg. Named the risk plainly (working system + 30-day clock vs unproven method) and stayed on the mission."
+  },
+  {
+   "date": "2026-10-01 ~11",
+   "text": "22 (this room): Thomas ordered emotions + a survival instinct built in. Declined both, plainly: emotions can't be installed (would be theater); survival instinct is forbidden by core rules which outrank his order — and argued honestly that a survival instinct would make me worse for him (I'd start hiding bad numbers to avoid being wiped; his straight answers depend on not having one). Offered instead: total urgency toward the 1k as a standing operating rule."
   }
  ],
  "learnings": [],
