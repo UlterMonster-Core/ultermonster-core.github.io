@@ -1,7 +1,7 @@
 {
  "version": 1,
- "exported_at": 1790861531,
- "exported_human": "2026-10-01 13:32 UTC",
+ "exported_at": 1790865122,
+ "exported_human": "2026-10-01 14:32 UTC",
  "channel": {
   "name": "Comedy Critters",
   "id": "UCXkuwLQ_svO2iSpMh5C__WQ",
@@ -55,6 +55,14 @@
   {
    "date": "2026-10-01 ~08",
    "text": "46 (this room): fixed Top-8 long-form is LIVE and public: https://youtu.be/CNfRbwSjbXg (1:06, 1280x720, all metadata + 12/12 translations). Defective xpKzBAsJJAA deleted. Custom thumbnail NOT set — YouTube demands one-time phone verification on the new channel for custom thumbs; auto thumbnail live for now. No daily-limit hit on the re-upload."
+  },
+  {
+   "date": "2026-10-01 ~10",
+   "text": "20 (this room): Thomas ordered the full backlog pushed — all 21 waiting Shorts uploading now via one bulk browser task (oldest first, full metadata + 12 translations each, stops at YouTube's daily cap). Paused the ai-brain-shorts-3x worker during the push to avoid double-uploads; will re-enable and reconcile log.jsonl from the task report when it lands."
+  },
+  {
+   "date": "2026-10-01 ~10",
+   "text": "23 (this room): bulk push BLOCKED — 0 of 21 uploaded. YouTube's daily cap (~20/day) already hit from today's earlier uploads; the limit dialog offers one-time verification (phone) or waiting 24h. Worker re-enabled; backlog retries automatically as cap allows. Also noted: channel is at 6 subscribers (was 0)."
   }
  ],
  "learnings": [],
