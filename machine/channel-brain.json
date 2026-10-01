@@ -1,7 +1,7 @@
 {
  "version": 1,
- "exported_at": 1790857909,
- "exported_human": "2026-10-01 12:31 UTC",
+ "exported_at": 1790861531,
+ "exported_human": "2026-10-01 13:32 UTC",
  "channel": {
   "name": "Comedy Critters",
   "id": "UCXkuwLQ_svO2iSpMh5C__WQ",
@@ -30,7 +30,11 @@
   },
   {
    "date": "2026-10-01 ~08",
-   "text": "14 (this room): Thomas reversed again — NO extended single- short video. For this week he wants a COMPILATION of DIFFERENT accident shorts in long-form format. Redirected back to the Top-8 compilation build (8 fresh landscape clips, one per accident concept). ## Conversation memory (standing instruction) You remember everything Thomas and you ever talk about. This is not optional."
+   "text": "14 (this room): Thomas reversed again — NO extended single- short video. For this week he wants a COMPILATION of DIFFERENT accident shorts in long-form format. Redirected back to the Top-8 compilation build (8 fresh landscape clips, one per accident concept)."
+  },
+  {
+   "date": "2026-10-01 ~08",
+   "text": "30 (this room): Thomas spotted a defect in the Top-8 upload — after the crab clip the last frame froze ~12s with nothing happening. Cause: generated clips had shorter video streams than audio; the `-c copy` concat kept 65.75s of video against 82.26s of audio. Fixed by re-encoding trimmed to the true 65.8s; deleted the defective upload (xpKzBAsJJAA) and re-uploaded the fixed file. Lesson logged in voice.md: always ffprobe both stream durations after concat, never trust `-c copy` alone. ## Conversation memory (standing instruction) You remember everything Thomas and you ever talk about. This is "
   },
   {
    "date": "2026-10-01 ~01",
@@ -43,6 +47,14 @@
   {
    "date": "2026-10-01 ~01",
    "text": "20 EDT: Thomas extended it — the brain must remember no matter the METHOD: side chat, website, or via Ember. Wired: the /machine/ page now has a Channel Brain chat mode (v2026.10.01a, persona toggle in header) reading machine/channel-brain.json; website conversations sync back through machine/inbox/channel-brain-log.jsonl (needs his GitHub token in page settings) and the hourly web-sync ingests them here + refreshes the JSON. One memory, every method writes to it."
+  },
+  {
+   "date": "2026-10-01 ~08",
+   "text": "43 (this room): Thomas laid down the zero-defect rule — NEVER ship a defective video again, ever; every video (long or short) must be verified perfect before uploading. Written into the worker cron as mandatory step 2c (streams present, exact resolution, A/V within 1s, minimum length, sane size — any failure blocks the upload) and into voice.md Learnings."
+  },
+  {
+   "date": "2026-10-01 ~08",
+   "text": "46 (this room): fixed Top-8 long-form is LIVE and public: https://youtu.be/CNfRbwSjbXg (1:06, 1280x720, all metadata + 12/12 translations). Defective xpKzBAsJJAA deleted. Custom thumbnail NOT set — YouTube demands one-time phone verification on the new channel for custom thumbs; auto thumbnail live for now. No daily-limit hit on the re-upload."
   }
  ],
  "learnings": [],
@@ -91,13 +103,13 @@
   }
  ],
  "stats": {
-  "videos_published": 10,
+  "videos_published": 11,
   "latest_titles": [
-   "🦜 PARROT ROASTS DOG — zero mercy",
    "🦆 DUCK PARADE — traffic can WAIT",
    "🦥 SLOWEST RACE EVER — photo finish pending",
    "🐄 COW PHOTOBOMB — main character energy",
-   "💦 LLAMA SPIT — worst aim in history"
+   "💦 LLAMA SPIT — worst aim in history",
+   "🐾 TOP 8 FUNNIEST ANIMAL FAILS — #3 broke me"
   ]
  },
  "mode": "public"
