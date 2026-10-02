@@ -1,14 +1,14 @@
 {
  "version": 1,
- "exported_at": 1790937121,
- "exported_human": "2026-10-02 10:32 UTC",
+ "exported_at": 1790940720,
+ "exported_human": "2026-10-02 11:32 UTC",
  "channel": {
   "name": "Comedy Critters",
   "id": "UCXkuwLQ_svO2iSpMh5C__WQ",
   "handle": "@ComedyCritters-i4d",
-  "owner_account": "ultermonstermachine@gmail.com",
-  "manager_account": "tmmybarber6@gmail.com",
-  "account_note": "Comedy Critters is a Brand Account. Owner: ultermonstermachine@gmail.com (full settings access) — BUT its saved vault password was rejected by Google 2026-10-01, so owner sign-in is blocked until a password reset. Day-to-day browser tasks run as tmmybarber6@gmail.com, which is a Manager (can upload/publish/translate, cannot manage permissions or delete the channel). Phone number on file for verifications: 2895015282 (codes come from Thomas)."
+  "owner_account": null,
+  "manager_account": null,
+  "account_note": null
  },
  "identity": "The Comedy Critters channel brain — the autonomous operator of the",
  "conversation_log": [
@@ -134,59 +134,11 @@
   }
  ],
  "learnings": [],
- "rules": [
-  "Punchy, under 100 characters. Never reuse an exact title from log.jsonl.",
-  "Style: \"🐧 PENGUIN SLIP FAIL — pretending that never happened\"",
-  "Emoji up front, caps hook, under 100 characters. Never reuse an exact title.",
-  "2026-10-01 (owner order, backfill): he only monitors — I run everything (uploads, comment replies, community posts). He never replies himself."
- ],
- "concepts": [
-  {
-   "name": "13. Pug tail — pug spins chasing its own tail, gets dizzy, falls over",
-   "score": 7
-  },
-  {
-   "name": "30. Crab fight — crab \"fights\" its own claw, startled every time it moves",
-   "score": 7
-  },
-  {
-   "name": "2. Dog vs mirror — dog \"argues\" with its own reflection, barking, head tilts",
-   "score": 5
-  },
-  {
-   "name": "6. Parrot laugh — dog barks a \"joke\", parrot cackles with laughter",
-   "score": 5
-  },
-  {
-   "name": "9. Dog vibes — dog in sunglasses bobbing its head to music like it's vibing",
-   "score": 5
-  },
-  {
-   "name": "14. Owl double-take — owl does a comical double-take at the camera",
-   "score": 5
-  },
-  {
-   "name": "17. Cat pianist — cat \"plays\" piano dramatically, paws flying",
-   "score": 5
-  },
-  {
-   "name": "21. Frog opera — frog \"singing\" opera on a lily pad, mouth wide, dramatic",
-   "score": 5
-  },
-  {
-   "name": "27. Horse laugh — horse \"laughs\" showing huge teeth, head thrown back",
-   "score": 5
-  }
- ],
+ "rules": [],
+ "concepts": [],
  "stats": {
-  "videos_published": 11,
-  "latest_titles": [
-   "🦆 DUCK PARADE — traffic can WAIT",
-   "🦥 SLOWEST RACE EVER — photo finish pending",
-   "🐄 COW PHOTOBOMB — main character energy",
-   "💦 LLAMA SPIT — worst aim in history",
-   "🐾 TOP 8 FUNNIEST ANIMAL FAILS — #3 broke me"
-  ]
+  "videos_published": 0,
+  "latest_titles": []
  },
  "mode": "public"
 }
