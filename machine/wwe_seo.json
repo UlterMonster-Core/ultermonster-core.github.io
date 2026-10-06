@@ -1,6 +1,6 @@
 {
- "updated": 1791185982,
- "updated_human": "2026-10-05 07:39 ET",
+ "updated": 1791272383,
+ "updated_human": "2026-10-06 07:39 ET",
  "superstars": [
   {
    "id": "jackson-drake",
@@ -1610,6 +1610,33 @@
    "rank": 59
   },
   {
+   "id": "jordynne-grace",
+   "name": "Jordynne Grace",
+   "status": "active",
+   "top10_views": 466351105,
+   "median_views": 29774464,
+   "video_count": 10,
+   "top_terms": [
+    "intergender",
+    "beyond",
+    "wrestling",
+    "free",
+    "impact",
+    "aew",
+    "mixed",
+    "john"
+   ],
+   "best_video": {
+    "title": "JORDYNNE GRACE ATTACKED BY CHILD AT WRESTLE REVOLVER : #WLW SHORTS",
+    "channel": "We Luv Wrestling",
+    "views": 116728443,
+    "published": "2023-10-09",
+    "id": "EBpY36fuQNg"
+   },
+   "rank": 60,
+   "scanned_at": 1791272287
+  },
+  {
    "id": "drew-mcintyre",
    "name": "Drew McIntyre",
    "status": "active",
@@ -1633,7 +1660,7 @@
     "published": "2021-01-31",
     "id": "sZX4MmdXPRA"
    },
-   "rank": 60,
+   "rank": 61,
    "scanned_at": 1791185980
   },
   {
@@ -1660,32 +1687,6 @@
     "views": 169905914,
     "published": "2013-12-20",
     "id": "_TT7PlX5PCQ"
-   },
-   "rank": 61
-  },
-  {
-   "id": "jordynne-grace",
-   "name": "Jordynne Grace",
-   "status": "active",
-   "top10_views": 443326201,
-   "median_views": 28895862,
-   "video_count": 10,
-   "top_terms": [
-    "wrestling",
-    "beyond",
-    "intergender",
-    "free",
-    "aew",
-    "john",
-    "silver",
-    "impact"
-   ],
-   "best_video": {
-    "title": "JORDYNNE GRACE ATTACKED BY CHILD AT WRESTLE REVOLVER : #WLW SHORTS",
-    "channel": "We Luv Wrestling",
-    "views": 116678969,
-    "published": "2023-10-09",
-    "id": "EBpY36fuQNg"
    },
    "rank": 62
   },
@@ -1720,27 +1721,109 @@
    "id": "aj-styles",
    "name": "AJ Styles",
    "status": "active",
-   "top10_views": 408743551,
-   "median_views": 23640546,
+   "top10_views": 423819528,
+   "median_views": 25734167,
    "video_count": 10,
    "top_terms": [
+    "roman",
+    "reigns",
     "survivor",
     "series",
     "tag",
     "team",
-    "roman",
-    "reigns",
     "six",
-    "phenomenal"
+    "title"
    ],
    "best_video": {
     "title": "FULL MATCH - 5-on-5 Traditional Survivor Series Tag Team Elimination Match: Survivor Series 2016",
     "channel": "WWE",
-    "views": 183101601,
+    "views": 183230693,
     "published": "2018-11-07",
     "id": "aXlCC8HCFMc"
    },
-   "rank": 64
+   "rank": 64,
+   "scanned_at": 1791272289
+  },
+  {
+   "id": "charlotte-flair",
+   "name": "Charlotte Flair",
+   "status": "active",
+   "top10_views": 405895367,
+   "median_views": 30660117,
+   "video_count": 10,
+   "top_terms": [
+    "becky",
+    "lynch",
+    "raw",
+    "ronda",
+    "rousey",
+    "title",
+    "are",
+    "women"
+   ],
+   "best_video": {
+    "title": "Charlotte Flair & Alexa Bliss Then & Now Edit | Lilly and Charly are back \u263a\ufe0f #wwe #raw #smackdown",
+    "channel": "Sigmotion",
+    "views": 80895970,
+    "published": "2025-08-11",
+    "id": "VNVVYPnz38U"
+   },
+   "rank": 65,
+   "scanned_at": 1791272297
+  },
+  {
+   "id": "andrade",
+   "name": "Andrade",
+   "status": "active",
+   "top10_views": 402492782,
+   "median_views": 28683743,
+   "video_count": 10,
+   "top_terms": [
+    "dvd",
+    "andr",
+    "sem",
+    "cover",
+    "daniela",
+    "rubi",
+    "kawe",
+    "prod"
+   ],
+   "best_video": {
+    "title": "RUBI | Andrade, Kawe | Prod. Bxrgez",
+    "channel": "Aldeia Records",
+    "views": 77098093,
+    "published": "2018-05-24",
+    "id": "CZyCDQ0BMxM"
+   },
+   "rank": 66,
+   "scanned_at": 1791272291
+  },
+  {
+   "id": "nia-jax",
+   "name": "Nia Jax",
+   "status": "active",
+   "top10_views": 402071648,
+   "median_views": 16957834,
+   "video_count": 10,
+   "top_terms": [
+    "royal",
+    "rumble",
+    "rousey",
+    "raw",
+    "ronda",
+    "women",
+    "natalya",
+    "tamina"
+   ],
+   "best_video": {
+    "title": "Nia Jax attacks Jade Cargill in front of her daughter \ud83d\ude28",
+    "channel": "WWE",
+    "views": 147206896,
+    "published": "2024-05-18",
+    "id": "A1aYc3uOGTI"
+   },
+   "rank": 67,
+   "scanned_at": 1791272293
   },
   {
    "id": "vince-mcmahon",
@@ -1767,7 +1850,7 @@
     "published": "2016-01-05",
     "id": "k35ZCvNW2Ag"
    },
-   "rank": 65
+   "rank": 68
   },
   {
    "id": "kaitlyn",
@@ -1794,59 +1877,34 @@
     "published": "2019-01-13",
     "id": "4ic7RNS4Dfo"
    },
-   "rank": 66
+   "rank": 69
   },
   {
-   "id": "andrade",
-   "name": "Andrade",
+   "id": "natalya",
+   "name": "Natalya",
    "status": "active",
-   "top10_views": 392309607,
-   "median_views": 26206988,
+   "top10_views": 390578774,
+   "median_views": 31443910,
    "video_count": 10,
    "top_terms": [
-    "dvd",
-    "andr",
-    "sem",
-    "rubi",
-    "kawe",
-    "prod",
-    "bxrgez",
-    "vie"
-   ],
-   "best_video": {
-    "title": "RUBI | Andrade, Kawe | Prod. Bxrgez",
-    "channel": "Aldeia Records",
-    "views": 77051041,
-    "published": "2018-05-24",
-    "id": "CZyCDQ0BMxM"
-   },
-   "rank": 67
-  },
-  {
-   "id": "nia-jax",
-   "name": "Nia Jax",
-   "status": "active",
-   "top10_views": 386390392,
-   "median_views": 16765275,
-   "video_count": 10,
-   "top_terms": [
-    "royal",
-    "raw",
-    "rumble",
-    "women",
-    "ronda",
     "rousey",
-    "team",
-    "elimination"
+    "ronda",
+    "raw",
+    "tamina",
+    "dec",
+    "khali",
+    "helps",
+    "jan"
    ],
    "best_video": {
-    "title": "Nia Jax attacks Jade Cargill in front of her daughter \ud83d\ude28",
+    "title": "FULL MATCH - Ronda Rousey & Kurt Angle vs. Triple H & Stephanie: WrestleMania 34",
     "channel": "WWE",
-    "views": 147182576,
-    "published": "2024-05-18",
-    "id": "A1aYc3uOGTI"
+    "views": 138678592,
+    "published": "2020-03-28",
+    "id": "d8WLXyX-jn4"
    },
-   "rank": 68
+   "rank": 70,
+   "scanned_at": 1791272316
   },
   {
    "id": "hulk-hogan",
@@ -1873,7 +1931,34 @@
     "published": "2025-10-28",
     "id": "R0JpysZNrfs"
    },
-   "rank": 69
+   "rank": 71
+  },
+  {
+   "id": "stone-cold",
+   "name": "Stone Cold Steve Austin",
+   "status": "legend",
+   "top10_views": 383835477,
+   "median_views": 29052432,
+   "video_count": 10,
+   "top_terms": [
+    "raw",
+    "brock",
+    "lesnar",
+    "march",
+    "undertaker",
+    "jan",
+    "confronts",
+    "days"
+   ],
+   "best_video": {
+    "title": "\"Stone Cold\" Steve Austin confronts Brock Lesnar days before WrestleMania: SmackDown, March 11, 2004",
+    "channel": "WWE",
+    "views": 91274406,
+    "published": "2012-03-26",
+    "id": "wHaGqxQJ5f4"
+   },
+   "rank": 72,
+   "scanned_at": 1791272295
   },
   {
    "id": "stone-cold-steve-austin",
@@ -1900,59 +1985,7 @@
     "published": "2012-03-26",
     "id": "wHaGqxQJ5f4"
    },
-   "rank": 70
-  },
-  {
-   "id": "stone-cold",
-   "name": "Stone Cold Steve Austin",
-   "status": "legend",
-   "top10_views": 383716712,
-   "median_views": 29032259,
-   "video_count": 10,
-   "top_terms": [
-    "raw",
-    "brock",
-    "lesnar",
-    "march",
-    "undertaker",
-    "jan",
-    "confronts",
-    "days"
-   ],
-   "best_video": {
-    "title": "\"Stone Cold\" Steve Austin confronts Brock Lesnar days before WrestleMania: SmackDown, March 11, 2004",
-    "channel": "WWE",
-    "views": 91270310,
-    "published": "2012-03-26",
-    "id": "wHaGqxQJ5f4"
-   },
-   "rank": 71
-  },
-  {
-   "id": "charlotte-flair",
-   "name": "Charlotte Flair",
-   "status": "active",
-   "top10_views": 383240153,
-   "median_views": 29839995,
-   "video_count": 10,
-   "top_terms": [
-    "title",
-    "becky",
-    "lynch",
-    "raw",
-    "ronda",
-    "rousey",
-    "are",
-    "women"
-   ],
-   "best_video": {
-    "title": "Charlotte Flair & Alexa Bliss Then & Now Edit | Lilly and Charly are back \u263a\ufe0f #wwe #raw #smackdown",
-    "channel": "Sigmotion",
-    "views": 80888525,
-    "published": "2025-08-11",
-    "id": "VNVVYPnz38U"
-   },
-   "rank": 72
+   "rank": 73
   },
   {
    "id": "andre-the-giant",
@@ -1979,59 +2012,34 @@
     "published": "2020-04-22",
     "id": "0R-pFCyOuSE"
    },
-   "rank": 73
-  },
-  {
-   "id": "sheamus",
-   "name": "Sheamus",
-   "status": "active",
-   "top10_views": 381739662,
-   "median_views": 32975397,
-   "video_count": 10,
-   "top_terms": [
-    "raw",
-    "reigns",
-    "john",
-    "roman",
-    "world",
-    "heavyweight",
-    "cena",
-    "title"
-   ],
-   "best_video": {
-    "title": "Reigns vs. Sheamus - Mr. McMahon Guest Ref. for WWE World Heavyweight Title: Raw, Jan. 4, 2016",
-    "channel": "WWE",
-    "views": 123849265,
-    "published": "2016-01-05",
-    "id": "k35ZCvNW2Ag"
-   },
    "rank": 74
   },
   {
    "id": "cm-punk",
    "name": "CM Punk",
    "status": "active",
-   "top10_views": 379215160,
-   "median_views": 21305845,
+   "top10_views": 380459888,
+   "median_views": 22706846,
    "video_count": 10,
    "top_terms": [
+    "wargames",
+    "survivor",
+    "series",
     "raw",
-    "daniel",
-    "bryan",
-    "theme",
-    "song",
-    "aew",
-    "return",
-    "survivor"
+    "roman",
+    "reigns",
+    "destroy",
+    "romanreigns"
    ],
    "best_video": {
     "title": "CM Punk & AJ vs. Daniel Bryan & Kane: Raw, June 11, 2012",
     "channel": "WWE",
-    "views": 116178671,
+    "views": 116185195,
     "published": "2012-06-12",
     "id": "CQG2o8E-zuw"
    },
-   "rank": 75
+   "rank": 75,
+   "scanned_at": 1791272301
   },
   {
    "id": "the-usos",
@@ -2062,6 +2070,33 @@
    "rank": 76
   },
   {
+   "id": "dominik-mysterio",
+   "name": "Dominik Mysterio",
+   "status": "active",
+   "top10_views": 372725872,
+   "median_views": 21466100,
+   "video_count": 10,
+   "top_terms": [
+    "dom",
+    "rey",
+    "shorts",
+    "rhea",
+    "ripley",
+    "was",
+    "his",
+    "mother"
+   ],
+   "best_video": {
+    "title": "Rey Mysterio Attack Dominik Mysterio After Disrespect His Mother \ud83e\udd79\ud83d\udc94#reymysterio #emotional #wweraw",
+    "channel": "kk-short ",
+    "views": 83626059,
+    "published": "2025-06-07",
+    "id": "vnCj_2549iA"
+   },
+   "rank": 77,
+   "scanned_at": 1791272305
+  },
+  {
    "id": "erick-rowan",
    "name": "Erick Rowan",
    "status": "unscanned",
@@ -2086,7 +2121,7 @@
     "published": "2018-11-06",
     "id": "gD7qJ3TW1jw"
    },
-   "rank": 77
+   "rank": 78
   },
   {
    "id": "brothers-of-destruction",
@@ -2114,7 +2149,7 @@
     "published": "2013-09-26",
     "id": "YGmrQYc97cI"
    },
-   "rank": 78
+   "rank": 79
   },
   {
    "id": "american-alpha",
@@ -2142,7 +2177,34 @@
     "published": "2018-11-10",
     "id": "StfkcX2nUW8"
    },
-   "rank": 79
+   "rank": 80
+  },
+  {
+   "id": "sheamus",
+   "name": "Sheamus",
+   "status": "active",
+   "top10_views": 357920420,
+   "median_views": 26793156,
+   "video_count": 10,
+   "top_terms": [
+    "raw",
+    "reigns",
+    "john",
+    "world",
+    "heavyweight",
+    "roman",
+    "cena",
+    "title"
+   ],
+   "best_video": {
+    "title": "Reigns vs. Sheamus - Mr. McMahon Guest Ref. for WWE World Heavyweight Title: Raw, Jan. 4, 2016",
+    "channel": "WWE",
+    "views": 123858584,
+    "published": "2016-01-05",
+    "id": "k35ZCvNW2Ag"
+   },
+   "rank": 81,
+   "scanned_at": 1791272299
   },
   {
    "id": "sasha-banks",
@@ -2169,7 +2231,7 @@
     "published": "2020-10-22",
     "id": "NVmZpskazoE"
    },
-   "rank": 80
+   "rank": 82
   },
   {
    "id": "aj-lee",
@@ -2196,7 +2258,7 @@
     "published": "2012-11-28",
     "id": "TOz81KKm1us"
    },
-   "rank": 81
+   "rank": 83
   },
   {
    "id": "baron-corbin",
@@ -2223,14 +2285,14 @@
     "published": "2021-01-31",
     "id": "QZ4RpUcNCl8"
    },
-   "rank": 82
+   "rank": 84
   },
   {
    "id": "sami-zayn",
    "name": "Sami Zayn",
    "status": "active",
-   "top10_views": 351888674,
-   "median_views": 15735874,
+   "top10_views": 351346792,
+   "median_views": 15736333,
    "video_count": 10,
    "top_terms": [
     "roman",
@@ -2245,44 +2307,19 @@
    "best_video": {
     "title": "Roman Reigns And Sami Zayn Then Vs Now | #WweEraaa |",
     "channel": "Sammy",
-    "views": 150486830,
+    "views": 150487510,
     "published": "2024-12-26",
     "id": "EOt1G2yc7XQ"
    },
-   "rank": 83
-  },
-  {
-   "id": "dominik-mysterio",
-   "name": "Dominik Mysterio",
-   "status": "active",
-   "top10_views": 344078533,
-   "median_views": 21454574,
-   "video_count": 10,
-   "top_terms": [
-    "rey",
-    "shorts",
-    "rhea",
-    "ripley",
-    "edit",
-    "mother",
-    "his",
-    "reymysterio"
-   ],
-   "best_video": {
-    "title": "Rey Mysterio Attack Dominik Mysterio After Disrespect His Mother \ud83e\udd79\ud83d\udc94#reymysterio #emotional #wweraw",
-    "channel": "kk-short ",
-    "views": 83613547,
-    "published": "2025-06-07",
-    "id": "vnCj_2549iA"
-   },
-   "rank": 84
+   "rank": 85,
+   "scanned_at": 1791272303
   },
   {
    "id": "bianca-belair",
    "name": "Bianca Belair",
    "status": "active",
-   "top10_views": 342046136,
-   "median_views": 16679710,
+   "top10_views": 342379937,
+   "median_views": 16705153,
    "video_count": 10,
    "top_terms": [
     "hair",
@@ -2297,11 +2334,12 @@
    "best_video": {
     "title": "Bianca Belair got some payback right before WrestleMania! #Short",
     "channel": "WWE",
-    "views": 149690858,
+    "views": 149779190,
     "published": "2022-12-28",
     "id": "Gf-j-FE_i_Y"
    },
-   "rank": 85
+   "rank": 86,
+   "scanned_at": 1791272307
   },
   {
    "id": "the-nexus",
@@ -2328,32 +2366,6 @@
     "views": 95296848,
     "published": "2013-09-30",
     "id": "vVVtqoqzgNw"
-   },
-   "rank": 86
-  },
-  {
-   "id": "kevin-owens",
-   "name": "Kevin Owens",
-   "status": "active",
-   "top10_views": 321686559,
-   "median_views": 13957550,
-   "video_count": 10,
-   "top_terms": [
-    "raw",
-    "survivor",
-    "series",
-    "elimination",
-    "braun",
-    "strowman",
-    "owens'",
-    "championship"
-   ],
-   "best_video": {
-    "title": "FULL MATCH - 5-on-5 Traditional Survivor Series Tag Team Elimination Match: Survivor Series 2016",
-    "channel": "WWE",
-    "views": 183101601,
-    "published": "2018-11-07",
-    "id": "aXlCC8HCFMc"
    },
    "rank": 87
   },
@@ -2388,8 +2400,8 @@
    "id": "rusev",
    "name": "Rusev",
    "status": "active",
-   "top10_views": 316309521,
-   "median_views": 26893718,
+   "top10_views": 316342209,
+   "median_views": 26894315,
    "video_count": 10,
    "top_terms": [
     "raw",
@@ -2404,44 +2416,46 @@
    "best_video": {
     "title": "The Rock confronts Rusev: Raw, Oct. 6, 2014",
     "channel": "WWE",
-    "views": 56982621,
+    "views": 56985327,
     "published": "2014-10-07",
     "id": "2ff6LxpfVAo"
    },
-   "rank": 89
+   "rank": 89,
+   "scanned_at": 1791272310
   },
   {
-   "id": "jimmy-uso",
-   "name": "Jimmy Uso",
+   "id": "rhea-ripley",
+   "name": "Rhea Ripley",
    "status": "active",
-   "top10_views": 306781278,
-   "median_views": 21618508,
+   "top10_views": 306575687,
+   "median_views": 29032366,
    "video_count": 10,
    "top_terms": [
-    "wargames",
-    "reigns",
-    "naomi",
-    "jan",
-    "roman",
+    "rhearipley",
+    "dom",
+    "her",
+    "uso",
+    "edit",
+    "yeet",
     "survivor",
-    "series",
-    "live"
+    "series"
    ],
    "best_video": {
-    "title": "FULL MATCH - Reigns & Usos vs. Corbin, Ziggler & Roode: SmackDown, Jan. 31, 2020",
-    "channel": "WWE",
-    "views": 126743464,
-    "published": "2021-01-31",
-    "id": "QZ4RpUcNCl8"
+    "title": "Rhea Ripley and Jey Uso - Then & Now Edit | YEET #wwe #yeet #rhearipley #jeyuso #uso #wwefan",
+    "channel": "Sigmotion",
+    "views": 46076556,
+    "published": "2025-01-24",
+    "id": "7wq3q5ID-zw"
    },
-   "rank": 90
+   "rank": 90,
+   "scanned_at": 1791272318
   },
   {
    "id": "kofi-kingston",
    "name": "Kofi Kingston",
    "status": "active",
-   "top10_views": 306045865,
-   "median_views": 19684303,
+   "top10_views": 306193826,
+   "median_views": 19685268,
    "video_count": 10,
    "top_terms": [
     "royal",
@@ -2456,70 +2470,46 @@
    "best_video": {
     "title": "Kofi Kingston's miraculous Royal Rumble Match saves",
     "channel": "WWE",
-    "views": 75365353,
+    "views": 75368172,
     "published": "2017-08-12",
     "id": "QELrxLxEnnc"
    },
-   "rank": 91
+   "rank": 91,
+   "scanned_at": 1791272314
   },
   {
-   "id": "natalya",
-   "name": "Natalya",
+   "id": "jimmy-uso",
+   "name": "Jimmy Uso",
    "status": "active",
-   "top10_views": 304140754,
-   "median_views": 31406273,
+   "top10_views": 302065701,
+   "median_views": 19008884,
    "video_count": 10,
    "top_terms": [
-    "raw",
-    "rousey",
-    "ronda",
-    "tamina",
-    "dec",
-    "khali",
+    "reigns",
+    "live",
+    "naomi",
     "jan",
-    "jax"
+    "roman",
+    "wargames",
+    "april",
+    "usos"
    ],
    "best_video": {
-    "title": "Ronda Rousey is suspended after launching an attack: Raw, June 18, 2018",
+    "title": "FULL MATCH - Reigns & Usos vs. Corbin, Ziggler & Roode: SmackDown, Jan. 31, 2020",
     "channel": "WWE",
-    "views": 52196727,
-    "published": "2018-06-19",
-    "id": "XfJuw5EfXAE"
+    "views": 126841155,
+    "published": "2021-01-31",
+    "id": "QZ4RpUcNCl8"
    },
-   "rank": 92
-  },
-  {
-   "id": "rhea-ripley",
-   "name": "Rhea Ripley",
-   "status": "active",
-   "top10_views": 303449175,
-   "median_views": 28976477,
-   "video_count": 10,
-   "top_terms": [
-    "dom",
-    "rhearipley",
-    "her",
-    "edit",
-    "was",
-    "did",
-    "one",
-    "had"
-   ],
-   "best_video": {
-    "title": "Liv Morgan did you really think one bad leg was gonna stop Rhea Ripley? \ud83d\ude08\ud83d\udd25 #WWERaw",
-    "channel": "WWE",
-    "views": 43958865,
-    "published": "2024-09-03",
-    "id": "IPZCowfSDHs"
-   },
-   "rank": 93
+   "rank": 92,
+   "scanned_at": 1791272312
   },
   {
    "id": "brie-bella",
    "name": "Brie Bella",
    "status": "active",
-   "top10_views": 288081928,
-   "median_views": 22310929,
+   "top10_views": 288126186,
+   "median_views": 22316510,
    "video_count": 10,
    "top_terms": [
     "raw",
@@ -2534,11 +2524,12 @@
    "best_video": {
     "title": "The Bellas challenge Daniel Bryan and John Cena: Total Divas, Aug. 4, 2013",
     "channel": "WWE",
-    "views": 53968753,
+    "views": 53970465,
     "published": "2013-08-05",
     "id": "vu42rF3NpsA"
    },
-   "rank": 94
+   "rank": 93,
+   "scanned_at": 1791272320
   },
   {
    "id": "lita",
@@ -2565,7 +2556,7 @@
     "published": "2017-04-03",
     "id": "BVeC9wXZLUc"
    },
-   "rank": 95
+   "rank": 94
   },
   {
    "id": "carmella",
@@ -2592,7 +2583,7 @@
     "published": "2012-02-22",
     "id": "PDJLvF1dUek"
    },
-   "rank": 96
+   "rank": 95
   },
   {
    "id": "los-garza",
@@ -2620,14 +2611,14 @@
     "published": "2023-01-31",
     "id": "qrfrPlEGrdw"
    },
-   "rank": 97
+   "rank": 96
   },
   {
    "id": "becky-lynch",
    "name": "Becky Lynch",
    "status": "active",
-   "top10_views": 277854227,
-   "median_views": 21740835,
+   "top10_views": 278004375,
+   "median_views": 21794775,
    "video_count": 10,
    "top_terms": [
     "ronda",
@@ -2642,11 +2633,12 @@
    "best_video": {
     "title": "FULL MATCH - Rollins & Lynch vs. Corbin & Evans \u2013 Extreme Rules Match: WWE Extreme Rules 2019",
     "channel": "WWE",
-    "views": 60516572,
+    "views": 60526253,
     "published": "2020-07-18",
     "id": "CiNP3-1Kk6I"
    },
-   "rank": 98
+   "rank": 97,
+   "scanned_at": 1791272322
   },
   {
    "id": "scott-steiner",
@@ -2673,7 +2665,34 @@
     "published": "2020-04-11",
     "id": "bgyUYhDdggU"
    },
-   "rank": 99
+   "rank": 98
+  },
+  {
+   "id": "liv-morgan",
+   "name": "Liv Morgan",
+   "status": "active",
+   "top10_views": 264539202,
+   "median_views": 20619222,
+   "video_count": 10,
+   "top_terms": [
+    "rhea",
+    "ripley",
+    "dom",
+    "her",
+    "did",
+    "gonna",
+    "really",
+    "think"
+   ],
+   "best_video": {
+    "title": "What did you expect Liv Morgan? MAMI\u2019S HOME \ud83d\ude08\ud83d\udd25",
+    "channel": "WWE",
+    "views": 47154735,
+    "published": "2024-11-19",
+    "id": "7Tt0cpllHCw"
+   },
+   "rank": 99,
+   "scanned_at": 1791272324
   },
   {
    "id": "dudley-boyz",
@@ -2704,32 +2723,6 @@
    "rank": 100
   },
   {
-   "id": "liv-morgan",
-   "name": "Liv Morgan",
-   "status": "active",
-   "top10_views": 258263237,
-   "median_views": 20484163,
-   "video_count": 10,
-   "top_terms": [
-    "dom",
-    "rhea",
-    "ripley",
-    "did",
-    "gonna",
-    "her",
-    "really",
-    "think"
-   ],
-   "best_video": {
-    "title": "What did you expect Liv Morgan? MAMI\u2019S HOME \ud83d\ude08\ud83d\udd25",
-    "channel": "WWE",
-    "views": 46923712,
-    "published": "2024-11-19",
-    "id": "7Tt0cpllHCw"
-   },
-   "rank": 101
-  },
-  {
    "id": "molly-holly",
    "name": "Molly Holly",
    "status": "unscanned",
@@ -2754,7 +2747,7 @@
     "published": "2022-03-18",
     "id": "fcEBN3aHEOg"
    },
-   "rank": 102
+   "rank": 101
   },
   {
    "id": "the-vision",
@@ -2782,33 +2775,7 @@
     "published": "2022-03-19",
     "id": "vDmX3zNSnyI"
    },
-   "rank": 103
-  },
-  {
-   "id": "asuka",
-   "name": "Asuka",
-   "status": "active",
-   "top10_views": 243444108,
-   "median_views": 15057065,
-   "video_count": 10,
-   "top_terms": [
-    "royal",
-    "rumble",
-    "women",
-    "charlotte",
-    "flair",
-    "tlc",
-    "raw",
-    "taking"
-   ],
-   "best_video": {
-    "title": "Asuka taking an L? NOT A CHANCE! #Short",
-    "channel": "WWE",
-    "views": 76748903,
-    "published": "2022-09-18",
-    "id": "yy_FymuS7yY"
-   },
-   "rank": 104
+   "rank": 102
   },
   {
    "id": "british-bulldog",
@@ -2835,7 +2802,7 @@
     "published": "2025-03-16",
     "id": "YJJUrhdiN98"
    },
-   "rank": 105
+   "rank": 103
   },
   {
    "id": "kelly-kelly",
@@ -2862,7 +2829,7 @@
     "published": "2021-01-30",
     "id": "dMFuIB50H0Q"
    },
-   "rank": 106
+   "rank": 104
   },
   {
    "id": "the-ascension",
@@ -2890,7 +2857,7 @@
     "published": "2018-11-25",
     "id": "XLbOWqjmj4Q"
    },
-   "rank": 107
+   "rank": 105
   },
   {
    "id": "cesaro",
@@ -2917,7 +2884,34 @@
     "published": "2015-08-21",
     "id": "AdfGzJb2e1g"
    },
-   "rank": 108
+   "rank": 106
+  },
+  {
+   "id": "asuka",
+   "name": "Asuka",
+   "status": "active",
+   "top10_views": 229044834,
+   "median_views": 15070688,
+   "video_count": 10,
+   "top_terms": [
+    "raw",
+    "short",
+    "charlotte",
+    "flair",
+    "tlc",
+    "women",
+    "edit",
+    "taking"
+   ],
+   "best_video": {
+    "title": "Asuka taking an L? NOT A CHANCE! #Short",
+    "channel": "WWE",
+    "views": 76754768,
+    "published": "2022-09-18",
+    "id": "yy_FymuS7yY"
+   },
+   "rank": 107,
+   "scanned_at": 1791272326
   },
   {
    "id": "randy-savage",
@@ -2944,59 +2938,61 @@
     "published": "2020-04-11",
     "id": "bgyUYhDdggU"
    },
-   "rank": 109
+   "rank": 108
   },
   {
    "id": "jade-cargill",
    "name": "Jade Cargill",
    "status": "active",
-   "top10_views": 214964953,
-   "median_views": 6014154,
+   "top10_views": 220687086,
+   "median_views": 8910963,
    "video_count": 10,
    "top_terms": [
     "nia",
-    "bianca",
-    "belair",
     "jax",
-    "wrestlemania",
     "shorts",
     "rhea",
-    "ripley"
+    "ripley",
+    "bianca",
+    "belair",
+    "attacks"
    ],
    "best_video": {
     "title": "Nia Jax attacks Jade Cargill in front of her daughter \ud83d\ude28",
     "channel": "WWE",
-    "views": 147182576,
+    "views": 147206896,
     "published": "2024-05-18",
     "id": "A1aYc3uOGTI"
    },
-   "rank": 110
+   "rank": 109,
+   "scanned_at": 1791272328
   },
   {
    "id": "gunther",
    "name": "Gunther",
    "status": "active",
-   "top10_views": 211364727,
-   "median_views": 9922222,
+   "top10_views": 213969952,
+   "median_views": 9979972,
    "video_count": 10,
    "top_terms": [
     "goldberg",
     "royal",
     "rumble",
-    "brock",
-    "lesnar",
     "was",
     "cena",
+    "brock",
+    "lesnar",
     "survivor"
    ],
    "best_video": {
     "title": "FULL MATCH: Goldberg vs. Brock Lesnar: Survivor Series 2016",
     "channel": "WWE",
-    "views": 85159458,
+    "views": 85255212,
     "published": "2020-03-20",
     "id": "PLLTVHfHV8g"
    },
-   "rank": 111
+   "rank": 110,
+   "scanned_at": 1791272330
   },
   {
    "id": "the-judgment-day",
@@ -3024,7 +3020,7 @@
     "published": "2019-11-15",
     "id": "XPtVZ69lomk"
    },
-   "rank": 112
+   "rank": 111
   },
   {
    "id": "bret-hart",
@@ -3051,7 +3047,7 @@
     "published": "2010-08-10",
     "id": "Yb6AVIwfb1Q"
    },
-   "rank": 113
+   "rank": 112
   },
   {
    "id": "stevie-ray",
@@ -3078,7 +3074,7 @@
     "published": "2013-04-29",
     "id": "An4uDegHB8s"
    },
-   "rank": 114
+   "rank": 113
   },
   {
    "id": "billy-gunn",
@@ -3105,7 +3101,7 @@
     "published": "2025-10-30",
     "id": "1U5pdBE_5ps"
    },
-   "rank": 115
+   "rank": 114
   },
   {
    "id": "nikkita-lyons",
@@ -3132,7 +3128,7 @@
     "published": "2016-11-25",
     "id": "Tg-Q-Acv4qs"
    },
-   "rank": 116
+   "rank": 115
   },
   {
    "id": "the-riott-squad",
@@ -3160,7 +3156,34 @@
     "published": "2020-10-15",
     "id": "vO4yahN6igk"
    },
-   "rank": 117
+   "rank": 116
+  },
+  {
+   "id": "damian-priest",
+   "name": "Damian Priest",
+   "status": "active",
+   "top10_views": 195419110,
+   "median_views": 8852112,
+   "video_count": 10,
+   "top_terms": [
+    "rhea",
+    "ripley",
+    "bad",
+    "bunny",
+    "san",
+    "juan",
+    "street",
+    "fight"
+   ],
+   "best_video": {
+    "title": "NOTHING GETS PAST DAMIAN PRIEST! \ud83d\ude24",
+    "channel": "WWE",
+    "views": 47651048,
+    "published": "2024-08-15",
+    "id": "49pctam914c"
+   },
+   "rank": 117,
+   "scanned_at": 1791272357
   },
   {
    "id": "vader",
@@ -3271,6 +3294,33 @@
    "rank": 121
   },
   {
+   "id": "kevin-owens",
+   "name": "Kevin Owens",
+   "status": "active",
+   "top10_views": 179750447,
+   "median_views": 14401418,
+   "video_count": 10,
+   "top_terms": [
+    "raw",
+    "braun",
+    "strowman",
+    "roman",
+    "reigns",
+    "what",
+    "entrance",
+    "randy"
+   ],
+   "best_video": {
+    "title": "What an entrance from Kevin Owens and Randy Orton \ud83d\ude02 #WrestleMania",
+    "channel": "WWE",
+    "views": 32427754,
+    "published": "2024-04-08",
+    "id": "eb-FsWrxMho"
+   },
+   "rank": 122,
+   "scanned_at": 1791272308
+  },
+  {
    "id": "hardy-boyz",
    "name": "Hardy Boyz",
    "status": "unscanned",
@@ -3296,7 +3346,7 @@
     "published": "2017-04-03",
     "id": "BVeC9wXZLUc"
    },
-   "rank": 122
+   "rank": 123
   },
   {
    "id": "ivory",
@@ -3323,7 +3373,7 @@
     "published": "2022-04-29",
     "id": "DWJh0Dny5Ug"
    },
-   "rank": 123
+   "rank": 124
   },
   {
    "id": "chyna",
@@ -3350,7 +3400,7 @@
     "published": "2024-11-20",
     "id": "JcACxvAtA2Q"
    },
-   "rank": 124
+   "rank": 125
   },
   {
    "id": "bradshaw",
@@ -3377,7 +3427,7 @@
     "published": "2023-11-02",
     "id": "ab8LVzLuSOM"
    },
-   "rank": 125
+   "rank": 126
   },
   {
    "id": "fatal-attraction",
@@ -3405,7 +3455,7 @@
     "published": "2020-01-23",
     "id": "VRGp2G2mrlw"
    },
-   "rank": 126
+   "rank": 127
   },
   {
    "id": "scotty-2-hotty",
@@ -3432,7 +3482,34 @@
     "published": "2017-08-25",
     "id": "WlD-grhWz0Y"
    },
-   "rank": 127
+   "rank": 128
+  },
+  {
+   "id": "tiffany-stratton",
+   "name": "Tiffany Stratton",
+   "status": "active",
+   "top10_views": 166991327,
+   "median_views": 7721482,
+   "video_count": 10,
+   "top_terms": [
+    "rhea",
+    "ripley",
+    "bianca",
+    "belair",
+    "had",
+    "nxt",
+    "liv",
+    "morgan"
+   ],
+   "best_video": {
+    "title": "Tiffany Stratton gets heckled by Fan #wwe #wwesupershow #wrestling #wweraw #wwenxt #beckylynch",
+    "channel": "BrianBWrestling",
+    "views": 96559274,
+    "published": "2023-09-26",
+    "id": "2SsT5_zpVqc"
+   },
+   "rank": 129,
+   "scanned_at": 1791272332
   },
   {
    "id": "imperium",
@@ -3460,7 +3537,7 @@
     "published": "2020-10-29",
     "id": "2mEfOcn1nEc"
    },
-   "rank": 128
+   "rank": 130
   },
   {
    "id": "b-fab",
@@ -3487,7 +3564,7 @@
     "published": "2025-06-20",
     "id": "LypslWGSvSI"
    },
-   "rank": 129
+   "rank": 131
   },
   {
    "id": "matt-hardy",
@@ -3514,7 +3591,7 @@
     "published": "2017-04-03",
     "id": "BVeC9wXZLUc"
    },
-   "rank": 130
+   "rank": 132
   },
   {
    "id": "jake-roberts",
@@ -3541,33 +3618,7 @@
     "published": "2020-04-11",
     "id": "bgyUYhDdggU"
    },
-   "rank": 131
-  },
-  {
-   "id": "tiffany-stratton",
-   "name": "Tiffany Stratton",
-   "status": "active",
-   "top10_views": 156312106,
-   "median_views": 5485729,
-   "video_count": 10,
-   "top_terms": [
-    "nxt",
-    "title",
-    "bianca",
-    "belair",
-    "had",
-    "rhea",
-    "ripley",
-    "women"
-   ],
-   "best_video": {
-    "title": "Tiffany Stratton gets heckled by Fan #wwe #wwesupershow #wrestling #wweraw #wwenxt #beckylynch",
-    "channel": "BrianBWrestling",
-    "views": 96558591,
-    "published": "2023-09-26",
-    "id": "2SsT5_zpVqc"
-   },
-   "rank": 132
+   "rank": 133
   },
   {
    "id": "hank-tank",
@@ -3595,7 +3646,7 @@
     "published": "2018-11-01",
     "id": "fRDlDy5vR4s"
    },
-   "rank": 133
+   "rank": 134
   },
   {
    "id": "steiner-brothers",
@@ -3623,14 +3674,14 @@
     "published": "2025-04-16",
     "id": "V5Xm16MAnv8"
    },
-   "rank": 134
+   "rank": 135
   },
   {
    "id": "bayley",
    "name": "Bayley",
    "status": "active",
-   "top10_views": 148550855,
-   "median_views": 12489637,
+   "top10_views": 148673388,
+   "median_views": 12551972,
    "video_count": 10,
    "top_terms": [
     "raw",
@@ -3645,37 +3696,12 @@
    "best_video": {
     "title": "FULL MATCH - Sasha Banks & Bayley vs. Ronda Rousey & Natalya: Raw, Jan. 21, 2019",
     "channel": "WWE",
-    "views": 34590626,
+    "views": 34615284,
     "published": "2021-01-21",
     "id": "8q5afAjlStE"
    },
-   "rank": 135
-  },
-  {
-   "id": "jey-uso",
-   "name": "Jey Uso",
-   "status": "active",
-   "top10_views": 147219201,
-   "median_views": 10059654,
-   "video_count": 10,
-   "top_terms": [
-    "rhea",
-    "ripley",
-    "yeet",
-    "jimmy",
-    "main",
-    "event",
-    "ish",
-    "his"
-   ],
-   "best_video": {
-    "title": "Rhea Ripley and Jey Uso - Then & Now Edit | YEET #wwe #yeet #rhearipley #jeyuso #uso #wwefan",
-    "channel": "Sigmotion",
-    "views": 46073962,
-    "published": "2025-01-24",
-    "id": "7wq3q5ID-zw"
-   },
-   "rank": 136
+   "rank": 136,
+   "scanned_at": 1791272333
   },
   {
    "id": "mandy-rose",
@@ -3705,30 +3731,31 @@
    "rank": 137
   },
   {
-   "id": "finn-balor",
-   "name": "Finn Balor",
+   "id": "solo-sikoa",
+   "name": "Solo Sikoa",
    "status": "active",
-   "top10_views": 138287558,
-   "median_views": 9345200,
+   "top10_views": 135935227,
+   "median_views": 10807091,
    "video_count": 10,
    "top_terms": [
-    "lor",
-    "universal",
-    "title",
-    "bray",
-    "wyatt",
-    "extreme",
-    "rules",
-    "roman"
+    "roman",
+    "reigns",
+    "shorts",
+    "attitude",
+    "wargames",
+    "destroy",
+    "romanreigns",
+    "viralshorts"
    ],
    "best_video": {
-    "title": "FULL MATCH - Extreme Rules Fatal 5-Way Match: WWE Extreme Rules 2017",
-    "channel": "WWE",
-    "views": 33416026,
-    "published": "2020-07-05",
-    "id": "B13XLQIAIyw"
+    "title": "Roman Reigns & Cm Punk and Solo Sikoa destroy \u2620\ufe0f #romanreigns #wwe #shorts",
+    "channel": "Morgan Edit",
+    "views": 27954293,
+    "published": "2026-06-25",
+    "id": "6OnJ6AoiMGo"
    },
-   "rank": 138
+   "rank": 138,
+   "scanned_at": 1791272343
   },
   {
    "id": "beth-phoenix",
@@ -3758,6 +3785,60 @@
    "rank": 139
   },
   {
+   "id": "finn-balor",
+   "name": "Finn Balor",
+   "status": "active",
+   "top10_views": 135455637,
+   "median_views": 9350666,
+   "video_count": 10,
+   "top_terms": [
+    "lor",
+    "universal",
+    "title",
+    "bray",
+    "wyatt",
+    "extreme",
+    "rules",
+    "raw"
+   ],
+   "best_video": {
+    "title": "FULL MATCH - Extreme Rules Fatal 5-Way Match: WWE Extreme Rules 2017",
+    "channel": "WWE",
+    "views": 33428954,
+    "published": "2020-07-05",
+    "id": "B13XLQIAIyw"
+   },
+   "rank": 140,
+   "scanned_at": 1791272337
+  },
+  {
+   "id": "jey-uso",
+   "name": "Jey Uso",
+   "status": "active",
+   "top10_views": 135410464,
+   "median_views": 9320214,
+   "video_count": 10,
+   "top_terms": [
+    "roman",
+    "reigns",
+    "rhea",
+    "ripley",
+    "yeet",
+    "jimmy",
+    "main",
+    "event"
+   ],
+   "best_video": {
+    "title": "Rhea Ripley and Jey Uso - Then & Now Edit | YEET #wwe #yeet #rhearipley #jeyuso #uso #wwefan",
+    "channel": "Sigmotion",
+    "views": 46076556,
+    "published": "2025-01-24",
+    "id": "7wq3q5ID-zw"
+   },
+   "rank": 141,
+   "scanned_at": 1791272335
+  },
+  {
    "id": "reina-volcan",
    "name": "Reina Volcan",
    "status": "unscanned",
@@ -3782,14 +3863,14 @@
     "published": "2023-06-23",
     "id": "Z5acXs38F2E"
    },
-   "rank": 140
+   "rank": 142
   },
   {
    "id": "trish-stratus",
    "name": "Trish Stratus",
    "status": "active",
-   "top10_views": 132440236,
-   "median_views": 5816384,
+   "top10_views": 132568551,
+   "median_views": 5816843,
    "video_count": 10,
    "top_terms": [
     "raw",
@@ -3804,37 +3885,12 @@
    "best_video": {
     "title": "The Rock kisses Trish Stratus: Raw, Dec. 3, 2001",
     "channel": "WWE",
-    "views": 46677227,
+    "views": 46679655,
     "published": "2016-12-31",
     "id": "LKT55UCqLyE"
    },
-   "rank": 141
-  },
-  {
-   "id": "bron-breakker",
-   "name": "Bron Breakker",
-   "status": "active",
-   "top10_views": 131320868,
-   "median_views": 11656544,
-   "video_count": 10,
-   "top_terms": [
-    "roman",
-    "reigns",
-    "bronson",
-    "reed",
-    "jey",
-    "ishowspeed",
-    "uso",
-    "behind"
-   ],
-   "best_video": {
-    "title": "roman reigns behind attack bron breakker and bronson reed",
-    "channel": "New Subscriber",
-    "views": 28634546,
-    "published": "2025-09-18",
-    "id": "Jqv4CquIaM8"
-   },
-   "rank": 142
+   "rank": 143,
+   "scanned_at": 1791272339
   },
   {
    "id": "naomi",
@@ -3860,32 +3916,6 @@
     "views": 28731439,
     "published": "2024-09-30",
     "id": "88KP_VxQMEY"
-   },
-   "rank": 143
-  },
-  {
-   "id": "solo-sikoa",
-   "name": "Solo Sikoa",
-   "status": "active",
-   "top10_views": 130438017,
-   "median_views": 10802971,
-   "video_count": 10,
-   "top_terms": [
-    "roman",
-    "reigns",
-    "shorts",
-    "attitude",
-    "wargames",
-    "destroy",
-    "romanreigns",
-    "viralshorts"
-   ],
-   "best_video": {
-    "title": "Roman Reigns & Cm Punk and Solo Sikoa destroy \u2620\ufe0f #romanreigns #wwe #shorts",
-    "channel": "Morgan Edit",
-    "views": 27953701,
-    "published": "2026-06-25",
-    "id": "6OnJ6AoiMGo"
    },
    "rank": 144
   },
@@ -3917,6 +3947,60 @@
    "rank": 145
   },
   {
+   "id": "iyo-sky",
+   "name": "IYO SKY",
+   "status": "active",
+   "top10_views": 129163458,
+   "median_views": 12337933,
+   "video_count": 10,
+   "top_terms": [
+    "rhea",
+    "ripley",
+    "shorts",
+    "edit",
+    "then",
+    "now",
+    "asuka",
+    "viral"
+   ],
+   "best_video": {
+    "title": "Iyo sky wishes to rhea ripley \ud83d\ude0d #shorts #wwe #rhearipley",
+    "channel": "Wrestling Shockwave",
+    "views": 23417264,
+    "published": "2025-10-13",
+    "id": "BZsNsn7yVvs"
+   },
+   "rank": 146,
+   "scanned_at": 1791272348
+  },
+  {
+   "id": "penta",
+   "name": "Penta",
+   "status": "active",
+   "top10_views": 128995511,
+   "median_views": 9285421,
+   "video_count": 10,
+   "top_terms": [
+    "royal",
+    "rumble",
+    "men",
+    "rey",
+    "mysterio",
+    "ring",
+    "world",
+    "entrance"
+   ],
+   "best_video": {
+    "title": "This was the moment Gunther realized he's in the ring with THE Goldberg.\ud83d\ude24",
+    "channel": "WWE",
+    "views": 35331234,
+    "published": "2025-07-14",
+    "id": "rUp5Slv3268"
+   },
+   "rank": 147,
+   "scanned_at": 1791272345
+  },
+  {
    "id": "faarooq",
    "name": "Faarooq",
    "status": "unscanned",
@@ -3941,7 +4025,7 @@
     "published": "2022-04-05",
     "id": "dGuUf_QnReY"
    },
-   "rank": 146
+   "rank": 148
   },
   {
    "id": "the-bloodline",
@@ -3968,58 +4052,6 @@
     "views": 23210202,
     "published": "2025-04-23",
     "id": "yma7lNibtVk"
-   },
-   "rank": 147
-  },
-  {
-   "id": "penta",
-   "name": "Penta",
-   "status": "active",
-   "top10_views": 124104972,
-   "median_views": 6648666,
-   "video_count": 10,
-   "top_terms": [
-    "royal",
-    "rumble",
-    "men",
-    "rey",
-    "mysterio",
-    "entrance",
-    "world",
-    "wrestlemania"
-   ],
-   "best_video": {
-    "title": "This was the moment Gunther realized he's in the ring with THE Goldberg.\ud83d\ude24",
-    "channel": "WWE",
-    "views": 34994137,
-    "published": "2025-07-14",
-    "id": "rUp5Slv3268"
-   },
-   "rank": 148
-  },
-  {
-   "id": "iyo-sky",
-   "name": "IYO SKY",
-   "status": "active",
-   "top10_views": 121632291,
-   "median_views": 10562856,
-   "video_count": 10,
-   "top_terms": [
-    "rhea",
-    "ripley",
-    "shorts",
-    "edit",
-    "then",
-    "now",
-    "asuka",
-    "viral"
-   ],
-   "best_video": {
-    "title": "Iyo sky wishes to rhea ripley \ud83d\ude0d #shorts #wwe #rhearipley",
-    "channel": "Wrestling Shockwave",
-    "views": 23403843,
-    "published": "2025-10-13",
-    "id": "BZsNsn7yVvs"
    },
    "rank": 149
   },
@@ -4107,6 +4139,60 @@
    "rank": 152
   },
   {
+   "id": "bron-breakker",
+   "name": "Bron Breakker",
+   "status": "active",
+   "top10_views": 114478227,
+   "median_views": 8527240,
+   "video_count": 10,
+   "top_terms": [
+    "reigns",
+    "roman",
+    "bronson",
+    "reed",
+    "jey",
+    "uso",
+    "ishowspeed",
+    "raw"
+   ],
+   "best_video": {
+    "title": "roman reigns behind attack bron breakker and bronson reed",
+    "channel": "New Subscriber",
+    "views": 28635772,
+    "published": "2025-09-18",
+    "id": "Jqv4CquIaM8"
+   },
+   "rank": 153,
+   "scanned_at": 1791272341
+  },
+  {
+   "id": "zelina-vega",
+   "name": "Zelina Vega",
+   "status": "active",
+   "top10_views": 113770902,
+   "median_views": 10638255,
+   "video_count": 10,
+   "top_terms": [
+    "mysterio",
+    "rhea",
+    "ripley",
+    "gym",
+    "moments",
+    "short",
+    "rhearipley",
+    "shorts"
+   ],
+   "best_video": {
+    "title": "Rhea Ripley & Zelina Vega\u2019s Funniest Gym Moments \ud83d\ude02\ud83d\udcaa | WWE Short #rhearipley #zelinavega #wwe #shorts",
+    "channel": "Rhea Power 1",
+    "views": 20334566,
+    "published": "2026-03-07",
+    "id": "cqHJ2sW3Rzw"
+   },
+   "rank": 154,
+   "scanned_at": 1791272359
+  },
+  {
    "id": "eve-torres",
    "name": "Eve Torres",
    "status": "unscanned",
@@ -4131,7 +4217,7 @@
     "published": "2012-02-14",
     "id": "sOg7P3QM3nI"
    },
-   "rank": 153
+   "rank": 155
   },
   {
    "id": "road-warriors",
@@ -4159,7 +4245,7 @@
     "published": "2012-12-17",
     "id": "LU-ynRoqDEs"
    },
-   "rank": 154
+   "rank": 156
   },
   {
    "id": "xavier-woods",
@@ -4186,40 +4272,14 @@
     "published": "2020-10-19",
     "id": "07tYGxTgyUI"
    },
-   "rank": 155
-  },
-  {
-   "id": "dragon-lee",
-   "name": "Dragon Lee",
-   "status": "active",
-   "top10_views": 106124245,
-   "median_views": 8790701,
-   "video_count": 10,
-   "top_terms": [
-    "bruce",
-    "fight",
-    "shorts",
-    "tang",
-    "collection",
-    "dragon's",
-    "cesaro",
-    "tyson"
-   ],
-   "best_video": {
-    "title": "Cesaro & Tyson Kidd vs. The Lucha Dragons \u2013 Tag Team Lumberjack Match: SmackDown, May 28, 2015",
-    "channel": "WWE",
-    "views": 19505369,
-    "published": "2015-05-29",
-    "id": "A0ys2v3Vd4E"
-   },
-   "rank": 156
+   "rank": 157
   },
   {
    "id": "oba-femi",
    "name": "Oba Femi",
    "status": "active",
-   "top10_views": 105958315,
-   "median_views": 6648605,
+   "top10_views": 103657737,
+   "median_views": 6469061,
    "video_count": 10,
    "top_terms": [
     "brock",
@@ -4228,17 +4288,18 @@
     "was",
     "not",
     "playlist",
-    "summerslam",
-    "bumped"
+    "bumped",
+    "into"
    ],
    "best_video": {
     "title": "We bumped into Oba Femi and he was NOT happy about it",
     "channel": "Haroons",
-    "views": 30531207,
+    "views": 31298582,
     "published": "2026-04-18",
     "id": "s89kGvP42Ro"
    },
-   "rank": 157
+   "rank": 158,
+   "scanned_at": 1791272351
   },
   {
    "id": "mickie-james",
@@ -4265,7 +4326,7 @@
     "published": "2023-01-30",
     "id": "tJ2Vp0udxp8"
    },
-   "rank": 158
+   "rank": 159
   },
   {
    "id": "ultimate-warrior",
@@ -4292,7 +4353,7 @@
     "published": "2014-04-15",
     "id": "WCpQXqEI7EE"
    },
-   "rank": 159
+   "rank": 160
   },
   {
    "id": "ken-shamrock",
@@ -4319,7 +4380,7 @@
     "published": "2019-05-25",
     "id": "cXDT44zT8JY"
    },
-   "rank": 160
+   "rank": 161
   },
   {
    "id": "creed-brothers",
@@ -4347,7 +4408,7 @@
     "published": "2010-09-02",
     "id": "kKrtbUinWOU"
    },
-   "rank": 161
+   "rank": 162
   },
   {
    "id": "nwo",
@@ -4375,7 +4436,7 @@
     "published": "2008-09-24",
     "id": "Juqm94sUV_E"
    },
-   "rank": 162
+   "rank": 163
   },
   {
    "id": "mick-foley",
@@ -4402,14 +4463,14 @@
     "published": "2018-08-31",
     "id": "aEFUnQBqCR8"
    },
-   "rank": 163
+   "rank": 164
   },
   {
    "id": "bronson-reed",
    "name": "Bronson Reed",
    "status": "active",
-   "top10_views": 93432198,
-   "median_views": 5694262,
+   "top10_views": 93695523,
+   "median_views": 5725511,
    "video_count": 10,
    "top_terms": [
     "roman",
@@ -4424,18 +4485,46 @@
    "best_video": {
     "title": "roman reigns behind attack bron breakker and bronson reed",
     "channel": "New Subscriber",
-    "views": 28634546,
+    "views": 28635772,
     "published": "2025-09-18",
     "id": "Jqv4CquIaM8"
    },
-   "rank": 164
+   "rank": 165,
+   "scanned_at": 1791272353
+  },
+  {
+   "id": "raquel-rodriguez",
+   "name": "Raquel Rodriguez",
+   "status": "active",
+   "top10_views": 93187661,
+   "median_views": 5445571,
+   "video_count": 10,
+   "top_terms": [
+    "liv",
+    "morgan",
+    "wargames",
+    "women's",
+    "rhea",
+    "ripley",
+    "survivor",
+    "series"
+   ],
+   "best_video": {
+    "title": "Bayley making sure Sami\u2019s son is okay with her hitting Raquel \ud83e\udd79\u2764\ufe0f",
+    "channel": "Haroons",
+    "views": 21231925,
+    "published": "2025-08-10",
+    "id": "NffVMehJj1Y"
+   },
+   "rank": 166,
+   "scanned_at": 1791272363
   },
   {
    "id": "jacob-fatu",
    "name": "Jacob Fatu",
    "status": "active",
-   "top10_views": 91940325,
-   "median_views": 8800876,
+   "top10_views": 91701399,
+   "median_views": 8801201,
    "video_count": 10,
    "top_terms": [
     "royal",
@@ -4450,11 +4539,39 @@
    "best_video": {
     "title": "FULL MATCH: 2025 Men\u2019s Royal Rumble Match: Royal Rumble 2025",
     "channel": "WWE",
-    "views": 18057747,
+    "views": 18327818,
     "published": "2026-01-21",
     "id": "U0-D_wSStlk"
    },
-   "rank": 165
+   "rank": 167,
+   "scanned_at": 1791272355
+  },
+  {
+   "id": "dragon-lee",
+   "name": "Dragon Lee",
+   "status": "active",
+   "top10_views": 91622113,
+   "median_views": 8545564,
+   "video_count": 10,
+   "top_terms": [
+    "bruce",
+    "dragon's",
+    "fight",
+    "tang",
+    "collection",
+    "snake",
+    "fist",
+    "action"
+   ],
+   "best_video": {
+    "title": "UFC 4 | Bruce Lee vs. Tony Jaa (Ong Bak) Super Fight",
+    "channel": "Close Combat",
+    "views": 18593005,
+    "published": "2023-05-23",
+    "id": "JKsX5ecB9Jw"
+   },
+   "rank": 168,
+   "scanned_at": 1791272349
   },
   {
    "id": "yokozuna",
@@ -4481,59 +4598,7 @@
     "published": "2010-10-09",
     "id": "yDOHmX5W2wM"
    },
-   "rank": 166
-  },
-  {
-   "id": "damian-priest",
-   "name": "Damian Priest",
-   "status": "active",
-   "top10_views": 90213872,
-   "median_views": 5485381,
-   "video_count": 7,
-   "top_terms": [
-    "bad",
-    "bunny",
-    "rhea",
-    "ripley",
-    "san",
-    "juan",
-    "street",
-    "fight"
-   ],
-   "best_video": {
-    "title": "Bad Bunny VS Damian Priest \ud83e\udd4a #reggaeton #badbunny #luchas  #wwe #wweraw #badbunnyedit #usa",
-    "channel": "VAIPS \u03df",
-    "views": 39091073,
-    "published": "2023-05-10",
-    "id": "ZpvSh6iAImM"
-   },
-   "rank": 167
-  },
-  {
-   "id": "zelina-vega",
-   "name": "Zelina Vega",
-   "status": "active",
-   "top10_views": 88088833,
-   "median_views": 7891946,
-   "video_count": 10,
-   "top_terms": [
-    "mysterio",
-    "short",
-    "andrade",
-    "rey",
-    "dominik",
-    "liv",
-    "morgan",
-    "raw"
-   ],
-   "best_video": {
-    "title": "REY MYSTERIO & ZELINA VEGA VS DOMINIK MYSTERIO & LIV MORGAN\ud83d\udc80#wwe #reymysterio #edit #skull #phonk",
-    "channel": "\ud835\udc0c\ud835\udc11 \ud835\udc17 \ud835\udc0c\ud835\udc18\ud835\udc12\ud835\udc13\ud835\udc04\ud835\udc11\ud835\udc08\ud835\udc0e",
-    "views": 17828644,
-    "published": "2025-02-09",
-    "id": "gUSh654cQYc"
-   },
-   "rank": 168
+   "rank": 169
   },
   {
    "id": "war-raiders",
@@ -4561,7 +4626,34 @@
     "published": "2021-05-12",
     "id": "BsrqKE1iqqo"
    },
-   "rank": 169
+   "rank": 170
+  },
+  {
+   "id": "roxanne-perez",
+   "name": "Roxanne Perez",
+   "status": "active",
+   "top10_views": 86343121,
+   "median_views": 8741490,
+   "video_count": 10,
+   "top_terms": [
+    "rok",
+    "aka",
+    "reality",
+    "wrestling",
+    "women",
+    "hyan",
+    "royal",
+    "rumble"
+   ],
+   "best_video": {
+    "title": "Hyan vs Rok-C (aka Roxanne Perez) [FULL MATCH] Reality of Wrestling",
+    "channel": "Reality Of Wrestling",
+    "views": 19117706,
+    "published": "2020-03-09",
+    "id": "8vqJZa-fRQI"
+   },
+   "rank": 171,
+   "scanned_at": 1791272361
   },
   {
    "id": "dusty-rhodes",
@@ -4588,7 +4680,7 @@
     "published": "2023-02-01",
     "id": "io2c9_5ilGQ"
    },
-   "rank": 170
+   "rank": 172
   },
   {
    "id": "the-culling",
@@ -4616,33 +4708,7 @@
     "published": "2023-08-19",
     "id": "eoJEn7MDht0"
    },
-   "rank": 171
-  },
-  {
-   "id": "roxanne-perez",
-   "name": "Roxanne Perez",
-   "status": "active",
-   "top10_views": 85406176,
-   "median_views": 8621675,
-   "video_count": 10,
-   "top_terms": [
-    "rok",
-    "aka",
-    "reality",
-    "wrestling",
-    "women",
-    "hyan",
-    "royal",
-    "rumble"
-   ],
-   "best_video": {
-    "title": "Hyan vs Rok-C (aka Roxanne Perez) [FULL MATCH] Reality of Wrestling",
-    "channel": "Reality Of Wrestling",
-    "views": 19112629,
-    "published": "2020-03-09",
-    "id": "8vqJZa-fRQI"
-   },
-   "rank": 172
+   "rank": 173
   },
   {
    "id": "razor-ramon",
@@ -4668,32 +4734,6 @@
     "views": 22412329,
     "published": "2026-04-02",
     "id": "coSpc8pEE2g"
-   },
-   "rank": 173
-  },
-  {
-   "id": "raquel-rodriguez",
-   "name": "Raquel Rodriguez",
-   "status": "active",
-   "top10_views": 81287312,
-   "median_views": 5431276,
-   "video_count": 10,
-   "top_terms": [
-    "liv",
-    "morgan",
-    "wargames",
-    "women's",
-    "rhea",
-    "ripley",
-    "survivor",
-    "series"
-   ],
-   "best_video": {
-    "title": "Raquel & Aliyah pound on Liv Morgan\u2019s door after Smackdown! #smackdown",
-    "channel": "livsriott",
-    "views": 17412299,
-    "published": "2022-09-10",
-    "id": "j5b6QwNKQ7E"
    },
    "rank": 174
   },
@@ -4834,6 +4874,33 @@
    "rank": 179
   },
   {
+   "id": "tama-tonga",
+   "name": "Tama Tonga",
+   "status": "active",
+   "top10_views": 61700965,
+   "median_views": 3856276,
+   "video_count": 10,
+   "top_terms": [
+    "roman",
+    "reigns",
+    "wargames",
+    "bloodline",
+    "solo",
+    "sikoa",
+    "loa",
+    "jacob"
+   ],
+   "best_video": {
+    "title": "FULL MATCH: Men's WarGames Match: Survivor Series: WarGames 2024",
+    "channel": "WWE",
+    "views": 23323420,
+    "published": "2025-04-23",
+    "id": "yma7lNibtVk"
+   },
+   "rank": 180,
+   "scanned_at": 1791272371
+  },
+  {
    "id": "stacy-keibler",
    "name": "Stacy Keibler",
    "status": "unscanned",
@@ -4858,33 +4925,34 @@
     "published": "2023-04-26",
     "id": "zoKPERJgg3M"
    },
-   "rank": 180
+   "rank": 181
   },
   {
    "id": "kairi-sane",
    "name": "Kairi Sane",
    "status": "active",
-   "top10_views": 57944399,
-   "median_views": 4193242,
+   "top10_views": 58747730,
+   "median_views": 4215974,
    "video_count": 10,
    "top_terms": [
     "iyo",
-    "asuka",
     "sky",
+    "asuka",
     "then",
     "now",
     "attack",
     "shorts",
-    "raw"
+    "kabuki"
    ],
    "best_video": {
     "title": "IYO SKY & Kairi Sane: Then vs Now",
     "channel": "Rhea wwe1",
-    "views": 11480689,
+    "views": 11480774,
     "published": "2025-11-24",
     "id": "hmMItmvuupc"
    },
-   "rank": 181
+   "rank": 182,
+   "scanned_at": 1791272365
   },
   {
    "id": "torrie-wilson",
@@ -4911,7 +4979,7 @@
     "published": "2024-06-28",
     "id": "ShFukAx9syc"
    },
-   "rank": 182
+   "rank": 183
   },
   {
    "id": "big-cass",
@@ -4938,7 +5006,7 @@
     "published": "2016-07-19",
     "id": "WOX5PyolUEA"
    },
-   "rank": 183
+   "rank": 184
   },
   {
    "id": "axiom",
@@ -4965,33 +5033,34 @@
     "published": "2016-12-02",
     "id": "YBbu1hODaU0"
    },
-   "rank": 184
+   "rank": 185
   },
   {
-   "id": "aleister-black",
-   "name": "Aleister Black",
+   "id": "chad-gable",
+   "name": "Chad Gable",
    "status": "active",
-   "top10_views": 54333758,
-   "median_views": 4181714,
+   "top10_views": 53915506,
+   "median_views": 2113043,
    "video_count": 10,
    "top_terms": [
-    "nxt",
-    "gangrel",
-    "helps",
-    "adam",
-    "copeland",
-    "edge",
-    "aew",
-    "double"
+    "live",
+    "benjamin",
+    "aug",
+    "sept",
+    "even",
+    "samantha",
+    "irvin",
+    "was"
    ],
    "best_video": {
-    "title": "Gangrel helps Adam Copeland - Gangrel Helps Edge AEW Double or Nothing 2024 - House of Black",
-    "channel": "Watch Wrestling",
-    "views": 11259886,
-    "published": "2024-05-27",
-    "id": "OkC9K3wgWkw"
+    "title": "Even Samantha Irvin was surprised by Chad Gable's win over Gunther \ud83d\ude32",
+    "channel": "WWE",
+    "views": 21227647,
+    "published": "2023-08-22",
+    "id": "vuWlLLX0ct0"
    },
-   "rank": 185
+   "rank": 186,
+   "scanned_at": 1791272369
   },
   {
    "id": "sonya-deville",
@@ -5017,32 +5086,6 @@
     "views": 13864271,
     "published": "2021-02-12",
     "id": "BJP4uKCnhnA"
-   },
-   "rank": 186
-  },
-  {
-   "id": "chad-gable",
-   "name": "Chad Gable",
-   "status": "active",
-   "top10_views": 53382319,
-   "median_views": 2111815,
-   "video_count": 10,
-   "top_terms": [
-    "live",
-    "benjamin",
-    "aug",
-    "sept",
-    "even",
-    "samantha",
-    "irvin",
-    "was"
-   ],
-   "best_video": {
-    "title": "Even Samantha Irvin was surprised by Chad Gable's win over Gunther \ud83d\ude32",
-    "channel": "WWE",
-    "views": 21179432,
-    "published": "2023-08-22",
-    "id": "vuWlLLX0ct0"
    },
    "rank": 187
   },
@@ -5129,30 +5172,58 @@
    "rank": 190
   },
   {
-   "id": "tama-tonga",
-   "name": "Tama Tonga",
+   "id": "aleister-black",
+   "name": "Aleister Black",
    "status": "active",
-   "top10_views": 48745506,
-   "median_views": 2276473,
+   "top10_views": 50961649,
+   "median_views": 4181862,
    "video_count": 10,
    "top_terms": [
-    "solo",
-    "sikoa",
-    "jacob",
-    "kevin",
-    "owens",
-    "wargames",
-    "roman",
-    "reigns"
+    "nxt",
+    "gangrel",
+    "helps",
+    "adam",
+    "copeland",
+    "edge",
+    "aew",
+    "double"
    ],
    "best_video": {
-    "title": "FULL MATCH: Men's WarGames Match: Survivor Series: WarGames 2024",
-    "channel": "WWE",
-    "views": 23195804,
-    "published": "2025-04-23",
-    "id": "yma7lNibtVk"
+    "title": "Gangrel helps Adam Copeland - Gangrel Helps Edge AEW Double or Nothing 2024 - House of Black",
+    "channel": "Watch Wrestling",
+    "views": 11259901,
+    "published": "2024-05-27",
+    "id": "OkC9K3wgWkw"
    },
-   "rank": 191
+   "rank": 191,
+   "scanned_at": 1791272367
+  },
+  {
+   "id": "stephanie-vaquer",
+   "name": "Stephanie Vaquer",
+   "status": "active",
+   "top10_views": 49977889,
+   "median_views": 4373291,
+   "video_count": 10,
+   "top_terms": [
+    "rhea",
+    "ripley",
+    "nxt",
+    "iyo",
+    "sky",
+    "nikki",
+    "bella",
+    "naomi"
+   ],
+   "best_video": {
+    "title": "WWE Elite Collection | Extreme Unboxing | Series 125 Stephanie Vaquer | Posable Heroes | Toy Noir",
+    "channel": "Posable Heroes",
+    "views": 11092209,
+    "published": "2026-07-20",
+    "id": "hPun6QUiAl8"
+   },
+   "rank": 192,
+   "scanned_at": 1791272372
   },
   {
    "id": "owen-hart",
@@ -5178,32 +5249,6 @@
     "views": 14667708,
     "published": "2021-03-16",
     "id": "Y_07DiaIq7Q"
-   },
-   "rank": 192
-  },
-  {
-   "id": "stephanie-vaquer",
-   "name": "Stephanie Vaquer",
-   "status": "active",
-   "top10_views": 47560928,
-   "median_views": 4334633,
-   "video_count": 10,
-   "top_terms": [
-    "ripley",
-    "rhea",
-    "nxt",
-    "iyo",
-    "sky",
-    "nikki",
-    "bella",
-    "naomi"
-   ],
-   "best_video": {
-    "title": "WWE Elite Collection | Extreme Unboxing | Series 125 Stephanie Vaquer | Posable Heroes | Toy Noir",
-    "channel": "Posable Heroes",
-    "views": 11092155,
-    "published": "2026-07-20",
-    "id": "hPun6QUiAl8"
    },
    "rank": 193
   },
@@ -5236,32 +5281,6 @@
    "rank": 194
   },
   {
-   "id": "ethan-page",
-   "name": "Ethan Page",
-   "status": "active",
-   "top10_views": 45803567,
-   "median_views": 990983,
-   "video_count": 10,
-   "top_terms": [
-    "nxt",
-    "candice",
-    "lerae",
-    "absolute",
-    "intense",
-    "wrestling",
-    "free",
-    "fair"
-   ],
-   "best_video": {
-    "title": "Candice LeRae VS. Ethan Page - Absolute Intense Wrestling [Free Full Match]",
-    "channel": "aiwrestling",
-    "views": 34456296,
-    "published": "2017-04-26",
-    "id": "VaUjEbRURFo"
-   },
-   "rank": 195
-  },
-  {
    "id": "austin-theory",
    "name": "Austin Theory",
    "status": "unscanned",
@@ -5286,7 +5305,34 @@
     "published": "2023-09-16",
     "id": "peuSz-fEvHU"
    },
-   "rank": 196
+   "rank": 195
+  },
+  {
+   "id": "ethan-page",
+   "name": "Ethan Page",
+   "status": "active",
+   "top10_views": 45566506,
+   "median_views": 878389,
+   "video_count": 10,
+   "top_terms": [
+    "nxt",
+    "candice",
+    "lerae",
+    "absolute",
+    "intense",
+    "wrestling",
+    "free",
+    "fair"
+   ],
+   "best_video": {
+    "title": "Candice LeRae VS. Ethan Page - Absolute Intense Wrestling [Free Full Match]",
+    "channel": "aiwrestling",
+    "views": 34457481,
+    "published": "2017-04-26",
+    "id": "VaUjEbRURFo"
+   },
+   "rank": 196,
+   "scanned_at": 1791272374
   },
   {
    "id": "rated-rko",
@@ -5563,32 +5609,6 @@
    "rank": 206
   },
   {
-   "id": "jd-mcdonagh",
-   "name": "JD McDonagh",
-   "status": "active",
-   "top10_views": 37272401,
-   "median_views": 2213947,
-   "video_count": 10,
-   "top_terms": [
-    "truth",
-    "randy",
-    "rko",
-    "finn",
-    "orton",
-    "hits",
-    "huge",
-    "handoff"
-   ],
-   "best_video": {
-    "title": "JD McDonagh with the handoff makes us sick! \ud83d\ude24\ud83d\udc4e",
-    "channel": "WWE",
-    "views": 8208838,
-    "published": "2024-08-22",
-    "id": "0mJ70q00hV8"
-   },
-   "rank": 207
-  },
-  {
    "id": "ted-dibiase",
    "name": "Ted DiBiase",
    "status": "unscanned",
@@ -5613,7 +5633,34 @@
     "published": "2010-12-21",
     "id": "ZV1VOmgFiHo"
    },
-   "rank": 208
+   "rank": 207
+  },
+  {
+   "id": "santos-escobar",
+   "name": "Santos Escobar",
+   "status": "active",
+   "top10_views": 37031538,
+   "median_views": 1168523,
+   "video_count": 10,
+   "top_terms": [
+    "mysterio",
+    "rey",
+    "march",
+    "completa",
+    "dominik",
+    "legado",
+    "against",
+    "lucha"
+   ],
+   "best_video": {
+    "title": "REY MYSTERIO has returned!! \ud83d\udd25",
+    "channel": "WWE",
+    "views": 17870453,
+    "published": "2024-03-02",
+    "id": "uURlGJZGHww"
+   },
+   "rank": 208,
+   "scanned_at": 1791272378
   },
   {
    "id": "road-dogg",
@@ -5643,6 +5690,33 @@
    "rank": 209
   },
   {
+   "id": "jd-mcdonagh",
+   "name": "JD McDonagh",
+   "status": "active",
+   "top10_views": 36236490,
+   "median_views": 1978685,
+   "video_count": 10,
+   "top_terms": [
+    "truth",
+    "randy",
+    "rko",
+    "finn",
+    "lor",
+    "raw",
+    "orton",
+    "hits"
+   ],
+   "best_video": {
+    "title": "JD McDonagh with the handoff makes us sick! \ud83d\ude24\ud83d\udc4e",
+    "channel": "WWE",
+    "views": 8209267,
+    "published": "2024-08-22",
+    "id": "0mJ70q00hV8"
+   },
+   "rank": 210,
+   "scanned_at": 1791272376
+  },
+  {
    "id": "new-age-outlaws",
    "name": "New Age Outlaws",
    "status": "unscanned",
@@ -5668,7 +5742,7 @@
     "published": "2012-07-24",
     "id": "o7HZZJov0uc"
    },
-   "rank": 210
+   "rank": 211
   },
   {
    "id": "nikki-cross",
@@ -5695,7 +5769,7 @@
     "published": "2023-11-07",
     "id": "ogSgrrNXqW4"
    },
-   "rank": 211
+   "rank": 212
   },
   {
    "id": "lash-legend",
@@ -5722,7 +5796,7 @@
     "published": "2023-12-08",
     "id": "Q8BtF2NY_ws"
    },
-   "rank": 212
+   "rank": 213
   },
   {
    "id": "bam-bam-bigelow",
@@ -5749,7 +5823,7 @@
     "published": "2012-08-09",
     "id": "a-401wNkFOU"
    },
-   "rank": 213
+   "rank": 214
   },
   {
    "id": "grayson-waller",
@@ -5776,7 +5850,7 @@
     "published": "2023-10-19",
     "id": "kyXP3rM1JnM"
    },
-   "rank": 214
+   "rank": 215
   },
   {
    "id": "hart-foundation",
@@ -5804,7 +5878,7 @@
     "published": "2025-09-26",
     "id": "jDAEu78KWYE"
    },
-   "rank": 215
+   "rank": 216
   },
   {
    "id": "montez-ford",
@@ -5830,32 +5904,6 @@
     "views": 10055899,
     "published": "2026-05-24",
     "id": "AS840hdgzsI"
-   },
-   "rank": 216
-  },
-  {
-   "id": "santos-escobar",
-   "name": "Santos Escobar",
-   "status": "active",
-   "top10_views": 30639165,
-   "median_views": 1374751,
-   "video_count": 10,
-   "top_terms": [
-    "mysterio",
-    "rey",
-    "has",
-    "march",
-    "lucha",
-    "completa",
-    "dominik",
-    "wrestlemania"
-   ],
-   "best_video": {
-    "title": "REY MYSTERIO has returned!! \ud83d\udd25",
-    "channel": "WWE",
-    "views": 17837503,
-    "published": "2024-03-02",
-    "id": "uURlGJZGHww"
    },
    "rank": 217
   },
@@ -6000,8 +6048,8 @@
    "id": "carmelo-hayes",
    "name": "Carmelo Hayes",
    "status": "active",
-   "top10_views": 27284639,
-   "median_views": 1504837,
+   "top10_views": 27306884,
+   "median_views": 1509344,
    "video_count": 10,
    "top_terms": [
     "randy",
@@ -6016,11 +6064,12 @@
    "best_video": {
     "title": "Carmelo Hayes learned a valuable lesson from Randy Orton last week on #SmackDown \ud83d\ude02",
     "channel": "WWE",
-    "views": 10855367,
+    "views": 10855657,
     "published": "2024-05-24",
     "id": "DODfEafVza4"
    },
-   "rank": 223
+   "rank": 223,
+   "scanned_at": 1791272380
   },
   {
    "id": "shiloh-hill",
@@ -6108,8 +6157,8 @@
    "id": "trick-williams",
    "name": "Trick Williams",
    "status": "active",
-   "top10_views": 25227554,
-   "median_views": 2142105,
+   "top10_views": 25288896,
+   "median_views": 2143371,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -6124,11 +6173,12 @@
    "best_video": {
     "title": "Nice try, Trick \ud83d\ude24\ud83d\udc4a #WWENXT",
     "channel": "WWE",
-    "views": 4580476,
+    "views": 4583763,
     "published": "2025-07-23",
     "id": "C-30bAdD-Uo"
    },
-   "rank": 227
+   "rank": 227,
+   "scanned_at": 1791272382
   },
   {
    "id": "wyatt-sicks",
