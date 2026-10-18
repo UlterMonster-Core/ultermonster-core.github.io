@@ -167,7 +167,6 @@ select,input,textarea{width:100%;padding:12px 13px;border-radius:12px;border:1px
 label.fl{font-size:.86rem;font-weight:700;display:block;margin-bottom:5px}
 .msgbox{margin-top:14px;background:var(--surface2);border:1px dashed var(--teal);border-radius:14px;padding:14px;display:none}
 .msgbox.show{display:block}
-.msgbox pre{white-space:pre-wrap;font-family:inherit;font-size:.92rem;margin:0 0 12px}
 .small{font-size:.84rem;color:var(--muted)}
 footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.9rem}
 .footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
@@ -417,7 +416,7 @@ footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <p>No accounts, no apps, no call centres. Most bookings start from a Facebook post or a text — here's the whole process.</p>
       </div>
       <div class="steps">
-        <div class="step"><div class="step-num">1</div><h3>Message us</h3><p>Send your beds / baths and whether you want one-time or recurring. Use the booking form below — it writes the message for you.</p></div>
+        <div class="step"><div class="step-num">1</div><h3>Book right here</h3><p>Fill in the booking form below with your beds / baths and whether you want one-time or recurring. Hit send and it comes straight to us — right from this website.</p></div>
         <div class="step"><div class="step-num">2</div><h3>We confirm your time</h3><p>We reply with a day &amp; time and confirm the hours and total — $30/hr, minimums up front. No deposit apps, no surprises.</p></div>
         <div class="step"><div class="step-num">3</div><h3>We clean, you pay cash</h3><p>Our cleaner arrives with all supplies, does the full checklist, and walks through it with you. Payment is cash when the clean is done, before the cleaner leaves.</p></div>
       </div>
@@ -471,7 +470,7 @@ footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <div>
           <div class="kicker">Book a clean</div>
           <h2>Get your quote in 30 seconds</h2>
-          <p>Fill this in and it writes your booking message for you. Copy it and send it by Facebook message or text — that's how most of our bookings start.</p>
+          <p>Fill this in and hit Send Booking — this website sends it straight to us by email right away. You'll see a confirmation here on the page, and we'll reply to confirm your day and time.</p>
           <ul class="why-list" style="margin-top:14px">
             <li><span class="check">✓</span> $30/hr — 3-hr minimum ($90) for standard</li>
             <li><span class="check">✓</span> $60 flat for the 2-hour low-income Tidy</li>
@@ -490,13 +489,15 @@ footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 40px;colo
             <div class="full"><label class="fl" for="f-notes">Anything we should know? <span style="color:var(--muted);font-weight:500">(pets, priority rooms, oven/fridge add-on)</span></label><textarea id="f-notes" rows="3" placeholder="e.g. One friendly dog, please prioritize the kitchen and main bathroom."></textarea></div>
           </div>
           <div id="formError" class="small" style="color:#b42318;display:none;margin-top:10px">Please add your name so we know who we're booking for.</div>
-          <button class="btn" type="submit" style="width:100%;margin-top:14px">Create My Booking Message →</button>
-          <div class="msgbox" id="msgBox">
-            <p style="font-weight:700;margin:0 0 8px">Your booking message — copy &amp; send it:</p>
-            <pre id="msgText"></pre>
-            <button class="btn" type="button" id="copyBtn" style="width:100%">Copy Message</button>
-            <p class="small" id="copyStatus" style="text-align:center;margin:8px 0 0"></p>
-            <p class="small" style="margin:6px 0 0">Send it by Facebook message or text. We'll reply to confirm your day, time, and total — $30/hr, confirmed before we start.</p>
+          <button class="btn" type="submit" id="submitBtn" style="width:100%;margin-top:14px">Send Booking →</button>
+          <div class="msgbox" id="successBox" role="status" aria-live="polite">
+            <p style="font-weight:700;margin:0 0 6px">Booking sent — thank you!</p>
+            <p class="small" style="margin:0">We've received your request and will reply shortly to confirm your day, time, and total — $30/hr, confirmed before we start. Cash is due on completion.</p>
+          </div>
+          <div class="msgbox" id="errorBox" role="alert" style="border-color:#b42318">
+            <p style="font-weight:700;margin:0 0 6px;color:#b42318">That didn't go through</p>
+            <p class="small" style="margin:0 0 12px">Your booking details are still filled in above — nothing is lost. Please check your connection and try again.</p>
+            <button class="btn" type="button" id="retryBtn" style="width:100%">Try Again</button>
           </div>
         </form>
       </div>
@@ -554,47 +555,73 @@ function estimate(){
 }
 ['est-beds','est-baths','est-type'].forEach(function(id){ document.getElementById(id).addEventListener('change', estimate); });
 estimate();
-// Booking form -> message
-document.getElementById('bookForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  var name = document.getElementById('f-name').value.trim();
+// Booking form -> sent by this website via FormSubmit to ultermonster@gmail.com
+var bookingSending = false;
+function sendBooking(){
+  if(bookingSending) return;
+  var nameEl = document.getElementById('f-name');
+  var name = nameEl.value.trim();
   var err = document.getElementById('formError');
-  if(!name){ err.style.display='block'; document.getElementById('f-name').focus(); return; }
+  var successBox = document.getElementById('successBox');
+  var errorBox = document.getElementById('errorBox');
+  var submitBtn = document.getElementById('submitBtn');
+  if(!name){ err.style.display='block'; nameEl.focus(); return; }
   err.style.display='none';
+  successBox.classList.remove('show');
+  errorBox.classList.remove('show');
   var area = document.getElementById('f-area').value.trim() || 'St. Catharines';
   var beds = document.getElementById('f-beds').value;
   var baths = document.getElementById('f-baths').value;
   var type = document.getElementById('f-type').value;
   var freq = document.getElementById('f-freq').value;
   var notes = document.getElementById('f-notes').value.trim();
-  var lines = [
-    'Hi! I\'d like to book a clean.',
-    '',
-    'Name: ' + name,
-    'Home: ' + beds + ' bed / ' + baths + ' bath — ' + area + ', St. Catharines',
-    'Clean: ' + type,
-    'Frequency: ' + freq,
-    'Payment: Cash on completion — understood.'
-  ];
-  if(notes) lines.push('Notes: ' + notes);
-  lines.push('', 'What days/times do you have available? Thanks!');
-  document.getElementById('msgText').textContent = lines.join('\n');
-  document.getElementById('msgBox').classList.add('show');
-  document.getElementById('copyStatus').textContent = '';
-  document.getElementById('msgBox').scrollIntoView({behavior:'smooth', block:'nearest'});
+  bookingSending = true;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+  submitBtn.style.opacity = '0.75';
+  fetch('https://formsubmit.co/ajax/ultermonster@gmail.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      name: name,
+      neighbourhood: area,
+      bedrooms: beds,
+      bathrooms: baths,
+      clean_type: type,
+      frequency: freq,
+      notes: notes || '—',
+      payment: 'Cash on completion — understood',
+      _subject: 'New cleaning booking — Stoehr Home Cleaning',
+      _template: 'table',
+      _captcha: 'false'
+    })
+  }).then(function(res){
+    if(!res.ok) throw new Error('Send failed');
+    return res.json().catch(function(){ return {}; });
+  }).then(function(){
+    bookingSending = false;
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Booking →';
+    submitBtn.style.opacity = '';
+    errorBox.classList.remove('show');
+    successBox.classList.add('show');
+    successBox.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }).catch(function(){
+    bookingSending = false;
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Booking →';
+    submitBtn.style.opacity = '';
+    successBox.classList.remove('show');
+    errorBox.classList.add('show');
+    errorBox.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+}
+document.getElementById('bookForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  sendBooking();
 });
-document.getElementById('copyBtn').addEventListener('click', function(){
-  var text = document.getElementById('msgText').textContent;
-  var status = document.getElementById('copyStatus');
-  function done(){ status.textContent = '✓ Copied — now paste it into Facebook Messenger or a text.'; }
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(text).then(done).catch(function(){ fallback(); });
-  } else { fallback(); }
-  function fallback(){
-    var ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select();
-    try{ document.execCommand('copy'); done(); }catch(e){ status.textContent='Select the message above and copy it manually.'; }
-    document.body.removeChild(ta);
-  }
+document.getElementById('retryBtn').addEventListener('click', function(){
+  sendBooking();
 });
 </script>
 </body>
