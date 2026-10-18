@@ -168,6 +168,20 @@ label.fl{font-size:.86rem;font-weight:700;display:block;margin-bottom:5px}
 .msgbox{margin-top:14px;background:var(--surface2);border:1px dashed var(--teal);border-radius:14px;padding:14px;display:none}
 .msgbox.show{display:block}
 .small{font-size:.84rem;color:var(--muted)}
+/* payment confirmation dialog */
+dialog.confirm-dialog{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:20px;padding:0;max-width:520px;width:calc(100% - 32px);box-shadow:var(--shadow)}
+dialog.confirm-dialog::backdrop{background:rgba(10,30,25,.55);backdrop-filter:blur(2px)}
+.confirm-inner{padding:24px}
+.confirm-inner h2{font-size:1.35rem;margin:0 0 10px}
+.confirm-cash{background:var(--amber-bg);border:1px solid var(--amber);border-radius:14px;padding:14px 16px;margin:14px 0}
+.confirm-cash b{font-family:"Sora",sans-serif}
+.confirm-summary{background:var(--surface2);border-radius:14px;padding:14px 16px;margin:0 0 14px}
+.confirm-summary dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:.92rem}
+.confirm-summary dt{font-weight:700;color:var(--muted)}
+.confirm-summary dd{margin:0;font-weight:600;word-break:break-word}
+.confirm-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.confirm-actions .btn{flex:1;min-width:180px}
+@media(max-width:480px){.confirm-actions{flex-direction:column}.confirm-actions .btn{width:100%}}
 footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.9rem}
 .footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .sticky-cta{display:none}
@@ -365,12 +379,14 @@ footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <div class="price-box">
           <h3>Low-Income Tidy Clean</h3>
           <div class="amt">$60<small> total &nbsp;•&nbsp; 2 hours</small></div>
-          <p class="small" style="margin:6px 0 0">Built for seniors, ODSP / fixed-income households, and anyone who needs help keeping up — a shorter, focused clean at the same $30/hr.</p>
+          <p class="small" style="margin:6px 0 0">For seniors (60+) and people on ODSP or OW — a shorter, focused clean at the same $30/hr.</p>
           <ul>
             <li><span class="check">✓</span> Kitchen + main bathroom + floors + surfaces</li>
             <li><span class="check">✓</span> The essentials done properly in 2 hours</li>
             <li><span class="check">✓</span> Same supplies included, same cleaner</li>
-            <li><span class="check">✓</span> No proof or paperwork — just ask for the Tidy</li>
+            <li><span class="check">✓</span> Seniors 60+: no document needed, ever</li>
+            <li><span class="check">✓</span> ODSP / OW: show your benefit card or letter at the door when we arrive — we look, we don't take a photo or a copy</li>
+            <li><span class="check">✓</span> No card or letter at the door? The visit is rebooked instead — no charge</li>
             <li><span class="check">✓</span> Cash due on completion</li>
           </ul>
           <a class="btn btn-outline" href="#book" style="width:100%">Book the 2-Hour Tidy — $60</a>
@@ -417,7 +433,7 @@ footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 40px;colo
       </div>
       <div class="steps">
         <div class="step"><div class="step-num">1</div><h3>Book right here</h3><p>Fill in the booking form below with your beds / baths and whether you want one-time or recurring. Hit send and it comes straight to us — right from this website.</p></div>
-        <div class="step"><div class="step-num">2</div><h3>We confirm your time</h3><p>We reply with a day &amp; time and confirm the hours and total — $30/hr, minimums up front. No deposit apps, no surprises.</p></div>
+        <div class="step"><div class="step-num">2</div><h3>We confirm your time</h3><p>We reply by email or phone with a day &amp; time and confirm the hours and total — $30/hr, minimums up front. No deposit apps, no surprises.</p></div>
         <div class="step"><div class="step-num">3</div><h3>We clean, you pay cash</h3><p>Our cleaner arrives with all supplies, does the full checklist, and walks through it with you. Payment is cash when the clean is done, before the cleaner leaves.</p></div>
       </div>
 
@@ -453,7 +469,7 @@ footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 40px;colo
       </div>
       <div class="faq">
         <details><summary>How much is it, exactly?</summary><p>$30 per hour with a 3-hour minimum, so $90 for a standard clean. If your home needs more time, it's $30 for each extra hour — and we confirm the total with you before we start. The low-income Tidy is a fixed 2 hours for $60 total.</p></details>
-        <details><summary>What does the low-income Tidy include?</summary><p>A focused 2-hour clean at the same $30/hr: kitchen, main bathroom, floors, and main surfaces. It's designed for seniors and fixed-income households who need the essentials kept up. No proof or paperwork required — just ask for the Tidy when you book.</p></details>
+        <details><summary>What does the low-income Tidy include?</summary><p>A focused 2-hour clean at the same $30/hr: kitchen, main bathroom, floors, and main surfaces. It's for seniors (60+) and people on ODSP or OW who need the essentials kept up. Seniors don't need to show anything. If you're on ODSP or OW, just show your benefit card or letter at the door when we arrive — we look, we don't take a photo or keep a copy. No card or letter? No charge — we simply rebook the visit.</p></details>
         <details><summary>Do I need to provide supplies or a vacuum?</summary><p>No. We bring all supplies and equipment. If you prefer we use your products for a specific surface (for example, a special floor cleaner), just leave them out and let us know.</p></details>
         <details><summary>How do I pay?</summary><p>Cash, due when the clean is finished and before the cleaner leaves. That way you've seen the work first, and there's no "e-transfer didn't go through" problem for either side. You'll get a text confirmation of the amount received after every job.</p></details>
         <details><summary>Do I need to be home?</summary><p>For the first clean, it's best if you're home at the start and for the final walk-through. For recurring cleans, many clients leave a key or code — that's arranged one-to-one when you book.</p></details>
@@ -470,10 +486,11 @@ footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 40px;colo
         <div>
           <div class="kicker">Book a clean</div>
           <h2>Get your quote in 30 seconds</h2>
-          <p>Fill this in and hit Send Booking — this website sends it straight to us by email right away. You'll see a confirmation here on the page, and we'll reply to confirm your day and time.</p>
+          <p>Fill this in and hit Send Booking. Before anything is sent, a popup will ask you to confirm you understand payment is cash, due when the clean is done — only then does this website email your booking to us. We'll reply to you by email or phone to confirm your day and time, using the contact details you provide below.</p>
           <ul class="why-list" style="margin-top:14px">
             <li><span class="check">✓</span> $30/hr — 3-hr minimum ($90) for standard</li>
             <li><span class="check">✓</span> $60 flat for the 2-hour low-income Tidy</li>
+            <li><span class="check">✓</span> Tidy eligibility: seniors 60+ (no document needed), or ODSP / OW shown at the door</li>
             <li><span class="check">✓</span> Supplies included, cash on completion</li>
           </ul>
           <p class="small" style="margin-top:16px"><strong>Found us on Facebook?</strong> You can skip the form and just message: your beds/baths, St. Catharines neighbourhood, and one-time or recurring — we'll take it from there.</p>
@@ -482,17 +499,38 @@ footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 40px;colo
           <div class="form-grid">
             <div><label class="fl" for="f-name">Your name</label><input id="f-name" required placeholder="e.g. Sarah M." autocomplete="name" /></div>
             <div><label class="fl" for="f-area">Neighbourhood</label><input id="f-area" placeholder="e.g. Port Dalhousie" /></div>
+            <div class="full"><p class="small" style="margin:0"><strong>How can we reach you?</strong> Email or phone — at least one is required, and the other can be left blank.</p></div>
+            <div><label class="fl" for="f-email">Email address <span style="color:var(--muted);font-weight:500">(email or phone required)</span></label><input id="f-email" type="email" placeholder="e.g. sarah@example.com" autocomplete="email" /></div>
+            <div><label class="fl" for="f-phone">Phone number <span style="color:var(--muted);font-weight:500">(email or phone required)</span></label><input id="f-phone" type="tel" placeholder="e.g. 905-555-0123" autocomplete="tel" /></div>
             <div><label class="fl" for="f-beds">Bedrooms</label><select id="f-beds"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5+</option></select></div>
             <div><label class="fl" for="f-baths">Bathrooms</label><select id="f-baths"><option>1</option><option selected>2</option><option>3</option><option>4+</option></select></div>
             <div><label class="fl" for="f-type">Type of clean</label><select id="f-type"><option value="Standard Clean — $30/hr, 3-hr min ($90)">Standard Clean — from $90</option><option value="Low-Income Tidy — 2 hrs, $60 total">Low-Income Tidy — $60 (2 hrs)</option><option value="Recurring Clean — $30/hr, 3-hr min per visit">Recurring Clean</option><option value="Deep / Move Clean — $30/hr, 4–6 hrs">Deep / Move Clean</option></select></div>
             <div><label class="fl" for="f-freq">One-time or recurring?</label><select id="f-freq"><option>One-time</option><option>Weekly</option><option>Every 2 weeks</option><option>Monthly</option></select></div>
+            <div class="full" id="eligWrap" style="display:none">
+              <label class="fl" for="f-elig">Low-Income Tidy — how do you qualify?</label>
+              <select id="f-elig">
+                <option value="" selected>Please choose…</option>
+                <option value="Senior 60+ — no document needed">Senior (60+) — no document needed</option>
+                <option value="ODSP — will show card or letter at the door">ODSP — I'll show my card or letter at the door</option>
+                <option value="OW (Ontario Works) — will show card or letter at the door">OW (Ontario Works) — I'll show my card or letter at the door</option>
+              </select>
+              <label class="fl" for="f-age" style="margin-top:12px">Your age</label>
+              <select id="f-age">
+                <option value="" selected>Please choose…</option>
+                <option value="Under 60">Under 60</option>
+                <option value="60–69">60–69</option>
+                <option value="70–79">70–79</option>
+                <option value="80+">80 or over</option>
+              </select>
+              <p class="small" style="margin:6px 0 0">The senior Tidy rate is for age 60+ — seniors never need to show a document, and our cleaner makes the final call at the door. On ODSP or OW? Just show your benefit card or letter at the door when the cleaner arrives — we look only; we don't take a photo or a copy. No card or letter at the door? No charge — the visit is rebooked instead.</p>
+            </div>
             <div class="full"><label class="fl" for="f-notes">Anything we should know? <span style="color:var(--muted);font-weight:500">(pets, priority rooms, oven/fridge add-on)</span></label><textarea id="f-notes" rows="3" placeholder="e.g. One friendly dog, please prioritize the kitchen and main bathroom."></textarea></div>
           </div>
-          <div id="formError" class="small" style="color:#b42318;display:none;margin-top:10px">Please add your name so we know who we're booking for.</div>
+          <div id="formError" class="small" role="alert" style="color:#b42318;display:none;margin-top:10px">Please add your name and at least one way to reach you — your email address or your phone number.</div>
           <button class="btn" type="submit" id="submitBtn" style="width:100%;margin-top:14px">Send Booking →</button>
           <div class="msgbox" id="successBox" role="status" aria-live="polite">
             <p style="font-weight:700;margin:0 0 6px">Booking sent — thank you!</p>
-            <p class="small" style="margin:0">We've received your request and will reply shortly to confirm your day, time, and total — $30/hr, confirmed before we start. Cash is due on completion.</p>
+            <p class="small" style="margin:0">We've received your request. We'll reply to you by email or phone to confirm your day, time, and total — $30/hr, confirmed before we start. As you confirmed in the popup, cash payment is required when the clean is complete, before the cleaner leaves.</p>
           </div>
           <div class="msgbox" id="errorBox" role="alert" style="border-color:#b42318">
             <p style="font-weight:700;margin:0 0 6px;color:#b42318">That didn't go through</p>
@@ -500,6 +538,24 @@ footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 40px;colo
             <button class="btn" type="button" id="retryBtn" style="width:100%">Try Again</button>
           </div>
         </form>
+        <dialog class="confirm-dialog" id="payConfirm" aria-labelledby="payConfirmTitle" aria-describedby="payConfirmCash">
+          <div class="confirm-inner">
+            <h2 id="payConfirmTitle">Before we send your booking</h2>
+            <p style="color:var(--muted);margin:0">Please check your quote details and confirm the payment terms. Nothing is emailed to us until you confirm.</p>
+            <div class="confirm-cash" id="payConfirmCash">
+              <b>Payment is required in cash when the cleaning is complete.</b>
+              <p style="margin:6px 0 0;font-size:.94rem">Please have the cash ready to pay before the cleaner leaves. We don't take e-transfer or card right now — cash on completion only, so you've seen the finished work first.</p>
+            </div>
+            <div class="confirm-summary" aria-label="Your booking and quote details">
+              <dl id="confirmSummary"></dl>
+            </div>
+            <p class="small" style="margin:0">By confirming, you agree that cash payment is due in full upon completion of the clean. We'll reply to you by email or phone to confirm your day and time, using the contact details above.</p>
+            <div class="confirm-actions">
+              <button class="btn btn-outline" type="button" id="cancelConfirm">Go Back</button>
+              <button class="btn" type="button" id="confirmSend">I Understand — Cash on Completion, Send Booking</button>
+            </div>
+          </div>
+        </dialog>
       </div>
     </div>
   </section>
@@ -555,26 +611,122 @@ function estimate(){
 }
 ['est-beds','est-baths','est-type'].forEach(function(id){ document.getElementById(id).addEventListener('change', estimate); });
 estimate();
-// Booking form -> sent by this website via FormSubmit to ultermonster@gmail.com
+// Low-Income Tidy eligibility field: only shown when the Tidy is selected.
+function syncEligibility(){
+  var type = document.getElementById('f-type').value;
+  document.getElementById('eligWrap').style.display = /tidy/i.test(type) ? 'block' : 'none';
+}
+document.getElementById('f-type').addEventListener('change', syncEligibility);
+syncEligibility();
+// Booking form -> cash-payment confirmation popup first, then sent by this
+// website via FormSubmit to ultermonster@gmail.com only after confirmation.
 var bookingSending = false;
-function sendBooking(){
-  if(bookingSending) return;
-  var nameEl = document.getElementById('f-name');
-  var name = nameEl.value.trim();
+var pendingBooking = null;
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+function bookingQuote(bedsStr, bathsStr, typeStr){
+  var beds = parseInt(bedsStr, 10) || 1;
+  var baths = parseInt(bathsStr, 10) || 1;
+  if(/tidy/i.test(typeStr)){
+    return { hours: 2, price: 60, label: '2 hrs — $60 total (Low-Income Tidy)' };
+  }
+  var hrs = 2 + (beds - 1) * 0.4 + (baths - 1) * 0.5;
+  if(/deep/i.test(typeStr)) hrs += 1;
+  if(/move/i.test(typeStr)) hrs += 1.5;
+  hrs = Math.round(hrs * 2) / 2;
+  if(hrs < 3) hrs = 3;
+  if(hrs > 8) hrs = 8;
+  return { hours: hrs, price: hrs * 30, label: hrs + ' hrs — $' + (hrs * 30) + ' estimated total at $30/hr' };
+}
+function collectBooking(){
+  var type = document.getElementById('f-type').value;
+  var beds = document.getElementById('f-beds').value;
+  var baths = document.getElementById('f-baths').value;
+  var quote = bookingQuote(beds, baths, type);
+  return {
+    name: document.getElementById('f-name').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    phone: document.getElementById('f-phone').value.trim(),
+    area: document.getElementById('f-area').value.trim() || 'St. Catharines',
+    beds: beds,
+    baths: baths,
+    type: type,
+    elig: /tidy/i.test(type) ? document.getElementById('f-elig').value : '',
+    age: /tidy/i.test(type) ? document.getElementById('f-age').value : '',
+    freq: document.getElementById('f-freq').value,
+    notes: document.getElementById('f-notes').value.trim(),
+    quoteLabel: quote.label,
+    estHours: quote.hours,
+    estPrice: quote.price
+  };
+}
+function validateBooking(data){
   var err = document.getElementById('formError');
+  function fail(msg, id){
+    err.textContent = msg;
+    err.style.display = 'block';
+    document.getElementById(id).focus();
+    return false;
+  }
+  if(!data.name) return fail('Please add your name so we know who we\u2019re booking for.', 'f-name');
+  if(!data.email && !data.phone) return fail('Please add your email address or your phone number \u2014 at least one is required so we can reply to your booking.', 'f-email');
+  if(data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return fail('That email address doesn\u2019t look right \u2014 please fix it, or leave it blank and add a phone number instead.', 'f-email');
+  var digits = data.phone.replace(/\D/g, '');
+  if(data.phone && (digits.length < 10 || digits.length > 15)) return fail('That phone number doesn\u2019t look right \u2014 please fix it, or leave it blank and add an email address instead.', 'f-phone');
+  if(/tidy/i.test(data.type) && !data.elig) return fail('Please tell us how you qualify for the low-income Tidy: senior 60+ (no document needed), ODSP, or OW.', 'f-elig');
+  if(/tidy/i.test(data.type) && !data.age) return fail('Please select your age — the low-income Tidy needs it as a second check.', 'f-age');
+  if(/tidy/i.test(data.type) && /senior/i.test(data.elig) && data.age === 'Under 60') return fail('The senior Tidy rate is for age 60+. If you\u2019re under 60, the Tidy is for ODSP / OW — or choose a standard clean instead.', 'f-age');
+  err.style.display = 'none';
+  return true;
+}
+function showPaymentConfirm(data){
+  pendingBooking = data;
+  var rows = [
+    ['Name', data.name]
+  ];
+  if(data.email) rows.push(['Email', data.email]);
+  if(data.phone) rows.push(['Phone', data.phone]);
+  rows.push(
+    ['Neighbourhood', data.area],
+    ['Home', data.beds + ' bed / ' + data.baths + ' bath'],
+    ['Clean', data.type],
+    ['Frequency', data.freq],
+    ['Quote', data.quoteLabel]
+  );
+  if(/tidy/i.test(data.type) && data.elig){
+    rows.push(['Low-income eligibility', data.elig]);
+    if(data.age) rows.push(['Age', data.age]);
+    if(/odsp|ow/i.test(data.elig)){
+      rows.push(['At the door', 'Please show your ODSP / OW card or letter when the cleaner arrives — we look only, no photo or copy. No card or letter? No charge — the visit is rebooked.']);
+    } else {
+      rows.push(['At the door', 'Senior (60+) rate — no document needed. Our cleaner makes the final call at the door.']);
+    }
+  }
+  if(data.notes) rows.push(['Notes', data.notes]);
+  var html = '';
+  rows.forEach(function(r){ html += '<dt>' + escapeHtml(r[0]) + '</dt><dd>' + escapeHtml(r[1]) + '</dd>'; });
+  document.getElementById('confirmSummary').innerHTML = html;
+  var dlg = document.getElementById('payConfirm');
+  if(dlg && typeof dlg.showModal === 'function'){
+    if(!dlg.open) dlg.showModal();
+    var confirmBtn = document.getElementById('confirmSend');
+    if(confirmBtn) confirmBtn.focus();
+  } else {
+    // No <dialog> support: fall back to sending directly (payment terms are
+    // also stated on the form itself).
+    doSendBooking(data);
+  }
+}
+function doSendBooking(data){
+  if(bookingSending) return;
   var successBox = document.getElementById('successBox');
   var errorBox = document.getElementById('errorBox');
   var submitBtn = document.getElementById('submitBtn');
-  if(!name){ err.style.display='block'; nameEl.focus(); return; }
-  err.style.display='none';
   successBox.classList.remove('show');
   errorBox.classList.remove('show');
-  var area = document.getElementById('f-area').value.trim() || 'St. Catharines';
-  var beds = document.getElementById('f-beds').value;
-  var baths = document.getElementById('f-baths').value;
-  var type = document.getElementById('f-type').value;
-  var freq = document.getElementById('f-freq').value;
-  var notes = document.getElementById('f-notes').value.trim();
   bookingSending = true;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending…';
@@ -583,14 +735,22 @@ function sendBooking(){
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({
-      name: name,
-      neighbourhood: area,
-      bedrooms: beds,
-      bathrooms: baths,
-      clean_type: type,
-      frequency: freq,
-      notes: notes || '—',
+      name: data.name,
+      email: data.email || '\u2014',
+      phone: data.phone || '\u2014',
+      _replyto: data.email || undefined,
+      neighbourhood: data.area,
+      bedrooms: data.beds,
+      bathrooms: data.baths,
+      clean_type: data.type,
+      low_income_eligibility: data.elig || '—',
+      age_bracket: data.age || '—',
+      frequency: data.freq,
+      notes: data.notes || '—',
+      estimated_hours: data.estHours,
+      estimated_total: '$' + data.estPrice,
       payment: 'Cash on completion — understood',
+      payment_confirmation: 'Confirmed in popup before sending: customer agreed cash payment is required upon completion of the cleaning, before the cleaner leaves.',
       _subject: 'New cleaning booking — Stoehr Home Cleaning',
       _template: 'table',
       _captcha: 'false'
@@ -618,10 +778,33 @@ function sendBooking(){
 }
 document.getElementById('bookForm').addEventListener('submit', function(e){
   e.preventDefault();
-  sendBooking();
+  if(bookingSending) return;
+  document.getElementById('successBox').classList.remove('show');
+  document.getElementById('errorBox').classList.remove('show');
+  var data = collectBooking();
+  if(!validateBooking(data)) return;
+  showPaymentConfirm(data);
+});
+document.getElementById('confirmSend').addEventListener('click', function(){
+  var dlg = document.getElementById('payConfirm');
+  if(dlg && dlg.open) dlg.close();
+  if(pendingBooking) doSendBooking(pendingBooking);
+});
+document.getElementById('cancelConfirm').addEventListener('click', function(){
+  var dlg = document.getElementById('payConfirm');
+  if(dlg && dlg.open) dlg.close();
+  pendingBooking = null;
+  document.getElementById('submitBtn').focus();
+});
+document.getElementById('payConfirm').addEventListener('cancel', function(){
+  // Esc pressed: dialog closes natively, nothing is sent.
+  pendingBooking = null;
 });
 document.getElementById('retryBtn').addEventListener('click', function(){
-  sendBooking();
+  // Payment was already confirmed before the first send attempt.
+  var data = collectBooking();
+  if(!validateBooking(data)) return;
+  doSendBooking(data);
 });
 </script>
 </body>
