@@ -362,11 +362,7 @@ footer small{color:#7f8f88}
         <p style="margin-bottom:0"><strong>Location:</strong> St. Catharines, Ontario — home-based, drop-off by appointment.</p>
       </div>
       <div>
-        <form id="contactForm" class="contact-card" action="https://formsubmit.co/ultermonster@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New enquiry from computers.stoehrhub.ca"/>
-          <input type="hidden" name="_template" value="table"/>
-          <input type="hidden" name="_captcha" value="true"/>
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>
+        <form id="contactForm" class="contact-card">
           <div class="row">
             <div><label for="cfName">Your name</label><input id="cfName" name="name" type="text" placeholder="Your name" autocomplete="name" required/></div>
             <div><label for="cfContact">Email or phone — at least one</label><input id="cfContact" name="contact" type="text" placeholder="How should I reply to you?" required/></div>
@@ -448,7 +444,7 @@ function calc(){
 [estService, estParts, estCredit].forEach(function(el){ el.addEventListener("input", calc); el.addEventListener("change", calc); });
 calc();
 
-/* Contact form — sends for real via FormSubmit to ultermonster@gmail.com */
+/* Contact form — sends via the same-origin /api/contact endpoint */
 var contactForm = document.getElementById("contactForm");
 var formMsg = document.getElementById("formMsg"), formErr = document.getElementById("formErr");
 var cfSubmit = document.getElementById("cfSubmit");
@@ -457,15 +453,18 @@ contactForm.addEventListener("submit", function(e){
   formMsg.classList.remove("show"); formErr.classList.remove("show");
   if(!contactForm.checkValidity()){ contactForm.reportValidity(); return; }
   cfSubmit.disabled = true; cfSubmit.textContent = "Sending…";
-  var data = new FormData(contactForm);
-  fetch("https://formsubmit.co/ajax/ultermonster@gmail.com", {
+  var payload = {
+    name: document.getElementById("cfName").value,
+    contact: document.getElementById("cfContact").value,
+    service: document.getElementById("cfService").value,
+    message: document.getElementById("cfMsg").value
+  };
+  fetch("/api/contact", {
     method: "POST",
-    headers: { "Accept": "application/json" },
-    body: data
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
   }).then(function(res){
     if(!res.ok) throw new Error("send failed");
-    return res.json();
-  }).then(function(){
     contactForm.reset();
     formMsg.textContent = "Thanks — your message has been sent. I'll get back to you as soon as I can.";
     formMsg.classList.add("show");
