@@ -112,6 +112,8 @@
       text-decoration: none;
     }
     .utility a span { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; color: #17203b; background: var(--yellow); }
+    .utility .gtranslate_wrapper { margin-left: auto; flex: none; }
+    .utility .gtranslate_wrapper select { font: inherit; font-size: .8rem; font-weight: 800; color: var(--ink); background: var(--surface); border: 2px solid var(--ink); border-radius: 999px; padding: 6px 10px; cursor: pointer; max-width: 180px; }
 
     .hero {
       display: grid;
@@ -375,6 +377,7 @@
       .utility p { font-size: .73rem; }
       .utility a { font-size: 0; }
       .utility a span { font-size: .8rem; }
+      .utility .gtranslate_wrapper select { font-size: .75rem; padding: 5px 8px; max-width: 140px; }
       .hero { grid-template-columns: 1fr; gap: 48px; padding: 48px 0 76px; }
       .hero h1 { font-size: clamp(3.15rem, 15vw, 5.6rem); }
       .icon-stage { width: min(100% - 12px, 480px); justify-self: center; padding: 21px; border-radius: 28px; box-shadow: 8px 9px 0 var(--yellow); transform: none; }
@@ -441,6 +444,7 @@
     <header class="utility">
       <p>Independent Android apps, built one useful idea at a time.</p>
       <a href="#apps">See the collection <span aria-hidden="true">↓</span></a>
+      <div class="gtranslate_wrapper" aria-label="Choose language"></div>
     </header>
 
     <section class="hero" aria-labelledby="hero-title">
@@ -770,5 +774,14 @@
   </main>
 
 
+<script>
+window.gtranslateSettings = {
+  "default_language": "en",
+  "detect_browser_language": true,
+  "languages": ["en", "fr", "es", "de", "it", "pt", "nl", "pl", "uk", "ru", "ar", "hi", "zh-CN", "zh-TW", "ja", "ko", "tr", "vi", "th", "id", "ms", "sv", "da", "fi", "no", "cs", "sk", "hu", "ro", "el", "he", "fa", "ur", "bn", "ta", "te", "mr", "pa", "gu", "tl", "sw", "am", "af", "sq", "hy", "az", "eu", "be", "bs", "bg", "ca", "ceb", "ny", "co", "hr", "eo", "et", "gl", "ka", "ha", "haw", "iw", "hmn", "ig", "is", "jw", "kk", "km", "ku", "ky", "lo", "la", "lv", "lt", "lb", "mk", "mg", "ml", "mt", "mi", "mn", "ne", "ps", "sm", "gd", "sr", "st", "sn", "sd", "si", "so", "su", "tg", "uz", "cy", "xh", "yi", "yo", "zu"],
+  "wrapper_selector": ".gtranslate_wrapper"
+};
+</script>
+<script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>
