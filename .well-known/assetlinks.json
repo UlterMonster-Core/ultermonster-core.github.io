@@ -1,0 +1,1 @@
+[{"relation":["delegate_permission/common.handle_all_urls","delegate_permission/common.get_login_creds"],"target":{"namespace":"android_app","package_name":"com.mindgames_123","sha256_cert_fingerprints":["AF:F1:6A:38:3B:BF:CC:4D:31:08:74:E7:56:FF:A0:5B:F9:CF:4B:60:4B:53:3F:FB:4F:67:93:AF:4D:CA:4F:D9"]}}]
