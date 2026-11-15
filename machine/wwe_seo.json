@@ -1,6 +1,6 @@
 {
- "updated": 1794645635,
- "updated_human": "2026-11-14 08:40 ET",
+ "updated": 1794732032,
+ "updated_human": "2026-11-15 08:40 ET",
  "superstars": [
   {
    "id": "tamina",
@@ -87,9 +87,9 @@
    "id": "jackson-drake",
    "name": "Jackson Drake",
    "status": "unscanned",
-   "scanned_at": 1794213569,
-   "top10_views": 3427186953,
-   "median_views": 89870495,
+   "scanned_at": 1794732002,
+   "top10_views": 3433441483,
+   "median_views": 91603303,
    "video_count": 10,
    "top_terms": [
     "god's",
@@ -104,7 +104,7 @@
    "best_video": {
     "title": "Drake - God's Plan",
     "channel": "DrakeVEVO",
-    "views": 1731965938,
+    "views": 1733196739,
     "published": "2018-02-17",
     "id": "xpVfcZ0ZcFM"
    },
@@ -930,9 +930,9 @@
    "id": "niko-vance",
    "name": "Niko Vance",
    "status": "unscanned",
-   "scanned_at": 1794213557,
-   "top10_views": 830443015,
-   "median_views": 190440,
+   "scanned_at": 1794731989,
+   "top10_views": 831231069,
+   "median_views": 190454,
    "video_count": 10,
    "top_terms": [
     "izzi",
@@ -947,7 +947,7 @@
    "best_video": {
     "title": "Nico & Vinz - Am I Wrong [Official Music Video]",
     "channel": "Nico & Vinz",
-    "views": 762243814,
+    "views": 762921756,
     "published": "2013-06-20",
     "id": "bg1sT4ILG0w"
    },
@@ -1367,24 +1367,24 @@
    "id": "r-truth",
    "name": "R-Truth",
    "status": "unscanned",
-   "scanned_at": 1794127198,
-   "top10_views": 550002183,
-   "median_views": 13125962,
+   "scanned_at": 1794731928,
+   "top10_views": 551194800,
+   "median_views": 13128539,
    "video_count": 10,
    "top_terms": [
     "championship",
+    "raw",
+    "miz",
+    "triple",
     "playlist",
     "roman",
     "reigns",
-    "raw",
-    "john",
-    "cena",
-    "rock"
+    "john"
    ],
    "best_video": {
     "title": "FULL MATCH: John Cena & The Rock vs. The Miz & R-Truth: Survivor Series 2011",
     "channel": "WWE",
-    "views": 284323020,
+    "views": 284589012,
     "published": "2020-11-22",
     "id": "ChiLWi-mBvU"
    },
@@ -2830,6 +2830,33 @@
    "rank": 104
   },
   {
+   "id": "paige",
+   "name": "Paige",
+   "status": "unscanned",
+   "scanned_at": 1794731950,
+   "top10_views": 256014667,
+   "median_views": 14685715,
+   "video_count": 10,
+   "top_terms": [
+    "raw",
+    "exclusive",
+    "network",
+    "april",
+    "returns",
+    "royal",
+    "rumble",
+    "jan"
+   ],
+   "best_video": {
+    "title": "Matt & Jeff Hardy make a shocking return to WWE: WrestleMania 33 (WWE Network Exclusive)",
+    "channel": "WWE",
+    "views": 53812153,
+    "published": "2017-04-03",
+    "id": "BVeC9wXZLUc"
+   },
+   "rank": 105
+  },
+  {
    "id": "the-shining-stars",
    "name": "The Shining Stars",
    "status": "unscanned",
@@ -2855,7 +2882,7 @@
     "published": "2020-05-28",
     "id": "OWip7yvXukI"
    },
-   "rank": 105
+   "rank": 106
   },
   {
    "id": "ivory",
@@ -2882,7 +2909,7 @@
     "published": "2022-11-19",
     "id": "ixTkLjTBQyk"
    },
-   "rank": 106
+   "rank": 107
   },
   {
    "id": "liv-morgan",
@@ -2908,7 +2935,7 @@
     "published": "2024-11-19",
     "id": "7Tt0cpllHCw"
    },
-   "rank": 107,
+   "rank": 108,
    "scanned_at": 1794559146
   },
   {
@@ -2935,35 +2962,8 @@
     "published": "2022-09-18",
     "id": "yy_FymuS7yY"
    },
-   "rank": 108,
+   "rank": 109,
    "scanned_at": 1794559148
-  },
-  {
-   "id": "paige",
-   "name": "Paige",
-   "status": "unscanned",
-   "scanned_at": 1794127219,
-   "top10_views": 230626881,
-   "median_views": 14673204,
-   "video_count": 10,
-   "top_terms": [
-    "raw",
-    "network",
-    "exclusive",
-    "royal",
-    "rumble",
-    "paige's",
-    "moments",
-    "nov"
-   ],
-   "best_video": {
-    "title": "Matt & Jeff Hardy make a shocking return to WWE: WrestleMania 33 (WWE Network Exclusive)",
-    "channel": "WWE",
-    "views": 53783943,
-    "published": "2017-04-03",
-    "id": "BVeC9wXZLUc"
-   },
-   "rank": 109
   },
   {
    "id": "lita",
@@ -3216,24 +3216,24 @@
    "id": "nikkita-lyons",
    "name": "Nikkita Lyons",
    "status": "unscanned",
-   "scanned_at": 1794213595,
-   "top10_views": 199326274,
-   "median_views": 746198,
+   "scanned_at": 1794732029,
+   "top10_views": 199996270,
+   "median_views": 746415,
    "video_count": 10,
    "top_terms": [
-    "nxt",
     "nikita",
+    "nxt",
     "tna",
-    "may",
     "elton",
     "john",
     "truth",
-    "about"
+    "about",
+    "kayla"
    ],
    "best_video": {
     "title": "Elton John - Nikita",
     "channel": "EltonJohnVEVO",
-    "views": 192784006,
+    "views": 193198930,
     "published": "2016-11-25",
     "id": "Tg-Q-Acv4qs"
    },
@@ -3459,6 +3459,33 @@
    "scanned_at": 1794559158
   },
   {
+   "id": "b-fab",
+   "name": "B-Fab",
+   "status": "unscanned",
+   "scanned_at": 1794731932,
+   "top10_views": 167319473,
+   "median_views": 1373553,
+   "video_count": 10,
+   "top_terms": [
+    "jade",
+    "rhea",
+    "ripley",
+    "michin",
+    "cargill",
+    "charlotte",
+    "flair",
+    "alexa"
+   ],
+   "best_video": {
+    "title": "Rels B - TU VAS SIN (fav) | afroLOVA 25'",
+    "channel": "Rels B / Skinny Flakk",
+    "views": 141489173,
+    "published": "2025-06-20",
+    "id": "LypslWGSvSI"
+   },
+   "rank": 128
+  },
+  {
    "id": "scotty-2-hotty",
    "name": "Scotty 2 Hotty",
    "status": "unscanned",
@@ -3482,33 +3509,6 @@
     "views": 93020429,
     "published": "2017-08-25",
     "id": "WlD-grhWz0Y"
-   },
-   "rank": 128
-  },
-  {
-   "id": "b-fab",
-   "name": "B-Fab",
-   "status": "unscanned",
-   "scanned_at": 1794127203,
-   "top10_views": 166457029,
-   "median_views": 1373209,
-   "video_count": 10,
-   "top_terms": [
-    "jade",
-    "rhea",
-    "ripley",
-    "cargill",
-    "michin",
-    "iyo",
-    "sky",
-    "saves"
-   ],
-   "best_video": {
-    "title": "Rels B - TU VAS SIN (fav) | afroLOVA 25'",
-    "channel": "Rels B / Skinny Flakk",
-    "views": 141032087,
-    "published": "2025-06-20",
-    "id": "LypslWGSvSI"
    },
    "rank": 129
   },
@@ -4603,9 +4603,9 @@
    "id": "cutler-james",
    "name": "Cutler James",
    "status": "unscanned",
-   "scanned_at": 1794213550,
-   "top10_views": 85833591,
-   "median_views": 3803524,
+   "scanned_at": 1794731982,
+   "top10_views": 86037167,
+   "median_views": 3815461,
    "video_count": 10,
    "top_terms": [
     "jay",
@@ -4620,7 +4620,7 @@
    "best_video": {
     "title": "JAY CUTLER VS. RONNIE COLEMAN \u2014 MR. OLYMPIA COMEBACK\ud83c\udfc6 #shorts #bodybuilding #gym #jaycutler",
     "channel": "OLD SCHOOL GLORY",
-    "views": 34000729,
+    "views": 34143925,
     "published": "2023-08-26",
     "id": "SOCmQuTe10c"
    },
@@ -5009,9 +5009,9 @@
    "id": "hank-walker",
    "name": "Hank Walker",
    "status": "unscanned",
-   "scanned_at": 1794213539,
-   "top10_views": 55747696,
-   "median_views": 190850,
+   "scanned_at": 1794731971,
+   "top10_views": 55812545,
+   "median_views": 191159,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -5026,7 +5026,7 @@
    "best_video": {
     "title": "Wheeler Walker Jr. - Fuck You Bitch",
     "channel": "WheelerWalkerJrVEVO",
-    "views": 39350910,
+    "views": 39377430,
     "published": "2015-10-27",
     "id": "myJDBos5Vyw"
    },
@@ -5442,12 +5442,39 @@
    "rank": 200
   },
   {
+   "id": "shawn-spears",
+   "name": "Shawn Spears",
+   "status": "unscanned",
+   "scanned_at": 1794731956,
+   "top10_views": 42567209,
+   "median_views": 2312311,
+   "video_count": 10,
+   "top_terms": [
+    "aew",
+    "chops",
+    "his",
+    "wrestling",
+    "royal",
+    "rumble",
+    "did",
+    "wardlow"
+   ],
+   "best_video": {
+    "title": "I Took 20 Wrestling Chops \ud83d\ude33",
+    "channel": "CVV CLIPS",
+    "views": 18134980,
+    "published": "2022-03-26",
+    "id": "MHwxQD8XbMM"
+   },
+   "rank": 201
+  },
+  {
    "id": "kendal-grey",
    "name": "Kendal Grey",
    "status": "unscanned",
-   "scanned_at": 1794213586,
-   "top10_views": 41958356,
-   "median_views": 1909666,
+   "scanned_at": 1794732020,
+   "top10_views": 42229589,
+   "median_views": 1965448,
    "video_count": 10,
    "top_terms": [
     "hunted",
@@ -5462,11 +5489,11 @@
    "best_video": {
     "title": "Hunting Down the Chicken Killing Black Bear",
     "channel": "Kendall Gray",
-    "views": 9957122,
+    "views": 9963512,
     "published": "2024-10-14",
     "id": "oxuDgQcIACs"
    },
-   "rank": 201
+   "rank": 202
   },
   {
    "id": "akira-tozawa",
@@ -5493,7 +5520,7 @@
     "published": "2022-04-15",
     "id": "nsXHiCih3eQ"
    },
-   "rank": 202
+   "rank": 203
   },
   {
    "id": "kit-wilson",
@@ -5520,7 +5547,7 @@
     "published": "2022-08-17",
     "id": "OWrl8cKnTGA"
    },
-   "rank": 203
+   "rank": 204
   },
   {
    "id": "aleister-black",
@@ -5546,7 +5573,7 @@
     "published": "2025-05-09",
     "id": "pxRIX6QkWsU"
    },
-   "rank": 204,
+   "rank": 205,
    "scanned_at": 1794559202
   },
   {
@@ -5574,7 +5601,7 @@
     "published": "2012-07-24",
     "id": "o7HZZJov0uc"
    },
-   "rank": 205
+   "rank": 206
   },
   {
    "id": "roddy-piper",
@@ -5601,7 +5628,7 @@
     "published": "2015-08-04",
     "id": "VBMTYUjuuMg"
    },
-   "rank": 206
+   "rank": 207
   },
   {
    "id": "hank-tank",
@@ -5628,33 +5655,6 @@
     "views": 12128460,
     "published": "2020-11-10",
     "id": "oGtwrggZbq0"
-   },
-   "rank": 207
-  },
-  {
-   "id": "shawn-spears",
-   "name": "Shawn Spears",
-   "status": "unscanned",
-   "scanned_at": 1794213524,
-   "top10_views": 36328169,
-   "median_views": 1777085,
-   "video_count": 10,
-   "top_terms": [
-    "aew",
-    "chops",
-    "wrestling",
-    "tye",
-    "dillinger",
-    "royal",
-    "rumble",
-    "did"
-   ],
-   "best_video": {
-    "title": "I Took 20 Wrestling Chops \ud83d\ude33",
-    "channel": "CVV CLIPS",
-    "views": 18133343,
-    "published": "2022-03-26",
-    "id": "MHwxQD8XbMM"
    },
    "rank": 208
   },
@@ -5907,33 +5907,6 @@
    "rank": 217
   },
   {
-   "id": "mariah-may",
-   "name": "Mariah May",
-   "status": "unscanned",
-   "scanned_at": 1794127215,
-   "top10_views": 32397672,
-   "median_views": 1652055,
-   "video_count": 10,
-   "top_terms": [
-    "aew",
-    "toni",
-    "storm",
-    "champion",
-    "women",
-    "carey",
-    "all",
-    "tonistorm"
-   ],
-   "best_video": {
-    "title": "Mariah Carey - My All (Official Lyric Video)",
-    "channel": "MariahCareyVEVO",
-    "views": 8752362,
-    "published": "2025-04-25",
-    "id": "cuDhKtTy1Bk"
-   },
-   "rank": 218
-  },
-  {
    "id": "montez-ford",
    "name": "Montez Ford",
    "status": "unscanned",
@@ -5958,7 +5931,7 @@
     "published": "2026-05-24",
     "id": "AS840hdgzsI"
    },
-   "rank": 219
+   "rank": 218
   },
   {
    "id": "grayson-waller",
@@ -5985,7 +5958,7 @@
     "published": "2023-10-19",
     "id": "kyXP3rM1JnM"
    },
-   "rank": 220
+   "rank": 219
   },
   {
    "id": "latino-world-order",
@@ -6013,34 +5986,34 @@
     "published": "2023-09-25",
     "id": "nINa9k697Ww"
    },
-   "rank": 221
+   "rank": 220
   },
   {
-   "id": "lash-legend",
-   "name": "Lash Legend",
+   "id": "mariah-may",
+   "name": "Mariah May",
    "status": "unscanned",
-   "scanned_at": 1794127213,
-   "top10_views": 29822388,
-   "median_views": 1701745,
+   "scanned_at": 1794731945,
+   "top10_views": 30843840,
+   "median_views": 1590149,
    "video_count": 10,
    "top_terms": [
-    "wargames",
-    "jade",
-    "bianca",
-    "rhea",
-    "ripley",
-    "otis",
-    "have",
-    "clashing"
+    "aew",
+    "toni",
+    "storm",
+    "champion",
+    "women",
+    "carey",
+    "all",
+    "timeless"
    ],
    "best_video": {
-    "title": "Otis and Lash have CLASHING opinions! \ud83d\ude05",
-    "channel": "WWE",
-    "views": 12452897,
-    "published": "2023-12-08",
-    "id": "Q8BtF2NY_ws"
+    "title": "Mariah Carey - My All (Official Lyric Video)",
+    "channel": "MariahCareyVEVO",
+    "views": 8834718,
+    "published": "2025-04-25",
+    "id": "cuDhKtTy1Bk"
    },
-   "rank": 222
+   "rank": 221
   },
   {
    "id": "hart-foundation",
@@ -6068,7 +6041,7 @@
     "published": "2025-09-26",
     "id": "jDAEu78KWYE"
    },
-   "rank": 223
+   "rank": 222
   },
   {
    "id": "maxxine-dupri",
@@ -6094,7 +6067,7 @@
     "published": "2026-09-07",
     "id": "8nEgapfbWC0"
    },
-   "rank": 224,
+   "rank": 223,
    "scanned_at": 1794559224
   },
   {
@@ -6121,35 +6094,8 @@
     "published": "2024-05-24",
     "id": "DODfEafVza4"
    },
-   "rank": 225,
+   "rank": 224,
    "scanned_at": 1794559219
-  },
-  {
-   "id": "shiloh-hill",
-   "name": "Shiloh Hill",
-   "status": "unscanned",
-   "scanned_at": 1794213567,
-   "top10_views": 27062866,
-   "median_views": 1488046,
-   "video_count": 10,
-   "top_terms": [
-    "dark",
-    "battle",
-    "web",
-    "put",
-    "security",
-    "camera",
-    "tennessee",
-    "civil"
-   ],
-   "best_video": {
-    "title": "i put AI in a security camera",
-    "channel": "Shiloh Hill WWE",
-    "views": 13976378,
-    "published": "2026-01-08",
-    "id": "jPIUERiXbuU"
-   },
-   "rank": 226
   },
   {
    "id": "bam-bam-bigelow",
@@ -6176,7 +6122,34 @@
     "published": "2012-08-09",
     "id": "a-401wNkFOU"
    },
-   "rank": 227
+   "rank": 225
+  },
+  {
+   "id": "shiloh-hill",
+   "name": "Shiloh Hill",
+   "status": "unscanned",
+   "scanned_at": 1794732000,
+   "top10_views": 26255979,
+   "median_views": 1508841,
+   "video_count": 10,
+   "top_terms": [
+    "dark",
+    "web",
+    "put",
+    "security",
+    "camera",
+    "tennessee",
+    "civil",
+    "war"
+   ],
+   "best_video": {
+    "title": "i put AI in a security camera",
+    "channel": "Shiloh Hill WWE",
+    "views": 13977906,
+    "published": "2026-01-08",
+    "id": "jPIUERiXbuU"
+   },
+   "rank": 226
   },
   {
    "id": "trick-williams",
@@ -6202,7 +6175,7 @@
     "published": "2025-07-23",
     "id": "C-30bAdD-Uo"
    },
-   "rank": 228,
+   "rank": 227,
    "scanned_at": 1794559221
   },
   {
@@ -6229,7 +6202,7 @@
     "published": "2022-11-22",
     "id": "UC1dlNkHx2Q"
    },
-   "rank": 229,
+   "rank": 228,
    "id": "brawling-brutes",
    "scanned_at": 1794645533
   },
@@ -6258,7 +6231,7 @@
     "published": "2018-11-22",
     "id": "NVbQDdVvPUE"
    },
-   "rank": 230
+   "rank": 229
   },
   {
    "id": "royce-keys",
@@ -6285,7 +6258,7 @@
     "published": "2026-10-20",
     "id": "pegduMc7iz0"
    },
-   "rank": 231
+   "rank": 230
   },
   {
    "id": "jeff-jarrett",
@@ -6312,7 +6285,7 @@
     "published": "2023-05-23",
     "id": "bofQPbjPGPk"
    },
-   "rank": 232
+   "rank": 231
   },
   {
    "id": "the-colons",
@@ -6340,7 +6313,7 @@
     "published": "2024-11-23",
     "id": "asc9xFbbOSo"
    },
-   "rank": 233
+   "rank": 232
   },
   {
    "id": "the-hype-bros",
@@ -6368,7 +6341,7 @@
     "published": "2025-07-03",
     "id": "KypHNiEFL54"
    },
-   "rank": 234
+   "rank": 233
   },
   {
    "id": "el-grande-americano",
@@ -6394,7 +6367,7 @@
     "published": "2025-04-08",
     "id": "N5RHeCqjFBU"
    },
-   "rank": 235,
+   "rank": 234,
    "scanned_at": 1794559229
   },
   {
@@ -6422,7 +6395,7 @@
     "published": "2022-12-28",
     "id": "A91GuqdAVD0"
    },
-   "rank": 236
+   "rank": 235
   },
   {
    "id": "jevon-evans",
@@ -6448,7 +6421,7 @@
     "published": "2025-12-10",
     "id": "QB6q50VKPvs"
    },
-   "rank": 237,
+   "rank": 236,
    "scanned_at": 1794559231
   },
   {
@@ -6476,34 +6449,34 @@
     "published": "2018-12-04",
     "id": "QHMoeH2xtxI"
    },
-   "rank": 238
+   "rank": 237
   },
   {
    "id": "zilla-fatu",
    "name": "Zilla Fatu",
    "status": "unscanned",
-   "scanned_at": 1794213546,
-   "top10_views": 22272212,
-   "median_views": 1461290,
+   "scanned_at": 1794731978,
+   "top10_views": 22702908,
+   "median_views": 1474030,
    "video_count": 10,
    "top_terms": [
-    "wrestling",
-    "nxt",
     "gcw",
+    "wrestling",
     "umaga",
-    "booker",
-    "reality",
-    "must",
-    "see"
+    "anoa",
+    "family",
+    "usos",
+    "solo",
+    "sikoa"
    ],
    "best_video": {
     "title": "Zilla and Jacob Fatu GCW entrances! #wrestlingnews #wwe #wrestling #gcw #shortsfeed #romanreigns",
     "channel": "RyanTD",
-    "views": 5776378,
+    "views": 5799361,
     "published": "2024-02-14",
     "id": "TdX5hrL-T_I"
    },
-   "rank": 239
+   "rank": 238
   },
   {
    "id": "steiner-brothers",
@@ -6530,6 +6503,33 @@
     "views": 6664550,
     "published": "2025-07-06",
     "id": "hrHIgXCSeLc"
+   },
+   "rank": 239
+  },
+  {
+   "id": "jacy-jayne",
+   "name": "Jacy Jayne",
+   "status": "unscanned",
+   "scanned_at": 1794731936,
+   "top10_views": 21947487,
+   "median_views": 1274490,
+   "video_count": 10,
+   "top_terms": [
+    "nxt",
+    "vaquer",
+    "stephanie",
+    "women",
+    "ripley",
+    "sept",
+    "fatal",
+    "influence"
+   ],
+   "best_video": {
+    "title": "Flair around and find out, Jacy Jayne... \ud83d\ude2e\u200d\ud83d\udca8\ud83d\udc8e",
+    "channel": "WWE",
+    "views": 6104003,
+    "published": "2026-05-07",
+    "id": "vblYRaGY0tQ"
    },
    "rank": 240
   },
@@ -6561,33 +6561,6 @@
    "rank": 241
   },
   {
-   "id": "jacy-jayne",
-   "name": "Jacy Jayne",
-   "status": "unscanned",
-   "scanned_at": 1794127207,
-   "top10_views": 21588827,
-   "median_views": 1274471,
-   "video_count": 10,
-   "top_terms": [
-    "nxt",
-    "vaquer",
-    "stephanie",
-    "women",
-    "ripley",
-    "sept",
-    "fatal",
-    "influence"
-   ],
-   "best_video": {
-    "title": "Flair around and find out, Jacy Jayne... \ud83d\ude2e\u200d\ud83d\udca8\ud83d\udc8e",
-    "channel": "WWE",
-    "views": 5922033,
-    "published": "2026-05-07",
-    "id": "vblYRaGY0tQ"
-   },
-   "rank": 242
-  },
-  {
    "id": "karrion-kross",
    "name": "Karrion Kross",
    "status": "active",
@@ -6611,7 +6584,7 @@
     "published": "2025-05-31",
     "id": "-7YAS7ZSxg8"
    },
-   "rank": 243,
+   "rank": 242,
    "scanned_at": 1794559244
   },
   {
@@ -6640,7 +6613,7 @@
     "published": "2024-08-17",
     "id": "MLFcYZHU7lk"
    },
-   "rank": 244
+   "rank": 243
   },
   {
    "id": "erik",
@@ -6667,7 +6640,7 @@
     "published": "2025-05-05",
     "id": "VIhjXwW9bdk"
    },
-   "rank": 245
+   "rank": 244
   },
   {
    "id": "the-vaudevillains",
@@ -6695,7 +6668,7 @@
     "published": "2014-12-12",
     "id": "we5LM_27OOE"
    },
-   "rank": 246
+   "rank": 245
   },
   {
    "id": "lyra-valkyria",
@@ -6721,7 +6694,7 @@
     "published": "2025-07-29",
     "id": "CsMZw4HVG_M"
    },
-   "rank": 247,
+   "rank": 246,
    "scanned_at": 1794559234
   },
   {
@@ -6749,7 +6722,7 @@
     "published": "2023-11-24",
     "id": "s4-5yeypYTs"
    },
-   "rank": 248
+   "rank": 247
   },
   {
    "id": "breezango",
@@ -6777,7 +6750,7 @@
     "published": "2017-11-29",
     "id": "dc66rRymXuQ"
    },
-   "rank": 249
+   "rank": 248
   },
   {
    "id": "rey-fenix",
@@ -6803,8 +6776,35 @@
     "published": "2026-09-15",
     "id": "Vw214-Ald2c"
    },
-   "rank": 250,
+   "rank": 249,
    "scanned_at": 1794559236
+  },
+  {
+   "id": "lash-legend",
+   "name": "Lash Legend",
+   "status": "unscanned",
+   "scanned_at": 1794731943,
+   "top10_views": 17517781,
+   "median_views": 1244662,
+   "video_count": 10,
+   "top_terms": [
+    "jade",
+    "bianca",
+    "jakara",
+    "jackson",
+    "women",
+    "wargames",
+    "belair",
+    "cargill"
+   ],
+   "best_video": {
+    "title": "Even Jade and Bianca know Lash Legend is a force to be reckoned with! \ud83d\ude33\ud83d\udd25",
+    "channel": "WWE",
+    "views": 4675082,
+    "published": "2024-10-25",
+    "id": "W5cVR33gMzc"
+   },
+   "rank": 250
   },
   {
    "id": "ivy-nile",
@@ -6861,6 +6861,33 @@
    "scanned_at": 1794559242
   },
   {
+   "id": "tony-dangelo",
+   "name": "Tony D'Angelo",
+   "status": "unscanned",
+   "scanned_at": 1794731954,
+   "top10_views": 16572169,
+   "median_views": 877253,
+   "video_count": 10,
+   "top_terms": [
+    "nxt",
+    "title",
+    "oba",
+    "femi",
+    "north",
+    "american",
+    "halloween",
+    "havoc"
+   ],
+   "best_video": {
+    "title": "FULL MATCH: Tony D\u2019Angelo vs. Oba Femi | NXT North American Title TLC Match: Halloween Havoc 2024",
+    "channel": "WWE NXT",
+    "views": 5260137,
+    "published": "2025-11-01",
+    "id": "mfZ6HpYaoag"
+   },
+   "rank": 253
+  },
+  {
    "id": "sol-ruca",
    "name": "Sol Ruca",
    "status": "active",
@@ -6884,7 +6911,7 @@
     "published": "2026-01-13",
     "id": "LCjK_G-qpGY"
    },
-   "rank": 253,
+   "rank": 254,
    "scanned_at": 1794559247
   },
   {
@@ -6912,15 +6939,15 @@
     "published": "2025-05-05",
     "id": "VIhjXwW9bdk"
    },
-   "rank": 254
+   "rank": 255
   },
   {
    "id": "myles-borne",
    "name": "Myles Borne",
    "status": "unscanned",
-   "scanned_at": 1794213528,
-   "top10_views": 16055187,
-   "median_views": 619239,
+   "scanned_at": 1794731960,
+   "top10_views": 16130588,
+   "median_views": 619387,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -6935,19 +6962,19 @@
    "best_video": {
     "title": "Oba Femi vs. Myles Borne NXT Battleground 2025 #obafemi #wwe #shorts #viral",
     "channel": "HeavyweightFightClub",
-    "views": 6945725,
+    "views": 6945877,
     "published": "2026-07-11",
     "id": "uBCim-8m6iE"
    },
-   "rank": 255
+   "rank": 256
   },
   {
    "id": "ricky-smokes",
    "name": "Ricky Smokes",
    "status": "unscanned",
-   "scanned_at": 1794213574,
-   "top10_views": 14945474,
-   "median_views": 146055,
+   "scanned_at": 1794732007,
+   "top10_views": 14949168,
+   "median_views": 146065,
    "video_count": 10,
    "top_terms": [
     "wrestling",
@@ -6962,19 +6989,19 @@
    "best_video": {
     "title": "B3cca with the crazy reversal on the smoke show Ricky Smokes chaotic wrestling",
     "channel": "The VSW",
-    "views": 11370573,
+    "views": 11370604,
     "published": "2021-05-21",
     "id": "4fnHNhzx8yQ"
    },
-   "rank": 256
+   "rank": 257
   },
   {
    "id": "talla-tonga",
    "name": "Talla Tonga",
    "status": "unscanned",
-   "scanned_at": 1794127201,
-   "top10_views": 14711029,
-   "median_views": 1406727,
+   "scanned_at": 1794731930,
+   "top10_views": 14725422,
+   "median_views": 1410733,
    "video_count": 10,
    "top_terms": [
     "oba",
@@ -6989,11 +7016,38 @@
    "best_video": {
     "title": "Oba Femi Confronts Talla Tonga in Unbelievable Standoff!",
     "channel": "New Subscriber",
-    "views": 2364349,
+    "views": 2364399,
     "published": "2026-07-25",
     "id": "KONMy2PwGBs"
    },
-   "rank": 257
+   "rank": 258
+  },
+  {
+   "id": "matt-cardona",
+   "name": "Matt Cardona",
+   "status": "unscanned",
+   "scanned_at": 1794731923,
+   "top10_views": 14701518,
+   "median_views": 1267721,
+   "video_count": 10,
+   "top_terms": [
+    "chelsea",
+    "aew",
+    "green",
+    "now",
+    "adam",
+    "copeland",
+    "post",
+    "career"
+   ],
+   "best_video": {
+    "title": "Chelsea Green On Matt Cardona\u2019s Post-WWE Career",
+    "channel": "CVV CLIPS",
+    "views": 2889865,
+    "published": "2024-02-11",
+    "id": "8XOOYt7dDF8"
+   },
+   "rank": 259
   },
   {
    "id": "creed-brothers",
@@ -7021,34 +7075,7 @@
     "published": "2023-12-19",
     "id": "7_zqujqZN0M"
    },
-   "rank": 258
-  },
-  {
-   "id": "tatum-paxley",
-   "name": "Tatum Paxley",
-   "status": "unscanned",
-   "scanned_at": 1794127217,
-   "top10_views": 14099494,
-   "median_views": 1401909,
-   "video_count": 10,
-   "top_terms": [
-    "alexa",
-    "bliss",
-    "flair",
-    "nxt",
-    "charlotte",
-    "tag",
-    "team",
-    "help"
-   ],
-   "best_video": {
-    "title": "\u00a1Esto lo cambia TODO! \ud83e\udd2f \u00a1Alexa Bliss est\u00e1 de regreso y Tatum Paxley ha llegado! #SmackDown",
-    "channel": "WWE Espa\u00f1ol",
-    "views": 1887502,
-    "published": "2026-08-08",
-    "id": "oTZT9mTMl6E"
-   },
-   "rank": 259
+   "rank": 260
   },
   {
    "id": "ludwig-kaiser",
@@ -7075,34 +7102,34 @@
     "published": "2026-05-31",
     "id": "ac2uUQ1xGPY"
    },
-   "rank": 260
+   "rank": 261
   },
   {
-   "id": "matt-cardona",
-   "name": "Matt Cardona",
+   "id": "tatum-paxley",
+   "name": "Tatum Paxley",
    "status": "unscanned",
-   "scanned_at": 1794127194,
-   "top10_views": 13567701,
-   "median_views": 1154176,
+   "scanned_at": 1794731948,
+   "top10_views": 13672773,
+   "median_views": 1350580,
    "video_count": 10,
    "top_terms": [
-    "chelsea",
-    "green",
-    "aew",
-    "cody",
-    "post",
-    "career",
-    "reacts",
-    "wearing"
+    "alexa",
+    "bliss",
+    "flair",
+    "nxt",
+    "team",
+    "charlotte",
+    "tag",
+    "help"
    ],
    "best_video": {
-    "title": "Chelsea Green On Matt Cardona\u2019s Post-WWE Career",
-    "channel": "CVV CLIPS",
-    "views": 2889071,
-    "published": "2024-02-11",
-    "id": "8XOOYt7dDF8"
+    "title": "\u00a1Esto lo cambia TODO! \ud83e\udd2f \u00a1Alexa Bliss est\u00e1 de regreso y Tatum Paxley ha llegado! #SmackDown",
+    "channel": "WWE Espa\u00f1ol",
+    "views": 1909501,
+    "published": "2026-08-08",
+    "id": "oTZT9mTMl6E"
    },
-   "rank": 261
+   "rank": 262
   },
   {
    "id": "ethan-page",
@@ -7128,35 +7155,8 @@
     "published": "2025-08-06",
     "id": "PAN7b0QINcU"
    },
-   "rank": 262,
+   "rank": 263,
    "scanned_at": 1794559211
-  },
-  {
-   "id": "fallon-henley",
-   "name": "Fallon Henley",
-   "status": "unscanned",
-   "scanned_at": 1794127205,
-   "top10_views": 13105892,
-   "median_views": 390430,
-   "video_count": 10,
-   "top_terms": [
-    "nxt",
-    "stephanie",
-    "vaquer",
-    "coming",
-    "wwenxt",
-    "day",
-    "tiffany",
-    "stratton"
-   ],
-   "best_video": {
-    "title": "Stephanie Vaquer is coming for you, Fallon Henley \ud83d\udc40 #WWENXT",
-    "channel": "WWE",
-    "views": 6853694,
-    "published": "2025-01-20",
-    "id": "s7DjgCU6X7o"
-   },
-   "rank": 263
   },
   {
    "id": "angelo-dawkins",
@@ -7186,6 +7186,33 @@
    "rank": 264
   },
   {
+   "id": "fallon-henley",
+   "name": "Fallon Henley",
+   "status": "unscanned",
+   "scanned_at": 1794731934,
+   "top10_views": 12845739,
+   "median_views": 391782,
+   "video_count": 10,
+   "top_terms": [
+    "nxt",
+    "stephanie",
+    "vaquer",
+    "coming",
+    "wwenxt",
+    "day",
+    "tiffany",
+    "stratton"
+   ],
+   "best_video": {
+    "title": "Stephanie Vaquer is coming for you, Fallon Henley \ud83d\udc40 #WWENXT",
+    "channel": "WWE",
+    "views": 6908985,
+    "published": "2025-01-20",
+    "id": "s7DjgCU6X7o"
+   },
+   "rank": 265
+  },
+  {
    "id": "cruz-del-toro",
    "name": "Cruz Del Toro",
    "status": "unscanned",
@@ -7210,15 +7237,15 @@
     "published": "2016-06-28",
     "id": "C2P8JHxD8dA"
    },
-   "rank": 265
+   "rank": 266
   },
   {
    "id": "thea-hail",
    "name": "Thea Hail",
    "status": "unscanned",
-   "scanned_at": 1794213580,
-   "top10_views": 12333900,
-   "median_views": 563085,
+   "scanned_at": 1794732013,
+   "top10_views": 12390075,
+   "median_views": 563090,
    "video_count": 10,
    "top_terms": [
     "wwenxt",
@@ -7228,70 +7255,16 @@
     "women",
     "great",
     "bash",
-    "some"
+    "don"
    ],
    "best_video": {
     "title": "Don\u2019t mess with Thea Hail! \ud83d\ude24 #NXTGoldRush",
     "channel": "WWE",
-    "views": 4667669,
+    "views": 4667756,
     "published": "2025-11-19",
     "id": "qMjXGtqdCVs"
    },
-   "rank": 266
-  },
-  {
-   "id": "tony-dangelo",
-   "name": "Tony D'Angelo",
-   "status": "unscanned",
-   "scanned_at": 1794127223,
-   "top10_views": 12266491,
-   "median_views": 695575,
-   "video_count": 10,
-   "top_terms": [
-    "nxt",
-    "title",
-    "oba",
-    "wwenxt",
-    "femi",
-    "north",
-    "american",
-    "sam"
-   ],
-   "best_video": {
-    "title": "FULL MATCH: Tony D\u2019Angelo vs. Oba Femi | NXT North American Title TLC Match: Halloween Havoc 2024",
-    "channel": "WWE NXT",
-    "views": 5243290,
-    "published": "2025-11-01",
-    "id": "mfZ6HpYaoag"
-   },
    "rank": 267
-  },
-  {
-   "id": "blake-monroe",
-   "name": "Blake Monroe",
-   "status": "unscanned",
-   "scanned_at": 1794127221,
-   "top10_views": 11984032,
-   "median_views": 695490,
-   "video_count": 10,
-   "top_terms": [
-    "wwenxt",
-    "jordynne",
-    "are",
-    "pretty",
-    "grace",
-    "been",
-    "warned",
-    "rescue"
-   ],
-   "best_video": {
-    "title": "You\u2019ve been warned, Blake! \ud83d\ude24\ud83d\udc4a #WWENXT",
-    "channel": "WWE",
-    "views": 3569929,
-    "published": "2025-08-20",
-    "id": "mxiTk7DYmsY"
-   },
-   "rank": 268
   },
   {
    "id": "vanity-project",
@@ -7319,7 +7292,7 @@
     "published": "2026-06-17",
     "id": "mb3HGgsNZ1Q"
    },
-   "rank": 269
+   "rank": 268
   },
   {
    "id": "harlem-heat",
@@ -7347,7 +7320,7 @@
     "published": "2013-03-01",
     "id": "Qp1eT_Y_IhE"
    },
-   "rank": 270
+   "rank": 269
   },
   {
    "id": "ricky-steamboat",
@@ -7374,7 +7347,7 @@
     "published": "2017-09-29",
     "id": "xaE_6rRHmd0"
    },
-   "rank": 271
+   "rank": 270
   },
   {
    "id": "julius-creed",
@@ -7401,7 +7374,7 @@
     "published": "2023-12-19",
     "id": "7_zqujqZN0M"
    },
-   "rank": 272
+   "rank": 271
   },
   {
    "id": "ricky-saints",
@@ -7427,7 +7400,7 @@
     "published": "2026-06-27",
     "id": "gDhvB3pyhtI"
    },
-   "rank": 273,
+   "rank": 272,
    "scanned_at": 1794645528
   },
   {
@@ -7455,15 +7428,15 @@
     "published": "2025-09-13",
     "id": "NcXnzbduzOQ"
    },
-   "rank": 274
+   "rank": 273
   },
   {
    "id": "josh-briggs",
    "name": "Josh Briggs",
    "status": "unscanned",
-   "scanned_at": 1794213526,
-   "top10_views": 8693237,
-   "median_views": 233238,
+   "scanned_at": 1794731958,
+   "top10_views": 8706452,
+   "median_views": 233267,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -7478,19 +7451,19 @@
    "best_video": {
     "title": "[Free Match] Kris Statlander v. Josh Briggs | Beyond Wrestling (Intergender, AEW, EVOLVE, IWTV.live)",
     "channel": "Beyond Wrestling",
-    "views": 4220156,
+    "views": 4220393,
     "published": "2019-11-21",
     "id": "MY8YyCuDrxc"
    },
-   "rank": 275
+   "rank": 274
   },
   {
    "id": "charlie-dempsey",
    "name": "Charlie Dempsey",
    "status": "unscanned",
-   "scanned_at": 1794213535,
-   "top10_views": 8515707,
-   "median_views": 332456,
+   "scanned_at": 1794731966,
+   "top10_views": 8685729,
+   "median_views": 340648,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -7498,16 +7471,43 @@
     "femi",
     "william",
     "regal",
-    "heritage",
-    "cup",
-    "champion"
+    "zilla",
+    "fatu",
+    "very"
    ],
    "best_video": {
     "title": "FULL MATCH: Oba Femi vs. Myles Borne | NXT Title Match: NXT Battleground 2025",
     "channel": "WWE NXT",
-    "views": 4213299,
+    "views": 4280237,
     "published": "2026-05-26",
     "id": "ftDZaOiIjvI"
+   },
+   "rank": 275
+  },
+  {
+   "id": "blake-monroe",
+   "name": "Blake Monroe",
+   "status": "unscanned",
+   "scanned_at": 1794731952,
+   "top10_views": 8602951,
+   "median_views": 652125,
+   "video_count": 10,
+   "top_terms": [
+    "jordynne",
+    "wwenxt",
+    "are",
+    "pretty",
+    "grace",
+    "nxt",
+    "rescue",
+    "kylee"
+   ],
+   "best_video": {
+    "title": "Blake Monroe to the rescue! \ud83d\udc4a\ud83d\udc4f #WWENXT",
+    "channel": "WWE",
+    "views": 1799583,
+    "published": "2025-07-02",
+    "id": "08NJCXQ9S5Q"
    },
    "rank": 276
   },
@@ -7569,9 +7569,9 @@
    "id": "noam-dar",
    "name": "Noam Dar",
    "status": "unscanned",
-   "scanned_at": 1794213531,
-   "top10_views": 7889726,
-   "median_views": 644862,
+   "scanned_at": 1794731962,
+   "top10_views": 7891254,
+   "median_views": 644890,
    "video_count": 10,
    "top_terms": [
     "live",
@@ -7586,7 +7586,7 @@
    "best_video": {
     "title": "Cedric Alexander vs. Noam Dar - \"I Quit Match\": WWE 205 Live, July 11, 2017",
     "channel": "WWE",
-    "views": 1617143,
+    "views": 1617254,
     "published": "2017-07-12",
     "id": "QQ5LAPT8bus"
    },
@@ -7647,33 +7647,6 @@
    "rank": 281
   },
   {
-   "id": "kiana-james",
-   "name": "Kiana James",
-   "status": "unscanned",
-   "scanned_at": 1794127209,
-   "top10_views": 6791017,
-   "median_views": 656559,
-   "video_count": 10,
-   "top_terms": [
-    "giulia",
-    "rhea",
-    "ripley",
-    "iyo",
-    "sky",
-    "elimination",
-    "chamber",
-    "right"
-   ],
-   "best_video": {
-    "title": "(1/2) Rhea Ripley & Iyo Sky vs Giulia & Kiana James: Smackdown February 6 2026",
-    "channel": "Women's Wrestling Vault",
-    "views": 1395289,
-    "published": "2026-02-07",
-    "id": "dAWARDDAKnI"
-   },
-   "rank": 282
-  },
-  {
    "id": "berto",
    "name": "Berto",
    "status": "unscanned",
@@ -7698,7 +7671,7 @@
     "published": "2024-02-15",
     "id": "AUhBFvzMLFU"
    },
-   "rank": 283
+   "rank": 282
   },
   {
    "id": "fraxiom",
@@ -7725,6 +7698,33 @@
     "views": 2198629,
     "published": "2020-10-26",
     "id": "NVgS7Kxd6cg"
+   },
+   "rank": 283
+  },
+  {
+   "id": "kiana-james",
+   "name": "Kiana James",
+   "status": "unscanned",
+   "scanned_at": 1794731939,
+   "top10_views": 6496917,
+   "median_views": 533174,
+   "video_count": 10,
+   "top_terms": [
+    "giulia",
+    "rhea",
+    "ripley",
+    "iyo",
+    "sky",
+    "right",
+    "february",
+    "kelani"
+   ],
+   "best_video": {
+    "title": "(1/2) Rhea Ripley & Iyo Sky vs Giulia & Kiana James: Smackdown February 6 2026",
+    "channel": "Women's Wrestling Vault",
+    "views": 1422201,
+    "published": "2026-02-07",
+    "id": "dAWARDDAKnI"
    },
    "rank": 284
   },
@@ -7756,6 +7756,33 @@
    "rank": 285
   },
   {
+   "id": "arianna-grace",
+   "name": "Arianna Grace",
+   "status": "unscanned",
+   "scanned_at": 1794732022,
+   "top10_views": 6260402,
+   "median_views": 355974,
+   "video_count": 10,
+   "top_terms": [
+    "tna",
+    "impact",
+    "may",
+    "santino",
+    "marella",
+    "wwenxt",
+    "did",
+    "father"
+   ],
+   "best_video": {
+    "title": "Even Arianna Grace got in on the action \ud83d\udd90\ufe0f\ud83d\udca5 #WWENXT",
+    "channel": "WWE",
+    "views": 2228394,
+    "published": "2026-09-09",
+    "id": "HT4fmbK6_k8"
+   },
+   "rank": 286
+  },
+  {
    "id": "motor-city-machine-guns",
    "name": "Motor City Machine Guns",
    "status": "unscanned",
@@ -7781,42 +7808,15 @@
     "published": "2025-10-15",
     "id": "9zAzGxL4A3Y"
    },
-   "rank": 286
-  },
-  {
-   "id": "arianna-grace",
-   "name": "Arianna Grace",
-   "status": "unscanned",
-   "scanned_at": 1794213588,
-   "top10_views": 6197168,
-   "median_views": 354827,
-   "video_count": 10,
-   "top_terms": [
-    "tna",
-    "impact",
-    "may",
-    "santino",
-    "marella",
-    "wwenxt",
-    "did",
-    "father"
-   ],
-   "best_video": {
-    "title": "Even Arianna Grace got in on the action \ud83d\udd90\ufe0f\ud83d\udca5 #WWENXT",
-    "channel": "WWE",
-    "views": 2173791,
-    "published": "2026-09-09",
-    "id": "HT4fmbK6_k8"
-   },
    "rank": 287
   },
   {
    "id": "nathan-frazer",
    "name": "Nathan Frazer",
    "status": "unscanned",
-   "scanned_at": 1794127196,
-   "top10_views": 5727654,
-   "median_views": 430720,
+   "scanned_at": 1794731925,
+   "top10_views": 5729364,
+   "median_views": 431049,
    "video_count": 10,
    "top_terms": [
     "axiom",
@@ -7831,7 +7831,7 @@
    "best_video": {
     "title": "Axiom distrajo a Candice LeRae para ayudar a su amigo Nathan Frazer a vencer a Johnny Gargano \ud83e\udd1c\ud83e\udd1b",
     "channel": "WWE Espa\u00f1ol",
-    "views": 1481069,
+    "views": 1481140,
     "published": "2026-01-29",
     "id": "Mx-9rWV58eU"
    },
@@ -7841,9 +7841,9 @@
    "id": "wren-sinclair",
    "name": "Wren Sinclair",
    "status": "unscanned",
-   "scanned_at": 1794213582,
-   "top10_views": 5577923,
-   "median_views": 422654,
+   "scanned_at": 1794732016,
+   "top10_views": 5631308,
+   "median_views": 422961,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -7858,11 +7858,38 @@
    "best_video": {
     "title": "Stephanie Vaquer dominates in her NXT debut: NXT highlights, Oct. 15, 2024",
     "channel": "WWE",
-    "views": 1341119,
+    "views": 1353699,
     "published": "2024-10-16",
     "id": "18kiNIHfpWg"
    },
    "rank": 289
+  },
+  {
+   "id": "sean-legacy",
+   "name": "Sean Legacy",
+   "status": "unscanned",
+   "scanned_at": 1794731998,
+   "top10_views": 5446177,
+   "median_views": 342815,
+   "video_count": 10,
+   "top_terms": [
+    "nxt",
+    "royal",
+    "episode",
+    "main",
+    "event",
+    "zilla",
+    "fatu",
+    "dorian"
+   ],
+   "best_video": {
+    "title": "FULL MATCH: 25-Man No. 1 Contenders\u2019 Battle Royal: NXT, May 6, 2025",
+    "channel": "WWE",
+    "views": 1451799,
+    "published": "2025-05-07",
+    "id": "E6zLvntqraQ"
+   },
+   "rank": 290
   },
   {
    "id": "brutus-creed",
@@ -7888,33 +7915,6 @@
     "views": 1518212,
     "published": "2024-08-06",
     "id": "6zqbUzzloT4"
-   },
-   "rank": 290
-  },
-  {
-   "id": "sean-legacy",
-   "name": "Sean Legacy",
-   "status": "unscanned",
-   "scanned_at": 1794213565,
-   "top10_views": 5374460,
-   "median_views": 342783,
-   "video_count": 10,
-   "top_terms": [
-    "nxt",
-    "royal",
-    "episode",
-    "main",
-    "event",
-    "zilla",
-    "fatu",
-    "dorian"
-   ],
-   "best_video": {
-    "title": "FULL MATCH: 25-Man No. 1 Contenders\u2019 Battle Royal: NXT, May 6, 2025",
-    "channel": "WWE",
-    "views": 1448128,
-    "published": "2025-05-07",
-    "id": "E6zLvntqraQ"
    },
    "rank": 291
   },
@@ -7976,9 +7976,9 @@
    "id": "izzi-dame",
    "name": "Izzi Dame",
    "status": "unscanned",
-   "scanned_at": 1794213590,
-   "top10_views": 4362339,
-   "median_views": 242600,
+   "scanned_at": 1794732024,
+   "top10_views": 4398559,
+   "median_views": 242698,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -7993,7 +7993,7 @@
    "best_video": {
     "title": "FULL MATCH: Alexa Bliss & Charlotte Flair vs. Tatum Paxley & Izzi Dame: NXT, Sept. 16, 2025",
     "channel": "WWE NXT",
-    "views": 1406985,
+    "views": 1430806,
     "published": "2026-09-08",
     "id": "XEkpMO6vsLY"
    },
@@ -8031,9 +8031,9 @@
    "id": "keanu-carver",
    "name": "Keanu Carver",
    "status": "unscanned",
-   "scanned_at": 1794213563,
-   "top10_views": 4245893,
-   "median_views": 267279,
+   "scanned_at": 1794731996,
+   "top10_views": 4236813,
+   "median_views": 267354,
    "video_count": 10,
    "top_terms": [
     "wwenxt",
@@ -8048,7 +8048,7 @@
    "best_video": {
     "title": "Tank and EK Prosper just taught Keanu Carver a lesson \ud83d\udc4f",
     "channel": "WWE",
-    "views": 1217655,
+    "views": 1217690,
     "published": "2026-07-01",
     "id": "To7zYzk1O-Q"
    },
@@ -8082,39 +8082,12 @@
    "rank": 297
   },
   {
-   "id": "tavion-heights",
-   "name": "Tavion Heights",
-   "status": "unscanned",
-   "scanned_at": 1794213544,
-   "top10_views": 3155451,
-   "median_views": 200498,
-   "video_count": 10,
-   "top_terms": [
-    "wwenxt",
-    "nxt",
-    "myles",
-    "borne",
-    "just",
-    "ethan",
-    "page",
-    "finally"
-   ],
-   "best_video": {
-    "title": "Tavion Heights FINALLY SNAPS on Myles Borne!",
-    "channel": "WWE",
-    "views": 782242,
-    "published": "2026-10-31",
-    "id": "bjqLJW50EW4"
-   },
-   "rank": 298
-  },
-  {
    "id": "dion-lennox",
    "name": "Dion Lennox",
    "status": "unscanned",
-   "scanned_at": 1794213549,
-   "top10_views": 3128496,
-   "median_views": 197105,
+   "scanned_at": 1794731980,
+   "top10_views": 3175585,
+   "median_views": 200997,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -8129,9 +8102,36 @@
    "best_video": {
     "title": "Cruz Montana really let Dion Lennox get to him \ud83d\ude2e\u200d\ud83d\udca8 #WWENXT",
     "channel": "WWE",
-    "views": 730988,
+    "views": 732264,
     "published": "2026-10-21",
     "id": "3cO_-hqxbcc"
+   },
+   "rank": 298
+  },
+  {
+   "id": "tavion-heights",
+   "name": "Tavion Heights",
+   "status": "unscanned",
+   "scanned_at": 1794731975,
+   "top10_views": 3162599,
+   "median_views": 200507,
+   "video_count": 10,
+   "top_terms": [
+    "wwenxt",
+    "nxt",
+    "myles",
+    "borne",
+    "just",
+    "ethan",
+    "page",
+    "finally"
+   ],
+   "best_video": {
+    "title": "Tavion Heights FINALLY SNAPS on Myles Borne!",
+    "channel": "WWE",
+    "views": 788726,
+    "published": "2026-10-31",
+    "id": "bjqLJW50EW4"
    },
    "rank": 299
   },
@@ -8139,9 +8139,9 @@
    "id": "lexis-king",
    "name": "Lexis King",
    "status": "unscanned",
-   "scanned_at": 1794213533,
-   "top10_views": 3079379,
-   "median_views": 278975,
+   "scanned_at": 1794731964,
+   "top10_views": 3082775,
+   "median_views": 279222,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -8156,7 +8156,7 @@
    "best_video": {
     "title": "A Pillman becomes a King on NXT: NXT highlights, Oct. 10, 2023",
     "channel": "WWE",
-    "views": 437202,
+    "views": 437353,
     "published": "2023-10-11",
     "id": "kr1AdSWa0V8"
    },
@@ -8166,9 +8166,9 @@
    "id": "karmen-petrovic",
    "name": "Karmen Petrovic",
    "status": "unscanned",
-   "scanned_at": 1794213584,
-   "top10_views": 2991477,
-   "median_views": 242793,
+   "scanned_at": 1794732018,
+   "top10_views": 3066837,
+   "median_views": 244309,
    "video_count": 10,
    "top_terms": [
     "aaa",
@@ -8183,7 +8183,7 @@
    "best_video": {
     "title": "ESPECTACULAR llegada de Los Perros del Mal: AAA Triplemania CDMX highlights, 13 de septiembre",
     "channel": "Lucha Libre AAA",
-    "views": 706600,
+    "views": 724733,
     "published": "2026-09-15",
     "id": "O9zrWNXhh_0"
    },
@@ -8218,56 +8218,56 @@
    "rank": 302
   },
   {
+   "id": "lainey-reid",
+   "name": "Lainey Reid",
+   "status": "unscanned",
+   "scanned_at": 1794731941,
+   "top10_views": 2898632,
+   "median_views": 210845,
+   "video_count": 10,
+   "top_terms": [
+    "title",
+    "nxt",
+    "bella",
+    "fatal",
+    "influence",
+    "summerslam",
+    "win",
+    "tag"
+   ],
+   "best_video": {
+    "title": "AND NEW! Alexa Bliss and Tatum Paxley win Tag Title gold: SmackDown highlights, Oct. 9, 2026",
+    "channel": "WWE",
+    "views": 607053,
+    "published": "2026-10-10",
+    "id": "0RNe8gufKq0"
+   },
+   "rank": 303
+  },
+  {
    "id": "kali-armstrong",
    "name": "Kali Armstrong",
    "status": "unscanned",
-   "scanned_at": 1794213592,
-   "top10_views": 2856282,
-   "median_views": 196539,
+   "scanned_at": 1794732027,
+   "top10_views": 2802863,
+   "median_views": 196658,
    "video_count": 10,
    "top_terms": [
     "nxt",
     "kelani",
     "jordan",
     "wwenxt",
-    "event",
-    "her",
-    "are",
-    "relentless"
+    "evolve",
+    "kendal",
+    "grey",
+    "her"
    ],
    "best_video": {
     "title": "Kelani Jordan and Kali Armstrong are RELENTLESS! \ud83d\ude33 #WWENXT",
     "channel": "WWE",
-    "views": 878414,
+    "views": 878541,
     "published": "2026-08-12",
     "id": "EOT4J6jYlqw"
-   },
-   "rank": 303
-  },
-  {
-   "id": "lainey-reid",
-   "name": "Lainey Reid",
-   "status": "unscanned",
-   "scanned_at": 1794127211,
-   "top10_views": 2429818,
-   "median_views": 187451,
-   "video_count": 10,
-   "top_terms": [
-    "bella",
-    "nxt",
-    "fatal",
-    "influence",
-    "title",
-    "summerslam",
-    "july",
-    "main"
-   ],
-   "best_video": {
-    "title": "Nikki Bella returns to issue a huge SummerSlam challenge: SmackDown highlights, July 24, 2026",
-    "channel": "WWE",
-    "views": 397713,
-    "published": "2026-07-25",
-    "id": "tjD8nbp71r4"
    },
    "rank": 304
   },
@@ -8303,9 +8303,9 @@
    "id": "brooks-jensen",
    "name": "Brooks Jensen",
    "status": "unscanned",
-   "scanned_at": 1794213559,
-   "top10_views": 1814238,
-   "median_views": 139415,
+   "scanned_at": 1794731991,
+   "top10_views": 1815337,
+   "median_views": 139421,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -8320,7 +8320,7 @@
    "best_video": {
     "title": "Kiana James plants a kiss on Brooks Jensen: WWE NXT, March 28, 2023",
     "channel": "WWE",
-    "views": 381708,
+    "views": 381930,
     "published": "2023-03-29",
     "id": "3Is1KwR_NEE"
    },
@@ -8330,9 +8330,9 @@
    "id": "tank-ledger",
    "name": "Tank Ledger",
    "status": "unscanned",
-   "scanned_at": 1794213542,
-   "top10_views": 1703249,
-   "median_views": 72397,
+   "scanned_at": 1794731973,
+   "top10_views": 1683679,
+   "median_views": 61444,
    "video_count": 10,
    "top_terms": [
     "hank",
@@ -8341,52 +8341,25 @@
     "darkstate",
     "tag",
     "team",
-    "level",
-    "oba"
+    "oba",
+    "femi"
    ],
    "best_video": {
     "title": "Nothing but respect between Fraxiom and Hank & Tank \ud83d\udcaa #StandandDeliver",
     "channel": "WWE",
-    "views": 759945,
+    "views": 759988,
     "published": "2025-04-19",
     "id": "m7t-uoOZIyY"
    },
    "rank": 307
   },
   {
-   "id": "dorian-van-dux",
-   "name": "Dorian Van Dux",
-   "status": "unscanned",
-   "scanned_at": 1794213578,
-   "top10_views": 1663355,
-   "median_views": 86818,
-   "video_count": 10,
-   "top_terms": [
-    "sean",
-    "legacy",
-    "nxt",
-    "event",
-    "july",
-    "birthright",
-    "wwenxt",
-    "tag"
-   ],
-   "best_video": {
-    "title": "FULL EPISODE: Maxxine Dupri vs. Roxanne Perez; Giulia vs. Jordynne Grace: Main Event, June 11, 2026",
-    "channel": "WWE",
-    "views": 379194,
-    "published": "2026-06-12",
-    "id": "WDk5RmTFuKs"
-   },
-   "rank": 308
-  },
-  {
    "id": "saquon-shugars",
    "name": "Saquon Shugars",
    "status": "unscanned",
-   "scanned_at": 1794213555,
-   "top10_views": 1580779,
-   "median_views": 114521,
+   "scanned_at": 1794731987,
+   "top10_views": 1594397,
+   "median_views": 114537,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -8401,9 +8374,36 @@
    "best_video": {
     "title": "Saquon Shugars with the distraction \ud83d\ude31 #WWENXT",
     "channel": "WWE",
-    "views": 361897,
+    "views": 361985,
     "published": "2026-07-08",
     "id": "IOUUJsYOuis"
+   },
+   "rank": 308
+  },
+  {
+   "id": "dorian-van-dux",
+   "name": "Dorian Van Dux",
+   "status": "unscanned",
+   "scanned_at": 1794732011,
+   "top10_views": 1488281,
+   "median_views": 81870,
+   "video_count": 10,
+   "top_terms": [
+    "sean",
+    "legacy",
+    "nxt",
+    "birthright",
+    "wwenxt",
+    "tag",
+    "event",
+    "zilla"
+   ],
+   "best_video": {
+    "title": "FULL EPISODE: Maxxine Dupri vs. Roxanne Perez; Giulia vs. Jordynne Grace: Main Event, June 11, 2026",
+    "channel": "WWE",
+    "views": 380953,
+    "published": "2026-06-12",
+    "id": "WDk5RmTFuKs"
    },
    "rank": 309
   },
@@ -8411,9 +8411,9 @@
    "id": "kale-dixon",
    "name": "Kale Dixon",
    "status": "unscanned",
-   "scanned_at": 1794213561,
-   "top10_views": 1247247,
-   "median_views": 81532,
+   "scanned_at": 1794731993,
+   "top10_views": 1247741,
+   "median_views": 81544,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -8428,7 +8428,7 @@
    "best_video": {
     "title": "Bron Breakker sends Kale Dixon to the hospital: Raw highlights, May 20, 2024",
     "channel": "WWE",
-    "views": 481636,
+    "views": 481768,
     "published": "2024-05-21",
     "id": "wIOrWEe6ZT4"
    },
@@ -8438,9 +8438,9 @@
    "id": "layla-diggs",
    "name": "Layla Diggs",
    "status": "unscanned",
-   "scanned_at": 1794213597,
-   "top10_views": 1087202,
-   "median_views": 83388,
+   "scanned_at": 1794732031,
+   "top10_views": 1090180,
+   "median_views": 83568,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -8455,7 +8455,7 @@
    "best_video": {
     "title": "FULL EPISODE: Bayley & Lyra Valkyria vs. Kali Armstrong & Layla Diggs: WWE Main Event, June 18, 2026",
     "channel": "WWE",
-    "views": 256896,
+    "views": 257496,
     "published": "2026-06-19",
     "id": "7cYr805q4f8"
    },
@@ -8465,9 +8465,9 @@
    "id": "uriah-connors",
    "name": "Uriah Connors",
    "status": "unscanned",
-   "scanned_at": 1794213576,
-   "top10_views": 1061947,
-   "median_views": 94360,
+   "scanned_at": 1794732009,
+   "top10_views": 1066266,
+   "median_views": 94370,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -8482,7 +8482,7 @@
    "best_video": {
     "title": "Zilla Fatu, Sean Legacy and EK Prosper vs. BirthRight: NXT highlights, Sept. 22, 2026",
     "channel": "WWE",
-    "views": 200134,
+    "views": 203117,
     "published": "2026-09-23",
     "id": "bjKj6L6DWSs"
    },
@@ -8492,15 +8492,15 @@
    "id": "channing-lorenzo",
    "name": "Channing Lorenzo",
    "status": "unscanned",
-   "scanned_at": 1794213537,
-   "top10_views": 1011247,
-   "median_views": 55295,
+   "scanned_at": 1794731969,
+   "top10_views": 955189,
+   "median_views": 53719,
    "video_count": 10,
    "top_terms": [
     "nxt",
     "stacks",
-    "sept",
     "level",
+    "sept",
     "wait",
     "minute",
     "referee",
@@ -8509,7 +8509,7 @@
    "best_video": {
     "title": "Wait a minute\u2026Stacks is the referee?! \ud83e\udd14",
     "channel": "WWE",
-    "views": 215940,
+    "views": 215983,
     "published": "2024-05-08",
     "id": "0AX6AlVHoLk"
    },
@@ -8519,9 +8519,9 @@
    "id": "osiris-griffin",
    "name": "Osiris Griffin",
    "status": "unscanned",
-   "scanned_at": 1794213552,
-   "top10_views": 544555,
-   "median_views": 35692,
+   "scanned_at": 1794731984,
+   "top10_views": 546130,
+   "median_views": 36491,
    "video_count": 10,
    "top_terms": [
     "darkstate",
@@ -8536,7 +8536,7 @@
    "best_video": {
     "title": "Osiris Griffin is DOWN and DarkState is ready to take matters into their own hands! \ud83d\ude24 #WWENXT",
     "channel": "WWE",
-    "views": 146674,
+    "views": 146776,
     "published": "2026-03-04",
     "id": "eZJvSm08SX8"
    },
@@ -8546,9 +8546,9 @@
    "id": "brad-baylor",
    "name": "Brad Baylor",
    "status": "unscanned",
-   "scanned_at": 1794213571,
-   "top10_views": 533215,
-   "median_views": 50964,
+   "scanned_at": 1794732005,
+   "top10_views": 440642,
+   "median_views": 37871,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -8556,16 +8556,16 @@
     "team",
     "vanity",
     "project",
-    "top",
-    "may",
-    "swipe"
+    "swipe",
+    "right",
+    "myles"
    ],
    "best_video": {
-    "title": "Top 10 WWE NXT moments: WWE Top 10, May 19, 2026",
+    "title": "Myles Borne & Tavion Heights vs. The Vanity Project | NXT Tag Title Match: Heatwave 2026 highlights",
     "channel": "WWE",
-    "views": 81640,
-    "published": "2026-05-20",
-    "id": "TXRXPAdceiI"
+    "views": 76386,
+    "published": "2026-08-30",
+    "id": "OA9zPgq_UXw"
    },
    "rank": 315
   },
