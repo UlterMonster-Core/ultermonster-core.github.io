@@ -1,6 +1,6 @@
 {
- "updated": 1795423225,
- "updated_human": "2026-11-23 08:40 ET",
+ "updated": 1795509637,
+ "updated_human": "2026-11-24 08:40 ET",
  "superstars": [
   {
    "id": "jacqueline",
@@ -115,24 +115,24 @@
    "name": "DIY",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991143,
-   "top10_views": 3085963305,
-   "median_views": 176139064,
+   "scanned_at": 1795509575,
+   "top10_views": 3122706303,
+   "median_views": 132216192,
    "video_count": 10,
    "top_terms": [
     "craft",
+    "cute",
+    "handmade",
     "shorts",
     "labubu",
-    "doll",
-    "pencil",
-    "space",
-    "football",
-    "making"
+    "realistic",
+    "viralshort",
+    "trending"
    ],
    "best_video": {
     "title": "Making Cute Labubu from Air Clay \ud83d\udc9a Easy DIY Craft for Kids #diy #craft #labubu",
     "channel": "It's Uliana",
-    "views": 1060127733,
+    "views": 1075270259,
     "published": "2025-10-20",
     "id": "H2HJorUn3xA"
    },
@@ -193,34 +193,6 @@
    "scanned_at": 1794991213
   },
   {
-   "id": "apa",
-   "name": "APA",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794904826,
-   "top10_views": 1881003728,
-   "median_views": 105733039,
-   "video_count": 10,
-   "top_terms": [
-    "shorts",
-    "official",
-    "video",
-    "viral",
-    "lagi",
-    "music",
-    "mommy",
-    "coret"
-   ],
-   "best_video": {
-    "title": "ADU MAINAN VIRAL #shorts",
-    "channel": "Hana Callista",
-    "views": 518993270,
-    "published": "2023-03-16",
-    "id": "IHxwTV5KVsY"
-   },
-   "rank": 8
-  },
-  {
    "id": "sting",
    "name": "Sting",
    "status": "unscanned",
@@ -245,7 +217,7 @@
     "published": "2013-10-20",
     "id": "FYCCs4cpKqw"
    },
-   "rank": 9
+   "rank": 8
   },
   {
    "id": "kane",
@@ -272,7 +244,7 @@
     "published": "2020-11-22",
     "id": "ChiLWi-mBvU"
    },
-   "rank": 10
+   "rank": 9
   },
   {
    "id": "melina",
@@ -299,6 +271,34 @@
     "published": "2022-12-17",
     "id": "MsXdUtlDVhk"
    },
+   "rank": 10
+  },
+  {
+   "id": "apa",
+   "name": "APA",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509554,
+   "top10_views": 1574482191,
+   "median_views": 105733774,
+   "video_count": 10,
+   "top_terms": [
+    "official",
+    "video",
+    "lagi",
+    "shorts",
+    "music",
+    "ini",
+    "mommy",
+    "yang"
+   ],
+   "best_video": {
+    "title": "Gimana menurut onty uncle? Mau kasih challenge apa lagi buat els ellea evron? \ud83e\udd23 #shorts #shortvideo",
+    "channel": "Rensia Sanvira Official",
+    "views": 344317813,
+    "published": "2026-07-09",
+    "id": "hNCCT2c9gx0"
+   },
    "rank": 11
   },
   {
@@ -306,24 +306,24 @@
    "name": "The Revival",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991141,
-   "top10_views": 1641813833,
-   "median_views": 115418235,
+   "scanned_at": 1795509573,
+   "top10_views": 1495329587,
+   "median_views": 55839246,
    "video_count": 10,
    "top_terms": [
     "creedence",
     "clearwater",
-    "official",
-    "video",
     "have",
     "ever",
     "seen",
-    "rain"
+    "rain",
+    "official",
+    "video"
    ],
    "best_video": {
     "title": "Creedence Clearwater Revival - Have You Ever Seen The Rain (Official)",
     "channel": "CCRVEVO",
-    "views": 632571656,
+    "views": 633899526,
     "published": "2018-12-11",
     "id": "u1V8YRJnr4Q"
    },
@@ -442,9 +442,9 @@
    "name": "The Bar",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794904828,
-   "top10_views": 1304160146,
-   "median_views": 96773097,
+   "scanned_at": 1795509556,
+   "top10_views": 1287368084,
+   "median_views": 84924707,
    "video_count": 10,
    "top_terms": [
     "song",
@@ -459,7 +459,7 @@
    "best_video": {
     "title": "Shaboozey - A Bar Song (Tipsy) [Official Visualizer]",
     "channel": "ShaboozeyVEVO",
-    "views": 418043604,
+    "views": 420140028,
     "published": "2024-04-12",
     "id": "t7bQwwqW-Hc"
    },
@@ -709,6 +709,34 @@
    "scanned_at": 1794991229
   },
   {
+   "id": "demolition",
+   "name": "Demolition",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509537,
+   "top10_views": 994016707,
+   "median_views": 59007242,
+   "video_count": 10,
+   "top_terms": [
+    "ranking",
+    "best",
+    "building",
+    "satisfying",
+    "asmr",
+    "funny",
+    "odlysatisfying",
+    "fyp"
+   ],
+   "best_video": {
+    "title": "Builders Found a 10-Year-Old Safe While Demolishing a House\u2026 You Won\u2019t Believe What\u2019s Inside!",
+    "channel": "CRAFTER DUCK",
+    "views": 297624293,
+    "published": "2025-02-18",
+    "id": "B8G0wEOcJMA"
+   },
+   "rank": 27
+  },
+  {
    "id": "edge",
    "name": "Edge",
    "status": "unscanned",
@@ -733,16 +761,16 @@
     "published": "2021-01-31",
     "id": "sZX4MmdXPRA"
    },
-   "rank": 27
+   "rank": 28
   },
   {
    "id": "wyatt-family",
    "name": "Wyatt Family",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991132,
-   "top10_views": 946717785,
-   "median_views": 85913252,
+   "scanned_at": 1795509565,
+   "top10_views": 946991141,
+   "median_views": 85914711,
    "video_count": 10,
    "top_terms": [
     "raw",
@@ -757,11 +785,11 @@
    "best_video": {
     "title": "FULL MATCH - 5-on-5 Traditional Survivor Series Tag Team Elimination Match: Survivor Series 2016",
     "channel": "WWE",
-    "views": 184117930,
+    "views": 184254731,
     "published": "2018-11-07",
     "id": "aXlCC8HCFMc"
    },
-   "rank": 28
+   "rank": 29
   },
   {
    "id": "otis",
@@ -788,7 +816,7 @@
     "published": "2011-08-12",
     "id": "BoEKWtgJQAU"
    },
-   "rank": 29
+   "rank": 30
   },
   {
    "id": "shane-mcmahon",
@@ -815,7 +843,7 @@
     "published": "2018-11-07",
     "id": "aXlCC8HCFMc"
    },
-   "rank": 30
+   "rank": 31
   },
   {
    "id": "randy-orton",
@@ -841,36 +869,8 @@
     "published": "2013-10-20",
     "id": "FYCCs4cpKqw"
    },
-   "rank": 31,
+   "rank": 32,
    "scanned_at": 1794991227
-  },
-  {
-   "id": "evolution",
-   "name": "Evolution",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991127,
-   "top10_views": 872441721,
-   "median_views": 83194514,
-   "video_count": 10,
-   "top_terms": [
-    "brr",
-    "gum",
-    "toy",
-    "blaster",
-    "godzilla",
-    "animated",
-    "pearl",
-    "jam"
-   ],
-   "best_video": {
-    "title": "Toy blaster evolution \ud83d\ude08",
-    "channel": "Skorpion Shot",
-    "views": 150928288,
-    "published": "2026-08-06",
-    "id": "xaLG_T4q4l0"
-   },
-   "rank": 32
   },
   {
    "id": "big-boss-man",
@@ -982,34 +982,6 @@
    "rank": 36
   },
   {
-   "id": "demolition",
-   "name": "Demolition",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794904809,
-   "top10_views": 792352970,
-   "median_views": 58986493,
-   "video_count": 10,
-   "top_terms": [
-    "building",
-    "one",
-    "implosion",
-    "ranking",
-    "best",
-    "videos",
-    "satisfying",
-    "high"
-   ],
-   "best_video": {
-    "title": "This Mini Jackhammer is a Concrete KAREN's Worst Nightmare! \ud83d\ude02\ud83d\udca5 #demolition #powertools",
-    "channel": "Villagegear",
-    "views": 216581201,
-    "published": "2025-05-09",
-    "id": "D-ZsfxFtPMU"
-   },
-   "rank": 37
-  },
-  {
    "id": "rey-mysterio",
    "name": "Rey Mysterio",
    "status": "active",
@@ -1033,7 +1005,7 @@
     "published": "2013-12-20",
     "id": "_TT7PlX5PCQ"
    },
-   "rank": 38,
+   "rank": 37,
    "scanned_at": 1794991236
   },
   {
@@ -1061,7 +1033,7 @@
     "published": "2018-11-06",
     "id": "gD7qJ3TW1jw"
    },
-   "rank": 39
+   "rank": 38
   },
   {
    "id": "the-new-day",
@@ -1089,7 +1061,7 @@
     "published": "2009-10-25",
     "id": "NaGLVS5b_ZY"
    },
-   "rank": 40
+   "rank": 39
   },
   {
    "id": "ronda-rousey",
@@ -1116,7 +1088,7 @@
     "published": "2020-03-28",
     "id": "d8WLXyX-jn4"
    },
-   "rank": 41
+   "rank": 40
   },
   {
    "id": "goldberg",
@@ -1143,23 +1115,23 @@
     "published": "2019-09-19",
     "id": "kt8FyEv_WNk"
    },
-   "rank": 42
+   "rank": 41
   },
   {
    "id": "the-bellas",
    "name": "The Bellas",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991178,
-   "top10_views": 687890954,
-   "median_views": 62268030,
+   "scanned_at": 1795509611,
+   "top10_views": 702951344,
+   "median_views": 66342485,
    "video_count": 10,
    "top_terms": [
     "perfect",
     "pitch",
-    "bella",
     "scene",
     "movieclips",
+    "bella",
     "poarch",
     "guess",
     "why"
@@ -1167,11 +1139,11 @@
    "best_video": {
     "title": "Bella Poarch | Guess why my cheeks are swollen \ud83e\udd72\ud83e\udd23",
     "channel": "Bella Poarch Shorts",
-    "views": 137844953,
+    "views": 137848669,
     "published": "2022-08-04",
     "id": "q1iM6xXWiEI"
    },
-   "rank": 43
+   "rank": 42
   },
   {
    "id": "mr-perfect",
@@ -1198,7 +1170,7 @@
     "published": "2015-01-10",
     "id": "TIOZUdc0aL8"
    },
-   "rank": 44
+   "rank": 43
   },
   {
    "id": "seth-rollins",
@@ -1224,7 +1196,7 @@
     "published": "2018-11-06",
     "id": "gD7qJ3TW1jw"
    },
-   "rank": 45,
+   "rank": 44,
    "scanned_at": 1794991231
   },
   {
@@ -1252,7 +1224,7 @@
     "published": "2018-11-07",
     "id": "aXlCC8HCFMc"
    },
-   "rank": 46
+   "rank": 45
   },
   {
    "id": "cody-rhodes",
@@ -1278,8 +1250,36 @@
     "published": "2025-10-05",
     "id": "N0Xni0Ew6SA"
    },
-   "rank": 47,
+   "rank": 46,
    "scanned_at": 1795077522
+  },
+  {
+   "id": "the-shield",
+   "name": "The Shield",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509558,
+   "top10_views": 596583673,
+   "median_views": 51015178,
+   "video_count": 10,
+   "top_terms": [
+    "raw",
+    "april",
+    "dean",
+    "ambrose",
+    "reunite",
+    "daniel",
+    "bryan",
+    "triple"
+   ],
+   "best_video": {
+    "title": "Daniel Bryan vs. Triple H - WWE World Heavyweight Championship Match: Raw, April 7, 2014",
+    "channel": "WWE",
+    "views": 119488525,
+    "published": "2014-04-08",
+    "id": "96-ozhe6rzQ"
+   },
+   "rank": 47
   },
   {
    "id": "christian",
@@ -1313,9 +1313,9 @@
    "name": "Los Americanos",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991168,
-   "top10_views": 595094691,
-   "median_views": 42509493,
+   "scanned_at": 1795509599,
+   "top10_views": 572122655,
+   "median_views": 28787199,
    "video_count": 10,
    "top_terms": [
     "americano",
@@ -1323,46 +1323,18 @@
     "oficial",
     "las",
     "equitas",
-    "l'americano",
     "plata",
-    "yolanda"
+    "yolanda",
+    "cool"
    ],
    "best_video": {
     "title": "Mr. Plata, El Americano 4KT - Las Mu\u00f1equitas (Video Oficial)",
     "channel": "MrPlataVEVO",
-    "views": 140846940,
+    "views": 142101130,
     "published": "2025-11-28",
     "id": "xBcgckh_OlI"
    },
    "rank": 49
-  },
-  {
-   "id": "the-shield",
-   "name": "The Shield",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794904831,
-   "top10_views": 580589607,
-   "median_views": 49229607,
-   "video_count": 10,
-   "top_terms": [
-    "raw",
-    "april",
-    "dean",
-    "ambrose",
-    "reunite",
-    "theme",
-    "daniel",
-    "bryan"
-   ],
-   "best_video": {
-    "title": "Daniel Bryan vs. Triple H - WWE World Heavyweight Championship Match: Raw, April 7, 2014",
-    "channel": "WWE",
-    "views": 119469968,
-    "published": "2014-04-08",
-    "id": "96-ozhe6rzQ"
-   },
-   "rank": 50
   },
   {
    "id": "r-truth",
@@ -1389,7 +1361,7 @@
     "published": "2020-11-22",
     "id": "ChiLWi-mBvU"
    },
-   "rank": 51
+   "rank": 50
   },
   {
    "id": "kurt-angle",
@@ -1416,7 +1388,7 @@
     "published": "2020-03-28",
     "id": "d8WLXyX-jn4"
    },
-   "rank": 52
+   "rank": 51
   },
   {
    "id": "d-generation-x",
@@ -1444,7 +1416,7 @@
     "published": "2009-10-07",
     "id": "BE9CXWV1alg"
    },
-   "rank": 53
+   "rank": 52
   },
   {
    "id": "shinsuke-nakamura",
@@ -1470,7 +1442,7 @@
     "published": "2020-11-14",
     "id": "cIivnffFgl4"
    },
-   "rank": 54,
+   "rank": 53,
    "scanned_at": 1795077526
   },
   {
@@ -1497,7 +1469,7 @@
     "published": "2024-06-08",
     "id": "h4O-sQg8PHQ"
    },
-   "rank": 55,
+   "rank": 54,
    "scanned_at": 1795077524
   },
   {
@@ -1524,8 +1496,36 @@
     "published": "2021-01-31",
     "id": "sZX4MmdXPRA"
    },
-   "rank": 56,
+   "rank": 55,
    "scanned_at": 1795077528
+  },
+  {
+   "id": "evolution",
+   "name": "Evolution",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509560,
+   "top10_views": 449645647,
+   "median_views": 32858887,
+   "video_count": 10,
+   "top_terms": [
+    "venom",
+    "shorts",
+    "dance",
+    "mosasaurus",
+    "mercedes",
+    "benz",
+    "part",
+    "snow"
+   ],
+   "best_video": {
+    "title": "Mercedes-Benz Evolution | Part 1 (1886-2004)",
+    "channel": "Motomorfosis",
+    "views": 119553918,
+    "published": "2026-03-24",
+    "id": "bY8dHyw6ntw"
+   },
+   "rank": 56
   },
   {
    "id": "jordynne-grace",
@@ -1853,41 +1853,13 @@
    "rank": 68
   },
   {
-   "id": "too-cool",
-   "name": "Too Cool",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794904824,
-   "top10_views": 382861994,
-   "median_views": 28621036,
-   "video_count": 10,
-   "top_terms": [
-    "friend",
-    "school",
-    "royal",
-    "rumble",
-    "pencilmate",
-    "thinks",
-    "he's",
-    "pencilmation"
-   ],
-   "best_video": {
-    "title": "Pencilmate Thinks He's Cool -in- TOO COOL Pencilmation Compilation",
-    "channel": "Pencilmation",
-    "views": 95438018,
-    "published": "2018-06-07",
-    "id": "qqLgjJULT6c"
-   },
-   "rank": 69
-  },
-  {
    "id": "the-ascension",
    "name": "The Ascension",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991200,
-   "top10_views": 379437032,
-   "median_views": 6999933,
+   "scanned_at": 1795509634,
+   "top10_views": 380009856,
+   "median_views": 7000003,
    "video_count": 10,
    "top_terms": [
     "lucha",
@@ -1902,9 +1874,37 @@
    "best_video": {
     "title": "Maxwell - Ascension (Don't Ever Wonder) (Official 4K Video)",
     "channel": "maxwellVEVO",
-    "views": 149425085,
+    "views": 149710094,
     "published": "2009-10-03",
     "id": "D7rm9t5S4uE"
+   },
+   "rank": 69
+  },
+  {
+   "id": "too-cool",
+   "name": "Too Cool",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509552,
+   "top10_views": 379986098,
+   "median_views": 28621306,
+   "video_count": 10,
+   "top_terms": [
+    "royal",
+    "friend",
+    "school",
+    "rumble",
+    "pencilmate",
+    "thinks",
+    "he's",
+    "pencilmation"
+   ],
+   "best_video": {
+    "title": "Pencilmate Thinks He's Cool -in- TOO COOL Pencilmation Compilation",
+    "channel": "Pencilmation",
+    "views": 95439315,
+    "published": "2018-06-07",
+    "id": "qqLgjJULT6c"
    },
    "rank": 70
   },
@@ -2075,9 +2075,9 @@
    "name": "The Rockers",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794904807,
-   "top10_views": 348387839,
-   "median_views": 19249307,
+   "scanned_at": 1795509535,
+   "top10_views": 350125419,
+   "median_views": 19283729,
    "video_count": 10,
    "top_terms": [
     "mini",
@@ -2092,7 +2092,7 @@
    "best_video": {
     "title": "Los amiguitos de los beb\u00e9s | Mini Beat Power Rockers | Discovery Kids",
     "channel": "Discovery Kids",
-    "views": 113149199,
+    "views": 113174029,
     "published": "2018-06-14",
     "id": "4dn_h_zbVwA"
    },
@@ -2184,9 +2184,9 @@
    "name": "The Nexus",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991134,
-   "top10_views": 339967833,
-   "median_views": 23376869,
+   "scanned_at": 1795509567,
+   "top10_views": 340032527,
+   "median_views": 23377735,
    "video_count": 10,
    "top_terms": [
     "raw",
@@ -2201,7 +2201,7 @@
    "best_video": {
     "title": "The Nexus interrupt the main event and reap destruction: Raw, June 7, 2010",
     "channel": "WWE",
-    "views": 95324022,
+    "views": 95327795,
     "published": "2013-09-30",
     "id": "vVVtqoqzgNw"
    },
@@ -2586,34 +2586,6 @@
    "scanned_at": 1795077571
   },
   {
-   "id": "american-alpha",
-   "name": "American Alpha",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991138,
-   "top10_views": 268959197,
-   "median_views": 14751597,
-   "video_count": 10,
-   "top_terms": [
-    "official",
-    "blondy",
-    "video",
-    "americanhighshorts",
-    "alphamoms",
-    "momlife",
-    "gen",
-    "fashion"
-   ],
-   "best_video": {
-    "title": "Alpha Blondy - Jerusalem (Official Video)",
-    "channel": "Alpha Blondy",
-    "views": 108026085,
-    "published": "2013-11-28",
-    "id": "WcqK9Ls7Eos"
-   },
-   "rank": 96
-  },
-  {
    "id": "brothers-of-destruction",
    "name": "Brothers of Destruction",
    "status": "unscanned",
@@ -2638,6 +2610,34 @@
     "views": 93020928,
     "published": "2015-11-10",
     "id": "WLue0mcHFp8"
+   },
+   "rank": 96
+  },
+  {
+   "id": "american-alpha",
+   "name": "American Alpha",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509571,
+   "top10_views": 264202408,
+   "median_views": 14757971,
+   "video_count": 10,
+   "top_terms": [
+    "official",
+    "americanhighshorts",
+    "alphamoms",
+    "momlife",
+    "remastered",
+    "edition",
+    "gen",
+    "fashion"
+   ],
+   "best_video": {
+    "title": "Alpha Blondy - Jerusalem (Official Video)",
+    "channel": "Alpha Blondy",
+    "views": 108238840,
+    "published": "2013-11-28",
+    "id": "WcqK9Ls7Eos"
    },
    "rank": 97
   },
@@ -2673,9 +2673,9 @@
    "name": "Dudley Boyz",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794904803,
-   "top10_views": 261078777,
-   "median_views": 15988785,
+   "scanned_at": 1795509530,
+   "top10_views": 261224713,
+   "median_views": 15991772,
    "video_count": 10,
    "top_terms": [
     "raw",
@@ -2690,7 +2690,7 @@
    "best_video": {
     "title": "Roman Reigns & Dean Ambrose vs. The Dudley Boyz: SmackDown, February 18, 2016",
     "channel": "WWE",
-    "views": 59542648,
+    "views": 59555399,
     "published": "2016-02-19",
     "id": "qz9n2PvjbhY"
    },
@@ -2967,6 +2967,34 @@
    "rank": 109
   },
   {
+   "id": "the-vision",
+   "name": "The Vision",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509595,
+   "top10_views": 220367911,
+   "median_views": 15261540,
+   "video_count": 10,
+   "top_terms": [
+    "marvel",
+    "television",
+    "visionquest",
+    "official",
+    "trailer",
+    "gumball",
+    "cartoon",
+    "network"
+   ],
+   "best_video": {
+    "title": "QUANDO SEU IRM\u00c3O PEGA A VIS\u00c3O",
+    "channel": "Oli Natu",
+    "views": 62789653,
+    "published": "2022-03-19",
+    "id": "vDmX3zNSnyI"
+   },
+   "rank": 110
+  },
+  {
    "id": "jade-cargill",
    "name": "Jade Cargill",
    "status": "active",
@@ -2990,7 +3018,7 @@
     "published": "2024-05-18",
     "id": "A1aYc3uOGTI"
    },
-   "rank": 110,
+   "rank": 111,
    "scanned_at": 1795077581
   },
   {
@@ -3019,34 +3047,6 @@
     "published": "2019-11-15",
     "id": "XPtVZ69lomk"
    },
-   "rank": 111
-  },
-  {
-   "id": "the-vision",
-   "name": "The Vision",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991163,
-   "top10_views": 204970363,
-   "median_views": 14523112,
-   "video_count": 10,
-   "top_terms": [
-    "official",
-    "marvel",
-    "television",
-    "visionquest",
-    "trailer",
-    "gumball",
-    "cartoon",
-    "network"
-   ],
-   "best_video": {
-    "title": "QUANDO SEU IRM\u00c3O PEGA A VIS\u00c3O",
-    "channel": "Oli Natu",
-    "views": 62784935,
-    "published": "2022-03-19",
-    "id": "vDmX3zNSnyI"
-   },
    "rank": 112
   },
   {
@@ -3054,9 +3054,9 @@
    "name": "Los Garza",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991176,
-   "top10_views": 204488738,
-   "median_views": 15963952,
+   "scanned_at": 1795509608,
+   "top10_views": 204072508,
+   "median_views": 16111909,
    "video_count": 10,
    "top_terms": [
     "laurita",
@@ -3065,13 +3065,13 @@
     "nuevo",
     "video",
     "grupo",
-    "desde",
-    "tucanes"
+    "leon",
+    "desde"
    ],
    "best_video": {
     "title": "Laurita Garza - Los Invasores de Nuevo Le\u00f3n Ft Los Tucanes de Tijuana (Video Oficial)",
     "channel": "Los Invasores de Nuevo Le\u00f3n Oficial",
-    "views": 42637002,
+    "views": 42713208,
     "published": "2020-12-12",
     "id": "eAFkKtfVbN8"
    },
@@ -3132,34 +3132,6 @@
    "scanned_at": 1795077616
   },
   {
-   "id": "hardy-boyz",
-   "name": "Hardy Boyz",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794904801,
-   "top10_views": 200883574,
-   "median_views": 13356668,
-   "video_count": 10,
-   "top_terms": [
-    "jeff",
-    "video",
-    "wall",
-    "ladder",
-    "boys",
-    "matt",
-    "make",
-    "shocking"
-   ],
-   "best_video": {
-    "title": "Matt & Jeff Hardy make a shocking return to WWE: WrestleMania 33 (WWE Network Exclusive)",
-    "channel": "WWE",
-    "views": 53821609,
-    "published": "2017-04-03",
-    "id": "BVeC9wXZLUc"
-   },
-   "rank": 116
-  },
-  {
    "id": "carmella",
    "name": "Carmella",
    "status": "unscanned",
@@ -3184,7 +3156,7 @@
     "published": "2012-02-22",
     "id": "PDJLvF1dUek"
    },
-   "rank": 117
+   "rank": 116
   },
   {
    "id": "nikkita-lyons",
@@ -3211,16 +3183,16 @@
     "published": "2016-11-25",
     "id": "Tg-Q-Acv4qs"
    },
-   "rank": 118
+   "rank": 117
   },
   {
    "id": "the-riott-squad",
    "name": "The Riott Squad",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991150,
-   "top10_views": 199378236,
-   "median_views": 12721226,
+   "scanned_at": 1795509582,
+   "top10_views": 199431484,
+   "median_views": 12721353,
    "video_count": 10,
    "top_terms": [
     "rousey",
@@ -3235,11 +3207,11 @@
    "best_video": {
     "title": "FULL MATCH - Ronda Rousey & The Bella Twins vs. The Riott Squad: WWE Super Show-Down 2018",
     "channel": "WWE",
-    "views": 51709820,
+    "views": 51731861,
     "published": "2020-10-15",
     "id": "vO4yahN6igk"
    },
-   "rank": 119
+   "rank": 118
   },
   {
    "id": "jeff-hardy",
@@ -3266,7 +3238,7 @@
     "published": "2017-04-03",
     "id": "BVeC9wXZLUc"
    },
-   "rank": 120
+   "rank": 119
   },
   {
    "id": "reina-volcan",
@@ -3293,35 +3265,35 @@
     "published": "2023-06-23",
     "id": "Z5acXs38F2E"
    },
-   "rank": 121
+   "rank": 120
   },
   {
-   "id": "fatal-attraction",
-   "name": "Fatal Attraction",
+   "id": "the-culling",
+   "name": "The Culling",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991181,
-   "top10_views": 187778110,
-   "median_views": 8088747,
+   "scanned_at": 1795509620,
+   "top10_views": 184735089,
+   "median_views": 12179301,
    "video_count": 10,
    "top_terms": [
-    "stage",
-    "kevin",
-    "gates",
+    "jujutsu",
+    "kaisen",
     "official",
-    "music",
-    "video",
-    "hit",
-    "big"
+    "game",
+    "season",
+    "crunchyroll",
+    "random",
+    "bullshittery"
    ],
    "best_video": {
-    "title": "Kevin Gates - Fatal Attraction [Official Music Video]",
-    "channel": "kevingatesTV",
-    "views": 57088659,
-    "published": "2020-01-23",
-    "id": "VRGp2G2mrlw"
+    "title": "TV\u30a2\u30cb\u30e1\u300e\u546a\u8853\u5efb\u6226\u300f\u7b2c3\u671f\u300c\u6b7b\u6ec5\u56de\u6e38 \u524d\u7de8\u300d\u30ce\u30f3\u30af\u30ec\u30b8\u30c3\u30c8OP\u30e0\u30fc\u30d3\u30fc\uff0fOP\u30c6\u30fc\u30de\uff1aKing Gnu\u300cAIZO\u300d\uff5c\u6bce\u9031\u6728\u66dc\u6df1\u591c0\u664226\u5206\uff0824\u664226\u5206\uff09\uff5eMBS/TBS\u7cfb28\u5c40\u306b\u3066\u653e\u9001\u4e2d!!",
+    "channel": "TOHO animation \u30c1\u30e3\u30f3\u30cd\u30eb",
+    "views": 48817053,
+    "published": "2026-01-08",
+    "id": "Xr032EhUDPw"
    },
-   "rank": 122
+   "rank": 121
   },
   {
    "id": "faarooq",
@@ -3347,6 +3319,34 @@
     "views": 45457998,
     "published": "2014-01-02",
     "id": "ycouT7JuZhs"
+   },
+   "rank": 122
+  },
+  {
+   "id": "hardy-boyz",
+   "name": "Hardy Boyz",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509528,
+   "top10_views": 177553232,
+   "median_views": 7891166,
+   "video_count": 10,
+   "top_terms": [
+    "jeff",
+    "video",
+    "wall",
+    "hardy's",
+    "top",
+    "boys",
+    "matt",
+    "make"
+   ],
+   "best_video": {
+    "title": "Matt & Jeff Hardy make a shocking return to WWE: WrestleMania 33 (WWE Network Exclusive)",
+    "channel": "WWE",
+    "views": 53849429,
+    "published": "2017-04-03",
+    "id": "BVeC9wXZLUc"
    },
    "rank": 123
   },
@@ -3513,6 +3513,62 @@
    "rank": 129
   },
   {
+   "id": "fatal-attraction",
+   "name": "Fatal Attraction",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509613,
+   "top10_views": 164492826,
+   "median_views": 8122270,
+   "video_count": 10,
+   "top_terms": [
+    "kevin",
+    "gates",
+    "official",
+    "music",
+    "video",
+    "insane",
+    "game",
+    "murder"
+   ],
+   "best_video": {
+    "title": "Kevin Gates - Fatal Attraction [Official Music Video]",
+    "channel": "kevingatesTV",
+    "views": 57151669,
+    "published": "2020-01-23",
+    "id": "VRGp2G2mrlw"
+   },
+   "rank": 130
+  },
+  {
+   "id": "edge-christian",
+   "name": "Edge & Christian",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509533,
+   "top10_views": 157755112,
+   "median_views": 7573090,
+   "video_count": 10,
+   "top_terms": [
+    "royal",
+    "rumble",
+    "network",
+    "return",
+    "exclusive",
+    "rock",
+    "matt",
+    "jeff"
+   ],
+   "best_video": {
+    "title": "Matt & Jeff Hardy make a shocking return to WWE: WrestleMania 33 (WWE Network Exclusive)",
+    "channel": "WWE",
+    "views": 53849429,
+    "published": "2017-04-03",
+    "id": "BVeC9wXZLUc"
+   },
+   "rank": 131
+  },
+  {
    "id": "jake-roberts",
    "name": "Jake Roberts",
    "status": "unscanned",
@@ -3537,7 +3593,7 @@
     "published": "2020-04-11",
     "id": "bgyUYhDdggU"
    },
-   "rank": 130
+   "rank": 132
   },
   {
    "id": "jey-uso",
@@ -3563,7 +3619,7 @@
     "published": "2025-01-24",
     "id": "7wq3q5ID-zw"
    },
-   "rank": 131,
+   "rank": 133,
    "scanned_at": 1795077591
   },
   {
@@ -3590,36 +3646,8 @@
     "published": "2023-09-26",
     "id": "2SsT5_zpVqc"
    },
-   "rank": 132,
+   "rank": 134,
    "scanned_at": 1795077586
-  },
-  {
-   "id": "british-bulldogs",
-   "name": "British Bulldogs",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794904814,
-   "top10_views": 151548092,
-   "median_views": 8498789,
-   "video_count": 10,
-   "top_terms": [
-    "bulldog",
-    "english",
-    "puppy",
-    "breeding",
-    "when",
-    "his",
-    "royal",
-    "rumble"
-   ],
-   "best_video": {
-    "title": "English bulldog puppy surprise!",
-    "channel": "Diana Balnis",
-    "views": 36524878,
-    "published": "2018-03-10",
-    "id": "6xOI6wgsHMk"
-   },
-   "rank": 133
   },
   {
    "id": "billy-gunn",
@@ -3646,7 +3674,7 @@
     "published": "2025-10-30",
     "id": "1U5pdBE_5ps"
    },
-   "rank": 134
+   "rank": 135
   },
   {
    "id": "randy-savage",
@@ -3673,7 +3701,7 @@
     "published": "2018-05-24",
     "id": "jE2VvGZktJo"
    },
-   "rank": 135
+   "rank": 136
   },
   {
    "id": "gunther",
@@ -3699,7 +3727,7 @@
     "published": "2025-07-14",
     "id": "rUp5Slv3268"
    },
-   "rank": 136,
+   "rank": 137,
    "scanned_at": 1795077583
   },
   {
@@ -3727,7 +3755,7 @@
     "published": "2021-01-30",
     "id": "dMFuIB50H0Q"
    },
-   "rank": 137
+   "rank": 138
   },
   {
    "id": "imperium",
@@ -3754,34 +3782,6 @@
     "views": 32373124,
     "published": "2020-10-29",
     "id": "2mEfOcn1nEc"
-   },
-   "rank": 138
-  },
-  {
-   "id": "the-culling",
-   "name": "The Culling",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991187,
-   "top10_views": 138433598,
-   "median_views": 9457768,
-   "video_count": 10,
-   "top_terms": [
-    "game",
-    "jujutsu",
-    "kaisen",
-    "man",
-    "official",
-    "yuji",
-    "jjk",
-    "funny"
-   ],
-   "best_video": {
-    "title": "[MMV] Culling Game | Jujutsu Kaisen x MAN WITH A MISSION",
-    "channel": "NinjaristicNinja",
-    "views": 28743326,
-    "published": "2023-08-19",
-    "id": "eoJEn7MDht0"
    },
    "rank": 139
   },
@@ -3948,6 +3948,34 @@
    "scanned_at": 1795077605
   },
   {
+   "id": "steiner-brothers",
+   "name": "Steiner Brothers",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509545,
+   "top10_views": 130964433,
+   "median_views": 11043557,
+   "video_count": 10,
+   "top_terms": [
+    "scott",
+    "triple",
+    "wrestling",
+    "wcw",
+    "arm",
+    "goldberg",
+    "nitro",
+    "tripleh"
+   ],
+   "best_video": {
+    "title": "Scott Steiner attacks Goldberg WCW Monday Nitro",
+    "channel": "Nightshift Wrestling",
+    "views": 28858526,
+    "published": "2025-05-15",
+    "id": "I6Q29u3ih8A"
+   },
+   "rank": 146
+  },
+  {
    "id": "bradshaw",
    "name": "Bradshaw",
    "status": "unscanned",
@@ -3972,7 +4000,35 @@
     "published": "2023-11-02",
     "id": "ab8LVzLuSOM"
    },
-   "rank": 146
+   "rank": 147
+  },
+  {
+   "id": "british-bulldogs",
+   "name": "British Bulldogs",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509541,
+   "top10_views": 126027185,
+   "median_views": 8003403,
+   "video_count": 10,
+   "top_terms": [
+    "bulldog",
+    "moments",
+    "english",
+    "ranking",
+    "funniest",
+    "when",
+    "his",
+    "core"
+   ],
+   "best_video": {
+    "title": "English bulldog puppy surprise!",
+    "channel": "Diana Balnis",
+    "views": 36527019,
+    "published": "2018-03-10",
+    "id": "6xOI6wgsHMk"
+   },
+   "rank": 148
   },
   {
    "id": "naomi",
@@ -3999,7 +4055,7 @@
     "published": "2024-09-30",
     "id": "88KP_VxQMEY"
    },
-   "rank": 147
+   "rank": 149
   },
   {
    "id": "tamina",
@@ -4026,7 +4082,7 @@
     "published": "2018-12-21",
     "id": "2L3wuTTHM7Y"
    },
-   "rank": 148
+   "rank": 150
   },
   {
    "id": "sable",
@@ -4053,35 +4109,7 @@
     "published": "2024-02-23",
     "id": "802uwtZPhEs"
    },
-   "rank": 149
-  },
-  {
-   "id": "steiner-brothers",
-   "name": "Steiner Brothers",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794904818,
-   "top10_views": 122294119,
-   "median_views": 9797415,
-   "video_count": 10,
-   "top_terms": [
-    "scott",
-    "triple",
-    "goldberg",
-    "wcw",
-    "arm",
-    "wrestling",
-    "nitro",
-    "day"
-   ],
-   "best_video": {
-    "title": "Scott Steiner attacks Goldberg WCW Monday Nitro",
-    "channel": "Nightshift Wrestling",
-    "views": 28839817,
-    "published": "2025-05-15",
-    "id": "I6Q29u3ih8A"
-   },
-   "rank": 150
+   "rank": 151
   },
   {
    "id": "mandy-rose",
@@ -4108,7 +4136,35 @@
     "published": "2020-08-08",
     "id": "pp-LWSL9ON4"
    },
-   "rank": 151
+   "rank": 152
+  },
+  {
+   "id": "hank-tank",
+   "name": "Hank & Tank",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509617,
+   "top10_views": 118789778,
+   "median_views": 4046297,
+   "video_count": 10,
+   "top_terms": [
+    "talking",
+    "trailer",
+    "movie",
+    "official",
+    "launch",
+    "first",
+    "slumber",
+    "party"
+   ],
+   "best_video": {
+    "title": "My Talking Hank - Official Launch Trailer",
+    "channel": "Talking Tom",
+    "views": 76018996,
+    "published": "2017-01-12",
+    "id": "stOuHQ1jQEE"
+   },
+   "rank": 153
   },
   {
    "id": "oba-femi",
@@ -4134,7 +4190,7 @@
     "published": "2026-04-18",
     "id": "s89kGvP42Ro"
    },
-   "rank": 152,
+   "rank": 154,
    "scanned_at": 1795077609
   },
   {
@@ -4163,7 +4219,7 @@
     "published": "2025-04-23",
     "id": "yma7lNibtVk"
    },
-   "rank": 153
+   "rank": 155
   },
   {
    "id": "bron-breakker",
@@ -4189,36 +4245,8 @@
     "published": "2025-09-18",
     "id": "Jqv4CquIaM8"
    },
-   "rank": 154,
+   "rank": 156,
    "scanned_at": 1795077597
-  },
-  {
-   "id": "hank-tank",
-   "name": "Hank & Tank",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991185,
-   "top10_views": 112598040,
-   "median_views": 3146385,
-   "video_count": 10,
-   "top_terms": [
-    "talking",
-    "trailer",
-    "kids",
-    "official",
-    "launch",
-    "first",
-    "slumber",
-    "party"
-   ],
-   "best_video": {
-    "title": "My Talking Hank - Official Launch Trailer",
-    "channel": "Talking Tom",
-    "views": 76000085,
-    "published": "2017-01-12",
-    "id": "stOuHQ1jQEE"
-   },
-   "rank": 155
   },
   {
    "id": "solo-sikoa",
@@ -4244,7 +4272,7 @@
     "published": "2026-06-25",
     "id": "6OnJ6AoiMGo"
    },
-   "rank": 156,
+   "rank": 157,
    "scanned_at": 1795077600
   },
   {
@@ -4272,7 +4300,7 @@
     "published": "2014-04-15",
     "id": "WCpQXqEI7EE"
    },
-   "rank": 157
+   "rank": 158
   },
   {
    "id": "mick-foley",
@@ -4299,7 +4327,7 @@
     "published": "2023-04-30",
     "id": "syBrhLAgM64"
    },
-   "rank": 158
+   "rank": 159
   },
   {
    "id": "xavier-woods",
@@ -4326,7 +4354,7 @@
     "published": "2020-10-19",
     "id": "07tYGxTgyUI"
    },
-   "rank": 159
+   "rank": 160
   },
   {
    "id": "austin-theory",
@@ -4353,7 +4381,7 @@
     "published": "2023-09-17",
     "id": "eupKErZuHkI"
    },
-   "rank": 160
+   "rank": 161
   },
   {
    "id": "zelina-vega",
@@ -4379,7 +4407,7 @@
     "published": "2025-02-09",
     "id": "gUSh654cQYc"
    },
-   "rank": 161,
+   "rank": 162,
    "scanned_at": 1795077618
   },
   {
@@ -4406,34 +4434,6 @@
     "views": 33233043,
     "published": "2019-05-25",
     "id": "cXDT44zT8JY"
-   },
-   "rank": 162
-  },
-  {
-   "id": "edge-christian",
-   "name": "Edge & Christian",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794904805,
-   "top10_views": 102180591,
-   "median_views": 4768575,
-   "video_count": 10,
-   "top_terms": [
-    "royal",
-    "rumble",
-    "network",
-    "exclusive",
-    "rock",
-    "superstar",
-    "day",
-    "entrance"
-   ],
-   "best_video": {
-    "title": "Edge returns at Royal Rumble and delivers vicious Spears: Royal Rumble 2020 (WWE Network Exclusive)",
-    "channel": "WWE",
-    "views": 42132338,
-    "published": "2020-01-27",
-    "id": "zrLt2KGRMPs"
    },
    "rank": 163
   },
@@ -4469,9 +4469,9 @@
    "name": "Road Warriors",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794904812,
-   "top10_views": 94874483,
-   "median_views": 6511476,
+   "scanned_at": 1795509539,
+   "top10_views": 96562574,
+   "median_views": 6516255,
    "video_count": 10,
    "top_terms": [
     "max",
@@ -4486,11 +4486,39 @@
    "best_video": {
     "title": "\u26a1\ufe0fROAD WARRIORS\u2714\ufe0f IRISH\u2618\ufe0fROAD RACING + (Southern100, Isle of Man)",
     "channel": "Lockk9",
-    "views": 26632175,
+    "views": 26641479,
     "published": "2012-12-17",
     "id": "LU-ynRoqDEs"
    },
    "rank": 165
+  },
+  {
+   "id": "war-raiders",
+   "name": "War Raiders",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509604,
+   "top10_views": 95879718,
+   "median_views": 4778562,
+   "video_count": 10,
+   "top_terms": [
+    "viking",
+    "jinder",
+    "mahal",
+    "veer",
+    "raw",
+    "oba",
+    "femi",
+    "destruction"
+   ],
+   "best_video": {
+    "title": "WAR - Low Rider (Official Video) [Remastered in 4K]",
+    "channel": "War",
+    "views": 46217408,
+    "published": "2021-05-12",
+    "id": "BsrqKE1iqqo"
+   },
+   "rank": 166
   },
   {
    "id": "raquel-rodriguez",
@@ -4516,7 +4544,7 @@
     "published": "2025-08-10",
     "id": "NffVMehJj1Y"
    },
-   "rank": 166,
+   "rank": 167,
    "scanned_at": 1795077623
   },
   {
@@ -4543,7 +4571,7 @@
     "published": "2025-09-18",
     "id": "Jqv4CquIaM8"
    },
-   "rank": 167,
+   "rank": 168,
    "scanned_at": 1795077611
   },
   {
@@ -4570,7 +4598,7 @@
     "published": "2026-01-21",
     "id": "U0-D_wSStlk"
    },
-   "rank": 168,
+   "rank": 169,
    "scanned_at": 1795077614
   },
   {
@@ -4578,9 +4606,9 @@
    "name": "nWo",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991129,
-   "top10_views": 90743174,
-   "median_views": 7483584,
+   "scanned_at": 1795509562,
+   "top10_views": 90818157,
+   "median_views": 7483634,
    "video_count": 10,
    "top_terms": [
     "new",
@@ -4595,37 +4623,9 @@
    "best_video": {
     "title": "The New World Order (NWO) Theme Song",
     "channel": "thegoldfighter",
-    "views": 17215867,
+    "views": 17235091,
     "published": "2008-09-24",
     "id": "Juqm94sUV_E"
-   },
-   "rank": 169
-  },
-  {
-   "id": "war-raiders",
-   "name": "War Raiders",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991172,
-   "top10_views": 88852270,
-   "median_views": 4419095,
-   "video_count": 10,
-   "top_terms": [
-    "viking",
-    "jinder",
-    "mahal",
-    "veer",
-    "raw",
-    "wargames",
-    "low",
-    "rider"
-   ],
-   "best_video": {
-    "title": "WAR - Low Rider (Official Video) [Remastered in 4K]",
-    "channel": "War",
-    "views": 46074289,
-    "published": "2021-05-12",
-    "id": "BsrqKE1iqqo"
    },
    "rank": 170
   },
@@ -5174,24 +5174,24 @@
    "name": "Alpha Academy",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991161,
-   "top10_views": 51492652,
-   "median_views": 2416865,
+   "scanned_at": 1795509593,
+   "top10_views": 53415383,
+   "median_views": 2487980,
    "video_count": 10,
    "top_terms": [
     "school",
     "all",
-    "love",
-    "gacha",
-    "life",
     "glmm",
     "phonk",
-    "real"
+    "real",
+    "shorts",
+    "schoollife",
+    "schooldays"
    ],
    "best_video": {
     "title": "The Real Alpha #shorts #school #schoollife #schooldays #alpha #friends #love #funny #crush #explore",
     "channel": "Baccha Mat Bolna",
-    "views": 20471117,
+    "views": 20489755,
     "published": "2024-12-29",
     "id": "YS6vjYuoAmU"
    },
@@ -5229,9 +5229,9 @@
    "name": "OTM",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991159,
-   "top10_views": 50586794,
-   "median_views": 4124711,
+   "scanned_at": 1795509590,
+   "top10_views": 50833868,
+   "median_views": 4164643,
    "video_count": 10,
    "top_terms": [
     "official",
@@ -5246,7 +5246,7 @@
    "best_video": {
     "title": "OTM (Duffy & BluePesos) - Cliff Hanger Remix feat. Drakeo the Ruler [Official Music Video]",
     "channel": "Drakeo the Ruler",
-    "views": 9862124,
+    "views": 9874429,
     "published": "2022-01-13",
     "id": "JZbRj5IK8bc"
    },
@@ -5307,41 +5307,13 @@
    "scanned_at": 1795163924
   },
   {
-   "id": "rated-rko",
-   "name": "Rated RKO",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991136,
-   "top10_views": 45476972,
-   "median_views": 3709383,
-   "video_count": 10,
-   "top_terms": [
-    "edge",
-    "orton",
-    "batista",
-    "randy",
-    "raw",
-    "team",
-    "ric",
-    "flair"
-   ],
-   "best_video": {
-    "title": "FULL MATCH \u2014 Batista, Ric Flair & Triple H vs. Edge, Randy Orton & Umaga: Raw, Dec. 10, 2007",
-    "channel": "WWE",
-    "views": 10155616,
-    "published": "2013-12-10",
-    "id": "HtCi0q38oYY"
-   },
-   "rank": 196
-  },
-  {
    "id": "the-iiconics",
    "name": "The IIconics",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991148,
-   "top10_views": 45441981,
-   "median_views": 3273606,
+   "scanned_at": 1795509580,
+   "top10_views": 45456428,
+   "median_views": 3274090,
    "video_count": 10,
    "top_terms": [
     "live",
@@ -5356,11 +5328,11 @@
    "best_video": {
     "title": "FULL MATCH - WWE Women\u2019s Tag Team Championship Elimination Chamber Match: Elimination Chamber 2019",
     "channel": "WWE",
-    "views": 13411046,
+    "views": 13421124,
     "published": "2021-02-17",
     "id": "oJNQm_Hu3hM"
    },
-   "rank": 197
+   "rank": 196
   },
   {
    "id": "nikki-cross",
@@ -5387,7 +5359,7 @@
     "published": "2024-10-25",
     "id": "tWsHENYJZ24"
    },
-   "rank": 198
+   "rank": 197
   },
   {
    "id": "stacy-keibler",
@@ -5414,7 +5386,7 @@
     "published": "2026-01-17",
     "id": "S672iD6lVA8"
    },
-   "rank": 199
+   "rank": 198
   },
   {
    "id": "joe-hendry",
@@ -5441,7 +5413,7 @@
     "published": "2023-02-16",
     "id": "Hb17uaaldwM"
    },
-   "rank": 200
+   "rank": 199
   },
   {
    "id": "ted-dibiase",
@@ -5468,7 +5440,7 @@
     "published": "2010-12-21",
     "id": "ZV1VOmgFiHo"
    },
-   "rank": 201
+   "rank": 200
   },
   {
    "id": "aleister-black",
@@ -5494,8 +5466,36 @@
     "published": "2025-05-09",
     "id": "pxRIX6QkWsU"
    },
-   "rank": 202,
+   "rank": 201,
    "scanned_at": 1795077627
+  },
+  {
+   "id": "rated-rko",
+   "name": "Rated RKO",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509569,
+   "top10_views": 42690309,
+   "median_views": 3642937,
+   "video_count": 10,
+   "top_terms": [
+    "team",
+    "batista",
+    "edge",
+    "randy",
+    "orton",
+    "part",
+    "ric",
+    "flair"
+   ],
+   "best_video": {
+    "title": "FULL MATCH \u2014 Batista, Ric Flair & Triple H vs. Edge, Randy Orton & Umaga: Raw, Dec. 10, 2007",
+    "channel": "WWE",
+    "views": 10156731,
+    "published": "2013-12-10",
+    "id": "HtCi0q38oYY"
+   },
+   "rank": 202
   },
   {
    "id": "shawn-spears",
@@ -5552,6 +5552,34 @@
    "rank": 204
   },
   {
+   "id": "the-kabuki-warriors",
+   "name": "The Kabuki Warriors",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509578,
+   "top10_views": 41942998,
+   "median_views": 3566519,
+   "video_count": 10,
+   "top_terms": [
+    "iyo",
+    "sky",
+    "tag",
+    "team",
+    "attack",
+    "raw",
+    "rhea",
+    "ripley"
+   ],
+   "best_video": {
+    "title": "Story of RHIYO (Rhea Ripley + IYO SKY): WWE Playlist",
+    "channel": "WWE",
+    "views": 6219092,
+    "published": "2025-10-09",
+    "id": "SGZ17Zap2Hk"
+   },
+   "rank": 205
+  },
+  {
    "id": "akira-tozawa",
    "name": "Akira Tozawa",
    "status": "unscanned",
@@ -5575,34 +5603,6 @@
     "views": 13022862,
     "published": "2022-04-15",
     "id": "nsXHiCih3eQ"
-   },
-   "rank": 205
-  },
-  {
-   "id": "the-kabuki-warriors",
-   "name": "The Kabuki Warriors",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991145,
-   "top10_views": 41432195,
-   "median_views": 3553788,
-   "video_count": 10,
-   "top_terms": [
-    "iyo",
-    "sky",
-    "playlist",
-    "tag",
-    "team",
-    "attack",
-    "raw",
-    "rhea"
-   ],
-   "best_video": {
-    "title": "Story of RHIYO (Rhea Ripley + IYO SKY): WWE Playlist",
-    "channel": "WWE",
-    "views": 6172145,
-    "published": "2025-10-09",
-    "id": "SGZ17Zap2Hk"
    },
    "rank": 206
   },
@@ -5692,9 +5692,9 @@
    "name": "Birthright",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991194,
-   "top10_views": 37956356,
-   "median_views": 3210218,
+   "scanned_at": 1795509627,
+   "top10_views": 38136663,
+   "median_views": 3211429,
    "video_count": 10,
    "top_terms": [
     "citizenship",
@@ -5709,7 +5709,7 @@
    "best_video": {
     "title": "Banning Birthright Citizenship?!? | Recently Deleted Amendments",
     "channel": "Extra History",
-    "views": 7158211,
+    "views": 7172346,
     "published": "2026-03-05",
     "id": "Yp4Pn8k_U20"
    },
@@ -5801,9 +5801,9 @@
    "name": "New Age Outlaws",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794904822,
-   "top10_views": 35864621,
-   "median_views": 1680145,
+   "scanned_at": 1795509550,
+   "top10_views": 35903946,
+   "median_views": 1680326,
    "video_count": 10,
    "top_terms": [
     "raw",
@@ -5818,7 +5818,7 @@
    "best_video": {
     "title": "DX reunites on Raw's 1,000th episode: Raw, July 23, 2012",
     "channel": "WWE",
-    "views": 13209738,
+    "views": 13218947,
     "published": "2012-07-24",
     "id": "o7HZZJov0uc"
    },
@@ -5852,34 +5852,6 @@
    "rank": 215
   },
   {
-   "id": "pretty-deadly",
-   "name": "Pretty Deadly",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991174,
-   "top10_views": 35715248,
-   "median_views": 1534183,
-   "video_count": 10,
-   "top_terms": [
-    "made",
-    "michin",
-    "nia",
-    "jax",
-    "celebration",
-    "kill",
-    "lethal",
-    "russian"
-   ],
-   "best_video": {
-    "title": "This Russian Commander made a Deadly Mistake against Ukrainian Drone",
-    "channel": "Reborn Soldier",
-    "views": 13866899,
-    "published": "2025-02-15",
-    "id": "aRYV92OKLSM"
-   },
-   "rank": 216
-  },
-  {
    "id": "wyatt-sicks",
    "name": "The Wyatt Sicks",
    "status": "unscanned",
@@ -5905,7 +5877,7 @@
     "published": "2024-11-12",
     "id": "DdrKOhoSjk0"
    },
-   "rank": 217
+   "rank": 216
   },
   {
    "id": "montez-ford",
@@ -5932,7 +5904,7 @@
     "published": "2026-05-24",
     "id": "AS840hdgzsI"
    },
-   "rank": 218
+   "rank": 217
   },
   {
    "id": "lola-vice",
@@ -5958,6 +5930,34 @@
     "views": 11061713,
     "published": "2025-07-14",
     "id": "Ew6eVQz7PPo"
+   },
+   "rank": 218
+  },
+  {
+   "id": "pretty-deadly",
+   "name": "Pretty Deadly",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509606,
+   "top10_views": 34321913,
+   "median_views": 1233801,
+   "video_count": 10,
+   "top_terms": [
+    "michin",
+    "nia",
+    "jax",
+    "celebration",
+    "lethal",
+    "russian",
+    "commander",
+    "made"
+   ],
+   "best_video": {
+    "title": "This Russian Commander made a Deadly Mistake against Ukrainian Drone",
+    "channel": "Reborn Soldier",
+    "views": 13866908,
+    "published": "2025-02-15",
+    "id": "aRYV92OKLSM"
    },
    "rank": 219
   },
@@ -6020,9 +6020,9 @@
    "name": "Street Profits",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991153,
-   "top10_views": 33694629,
-   "median_views": 3210724,
+   "scanned_at": 1795509584,
+   "top10_views": 33716179,
+   "median_views": 3210934,
    "video_count": 10,
    "top_terms": [
     "raw",
@@ -6037,7 +6037,7 @@
    "best_video": {
     "title": "Every team Usos beat during 600+ day Tag Title reign: WWE Playlist",
     "channel": "WWE",
-    "views": 5268558,
+    "views": 5280963,
     "published": "2023-03-10",
     "id": "ebkAaNCsgjI"
    },
@@ -6098,6 +6098,34 @@
    "rank": 224
   },
   {
+   "id": "latino-world-order",
+   "name": "Latino World Order",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509597,
+   "top10_views": 31421087,
+   "median_views": 1804866,
+   "video_count": 10,
+   "top_terms": [
+    "rey",
+    "mysterio",
+    "lwo",
+    "santos",
+    "escobar",
+    "con",
+    "dominik",
+    "judgment"
+   ],
+   "best_video": {
+    "title": "#ReyMysterio estuvo cerca de vencer a #BrockLesnar con un 619 con #Dominik #HispanicHeritageMonth",
+    "channel": "WWE Espa\u00f1ol",
+    "views": 15565017,
+    "published": "2023-09-25",
+    "id": "nINa9k697Ww"
+   },
+   "rank": 225
+  },
+  {
    "id": "lash-legend",
    "name": "Lash Legend",
    "status": "unscanned",
@@ -6122,7 +6150,7 @@
     "published": "2023-12-08",
     "id": "Q8BtF2NY_ws"
    },
-   "rank": 225
+   "rank": 226
   },
   {
    "id": "maxxine-dupri",
@@ -6148,7 +6176,7 @@
     "published": "2026-09-07",
     "id": "8nEgapfbWC0"
    },
-   "rank": 226,
+   "rank": 227,
    "scanned_at": 1795163936
   },
   {
@@ -6176,63 +6204,7 @@
     "published": "2026-10-20",
     "id": "pegduMc7iz0"
    },
-   "rank": 227
-  },
-  {
-   "id": "hart-foundation",
-   "name": "Hart Foundation",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794904816,
-   "top10_views": 29733554,
-   "median_views": 2096960,
-   "video_count": 10,
-   "top_terms": [
-    "bret",
-    "undertaker",
-    "wrestling",
-    "triple",
-    "destroys",
-    "tripleh",
-    "therock",
-    "hbk"
-   ],
-   "best_video": {
-    "title": "Bret Hart: Winner Stays On \ud83d\udc40\ud83e\ude77\ud83d\udda4",
-    "channel": "Inside The Clips",
-    "views": 6127129,
-    "published": "2025-09-26",
-    "id": "jDAEu78KWYE"
-   },
    "rank": 228
-  },
-  {
-   "id": "latino-world-order",
-   "name": "Latino World Order",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991166,
-   "top10_views": 28728643,
-   "median_views": 1154945,
-   "video_count": 10,
-   "top_terms": [
-    "lwo",
-    "judgment",
-    "day",
-    "con",
-    "raw",
-    "carlito",
-    "rey",
-    "forms"
-   ],
-   "best_video": {
-    "title": "#ReyMysterio estuvo cerca de vencer a #BrockLesnar con un 619 con #Dominik #HispanicHeritageMonth",
-    "channel": "WWE Espa\u00f1ol",
-    "views": 15534791,
-    "published": "2023-09-25",
-    "id": "nINa9k697Ww"
-   },
-   "rank": 229
   },
   {
    "id": "bam-bam-bigelow",
@@ -6259,7 +6231,7 @@
     "published": "2012-08-09",
     "id": "a-401wNkFOU"
    },
-   "rank": 230
+   "rank": 229
   },
   {
    "id": "shiloh-hill",
@@ -6286,7 +6258,7 @@
     "published": "2026-01-08",
     "id": "jPIUERiXbuU"
    },
-   "rank": 231
+   "rank": 230
   },
   {
    "id": "the-colons",
@@ -6314,7 +6286,7 @@
     "published": "2024-11-23",
     "id": "asc9xFbbOSo"
    },
-   "rank": 232
+   "rank": 231
   },
   {
    "id": "trick-williams",
@@ -6340,7 +6312,7 @@
     "published": "2025-07-23",
     "id": "C-30bAdD-Uo"
    },
-   "rank": 233,
+   "rank": 232,
    "scanned_at": 1795163934
   },
   {
@@ -6367,7 +6339,7 @@
     "published": "2024-05-24",
     "id": "DODfEafVza4"
    },
-   "rank": 234,
+   "rank": 233,
    "scanned_at": 1795163932
   },
   {
@@ -6395,7 +6367,7 @@
     "published": "2021-08-31",
     "id": "9g7XEtrjOE4"
    },
-   "rank": 235
+   "rank": 234
   },
   {
    "id": "jeff-jarrett",
@@ -6422,16 +6394,16 @@
     "published": "2023-05-23",
     "id": "bofQPbjPGPk"
    },
-   "rank": 236
+   "rank": 235
   },
   {
    "id": "the-hype-bros",
    "name": "The Hype Bros",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991202,
-   "top10_views": 23889382,
-   "median_views": 2362508,
+   "scanned_at": 1795509636,
+   "top10_views": 23903906,
+   "median_views": 2363344,
    "video_count": 10,
    "top_terms": [
     "fire",
@@ -6446,11 +6418,11 @@
    "best_video": {
     "title": "BLACK EMERALD vs. HYPE FIRE | USSSA Baseball Bat Review",
     "channel": "The Baseball Bat Bros",
-    "views": 3468721,
+    "views": 3471709,
     "published": "2025-07-03",
     "id": "KypHNiEFL54"
    },
-   "rank": 237
+   "rank": 236
   },
   {
    "id": "angel",
@@ -6477,7 +6449,7 @@
     "published": "2022-12-28",
     "id": "A91GuqdAVD0"
    },
-   "rank": 238
+   "rank": 237
   },
   {
    "id": "el-grande-americano",
@@ -6503,7 +6475,7 @@
     "published": "2025-04-08",
     "id": "N5RHeCqjFBU"
    },
-   "rank": 239,
+   "rank": 238,
    "scanned_at": 1795163941
   },
   {
@@ -6531,7 +6503,7 @@
     "published": "2024-02-14",
     "id": "TdX5hrL-T_I"
    },
-   "rank": 240
+   "rank": 239
   },
   {
    "name": "Brawling Brutes",
@@ -6557,9 +6529,37 @@
     "published": "2022-11-22",
     "id": "UC1dlNkHx2Q"
    },
-   "rank": 241,
+   "rank": 240,
    "id": "brawling-brutes",
    "scanned_at": 1795163969
+  },
+  {
+   "id": "hart-foundation",
+   "name": "Hart Foundation",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509544,
+   "top10_views": 20900779,
+   "median_views": 1553964,
+   "video_count": 10,
+   "top_terms": [
+    "bret",
+    "undertaker",
+    "wrestling",
+    "triple",
+    "destroys",
+    "tripleh",
+    "therock",
+    "hbk"
+   ],
+   "best_video": {
+    "title": "Bret Hart Theme Song - Full Version",
+    "channel": "xDarkVideosx",
+    "views": 4385703,
+    "published": "2008-10-27",
+    "id": "5mYXWOCgXQQ"
+   },
+   "rank": 241
   },
   {
    "id": "erik",
@@ -6756,9 +6756,9 @@
    "name": "Breezango",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991198,
-   "top10_views": 17767814,
-   "median_views": 792332,
+   "scanned_at": 1795509632,
+   "top10_views": 17790085,
+   "median_views": 792374,
    "video_count": 10,
    "top_terms": [
     "live",
@@ -6773,7 +6773,7 @@
    "best_video": {
     "title": "Breezango & The Ascension get \"Sawed\" in the latest Fashion Files: SmackDown LIVE, Nov. 28, 2017",
     "channel": "WWE",
-    "views": 6999933,
+    "views": 7000003,
     "published": "2017-11-29",
     "id": "dc66rRymXuQ"
    },
@@ -7104,34 +7104,6 @@
    "rank": 261
   },
   {
-   "id": "creed-brothers",
-   "name": "Creed Brothers",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991155,
-   "top10_views": 14249607,
-   "median_views": 958695,
-   "video_count": 10,
-   "top_terms": [
-    "wyatt",
-    "sicks",
-    "raw",
-    "assassin's",
-    "chad",
-    "gable",
-    "july",
-    "tag"
-   ],
-   "best_video": {
-    "title": "THE CREED BROTHERS ALMOST HAD IT!",
-    "channel": "WWE",
-    "views": 3792665,
-    "published": "2023-12-19",
-    "id": "7_zqujqZN0M"
-   },
-   "rank": 262
-  },
-  {
    "id": "ludwig-kaiser",
    "name": "Ludwig Kaiser",
    "status": "unscanned",
@@ -7156,7 +7128,7 @@
     "published": "2026-05-31",
     "id": "ac2uUQ1xGPY"
    },
-   "rank": 263
+   "rank": 262
   },
   {
    "id": "tatum-paxley",
@@ -7183,7 +7155,7 @@
     "published": "2026-08-08",
     "id": "oTZT9mTMl6E"
    },
-   "rank": 264
+   "rank": 263
   },
   {
    "id": "angelo-dawkins",
@@ -7210,7 +7182,7 @@
     "published": "2023-04-02",
     "id": "n271yHKtZ_g"
    },
-   "rank": 265
+   "rank": 264
   },
   {
    "id": "fallon-henley",
@@ -7236,6 +7208,34 @@
     "views": 6975398,
     "published": "2025-01-20",
     "id": "s7DjgCU6X7o"
+   },
+   "rank": 265
+  },
+  {
+   "id": "creed-brothers",
+   "name": "Creed Brothers",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509586,
+   "top10_views": 12818030,
+   "median_views": 899845,
+   "video_count": 10,
+   "top_terms": [
+    "raw",
+    "wyatt",
+    "sicks",
+    "chad",
+    "gable",
+    "aug",
+    "almost",
+    "had"
+   ],
+   "best_video": {
+    "title": "THE CREED BROTHERS ALMOST HAD IT!",
+    "channel": "WWE",
+    "views": 3792668,
+    "published": "2023-12-19",
+    "id": "7_zqujqZN0M"
    },
    "rank": 266
   },
@@ -7271,9 +7271,9 @@
    "name": "Vanity Project",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991191,
-   "top10_views": 11689889,
-   "median_views": 775293,
+   "scanned_at": 1795509625,
+   "top10_views": 11709570,
+   "median_views": 775784,
    "video_count": 10,
    "top_terms": [
     "trump",
@@ -7288,7 +7288,7 @@
    "best_video": {
     "title": "Trump's Wasting Taxpayer Dollars on Vanity Projects, Iran Victory Lap & the Nuttiest RFK Jr Story",
     "channel": "Jimmy Kimmel Live",
-    "views": 3638190,
+    "views": 3638955,
     "published": "2026-06-17",
     "id": "mb3HGgsNZ1Q"
    },
@@ -7326,9 +7326,9 @@
    "name": "Harlem Heat",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794904820,
-   "top10_views": 11378436,
-   "median_views": 653909,
+   "scanned_at": 1795509547,
+   "top10_views": 11389531,
+   "median_views": 654163,
    "video_count": 10,
    "top_terms": [
     "shake",
@@ -7343,7 +7343,7 @@
    "best_video": {
     "title": "Miami Heat Harlem Shake - Chris Bosh Edition",
     "channel": "Chris Bosh",
-    "views": 4834636,
+    "views": 4839192,
     "published": "2013-03-01",
     "id": "Qp1eT_Y_IhE"
    },
@@ -7705,9 +7705,9 @@
    "name": "Motor City Machine Guns",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991183,
-   "top10_views": 6469369,
-   "median_views": 570060,
+   "scanned_at": 1795509615,
+   "top10_views": 6480315,
+   "median_views": 570459,
    "video_count": 10,
    "top_terms": [
     "oct",
@@ -7722,11 +7722,39 @@
    "best_video": {
     "title": "TNA LEGENDS Returning Home",
     "channel": "TNA Wrestling",
-    "views": 1109701,
+    "views": 1113874,
     "published": "2025-10-15",
     "id": "9zAzGxL4A3Y"
    },
    "rank": 284
+  },
+  {
+   "id": "fraxiom",
+   "name": "Fraxiom",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509601,
+   "top10_views": 6398656,
+   "median_views": 441688,
+   "video_count": 10,
+   "top_terms": [
+    "official",
+    "music",
+    "video",
+    "gupi",
+    "aug",
+    "mos",
+    "thoser",
+    "thos"
+   ],
+   "best_video": {
+    "title": "mos thoser",
+    "channel": "food house - Topic",
+    "views": 2204388,
+    "published": "2020-10-26",
+    "id": "NVgS7Kxd6cg"
+   },
+   "rank": 285
   },
   {
    "id": "arianna-grace",
@@ -7753,7 +7781,7 @@
     "published": "2026-09-09",
     "id": "HT4fmbK6_k8"
    },
-   "rank": 285
+   "rank": 286
   },
   {
    "id": "julius-creed",
@@ -7780,7 +7808,7 @@
     "published": "2024-07-16",
     "id": "dX_l9kmVPus"
    },
-   "rank": 286
+   "rank": 287
   },
   {
    "id": "brutus-creed",
@@ -7807,7 +7835,7 @@
     "published": "2024-08-06",
     "id": "6zqbUzzloT4"
    },
-   "rank": 287
+   "rank": 288
   },
   {
    "id": "nathan-frazer",
@@ -7834,7 +7862,7 @@
     "published": "2026-01-29",
     "id": "Mx-9rWV58eU"
    },
-   "rank": 288
+   "rank": 289
   },
   {
    "id": "sean-legacy",
@@ -7861,7 +7889,7 @@
     "published": "2025-05-07",
     "id": "E6zLvntqraQ"
    },
-   "rank": 289
+   "rank": 290
   },
   {
    "id": "tyler-bate",
@@ -7887,34 +7915,6 @@
     "views": 1238282,
     "published": "2024-08-23",
     "id": "OnZ7a2KqUw4"
-   },
-   "rank": 290
-  },
-  {
-   "id": "fraxiom",
-   "name": "Fraxiom",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991170,
-   "top10_views": 4626272,
-   "median_views": 437323,
-   "video_count": 10,
-   "top_terms": [
-    "official",
-    "music",
-    "video",
-    "gupi",
-    "tag",
-    "team",
-    "title",
-    "aug"
-   ],
-   "best_video": {
-    "title": "Nothing but respect between Fraxiom and Hank & Tank \ud83d\udcaa #StandandDeliver",
-    "channel": "WWE",
-    "views": 760012,
-    "published": "2025-04-19",
-    "id": "m7t-uoOZIyY"
    },
    "rank": 291
   },
@@ -7946,6 +7946,34 @@
    "rank": 292
   },
   {
+   "id": "darkstate",
+   "name": "Darkstate",
+   "status": "unscanned",
+   "team": true,
+   "scanned_at": 1795509623,
+   "top10_views": 4466862,
+   "median_views": 377659,
+   "video_count": 10,
+   "top_terms": [
+    "nxt",
+    "oba",
+    "femi",
+    "cruz",
+    "montana",
+    "joe",
+    "hendry",
+    "wwenxt"
+   ],
+   "best_video": {
+    "title": "Cruz Montana got arrested for attacking DarkState after NXT Off Air #nxt #cruzmontana #darkstate",
+    "channel": "The Shield TV RDS",
+    "views": 673194,
+    "published": "2026-10-21",
+    "id": "4uvvHKtT5eg"
+   },
+   "rank": 293
+  },
+  {
    "id": "izzi-dame",
    "name": "Izzi Dame",
    "status": "unscanned",
@@ -7970,7 +7998,7 @@
     "published": "2026-09-08",
     "id": "XEkpMO6vsLY"
    },
-   "rank": 293
+   "rank": 294
   },
   {
    "id": "marty-jannetty",
@@ -7996,34 +8024,6 @@
     "views": 1259775,
     "published": "2011-09-10",
     "id": "hsvUNQyWFhw"
-   },
-   "rank": 294
-  },
-  {
-   "id": "darkstate",
-   "name": "Darkstate",
-   "status": "unscanned",
-   "team": true,
-   "scanned_at": 1794991189,
-   "top10_views": 4409037,
-   "median_views": 377254,
-   "video_count": 10,
-   "top_terms": [
-    "nxt",
-    "oba",
-    "femi",
-    "cruz",
-    "montana",
-    "joe",
-    "hendry",
-    "wwenxt"
-   ],
-   "best_video": {
-    "title": "The 946 invade NXT to help Cruz Montana beat Dion Lennox: NXT highlights, Nov. 4, 2026",
-    "channel": "WWE",
-    "views": 656101,
-    "published": "2026-11-05",
-    "id": "_kB5_zWg698"
    },
    "rank": 295
   },
@@ -8248,9 +8248,9 @@
    "name": "New Catch Republic",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991157,
-   "top10_views": 2804491,
-   "median_views": 180101,
+   "scanned_at": 1795509588,
+   "top10_views": 2806604,
+   "median_views": 180131,
    "video_count": 10,
    "top_terms": [
     "day",
@@ -8265,7 +8265,7 @@
    "best_video": {
     "title": "FULL MATCH: Undisputed WWE Tag Team Championship Six-Pack Ladder Match: WrestleMania XL Saturday",
     "channel": "WWE",
-    "views": 707568,
+    "views": 709271,
     "published": "2024-10-29",
     "id": "qmnFnFmJI4I"
    },
@@ -8276,9 +8276,9 @@
    "name": "WrenQCC",
    "status": "unscanned",
    "team": true,
-   "scanned_at": 1794991196,
-   "top10_views": 1829634,
-   "median_views": 90032,
+   "scanned_at": 1795509629,
+   "top10_views": 1832878,
+   "median_views": 90113,
    "video_count": 10,
    "top_terms": [
     "nxt",
@@ -8293,7 +8293,7 @@
    "best_video": {
     "title": "DOWN GOES WRENQCC! \ud83d\udc4a #WWENXT",
     "channel": "WWE",
-    "views": 571307,
+    "views": 571311,
     "published": "2025-12-10",
     "id": "pSNOZnFaHKY"
    },
